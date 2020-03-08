@@ -13,16 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *****************************************************************************/
-#include "cyber/AD_Middle_Test/cyber/intra_component/intra_component.h"
 
-bool IntraComponent::Init() {
-  AINFO << "IntraComponent init";
+#include "cyber/AD_Middle_Test/cyber/intra_component/intra_timer.h"
+
+#include "cyber/class_loader/class_loader.h"
+#include "cyber/component/component.h"
+#include "cyber/examples/proto/examples.pb.h"
+
+bool IntraTimer::Init() {
+  driver_writer_ = node_->CreateWriter<Driver>("/apollo/prediction");
+  driver_writer2_ = node_->CreateWriter<Driver>("/apollo/test");
+
   return true;
 }
 
-bool IntraComponent::Proc(const std::shared_ptr<Driver>& msg0,
-                                 const std::shared_ptr<Driver>& msg1) {
-  AINFO << "Start intra component Proc [" << msg0->content() << msg0->msg_id() <<"] ["
-        << msg1->content() << msg1->msg_id()<<"]";
+bool IntraTimer::Proc() {
+  static int i = 0;
+  AINFO <<i;
+  auto out_msg = std::make_shared<Driver>();
+  out_msg->set_msg_id(i++);
+  out_msg->set_content("first msg");
+  driver_writer_->Write(out_msg);
+// if(i%3 != 0)return true; 
+  auto out_msg2 = std::make_shared<Driver>();
+  out_msg2->set_msg_id(i);
+  out_msg2->set_content("second msg");
+  driver_writer2_->Write(out_msg2);
   return true;
 }

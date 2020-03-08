@@ -13,16 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *****************************************************************************/
-#include "cyber/AD_Middle_Test/cyber/intra_component/intra_component.h"
+#include <memory>
 
-bool IntraComponent::Init() {
-  AINFO << "IntraComponent init";
-  return true;
-}
+#include "cyber/class_loader/class_loader.h"
+#include "cyber/component/component.h"
+#include "cyber/component/timer_component.h"
+#include "cyber/examples/proto/examples.pb.h"
 
-bool IntraComponent::Proc(const std::shared_ptr<Driver>& msg0,
-                                 const std::shared_ptr<Driver>& msg1) {
-  AINFO << "Start intra component Proc [" << msg0->content() << msg0->msg_id() <<"] ["
-        << msg1->content() << msg1->msg_id()<<"]";
-  return true;
-}
+using apollo::cyber::Component;
+using apollo::cyber::ComponentBase;
+using apollo::cyber::TimerComponent;
+using apollo::cyber::Writer;
+using apollo::cyber::examples::proto::Driver;
+
+class IntraTimer : public TimerComponent {
+ public:
+  bool Init() override;
+  bool Proc() override;
+
+ private:
+  std::shared_ptr<Writer<Driver>> driver_writer_ = nullptr;
+  std::shared_ptr<Writer<Driver>> driver_writer2_ = nullptr;
+
+};
+CYBER_REGISTER_COMPONENT(IntraTimer)
