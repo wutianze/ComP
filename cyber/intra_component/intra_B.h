@@ -13,16 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *****************************************************************************/
-#include "cyber/AD_Middle_Test/cyber/intra_component/intra_component.h"
+#include <memory>
+#include "cyber/component/component.h"
+#include "cyber/AD_Middle_Test/cyber/test.pb.h"
+#include "cyber/time/time.h"
 
-bool IntraComponent::Init() {
-  AINFO << "IntraComponent init";
-  return true;
-}
+using apollo::cyber::Component;
+using apollo::cyber::ComponentBase;
+using apollo::cyber::AD_Middle_Test::cyber::Bytes;
+using apollo::cyber::Time;
+using apollo::cyber::Writer;
 
-bool IntraComponent::Proc(const std::shared_ptr<Driver>& msg0,
-                                 const std::shared_ptr<Driver>& msg1) {
-  AINFO << "Start intra component Proc [" << msg0->content() << msg0->msg_id() <<"] ["
-        << msg1->content() << msg1->msg_id()<<"]";
-  return true;
-}
+class IntraB : public Component<Bytes> {
+ public:
+  bool Init() override;
+  bool Proc(const std::shared_ptr<Bytes>& msg0) override;
+ private:
+  std::shared_ptr<Writer<Bytes>> c1_writer_ = nullptr;
+};
+CYBER_REGISTER_COMPONENT(IntraB)

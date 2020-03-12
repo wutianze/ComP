@@ -1,23 +1,27 @@
 # Define all coms in DAG streaming.
     module_config {
     module_library : "/apollo/bazel-bin/cyber/AD_Middle_Test/cyber/intra_component/libintra.so"
-#    components {
-#        class_name : "IntraComponent"
-#        config {
-#            name : "intracomponent"
-#            readers {
-#                channel: "/apollo/prediction"
-#            }
-#            readers {
-#                channel: "/apollo/test"
-#            }
-#        }
-#      }
-timer_components{
-class_name:"IntraTimer"
-config{
-name:"intratimer"
-interval:40000
-}
-}
+    components {
+        class_name : "IntraA"
+        config {
+            name : "intraa"
+            readers {
+                channel: "/c1"
+            }
+           # readers {
+           #     channel: "/c2"
+           # }
+        }
+      }components {
+        class_name : "IntraB"
+        config {
+            name : "intrab"
+            readers {
+                channel: "/c2"
+            }
+           # readers {
+           #     channel: "/c2"
+           # }
+        }
+      }
     }

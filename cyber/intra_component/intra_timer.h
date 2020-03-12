@@ -18,13 +18,13 @@
 #include "cyber/class_loader/class_loader.h"
 #include "cyber/component/component.h"
 #include "cyber/component/timer_component.h"
-#include "cyber/examples/proto/examples.pb.h"
+#include "cyber/AD_Middle_Test/cyber/test.pb.h"
 
 using apollo::cyber::Component;
 using apollo::cyber::ComponentBase;
 using apollo::cyber::TimerComponent;
 using apollo::cyber::Writer;
-using apollo::cyber::examples::proto::Driver;
+using apollo::cyber::AD_Middle_Test::cyber::Bytes;
 
 class IntraTimer : public TimerComponent {
  public:
@@ -32,8 +32,7 @@ class IntraTimer : public TimerComponent {
   bool Proc() override;
 
  private:
-  std::shared_ptr<Writer<Driver>> driver_writer_ = nullptr;
-  std::shared_ptr<Writer<Driver>> driver_writer2_ = nullptr;
+  std::shared_ptr<Writer<Bytes>> writer_ = nullptr;
 
 };
 CYBER_REGISTER_COMPONENT(IntraTimer)

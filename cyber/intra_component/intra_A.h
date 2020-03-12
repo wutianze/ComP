@@ -13,23 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *****************************************************************************/
-
-#include "cyber/AD_Middle_Test/cyber/intra_component/intra_timer.h"
-
-#include "cyber/class_loader/class_loader.h"
+#include <memory>
 #include "cyber/component/component.h"
 #include "cyber/AD_Middle_Test/cyber/test.pb.h"
+#include "cyber/time/time.h"
+#include <fstream>
 
-bool IntraTimer::Init() {
-  writer_ = node_->CreateWriter<Bytes>("/c1");
-  return true;
-}
+using apollo::cyber::Component;
+using apollo::cyber::ComponentBase;
+using apollo::cyber::AD_Middle_Test::cyber::Bytes;
+using apollo::cyber::Time;
+using apollo::cyber::Writer;
 
-bool IntraTimer::Proc() {
-  static int i = 0;
-  AINFO <<i;
-  auto out_msg = std::make_shared<Bytes>();
-  out_msg->set_content("a");
-  writer_->Write(out_msg);
-  return true;
-}
+class IntraA : public Component<Bytes> {
+ public:
+  bool Init() override;
+  bool Proc(const std::shared_ptr<Bytes>& msg0) override;
+ private:
+//  std::shared_ptr<Writer<Bytes>> write_once_ = nullptr;
+  std::shared_ptr<Writer<Bytes>> c2_writer_ = nullptr;
+  uint64_t nanoseconds;
+  bool ifstart;
+};
+CYBER_REGISTER_COMPONENT(IntraA)

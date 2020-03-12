@@ -16,35 +16,35 @@
 
 
 #include "cyber/cyber.h"
-#include "cyber/examples/proto/examples.pb.h"
+#include "cyber/AD_Middle_Test/cyber/test.pb.h"
 #include "cyber/time/rate.h"
 #include "cyber/time/time.h"
 
 using apollo::cyber::Rate;
 using apollo::cyber::Time;
 //using apollo::cyber::examples::proto::Chatter;
-using apollo::cyber::examples::proto::Driver;
+using apollo::cyber::AD_Middle_Test::cyber::Bytes;
+bool flag = false;
 void MessageCallback(
-		    const std::shared_ptr<Driver>& msg) {
-	  AINFO << "Received message seq-> " << msg->msg_id();
+		    const std::shared_ptr<Bytes>& msg) {
 	    AINFO << "msgcontent->" << msg->content();
+	    flag = true;
 }
 int main(int argc, char *argv[]) {
   // init cyber framework
   apollo::cyber::Init(argv[0]);
   // create talker node
-  auto talker_node = apollo::cyber::CreateNode("intra");
+  auto talker_node = apollo::cyber::CreateNode("starter");
   // create talker
-  auto talker = talker_node->CreateWriter<Driver>("/apollo/prediction");
-  auto listener = talker_node->CreateReader<Driver>("/apollo/prediction",MessageCallback);
-  Rate rate(1.0);
-  while (apollo::cyber::OK()) {
-    static uint64_t seq = 0;
-    auto msg = std::make_shared<Driver>();
-    msg->set_timestamp(Time::Now().ToNanosecond());
+  auto talker = talker_node->CreateWriter<Bytes>("/c1");
+  auto listener = talker_node->CreateReader<Bytes>("/c2",MessageCallback);
+  Rate rate(3000.0);
+  //while (apollo::cyber::OK()) {
+  while(!flag){
+    //static uint64_t seq = 0;
+    auto msg = std::make_shared<Bytes>();
     //msg->set_lidar_timestamp(Time::Now().ToNanosecond());
-    msg->set_msg_id(seq++);
-    msg->set_content("Hello, apollo!");
+    msg->set_content("a");
     talker->Write(msg);
     AINFO << "talker sent a message!";
     rate.Sleep();

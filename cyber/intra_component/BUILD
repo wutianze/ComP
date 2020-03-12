@@ -6,25 +6,25 @@ cc_binary(
     name = "libintra.so",
     linkopts = ["-shared"],
     linkstatic = False,
-    deps = [":intra_component_lib",":intra_timer_lib"],
+    deps = [":intra_A_lib",":intra_B_lib"],
 )
 
 cc_library(
-    name = "intra_component_lib",
-    srcs = ["intra_component.cc"],
-    hdrs = ["intra_component.h"],
+    name = "intra_A_lib",
+    srcs = ["intra_A.cc"],
+    hdrs = ["intra_A.h"],
     deps = [
         "//cyber",
-        "//cyber/examples/proto:examples_cc_proto",
+        "//cyber/AD_Middle_Test/cyber:test_cc_proto",
     ],
 )
 
 cc_library(
-		name = "intra_timer_lib",
-		srcs = ["intra_timer.cc"],
-		hdrs = ["intra_timer.h"],
+		name = "intra_B_lib",
+		srcs = ["intra_B.cc"],
+		hdrs = ["intra_B.h"],
 		deps = ["//cyber",
-	  		"//cyber/examples/proto:examples_cc_proto",		
+        "//cyber/AD_Middle_Test/cyber:test_cc_proto",
 	  ],
 		
 		)
