@@ -27,6 +27,7 @@ bool IntraA::Init() {
   c2_writer_ = node_->CreateWriter<Bytes>("/c2");
   nanoseconds = 0;
   ifstart = false;
+  to_send = std::string(262144,'b');
   return true;
 }
 
@@ -36,9 +37,9 @@ if(msg0->content() == "a"){
 	if(ifstart)return true;
        ifstart = true;	
 }	
-AINFO<<"A received a msg:"<<msg0->content();
+//AINFO<<"A received a msg:"<<msg0->content();
   
-if(msg0->content() == "b"){	
+if(msg0->content()[0] == 'b'){	
 	std::ofstream ofs;
   ofs.open("/apollo/data/log/test/intra.txt",std::ios::app);
   ofs<<received_time - nanoseconds<<std::endl;
@@ -47,7 +48,7 @@ if(msg0->content() == "b"){
 
 }
 auto c2_msg = std::make_shared<Bytes>();
-c2_msg->set_content("b");
+c2_msg->set_content(to_send);
 sleep(1);
   nanoseconds = Time::Now().ToNanosecond();
   c2_writer_->Write(c2_msg);

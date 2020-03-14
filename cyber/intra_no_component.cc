@@ -27,7 +27,7 @@ using apollo::cyber::AD_Middle_Test::cyber::Bytes;
 bool flag = false;
 void MessageCallback(
 		    const std::shared_ptr<Bytes>& msg) {
-	    AINFO << "msgcontent->" << msg->content();
+	    AINFO << "msgcontent size" << std::string(msg->content()).size();
 	    flag = true;
 }
 int main(int argc, char *argv[]) {
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
   // create talker
   auto talker = talker_node->CreateWriter<Bytes>("/c1");
   auto listener = talker_node->CreateReader<Bytes>("/c2",MessageCallback);
-  Rate rate(3000.0);
+  Rate rate(1.0);
   //while (apollo::cyber::OK()) {
   while(!flag){
     //static uint64_t seq = 0;

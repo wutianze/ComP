@@ -34,5 +34,6 @@ class IntraA : public Component<Bytes> {
   std::shared_ptr<Writer<Bytes>> c2_writer_ = nullptr;
   uint64_t nanoseconds;
   bool ifstart;
+  std::string to_send;
 };
 CYBER_REGISTER_COMPONENT(IntraA)

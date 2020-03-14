@@ -30,5 +30,6 @@ class IntraB : public Component<Bytes> {
   bool Proc(const std::shared_ptr<Bytes>& msg0) override;
  private:
   std::shared_ptr<Writer<Bytes>> c1_writer_ = nullptr;
+  std::string to_send;
 };
 CYBER_REGISTER_COMPONENT(IntraB)
