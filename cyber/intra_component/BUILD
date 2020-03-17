@@ -8,7 +8,18 @@ cc_binary(
     linkstatic = False,
     deps = [":intra_A_lib",":intra_B_lib"],
 )
-
+cc_binary(
+	name = "libintra_p1.so",
+	linkopts = ["-shared"],
+	linkstatic = False,
+	deps = [":intra_A_lib"],
+		)
+cc_binary(
+	name = "libintra_p2.so",
+	linkopts = ["-shared"],
+	linkstatic = False,
+	deps = [":intra_B_lib"],
+		)
 cc_library(
     name = "intra_A_lib",
     srcs = ["intra_A.cc"],

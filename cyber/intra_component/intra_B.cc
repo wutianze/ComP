@@ -18,7 +18,7 @@
 bool IntraB::Init() {
   AINFO << "B init";
   c1_writer_ = node_->CreateWriter<Bytes>("/c1");
-  to_send = std::string(262144,'b');
+  to_send = std::string(1,'b');
   return true;
 }
 

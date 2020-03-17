@@ -27,7 +27,7 @@ bool IntraA::Init() {
   c2_writer_ = node_->CreateWriter<Bytes>("/c2");
   nanoseconds = 0;
   ifstart = false;
-  to_send = std::string(262144,'b');
+  to_send = std::string(1,'b');
   return true;
 }
 
@@ -37,7 +37,7 @@ if(msg0->content() == "a"){
 	if(ifstart)return true;
        ifstart = true;	
 }	
-//AINFO<<"A received a msg:"<<msg0->content();
+AINFO<<"A received a msg";
   
 if(msg0->content()[0] == 'b'){	
 	std::ofstream ofs;
