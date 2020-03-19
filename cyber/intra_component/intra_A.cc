@@ -27,7 +27,7 @@ bool IntraA::Init() {
   c2_writer_ = node_->CreateWriter<Bytes>("/c2");
   nanoseconds = 0;
   ifstart = false;
-  to_send = std::string(1,'b');
+  to_send = std::string(128,'b');
   return true;
 }
 
