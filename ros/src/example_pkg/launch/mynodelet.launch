@@ -1,0 +1,12 @@
+<launch>
+  <node pkg="nodelet" type="nodelet" name="standalone_nodelet"  args="manager" output="screen"/>
+  <node pkg="nodelet" type="nodelet" name="MyNodeletClass" args="load example_pkg/MyNodeletClass standalone_nodelet" output="screen">
+<remap from="/MyNodeletClass/out" to="MyNodeletClass2/in"/>  
+</node>
+<node pkg="nodelet" type="nodelet" name="MyNodeletClass2" args="load example_pkg/MyNodeletClass standalone_nodelet" output="screen">
+<remap from="/MyNodeletClass/out" to="MyNodeletClass2/in"/>  
+</node>
+  <node pkg="nodelet" type="nodelet" name="MyNodeletClass3" args="standalone example_pkg/MyNodeletClass" output="screen">
+    <remap from="MyNodeletClass3/in" to="MyNodeletClass2/out"/>
+  </node>
+</launch>
