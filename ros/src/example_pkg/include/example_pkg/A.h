@@ -10,10 +10,10 @@ namespace example_pkg
 class A : public nodelet::Nodelet
 {
 public:
-~A(){
+/*~A(){
 pthread_join(tid,NULL);
 }
-/*static void* PubMainLoop(void* tmp)
+static void* PubMainLoop(void* tmp)
 {
 A* pub = (A*) tmp;
 ros::Rate loop_rate(1);
@@ -28,10 +28,11 @@ loop_rate.sleep();
 */
 std::string value_;
 void callback(const std_msgs::StringConstPtr& input);
+void callback2(const std_msgs::StringConstPtr& tmp);
 ros::Publisher pub;
 ros::Subscriber sub;
 ros::Subscriber sub2;
-pthread_t tid;
+//pthread_t tid;
 uint64_t record;
 private:         virtual void onInit();
 };

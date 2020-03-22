@@ -34,25 +34,25 @@ namespace example_pkg
 
 	    void A::callback(const std_msgs::StringConstPtr& input)
 		      {
+ROS_INFO("receive one");
 			      uint64_t end_time = ros::Time::now().toNSec();
 			      if(count !=0){
 			    uint64_t ttl = end_time - record;
 			   writer<<ttl<<"\n";
-			  count++; 
 			      }
 if(count == reach){
 ROS_INFO("finish whole");
 writer.close();
 return;
 }
-ROS_INFO("send one");
+count++;
 ros::Duration(1).sleep();
 std_msgs::StringPtr output(new std_msgs::String);
 output->data = value_;
 record = ros::Time::now().toNSec();
 pub.publish(output);					       
 		      }
-void A::callback2(const std_msgs::StringConstPrt& tmp){
+void A::callback2(const std_msgs::StringConstPtr& tmp){
 	std_msgs::StringPtr once(new std_msgs::String);
 	ROS_INFO("receive start sig");
 	pub.publish(once);
