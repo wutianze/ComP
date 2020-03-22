@@ -80,6 +80,18 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -122,18 +134,6 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -243,21 +243,6 @@ nodelet_generate_messages_eus/fast:
 .PHONY : nodelet_generate_messages_eus/fast
 
 # Convenience name for target.
-example_pkg/CMakeFiles/example_pkg.dir/rule:
-	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f CMakeFiles/Makefile2 example_pkg/CMakeFiles/example_pkg.dir/rule
-.PHONY : example_pkg/CMakeFiles/example_pkg.dir/rule
-
-# Convenience name for target.
-example_pkg: example_pkg/CMakeFiles/example_pkg.dir/rule
-
-.PHONY : example_pkg
-
-# fast build rule for target.
-example_pkg/fast:
-	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/example_pkg.dir/build.make example_pkg/CMakeFiles/example_pkg.dir/build
-.PHONY : example_pkg/fast
-
-# Convenience name for target.
 example_pkg/CMakeFiles/bond_generate_messages_eus.dir/rule:
 	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f CMakeFiles/Makefile2 example_pkg/CMakeFiles/bond_generate_messages_eus.dir/rule
 .PHONY : example_pkg/CMakeFiles/bond_generate_messages_eus.dir/rule
@@ -332,32 +317,89 @@ bond_generate_messages_nodejs/fast:
 	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/bond_generate_messages_nodejs.dir/build.make example_pkg/CMakeFiles/bond_generate_messages_nodejs.dir/build
 .PHONY : bond_generate_messages_nodejs/fast
 
-src/MyNodeletClass.o: src/MyNodeletClass.cpp.o
+# Convenience name for target.
+example_pkg/CMakeFiles/A.dir/rule:
+	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f CMakeFiles/Makefile2 example_pkg/CMakeFiles/A.dir/rule
+.PHONY : example_pkg/CMakeFiles/A.dir/rule
 
-.PHONY : src/MyNodeletClass.o
+# Convenience name for target.
+A : example_pkg/CMakeFiles/A.dir/rule
+
+.PHONY : A
+
+# fast build rule for target.
+A/fast:
+	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/A.dir/build.make example_pkg/CMakeFiles/A.dir/build
+.PHONY : A/fast
+
+# Convenience name for target.
+example_pkg/CMakeFiles/B.dir/rule:
+	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f CMakeFiles/Makefile2 example_pkg/CMakeFiles/B.dir/rule
+.PHONY : example_pkg/CMakeFiles/B.dir/rule
+
+# Convenience name for target.
+B : example_pkg/CMakeFiles/B.dir/rule
+
+.PHONY : B
+
+# fast build rule for target.
+B/fast:
+	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/B.dir/build.make example_pkg/CMakeFiles/B.dir/build
+.PHONY : B/fast
+
+src/A.o: src/A.cpp.o
+
+.PHONY : src/A.o
 
 # target to build an object file
-src/MyNodeletClass.cpp.o:
-	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/example_pkg.dir/build.make example_pkg/CMakeFiles/example_pkg.dir/src/MyNodeletClass.cpp.o
-.PHONY : src/MyNodeletClass.cpp.o
+src/A.cpp.o:
+	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/A.dir/build.make example_pkg/CMakeFiles/A.dir/src/A.cpp.o
+.PHONY : src/A.cpp.o
 
-src/MyNodeletClass.i: src/MyNodeletClass.cpp.i
+src/A.i: src/A.cpp.i
 
-.PHONY : src/MyNodeletClass.i
+.PHONY : src/A.i
 
 # target to preprocess a source file
-src/MyNodeletClass.cpp.i:
-	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/example_pkg.dir/build.make example_pkg/CMakeFiles/example_pkg.dir/src/MyNodeletClass.cpp.i
-.PHONY : src/MyNodeletClass.cpp.i
+src/A.cpp.i:
+	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/A.dir/build.make example_pkg/CMakeFiles/A.dir/src/A.cpp.i
+.PHONY : src/A.cpp.i
 
-src/MyNodeletClass.s: src/MyNodeletClass.cpp.s
+src/A.s: src/A.cpp.s
 
-.PHONY : src/MyNodeletClass.s
+.PHONY : src/A.s
 
 # target to generate assembly for a file
-src/MyNodeletClass.cpp.s:
-	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/example_pkg.dir/build.make example_pkg/CMakeFiles/example_pkg.dir/src/MyNodeletClass.cpp.s
-.PHONY : src/MyNodeletClass.cpp.s
+src/A.cpp.s:
+	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/A.dir/build.make example_pkg/CMakeFiles/A.dir/src/A.cpp.s
+.PHONY : src/A.cpp.s
+
+src/B.o: src/B.cpp.o
+
+.PHONY : src/B.o
+
+# target to build an object file
+src/B.cpp.o:
+	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/B.dir/build.make example_pkg/CMakeFiles/B.dir/src/B.cpp.o
+.PHONY : src/B.cpp.o
+
+src/B.i: src/B.cpp.i
+
+.PHONY : src/B.i
+
+# target to preprocess a source file
+src/B.cpp.i:
+	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/B.dir/build.make example_pkg/CMakeFiles/B.dir/src/B.cpp.i
+.PHONY : src/B.cpp.i
+
+src/B.s: src/B.cpp.s
+
+.PHONY : src/B.s
+
+# target to generate assembly for a file
+src/B.cpp.s:
+	cd /ros_test/AD_Middle_Test/ros/build && $(MAKE) -f example_pkg/CMakeFiles/B.dir/build.make example_pkg/CMakeFiles/B.dir/src/B.cpp.s
+.PHONY : src/B.cpp.s
 
 # Help Target
 help:
@@ -367,6 +409,7 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... install/local"
+	@echo "... install"
 	@echo "... nodelet_generate_messages_lisp"
 	@echo "... test"
 	@echo "... bond_generate_messages_cpp"
@@ -374,18 +417,21 @@ help:
 	@echo "... nodelet_generate_messages_cpp"
 	@echo "... edit_cache"
 	@echo "... nodelet_generate_messages_eus"
-	@echo "... example_pkg"
 	@echo "... rebuild_cache"
 	@echo "... bond_generate_messages_eus"
 	@echo "... bond_generate_messages_py"
 	@echo "... bond_generate_messages_lisp"
 	@echo "... nodelet_generate_messages_py"
 	@echo "... bond_generate_messages_nodejs"
+	@echo "... A"
+	@echo "... B"
 	@echo "... list_install_components"
-	@echo "... install"
-	@echo "... src/MyNodeletClass.o"
-	@echo "... src/MyNodeletClass.i"
-	@echo "... src/MyNodeletClass.s"
+	@echo "... src/A.o"
+	@echo "... src/A.i"
+	@echo "... src/A.s"
+	@echo "... src/B.o"
+	@echo "... src/B.i"
+	@echo "... src/B.s"
 .PHONY : help
 
 

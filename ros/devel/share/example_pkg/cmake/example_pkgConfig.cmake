@@ -116,7 +116,7 @@ if(NOT "/ros_test/AD_Middle_Test/ros/src/example_pkg/include " STREQUAL " ")
   endforeach()
 endif()
 
-set(libraries "example_pkg")
+set(libraries "A;B")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")

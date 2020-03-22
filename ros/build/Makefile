@@ -727,19 +727,6 @@ nodelet_generate_messages_eus/fast:
 .PHONY : nodelet_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named example_pkg
-
-# Build rule for target.
-example_pkg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg
-.PHONY : example_pkg
-
-# fast build rule for target.
-example_pkg/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg.dir/build.make example_pkg/CMakeFiles/example_pkg.dir/build
-.PHONY : example_pkg/fast
-
-#=============================================================================
 # Target rules for targets named bond_generate_messages_eus
 
 # Build rule for target.
@@ -804,6 +791,32 @@ bond_generate_messages_nodejs/fast:
 	$(MAKE) -f example_pkg/CMakeFiles/bond_generate_messages_nodejs.dir/build.make example_pkg/CMakeFiles/bond_generate_messages_nodejs.dir/build
 .PHONY : bond_generate_messages_nodejs/fast
 
+#=============================================================================
+# Target rules for targets named A
+
+# Build rule for target.
+A : cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 A
+.PHONY : A
+
+# fast build rule for target.
+A/fast:
+	$(MAKE) -f example_pkg/CMakeFiles/A.dir/build.make example_pkg/CMakeFiles/A.dir/build
+.PHONY : A/fast
+
+#=============================================================================
+# Target rules for targets named B
+
+# Build rule for target.
+B : cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 B
+.PHONY : B
+
+# fast build rule for target.
+B/fast:
+	$(MAKE) -f example_pkg/CMakeFiles/B.dir/build.make example_pkg/CMakeFiles/B.dir/build
+.PHONY : B/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -860,12 +873,13 @@ help:
 	@echo "... nodelet_generate_messages_nodejs"
 	@echo "... nodelet_generate_messages_cpp"
 	@echo "... nodelet_generate_messages_eus"
-	@echo "... example_pkg"
 	@echo "... bond_generate_messages_eus"
 	@echo "... bond_generate_messages_py"
 	@echo "... bond_generate_messages_lisp"
 	@echo "... nodelet_generate_messages_py"
 	@echo "... bond_generate_messages_nodejs"
+	@echo "... A"
+	@echo "... B"
 .PHONY : help
 
 

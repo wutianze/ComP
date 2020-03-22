@@ -7,5 +7,6 @@
 # new environment variables
 
 # modified environment variables
+export PKG_CONFIG_PATH="/ros_test/AD_Middle_Test/ros/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/ros_test/AD_Middle_Test/ros/build"
 export PYTHONPATH="/ros_test/AD_Middle_Test/ros/devel/lib/python2.7/dist-packages:$PYTHONPATH"
