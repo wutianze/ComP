@@ -14,8 +14,9 @@ std::string to_send = std::string(size,'a');
 		  std::fstream writer;
 		  writer.open("/ros_test/log/tmp",std::ios::trunc|std::ios::out);
 		    srv.request.a = to_send;
-		    for(int i=0;i<100;i++){
-		        uint64_t start_time = ros::Time::now().toNSec();
+		    //for(int i=0;i<100;i++){
+		   while(true){    
+		    uint64_t start_time = ros::Time::now().toNSec();
 			    if (client.call(srv))
 				  {
 		        uint64_t end_time = ros::Time::now().toNSec();
@@ -28,7 +29,7 @@ std::string to_send = std::string(size,'a');
 					        ROS_ERROR("Failed to call service add_two_ints");
 						    return 1;
 						      }
-			  ros::Duration(1).sleep();
+			  //ros::Duration(1).sleep();
 		    }
 		    writer.close();
 			    return 0;

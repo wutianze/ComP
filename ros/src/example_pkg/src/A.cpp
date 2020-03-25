@@ -3,7 +3,7 @@
 namespace example_pkg
 {
 	int count = 0;
-	int reach = 120;
+	int reach = 400000;
 	std::fstream writer;
 	void* PubMainLoop(void* tmp)
 	{
@@ -25,9 +25,9 @@ namespace example_pkg
 						private_nh.getParam("value", size);
 					        ROS_INFO("A msg size:%d",size);
 						value_ = std::string(size,'a');
-    pub = private_nh.advertise<std_msgs::String>("out", 10);
-    sub = private_nh.subscribe("in", 10, &A::callback, this); 
-    sub2 = private_nh.subscribe("start", 10, &A::callback2, this); 
+    pub = private_nh.advertise<std_msgs::String>("out", 1);
+    sub = private_nh.subscribe("in", 1, &A::callback, this); 
+    sub2 = private_nh.subscribe("start", 1, &A::callback2, this); 
  writer.open("/ros_test/log/tmp",std::ios::trunc|std::ios::out);   
 //pthread_create(&tid, NULL,PubMainLoop, this);
 			}
@@ -46,7 +46,7 @@ writer.close();
 return;
 }
 count++;
-ros::Duration(1).sleep();
+//ros::Duration(1).sleep();
 std_msgs::StringPtr output(new std_msgs::String);
 output->data = value_;
 record = ros::Time::now().toNSec();

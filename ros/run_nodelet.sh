@@ -3,8 +3,8 @@
 #rosrun nodelet nodelet load example_pkg/B nodelet_manager __name:=B B/in:=A/out _value:=$2
 echo "value: $2" > src/example_pkg/size.yaml
 roslaunch example_pkg run.launch &
-sleep 10
+sleep 40
 rostopic pub /A/start std_msgs/String start
-echo $1
-python3 handle.py
-mv /ros_test/log/tmp /ros_test/log/$1_txt
+#echo $1
+#python3 handle.py
+#mv /ros_test/log/tmp /ros_test/log/$1_txt
