@@ -1,12 +1,12 @@
 # Define all coms in DAG streaming.
     module_config {
-    module_library : "/apollo/bazel-bin/cyber/AD_Middle_Test/cyber/intra_component/libintra_p1.so"
+    module_library : "/apollo/bazel-bin/cyber/AD_Middle_Test/cyber/test_component/libp2.so"
     components {
-        class_name : "IntraA"
+        class_name : "B"
         config {
-            name : "intraa"
+            name : "b"
             readers {
-                channel: "/c1"
+                channel: "/c2"
             }
            # readers {
            #     channel: "/c2"

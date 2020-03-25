@@ -3,27 +3,27 @@ load("//tools:cpplint.bzl", "cpplint")
 package(default_visibility = ["//visibility:public"])
 
 cc_binary(
-    name = "libintra.so",
+    name = "libtest.so",
     linkopts = ["-shared"],
     linkstatic = False,
-    deps = [":intra_A_lib",":intra_B_lib"],
+    deps = [":A_lib",":B_lib"],
 )
 cc_binary(
-	name = "libintra_p1.so",
+	name = "libp1.so",
 	linkopts = ["-shared"],
 	linkstatic = False,
-	deps = [":intra_A_lib"],
+	deps = [":A_lib"],
 		)
 cc_binary(
-	name = "libintra_p2.so",
+	name = "libp2.so",
 	linkopts = ["-shared"],
 	linkstatic = False,
-	deps = [":intra_B_lib"],
+	deps = [":B_lib"],
 		)
 cc_library(
-    name = "intra_A_lib",
-    srcs = ["intra_A.cc"],
-    hdrs = ["intra_A.h"],
+    name = "A_lib",
+    srcs = ["A.cc"],
+    hdrs = ["A.h"],
     deps = [
         "//cyber",
         "//cyber/AD_Middle_Test/cyber:test_cc_proto",
@@ -31,9 +31,9 @@ cc_library(
 )
 
 cc_library(
-		name = "intra_B_lib",
-		srcs = ["intra_B.cc"],
-		hdrs = ["intra_B.h"],
+		name = "B_lib",
+		srcs = ["B.cc"],
+		hdrs = ["B.h"],
 		deps = ["//cyber",
         "//cyber/AD_Middle_Test/cyber:test_cc_proto",
 	  ],

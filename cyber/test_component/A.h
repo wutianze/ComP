@@ -17,6 +17,7 @@
 #include "cyber/component/component.h"
 #include "cyber/AD_Middle_Test/cyber/test.pb.h"
 #include "cyber/time/time.h"
+#include <fstream>
 
 using apollo::cyber::Component;
 using apollo::cyber::ComponentBase;
@@ -24,12 +25,15 @@ using apollo::cyber::AD_Middle_Test::cyber::Bytes;
 using apollo::cyber::Time;
 using apollo::cyber::Writer;
 
-class IntraB : public Component<Bytes> {
+class A : public Component<Bytes> {
  public:
   bool Init() override;
   bool Proc(const std::shared_ptr<Bytes>& msg0) override;
  private:
-  std::shared_ptr<Writer<Bytes>> c1_writer_ = nullptr;
+//  std::shared_ptr<Writer<Bytes>> write_once_ = nullptr;
+  std::shared_ptr<Writer<Bytes>> c2_writer_ = nullptr;
+  uint64_t nanoseconds;
+  bool ifstart;
   std::string to_send;
 };
-CYBER_REGISTER_COMPONENT(IntraB)
+CYBER_REGISTER_COMPONENT(A)

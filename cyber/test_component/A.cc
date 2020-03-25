@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *****************************************************************************/
-#include "cyber/AD_Middle_Test/cyber/intra_component/intra_A.h"
+#include "cyber/AD_Middle_Test/cyber/test_component/A.h"
 
-bool IntraA::Init() {
+bool A::Init() {
   AINFO << "A init";
   //write_once_ = node_->CreateWriter<Bytes>("/c1");
   //auto once_msg = std::make_shared<Bytes>();
@@ -27,18 +27,19 @@ bool IntraA::Init() {
   c2_writer_ = node_->CreateWriter<Bytes>("/c2");
   nanoseconds = 0;
   ifstart = false;
-  to_send = std::string(128,'b');
+//to_send = std::string(1024*1024*2,'b');
   return true;
 }
 
-bool IntraA::Proc(const std::shared_ptr<Bytes>& msg0) {
+bool A::Proc(const std::shared_ptr<Bytes>& msg0) {
   uint64_t received_time = Time::Now().ToNanosecond();
-if(msg0->content() == "a"){
+if(msg0->content()[0] == 'a'){
 	if(ifstart)return true;
+	to_send = std::string(msg0->content().size(),'b');
        ifstart = true;	
 }	
-AINFO<<"A received a msg";
   
+AINFO<<"msg size:"<<msg0->content().size();
 if(msg0->content()[0] == 'b'){	
 	std::ofstream ofs;
   ofs.open("/apollo/data/log/test/intra.txt",std::ios::app);
@@ -49,7 +50,7 @@ if(msg0->content()[0] == 'b'){
 }
 auto c2_msg = std::make_shared<Bytes>();
 c2_msg->set_content(to_send);
-sleep(1);
+//sleep(1);
   nanoseconds = Time::Now().ToNanosecond();
   c2_writer_->Write(c2_msg);
   return true;

@@ -19,7 +19,7 @@
 #include "cyber/AD_Middle_Test/cyber/test.pb.h"
 #include "cyber/time/rate.h"
 #include "cyber/time/time.h"
-
+#include <string>
 using apollo::cyber::Rate;
 using apollo::cyber::Time;
 //using apollo::cyber::examples::proto::Chatter;
@@ -40,11 +40,13 @@ int main(int argc, char *argv[]) {
   auto listener = talker_node->CreateReader<Bytes>("/c2",MessageCallback);
   Rate rate(1.0);
   //while (apollo::cyber::OK()) {
+
+    std::string to_send = std::string(std::stoi(argv[1]),'a');
   while(!flag){
     //static uint64_t seq = 0;
     auto msg = std::make_shared<Bytes>();
     //msg->set_lidar_timestamp(Time::Now().ToNanosecond());
-    msg->set_content("a");
+    msg->set_content(to_send);
     talker->Write(msg);
     AINFO << "talker sent a message!";
     rate.Sleep();
