@@ -9,8 +9,8 @@ namespace example_pkg
 	         private_nh.getParam("value", size);
 		ROS_INFO("B msg size:%d",size);
 		 value_ = std::string(size,'a');
-    pub = private_nh.advertise<std_msgs::String>("out", 10);
-    sub = private_nh.subscribe("in", 10, &B::callback, this);    
+    pub = private_nh.advertise<std_msgs::String>("out", 1);
+    sub = private_nh.subscribe("in", 1, &B::callback, this);    
 			}
 
 	    void B::callback(const std_msgs::StringConstPtr& input)
