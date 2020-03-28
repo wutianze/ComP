@@ -3,6 +3,4 @@
           A
           B-VAL
           B
-          SUM-VAL
-          SUM
 ))

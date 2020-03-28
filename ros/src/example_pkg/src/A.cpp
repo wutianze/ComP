@@ -1,63 +1,50 @@
-#include <example_pkg/A.h>
+#include <pluginlib/class_list_macros.h>
+#include <nodelet/nodelet.h>
+#include <ros/ros.h>
+#include <stdio.h>
+#include <pthread.h>
+#include "example_pkg/Num.h"
+#include <std_msgs/String.h>
 #include <fstream>
 namespace example_pkg
 {
-	int count = 0;
-	int reach = 400000;
-	std::fstream writer;
-	void* PubMainLoop(void* tmp)
+	class A:public nodelet::Nodelet{
+		public:
+		ros::Publisher pub;
+		pthread_t tid;
+		int hz;
+		int con;
+
+		~A(){
+	pthread_join(tid,NULL);
+	}
+	static void* PubMainLoop(void* tmp)
 	{
-		A* pub = (A*) tmp;
-		ros::Rate loop_rate(1);
-		while (ros::ok()) {
-			ROS_INFO("publish!");
-			std_msgs::StringPtr output(new std_msgs::String());
-			output->data = pub->value_;
-			pub->pub.publish(output);
-			ros::spinOnce();
+		A* a = (A*) tmp;
+		ros::Rate loop_rate(a->hz);
+		uint64_t now_time = ros::Time::now().toNSec();
+		int reach = 120*a->hz*a->con;
+		NumPtr output(new Num());
+			output->content = std::string(1024,'a');
+
+				for(int j=1;j<=reach;j++) {
+				
+			output->id = j;
+			output->timestamp = now_time;
+			a->pub.publish(output);
 			loop_rate.sleep();
 		}}
-	    void A::onInit()
+		private:
+       	void onInit()
 		        {
-				        NODELET_DEBUG("Initializing nodelet...");
 						ros::NodeHandle& private_nh = getPrivateNodeHandle();
-	         int size;
-						private_nh.getParam("value", size);
-					        ROS_INFO("A msg size:%d",size);
-						value_ = std::string(size,'a');
-    pub = private_nh.advertise<std_msgs::String>("out", 1);
-    sub = private_nh.subscribe("in", 1, &A::callback, this); 
-    sub2 = private_nh.subscribe("start", 1, &A::callback2, this); 
- writer.open("/ros_test/log/tmp",std::ios::trunc|std::ios::out);   
-//pthread_create(&tid, NULL,PubMainLoop, this);
+	         				private_nh.getParam("hz", hz);
+						private_nh.getParam("con",con);
+					        ROS_INFO("A hz:%d,con:%d",hz,con);
+    pub = private_nh.advertise<Num>("out", 1);
+	pthread_create(&tid, NULL,PubMainLoop, this);
 			}
-
-	    void A::callback(const std_msgs::StringConstPtr& input)
-		      {
-ROS_INFO("receive one");
-			      uint64_t end_time = ros::Time::now().toNSec();
-			      if(count !=0){
-			    uint64_t ttl = end_time - record;
-			   writer<<ttl<<"\n";
-			      }
-if(count == reach){
-ROS_INFO("finish whole");
-writer.close();
-return;
+};
 }
-count++;
-//ros::Duration(1).sleep();
-std_msgs::StringPtr output(new std_msgs::String);
-output->data = value_;
-record = ros::Time::now().toNSec();
-pub.publish(output);					       
-		      }
-void A::callback2(const std_msgs::StringConstPtr& tmp){
-	std_msgs::StringPtr once(new std_msgs::String);
-	ROS_INFO("receive start sig");
-	pub.publish(once);
-}
-}
-
 // watch the capitalization carefully
 PLUGINLIB_EXPORT_CLASS(example_pkg::A, nodelet::Nodelet)

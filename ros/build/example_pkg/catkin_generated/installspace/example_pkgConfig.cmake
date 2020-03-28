@@ -177,7 +177,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(example_pkg_EXPORTED_TARGETS "")
+set(example_pkg_EXPORTED_TARGETS "example_pkg_generate_messages_cpp;example_pkg_generate_messages_eus;example_pkg_generate_messages_lisp;example_pkg_generate_messages_nodejs;example_pkg_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${example_pkg_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -185,7 +185,7 @@ foreach(t ${example_pkg_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "nodelet;roscpp")
+set(depends "nodelet;roscpp;message_runtime")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
@@ -214,7 +214,7 @@ foreach(depend ${depends})
   list(APPEND example_pkg_EXPORTED_TARGETS ${${example_pkg_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "example_pkg-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${example_pkg_DIR}/${extra})

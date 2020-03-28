@@ -24,22 +24,17 @@ struct AddTwoIntsRequest_
   typedef AddTwoIntsRequest_<ContainerAllocator> Type;
 
   AddTwoIntsRequest_()
-    : a(0)
-    , b(0)  {
+    : a()  {
     }
   AddTwoIntsRequest_(const ContainerAllocator& _alloc)
-    : a(0)
-    , b(0)  {
+    : a(_alloc)  {
   (void)_alloc;
     }
 
 
 
-   typedef int64_t _a_type;
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _a_type;
   _a_type a;
-
-   typedef int64_t _b_type;
-  _b_type b;
 
 
 
@@ -75,7 +70,7 @@ namespace message_traits
 
 
 
-// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': False}
 // {'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
@@ -85,12 +80,12 @@ namespace message_traits
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::beginner_tutorials::AddTwoIntsRequest_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::beginner_tutorials::AddTwoIntsRequest_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -119,12 +114,12 @@ struct MD5Sum< ::beginner_tutorials::AddTwoIntsRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "36d09b846be0b371c5f190354dd3153e";
+    return "cec2f53f86620c7bb01476cbe41b2fae";
   }
 
   static const char* value(const ::beginner_tutorials::AddTwoIntsRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x36d09b846be0b371ULL;
-  static const uint64_t static_value2 = 0xc5f190354dd3153eULL;
+  static const uint64_t static_value1 = 0xcec2f53f86620c7bULL;
+  static const uint64_t static_value2 = 0xb01476cbe41b2faeULL;
 };
 
 template<class ContainerAllocator>
@@ -143,8 +138,7 @@ struct Definition< ::beginner_tutorials::AddTwoIntsRequest_<ContainerAllocator> 
 {
   static const char* value()
   {
-    return "int64 a\n"
-"int64 b\n"
+    return "string a\n"
 ;
   }
 
@@ -164,7 +158,6 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.a);
-      stream.next(m.b);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -184,9 +177,7 @@ struct Printer< ::beginner_tutorials::AddTwoIntsRequest_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::beginner_tutorials::AddTwoIntsRequest_<ContainerAllocator>& v)
   {
     s << indent << "a: ";
-    Printer<int64_t>::stream(s, indent + "  ", v.a);
-    s << indent << "b: ";
-    Printer<int64_t>::stream(s, indent + "  ", v.b);
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.a);
   }
 };
 
