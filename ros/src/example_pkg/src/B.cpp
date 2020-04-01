@@ -32,7 +32,7 @@ writer.open("/ros_test/log/multi/"+record,std::ios::app|std::ios::out);
 writer<<lan<<std::endl;
 writer.close();
 count++;
-ROS_INFO("%s:loss rate:%f",channel_name.c_str(),double(input->id-count)/double(input->id));
+ROS_INFO("%s:loss rate:%f",record.c_str(),double(input->id-count)/double(input->id));
 		      }
 };}
 

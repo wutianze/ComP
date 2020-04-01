@@ -4,7 +4,7 @@ sleep 5
 rosrun nodelet nodelet manager __name:=nodelet_manager &
 for((i=0;i<$1;i++));
 do
-rosrun nodelet nodelet load example_pkg/B nodelet_manager __name:=B$i _channel_name:=out _record:=B$i &
+rosrun nodelet nodelet load example_pkg/B nodelet_manager __name:=B$i _channel_name:=out$i _record:=B$i &
 done
 sleep 5
 rosrun nodelet nodelet load example_pkg/A nodelet_manager __name:=A _hz:=100 _con:=1 _num:=$1 _ssize:=$2

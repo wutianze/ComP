@@ -10,7 +10,7 @@ namespace example_pkg
 {
 	class A:public nodelet::Nodelet{
 		public:
-		ros::Publisher pub;
+		ros::Publisher* pubs;
 		pthread_t tid;
 		int hz;
 		int con;
@@ -33,9 +33,10 @@ namespace example_pkg
 			for(int k =0;k<a->con;k++){
 			count++;	
 			output->id = count;
-		uint64_t now_time = ros::Time::now().toNSec();
-			output->timestamp = now_time;
-			a->pub.publish(output);
+			for(int ni=0;ni<a->num;ni++){
+			output->timestamp = ros::Time::now().toNSec();
+			a->pubs[ni].publish(output);
+			}
 			}
 			loop_rate.sleep();
 		//ROS_INFO("now j:%d",j);
@@ -50,7 +51,10 @@ namespace example_pkg
 						private_nh.getParam("ssize",ssize);
 
 					        ROS_INFO("A hz:%d,con:%d,num:%d,ssize:%d",hz,con,num,ssize);
-    pub = private_nh.advertise<Num>("out", 1);
+    						pubs = new ros::Publisher[num];
+						for(int i=0;i<num;i++){
+						pubs[i] = private_nh.advertise<Num>("out"+std::to_string(i), 1);
+						}
     ros::Duration(5).sleep();
 	pthread_create(&tid, NULL,PubMainLoop, this);
 			}
