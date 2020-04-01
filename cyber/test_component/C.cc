@@ -27,22 +27,28 @@ class C:public Component<Bytes>{
 	private:
 		uint64_t count;
   std::ofstream ofs;
+  std::string fn;
 	public:
 	bool Init() {
   AINFO << "C init";
   count = 0;
-  ofs.open("/apollo/data/log/test/intra.txt",std::ios::trunc);
-  ofs.close();
+  //AINFO<<readers_.size();
+  //fn = readers_[0]->GetChannelName();
+  //fn = Time::Now().ToString();
+  //ofs.open("/apollo/data/log/test/multi/"+fn,std::ios::trunc);
+  //ofs.close();
   return true;
 }
 bool Proc(const std::shared_ptr<Bytes>& msg0) {
 	uint64_t lan = Time::Now().ToNanosecond()-msg0->timestamp();
-  ofs.open("/apollo/data/log/test/intra.txt",std::ios::app);
+  fn = readers_[0]->GetChannelName();
+	ofs.open("/apollo/data/log/test/multi/"+fn,std::ios::app);
   ofs<<lan<<std::endl;
   ofs.close();
 	count++;
-	AINFO<<"count now:"<<count;
-	AINFO<<"id:"<<msg0->id();
+	//AINFO<<"count now:"<<count;
+	//AINFO<<"id:"<<msg0->id();
+	AINFO<<fn<<" loss rate:"<<double(msg0->id()-count)/double(msg0->id());
 	return true;
 }
 };
