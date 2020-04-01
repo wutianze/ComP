@@ -21,7 +21,14 @@ class TestTimer : public TimerComponent {
 		      private:
 		     uint64_t i =0;
 		     std::string to_send;
-		       std::shared_ptr<Writer<Bytes>> writer_ = nullptr;
+		       std::shared_ptr<Writer<Bytes>> writer1 = nullptr;
+		       std::shared_ptr<Writer<Bytes>> writer2 = nullptr;
+		       std::shared_ptr<Writer<Bytes>> writer3 = nullptr;
+		       std::shared_ptr<Writer<Bytes>> writer4 = nullptr;
+		       std::shared_ptr<Writer<Bytes>> writer5 = nullptr;
+		       std::shared_ptr<Writer<Bytes>> writer6 = nullptr;
+		       std::shared_ptr<Writer<Bytes>> writer7 = nullptr;
+		       std::shared_ptr<Writer<Bytes>> writer8 = nullptr;
 
 };
 CYBER_REGISTER_COMPONENT(TestTimer)
