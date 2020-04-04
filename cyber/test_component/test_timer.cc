@@ -1,18 +1,50 @@
 #include "cyber/AD_Middle_Test/cyber/test_component/test_timer.h"
 #include <fstream>
+#include <sstream>
 #include "cyber/class_loader/class_loader.h"
 #include "cyber/component/component.h"
 #include "cyber/AD_Middle_Test/cyber/test.pb.h"
 
 bool TestTimer::Init() {
-	  std::ifstream re("/apollo/param.txt");
+	std::string filename = "/apollo/param"+node_->Name()+".txt";
+	  std::ifstream re(filename);
+	  if(!re.is_open())AINFO<<"open fail";
+	  std::string line;
+	  std::getline(re,line);
+	  AINFO<<"line:"<<line;
+	  std::stringstream ss;
+	  ss<<line;
+	  uint64_t size;
+	  ss>>size;
+	  std::string channel;
+	  ss>>channel;
+	  ss>>concu;
+	  re.close();
+	  AINFO<<"filename:"<<filename<<" param size:"<<size<<" channel:"<<channel<<" concurency:"<<concu;
+	  writer1 = node_->CreateWriter<Bytes>("/"+channel);
+	  /*writer2 = node_->CreateWriter<Bytes>("/c2");
+	  writer3 = node_->CreateWriter<Bytes>("/c3");
+	  writer4 = node_->CreateWriter<Bytes>("/c4");
+	  writer5 = node_->CreateWriter<Bytes>("/c5");
+	  writer6 = node_->CreateWriter<Bytes>("/c6");
+	  writer7 = node_->CreateWriter<Bytes>("/c7");
+	  writer8 = node_->CreateWriter<Bytes>("/c8");*/
+	  to_send = std::string(size,'a');
+	  i = 1;
+	  return true;
+}
+
+bool TestTimer::Proc() {
+	    //AINFO <<i;
+	    /*static bool once = true;
+	    if(once){
+		    std::string channel=readers_[0]->GetChannelName();
+	   std::ifstream re("/apollo/param"+channel+".txt");
 	  uint64_t size;
 	  re>>size;
-	  //std::string channel;
-	  //re>>channel;
-	  //AINFO<<"param size:"<<size<<" channel:"<<channel;
-	  AINFO<<"timer init, size:"<<size;
-	  writer1 = node_->CreateWriter<Bytes>("/c1");
+	  re>>concu;
+	  AINFO<<"param size:"<<size<<" channel:"<<channel<<" concurency:"<<concu;
+	  writer1 = node_->CreateWriter<Bytes>("/"+channel);
 	  writer2 = node_->CreateWriter<Bytes>("/c2");
 	  writer3 = node_->CreateWriter<Bytes>("/c3");
 	  writer4 = node_->CreateWriter<Bytes>("/c4");
@@ -21,19 +53,16 @@ bool TestTimer::Init() {
 	  writer7 = node_->CreateWriter<Bytes>("/c7");
 	  writer8 = node_->CreateWriter<Bytes>("/c8");
 	  to_send = std::string(size,'a');
-	  i = 1;
-	  return true;
-}
-
-bool TestTimer::Proc() {
-	    //AINFO <<i;
-	for(int c = 0;c<1;c++){      
+ 
+	    once = false;
+	    }*/
+	for(int c = 0;c<concu;c++){      
 		auto out_msg = std::make_shared<Bytes>();
 	        out_msg->set_content(to_send);
 		out_msg->set_id(i);
 		out_msg->set_timestamp(Time::Now().ToNanosecond());
 		writer1->Write(out_msg);
-		auto out_msg1 = std::make_shared<Bytes>();
+		/*auto out_msg1 = std::make_shared<Bytes>();
 	        out_msg1->set_content(to_send);
 		out_msg1->set_id(i);
 		out_msg1->set_timestamp(Time::Now().ToNanosecond());
@@ -67,7 +96,7 @@ bool TestTimer::Proc() {
 	        out_msg7->set_content(to_send);
 		out_msg7->set_id(i);
 		out_msg7->set_timestamp(Time::Now().ToNanosecond());
-		writer8->Write(out_msg7);
+		writer8->Write(out_msg7);*/
 	      i++;
 	}
 		    return true;
