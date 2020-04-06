@@ -12,6 +12,5 @@ with open("/ros_test/log/tmp") as lines:
         total = total + int(i.strip())
         count = count + 1
     res.sort()
-
     print(res[int(len(res)/2)])
     print(total / count)

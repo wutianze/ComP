@@ -12,27 +12,27 @@ namespace example_pkg
 		ros::Subscriber sub;
 	uint64_t count = 0;	
 	uint64_t max_id = 0;
+	std::string record;
+	std::string channel_name;
 		void onInit()
 		        {
 				        NODELET_DEBUG("Initializing nodelet B");
 		ros::NodeHandle& private_nh = getPrivateNodeHandle();
-    sub = private_nh.subscribe("in", 1, &B::callback, this);    
-		writer.open("/ros_test/log/tmp",std::ios::trunc|std::ios::out);
+    private_nh.getParam("channel_name",channel_name);
+    private_nh.getParam("record",record);
+    sub = private_nh.subscribe("/A/"+channel_name, 1, &B::callback, this);    
+		writer.open("/ros_test/log/multi/"+record,std::ios::trunc|std::ios::out);
 		writer.close();
 			}
 
 	    void callback(const Num::ConstPtr& input)
 		      {
 			      uint64_t lan = ros::Time::now().toNSec()-input->timestamp;
-writer.open("/ros_test/log/tmp",std::ios::app|std::ios::out);
+writer.open("/ros_test/log/multi/"+record,std::ios::app|std::ios::out);
 writer<<lan<<std::endl;
 writer.close();
 count++;
-if(input->id > max_id){
-	max_id = input->id;
-}
-
-ROS_INFO("loss rate:%f",double(max_id-count)/double(max_id));
+ROS_INFO("%s:loss rate:%f",record.c_str(),double(input->id-count)/double(input->id));
 		      }
 };}
 

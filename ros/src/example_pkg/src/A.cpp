@@ -10,10 +10,12 @@ namespace example_pkg
 {
 	class A:public nodelet::Nodelet{
 		public:
-		ros::Publisher pub;
+		ros::Publisher* pubs;
 		pthread_t tid;
 		int hz;
 		int con;
+		int num;
+		int ssize;
 
 		~A(){
 	pthread_join(tid,NULL);
@@ -22,26 +24,38 @@ namespace example_pkg
 	{
 		A* a = (A*) tmp;
 		ros::Rate loop_rate(a->hz);
-		uint64_t now_time = ros::Time::now().toNSec();
-		int reach = 120*a->hz*a->con;
+		int reach = 120*a->hz;
+		uint64_t count = 0;
 		NumPtr output(new Num());
-			output->content = std::string(1024,'a');
+			output->content = std::string(a->ssize,'a');
 
-				for(int j=1;j<=reach;j++) {
-				
-			output->id = j;
-			output->timestamp = now_time;
-			a->pub.publish(output);
+				for(int j=0;j<=reach;j++) {
+			for(int k =0;k<a->con;k++){
+			count++;	
+			output->id = count;
+			for(int ni=0;ni<a->num;ni++){
+			output->timestamp = ros::Time::now().toNSec();
+			a->pubs[ni].publish(output);
+			}
+			}
 			loop_rate.sleep();
-		}}
+		//ROS_INFO("now j:%d",j);
+				}}
 		private:
        	void onInit()
 		        {
 						ros::NodeHandle& private_nh = getPrivateNodeHandle();
 	         				private_nh.getParam("hz", hz);
 						private_nh.getParam("con",con);
-					        ROS_INFO("A hz:%d,con:%d",hz,con);
-    pub = private_nh.advertise<Num>("out", 1);
+						private_nh.getParam("num",num);
+						private_nh.getParam("ssize",ssize);
+
+					        ROS_INFO("A hz:%d,con:%d,num:%d,ssize:%d",hz,con,num,ssize);
+    						pubs = new ros::Publisher[num];
+						for(int i=0;i<num;i++){
+						pubs[i] = private_nh.advertise<Num>("out"+std::to_string(i), 1);
+						}
+    ros::Duration(5).sleep();
 	pthread_create(&tid, NULL,PubMainLoop, this);
 			}
 };
