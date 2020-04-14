@@ -14,6 +14,8 @@ namespace example_pkg
 	uint64_t max_id = 0;
 	std::string record;
 	std::string channel_name;
+	double init_time;
+	bool flag = true;
 		void onInit()
 		        {
 				        NODELET_DEBUG("Initializing nodelet B");
@@ -27,12 +29,18 @@ namespace example_pkg
 
 	    void callback(const Num::ConstPtr& input)
 		      {
-			      uint64_t lan = ros::Time::now().toNSec()-input->timestamp;
+			      count++;
+if(flag){
+init_time=ros::Time::now().toSec();
+flag = false;
+}
+ROS_INFO("%lf",double(count)/(ros::Time::now().toSec()-init_time));
+			      /*uint64_t lan = ros::Time::now().toNSec()-input->timestamp;
 writer.open("/ros_test/log/multi/"+record,std::ios::app|std::ios::out);
 writer<<lan<<std::endl;
 writer.close();
 count++;
-ROS_INFO("%s:loss rate:%f",record.c_str(),double(input->id-count)/double(input->id));
+ROS_INFO("%s:loss rate:%f",record.c_str(),double(input->id-count)/double(input->id));*/
 		      }
 };}
 
