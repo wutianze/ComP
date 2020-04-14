@@ -23,15 +23,13 @@ using apollo::cyber::Component;
 using apollo::cyber::ComponentBase;
 using apollo::cyber::AD_Middle_Test::cyber::Bytes;
 using apollo::cyber::Time;
-class C:public Component<Bytes>{
+class D:public Component<Bytes>{
 	private:
 		uint64_t count;
   std::ofstream ofs;
   std::string fn;
   double last_loss;
-  double init_time;
-  bool flag=true;
-	~C(){
+	~D(){
 	ofs.open("/apollo/data/log/test/multi/"+fn+"lanloss",std::ios::trunc);
 	ofs<<last_loss;
 	ofs.close();
@@ -39,7 +37,7 @@ class C:public Component<Bytes>{
 	}
 	public:
 	bool Init() {
-  AINFO << "C init";
+  AINFO << "D init";
   count = 0;
   //AINFO<<readers_.size();
   fn = node_->Name();
@@ -48,35 +46,8 @@ class C:public Component<Bytes>{
   //ofs.close();
   return true;
 }
-bool Proc(const std::shared_ptr<Bytes>& msg0) {
-	//uint64_t lan = Time::Now().ToNanosecond()-msg0->timestamp();
- 	/*static bool once true;
-	if(once){
-       	fn = readers_[0]->GetChannelName();
-	AINFO<<"fn:"<<fn;
-	once = false;
-	}*/
-       	//fn = readers_[0]->GetChannelName();
-	/*ofs.open("/apollo/data/log/test/multi/"+fn+"lan",std::ios::app);
-  ofs<<lan<<std::endl;
-  ofs.close();
-	count++;
-	last_loss=double(msg0->id()-count)/double(msg0->id());*/
-if(flag){
-init_time = Time::Now().ToSecond();
-flag = false;
-}
-	count++;
-	AINFO<<double(count)/(Time::Now().ToSecond()-init_time);
-	//AINFO<<fn<<" loss rate:"<<last_loss;
-	return true;
-}
-bool Proc(const std::shared_ptr<Bytes>& msg0,const std::shared_ptr<Bytes>& msg1,const std::shared_ptr<Bytes>& msg2,const std::shared_ptr<Bytes>& msg3) {
-	uint64_t receive_time = Time::Now().ToNanosecond();
-	uint64_t lan0 = receive_time-msg0->timestamp();
-	uint64_t lan1 = receive_time-msg1->timestamp();
-	uint64_t lan2 = receive_time-msg2->timestamp();
-	uint64_t lan3 = receive_time-msg3->timestamp();
+bool Proc(const std::shared_ptr<Bytes>& msg0,const std::shared_ptr<Bytes>& msg0,const std::shared_ptr<Bytes>& msg2,const std::shared_ptr<Bytes>& msg3) {
+	uint64_t lan = Time::Now().ToNanosecond()-msg0->timestamp();
  	/*static bool once true;
 	if(once){
        	fn = readers_[0]->GetChannelName();
@@ -85,16 +56,15 @@ bool Proc(const std::shared_ptr<Bytes>& msg0,const std::shared_ptr<Bytes>& msg1,
 	}*/
        	//fn = readers_[0]->GetChannelName();
 	ofs.open("/apollo/data/log/test/multi/"+fn+"lan",std::ios::app);
-  ofs<<lan0<<','<<lan1<<','<<lan2<<','<<lan3<<std::endl;
+  ofs<<lan<<std::endl;
   ofs.close();
-	//count++;
+	count++;
 	//AINFO<<"count now:"<<count;
-	AINFO<<"id:"<<msg0->id()<<','<<msg1->id()<<','<<msg2->id()<<','<<msg3->id();
-	//last_loss=double(msg0->id()-count)/double(msg0->id());
-	//AINFO<<fn<<" loss rate:"<<last_loss;
+	//AINFO<<"id:"<<msg0->id();
+	last_loss=double(msg0->id()-count)/double(msg0->id());
+	AINFO<<fn<<" loss rate:"<<last_loss;
 	return true;
 }
-
 };
 CYBER_REGISTER_COMPONENT(C)
 
