@@ -14,9 +14,10 @@ int main(int argc, char **argv)
 		std::string channel_name = argv[5];  
 		int num_pub = atoi(argv[6]);
 ros::Publisher chatter_pubs[num_pub];
-for(int i=0;i<num_pub;i++){
+/*for(int i=0;i<num_pub;i++){
 	      chatter_pubs[i] = n.advertise<pub_sub::Num>(channel_name+std::to_string(i), 1);
-}
+}*/
+	      chatter_pubs[0] = n.advertise<pub_sub::Num>(channel_name, 1);
 	      //ros::Publisher chatter_pub = n.advertise<pub_sub::Num>(channel_name, 1);
 	      int time_con = atoi(argv[2]);
 	      int64_t str_size = atoll(argv[3]);
@@ -25,18 +26,18 @@ for(int i=0;i<num_pub;i++){
 		  std::string to_send = std::string(str_size,'a');
 		pub_sub::Num msg;
 						      msg.content = to_send;
-		    int64_t loop_time = atol(argv[4])*atoi(argv[1]);
-		    int64_t loop_num = 0;
-		while (loop_num <= loop_time)
+		    //int64_t loop_time = atol(argv[4])*atoi(argv[1]);
+		   // int64_t loop_num = 0;
+		while (true)
 			      {
-				      loop_num++;
+				      //loop_num++;
 				for(int j =0;j<time_con;j++){			   
 				      count++;
 				      msg.id = count;
-				      for(int k=0;k<num_pub;k++){
+				      //for(int k=0;k<num_pub;k++){
 				      msg.timestamp = ros::Time::now().toNSec();
-				      chatter_pubs[k].publish(msg);
-				      }
+				      chatter_pubs[0].publish(msg);
+				      //}
 				}
 								      loop_rate.sleep();
 									    }

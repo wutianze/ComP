@@ -33,10 +33,13 @@ namespace example_pkg
 			for(int k =0;k<a->con;k++){
 			count++;	
 			output->id = count;
-			for(int ni=0;ni<a->num;ni++){
+			output->timestamp = ros::Time::now().toNSec();
+			a->pubs[0].publish(output);
+
+			/*for(int ni=0;ni<a->num;ni++){
 			output->timestamp = ros::Time::now().toNSec();
 			a->pubs[ni].publish(output);
-			}
+			}*/
 			}
 			loop_rate.sleep();
 		//ROS_INFO("now j:%d",j);
@@ -52,9 +55,11 @@ namespace example_pkg
 
 					        ROS_INFO("A hz:%d,con:%d,num:%d,ssize:%d",hz,con,num,ssize);
     						pubs = new ros::Publisher[num];
-						for(int i=0;i<num;i++){
+						
+						pubs[0] = private_nh.advertise<Num>("out", 1);
+						/*for(int i=0;i<num;i++){
 						pubs[i] = private_nh.advertise<Num>("out"+std::to_string(i), 1);
-						}
+						}*/
     ros::Duration(5).sleep();
 	pthread_create(&tid, NULL,PubMainLoop, this);
 			}

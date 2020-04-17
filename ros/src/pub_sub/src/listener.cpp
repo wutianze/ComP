@@ -8,15 +8,26 @@
 std::fstream writer;
 uint64_t count = 0;
 std::string record_name;
+double init_time;
+bool flag=true;
 void chatterCallback(const pub_sub::Num::ConstPtr& msg)
 {
-	uint64_t lan = ros::Time::now().toNSec()-msg->timestamp;
-	      writer.open("/ros_test/log/multi/"+record_name,std::ios::app|std::ios::out);
+	if(flag){
+	init_time = ros::Time::now().toSec();
+	flag = false;
+	}
+	/*uint64_t lan = ros::Time::now().toNSec()-msg->timestamp;
+	      writer.open("/ros_test/log/multi/"+record_name+"lan",std::ios::app|std::ios::out);
 writer<<lan<<std::endl;
 writer.close();
 count++;
-//ROS_INFO("loss:%d,%d",msg->id,count);
-ROS_INFO("%s loss rate:%f",record_name.c_str(),double(msg->id-count)/double(msg->id));
+writer.open("/ros_test/log/multi/"+record_name+"lanloss",std::ios::trunc|std::ios::out);
+writer<<double(msg->id-count)/double(msg->id);
+writer.close();*/
+	count++;
+//ROS_INFO("%lf",ros::Time::now().toSec());
+ROS_INFO("Speed:%lf",double(count)/(ros::Time::now().toSec()-init_time));
+//ROS_INFO("%s loss rate:%f",record_name.c_str(),double(msg->id-count)/double(msg->id));
 	//ROS_INFO("I heard: [%s]", msg->data.c_str());
 }
 
@@ -27,7 +38,7 @@ int main(int argc, char **argv)
 	record_name = argv[2];
 	    ros::NodeHandle n;
 	      ros::Subscriber sub = n.subscribe(channel_lis, 1, chatterCallback);
-	      writer.open("/ros_test/log/multi/"+record_name,std::ios::trunc|std::ios::out);
+	      writer.open("/ros_test/log/multi/"+record_name+"lan",std::ios::trunc|std::ios::out);
 writer.close();
 	        ros::spin();
 		  return 0;
