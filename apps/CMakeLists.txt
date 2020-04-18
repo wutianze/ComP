@@ -27,7 +27,7 @@ endif()
 #add_executable(opencv_example example.cpp)
 #add_executable(line_detect line_detect.cpp)
 
-add_library(line_detect STATIC line_detect.cpp)
+add_library(line_detect SHARED line_detect.cpp)
 add_library(tracker_opencv SHARED tracker_opencv.cpp)
 
 # Link your application with OpenCV libraries

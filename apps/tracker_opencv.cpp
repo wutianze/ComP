@@ -48,6 +48,12 @@ double track_test(Mat& frame, Rect2d& bbox){
 
         //return tracker->update(frame, bbox);
 }
+void imwrite_cv(string name, Mat&img){
+imwrite(name,img);
+}
+Mat imread_cv(string name){
+return imread(name);
+}
 /*
 int main(int argc, char **argv)
 {

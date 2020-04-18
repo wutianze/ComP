@@ -1,21 +1,5 @@
-#include <opencv2/opencv.hpp>
-#include <iostream>
-#include <cmath>
-
-using namespace cv;
-using namespace std;
-
-/**
-**1、读取视频  
-**2、二值化
-**3、轮廓发现
-**4、轮廓分析、面积就算，角度分析
-**5、直线拟合
-**6、画出直线
-**
-*/
-
-Point left_line[2];
+#include "line_detect.h"
+/*Point left_line[2];
 Point right_line[2];
 
 void process(Mat &frame, Point *left_line, Point *right_line);
@@ -29,7 +13,6 @@ int main(int argc, char** argv) {
 	int width = capture.get(CAP_PROP_FRAME_WIDTH);
 	int count = capture.get(CAP_PROP_FRAME_COUNT);
 	int fps = capture.get(CAP_PROP_FPS);
-	//初始化
 
 	left_line[0] = Point(0,0);
 
@@ -59,9 +42,9 @@ int main(int argc, char** argv) {
 		
 	}
 
-}
+}*/
 
-void process(Mat &frame, Point *left_line, Point *right_line ){
+void process(Mat &frame, Point*result ){
 	Mat gray,binary;
 	/**灰度化*/
 	cvtColor(frame, gray, COLOR_BGR2GRAY);
@@ -76,7 +59,7 @@ void process(Mat &frame, Point *left_line, Point *right_line ){
 			binary.at<uchar>(i, j) = 0;
 		}
 	}
-	imshow("binary", binary);
+//	imshow("binary", binary);
 	
 	//寻找轮廓
 	vector<vector<Point> >contours;
@@ -140,24 +123,23 @@ void process(Mat &frame, Point *left_line, Point *right_line ){
 
 		//cout << "开始绘制：" << endl;
 		drawContours(out_image, contours, i, Scalar(255), 2, 8);
-		imshow("out_image", out_image);
+//		imshow("out_image", out_image);
 
 	}
-	Mat result = fitLines(out_image, left_line, right_line);
-	imshow("result", result);
+	fitLines(out_image, result);
+//	imshow("result", result);
 
-	Mat dst;
-	addWeighted(frame, 0.8, result, 0.5,0, dst);
-	imshow("lane-lines", dst);
+	//Mat dst;
+	//addWeighted(frame, 0.8, result, 0.5,0, dst);
+//	imshow("lane-lines", dst);
 
 }
 
-//直线拟合
-Mat fitLines(Mat &image, Point *left_line, Point *right_line) {
+void fitLines(Mat &image, Point*result) {
 	int height = image.rows;
 	int width = image.cols;
 
-	Mat out = Mat::zeros(image.size(), CV_8UC3);
+	//Mat out = Mat::zeros(image.size(), CV_8UC3);
 
 	int cx = width / 2;
 	int cy = height / 2;
@@ -205,14 +187,16 @@ Mat fitLines(Mat &image, Point *left_line, Point *right_line) {
 		Point left_spot_end = Point((cx - 25), y2);
 		
 
-		line(out, left_spot_1, left_spot_end, Scalar(0, 0, 255), 8, 8, 0);
-		left_line[0] = left_spot_1;
-		left_line[1] = left_spot_end;
+		//line(out, left_spot_1, left_spot_end, Scalar(0, 0, 255), 8, 8, 0);
+		//left_line[0] = left_spot_1;
+		//left_line[1] = left_spot_end;
+		result[0] = left_spot_1;
+		result[1] = left_spot_end;
 
 	}
 	else
 	{
-		line(out, left_line[0], left_line[1], Scalar(0, 0, 255), 8, 8, 0);
+		//line(out, left_line[0], left_line[1], Scalar(0, 0, 255), 8, 8, 0);
 	}
 
 
@@ -233,17 +217,18 @@ Mat fitLines(Mat &image, Point *left_line, Point *right_line) {
 
 	
 
-		line(out, spot_1, spot_end, Scalar(0, 0, 255), 8, 8, 0);
-		right_line[0] = spot_1;
-		right_line[1] = spot_end;
-
+		//line(out, spot_1, spot_end, Scalar(0, 0, 255), 8, 8, 0);
+		//right_line[0] = spot_1;
+		//right_line[1] = spot_end;
+		result[2] = spot_1;
+		result[3] = spot_end;
 	}
 	else
 	{
-		line(out, right_line[0], right_line[1], Scalar(0, 0, 255), 8, 8, 0);
+		//line(out, right_line[0], right_line[1], Scalar(0, 0, 255), 8, 8, 0);
 	}
 
-	return out;
+	//return out;
 }
 
 

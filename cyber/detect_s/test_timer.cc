@@ -19,7 +19,7 @@ class TestTimer : public TimerComponent{
 		     //uint64_t i =0;
 		     //std::string to_send;
 		     std::shared_ptr<Writer<OcvMat>> writer1 = nullptr;
-
+bool flag = true;
 	public:
 	bool Init() {
 	writer1 = node_->CreateWriter<OcvMat>("/c0");
@@ -57,17 +57,20 @@ bool Proc() {
 		writer1->Write(out_msg);
 			      i++;
 	}*/
-	Mat m = Mat::zeros(480, 640, CV_8UC3);
-AINFO<<m.data[0];
-m.data[1]='b';
-AINFO<<m.data[1];
+	//Mat m = Mat::zeros(480, 640, CV_8UC3);
+	if(!flag){
+	return true;
+	}
+	flag = false;
+	Mat m=imread_cv("/apollo/cyber/AD_Middle_Test/cyber/detect_s/a.png");
 	auto serializableMat = std::make_shared<OcvMat>();
 	serializableMat->set_rows(m.rows);
 	serializableMat->set_cols(m.cols);
 	serializableMat->set_elt_type(m.type());
 	serializableMat->set_elt_size((int)m.elemSize());
-	
+
 	size_t dataSize = m.rows * m.cols * m.elemSize();
+	AINFO<<dataSize;
 	serializableMat->set_mat_data(string((char*)m.data,(char*)m.data+dataSize));
 	writer1->Write(serializableMat);
 	return true;

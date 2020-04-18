@@ -8,4 +8,6 @@ using namespace std;
 void tracker_create(string trackerType);
 void tracker_init(Mat& frame, Rect2d& bbox);
 double track_test(Mat& frame, Rect2d& bbox);
+void imwrite_cv(string,Mat&);
+Mat imread_cv(string);
 #endif

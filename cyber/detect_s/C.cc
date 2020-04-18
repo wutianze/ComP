@@ -55,14 +55,13 @@ bool Proc(const std::shared_ptr<OcvMat>& msg0) {
 		msg0->cols(),
 		msg0->elt_type());
 	size_t dataSize = msg0->rows() *  msg0->cols() * msg0->elt_size();
-	AINFO<<dataSize;
 	std::copy(reinterpret_cast<unsigned char *>(
 				            const_cast<char *>(msg0->mat_data().data())),
 			        reinterpret_cast<unsigned char *>(
 					            const_cast<char *>(msg0->mat_data().data()) + dataSize),
 				        m.data);
-	AINFO<<m.data[0];
-	AINFO<<m.data[1];
+	AINFO<<dataSize;
+	imwrite_cv("/apollo/data/log/a.jpg",m);
 	//uint64_t lan = Time::Now().ToNanosecond()-msg0->timestamp();
  	/*static bool once true;
 	if(once){
