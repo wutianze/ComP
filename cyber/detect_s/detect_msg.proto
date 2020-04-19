@@ -12,3 +12,22 @@ message Frame{
 required uint64 timestamp = 1;
 required OcvMat mat = 2;
 }
+message PointBase{
+required uint32 x = 1;
+required uint32 y = 2;
+}
+message LineResult{
+optional PointBase left1 = 1;
+optional PointBase left2 = 2;
+optional PointBase right1 = 3;
+optional PointBase right2 = 4;
+}
+message Rect2dBase{
+required double x = 1;
+required double y = 2;
+required double height = 3;
+required double width = 4;
+}
+message TrackResult{
+optional Rect2dBase trackresult= 1;
+}

@@ -23,8 +23,11 @@
 
 using apollo::cyber::Component;
 using apollo::cyber::ComponentBase;
+using apollo::cyber::Writer;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::Frame;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::OcvMat;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::TrackResult;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::Rect2dBase;
 using apollo::cyber::Time;
 class TrackerApollo:public Component<Frame>{
 	private:
@@ -42,9 +45,11 @@ class TrackerApollo:public Component<Frame>{
 	ofs.close();
 	AINFO<<"C release";
 	}*/
+	std::shared_ptr<Writer<TrackResult>> writer1 = nullptr;
 	public:
 	bool Init() {
   AINFO << "Tracker init";
+	writer1 = node_->CreateWriter<TrackResult>("/t0");
   //count = 0;
   //AINFO<<readers_.size();
   //fn = node_->Name();
@@ -82,6 +87,14 @@ return true;
 	AINFO<<"lose one";
 	}
 	AINFO<<"tracker cost time"<<Time::Now().ToNanosecond() - alog_start_time;
+	auto to_send = std::make_shared<TrackResult>();
+	auto trackbox = to_send->mutable_trackresult();
+	trackbox->set_x(resultbox.x);
+	trackbox->set_y(resultbox.y);
+	trackbox->set_width(resultbox.width);
+	trackbox->set_height(resultbox.height);
+	writer1->Write(to_send);
+	AINFO<<"resultbox x"<<resultbox.x;
 	//imwrite_cv("/apollo/data/log/a.jpg",m);
 	//uint64_t lan = Time::Now().ToNanosecond()-msg0->timestamp();
  	/*static bool once true;

@@ -18,18 +18,21 @@
 #include "cyber/AD_Middle_Test/cyber/detect_s/detect_msg.pb.h"
 #include "cyber/time/time.h"
 #include "line_detect.h"
+#include "tracker_opencv.h"
 #include "opencv_util.h"
 #include <fstream>
 
 using apollo::cyber::Component;
 using apollo::cyber::ComponentBase;
-using apollo::cyber::Writer;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::Frame;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::OcvMat;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::LineResult;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::PointBase;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::TrackResult;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::Rect2dBase;
+
 using apollo::cyber::Time;
-class Line:public Component<Frame>{
+class FusionFinal:public Component<LineResult,TrackResult>{
 	private:
 /*		uint64_t count;
   std::ofstream ofs;
@@ -44,11 +47,9 @@ class Line:public Component<Frame>{
 	AINFO<<"C release";
 	}*/
 
-	std::shared_ptr<Writer<LineResult>> writer1 = nullptr;
 	public:
 	bool Init() {
-  AINFO << "Line init";
-	writer1 = node_->CreateWriter<LineResult>("/l0");
+  AINFO << "Fusion init";
   //count = 0;
   //AINFO<<readers_.size();
   //fn = node_->Name();
@@ -57,10 +58,13 @@ class Line:public Component<Frame>{
   //ofs.close();
   return true;
 }
-bool Proc(const std::shared_ptr<Frame>& msg0) {
-	uint64_t receive_time = Time::Now().ToNanosecond();
-	AINFO<<"line transfer time:"<<receive_time - msg0->timestamp();
-	Mat m;
+bool Proc(const std::shared_ptr<LineResult>& msg0,const std::shared_ptr<TrackResult>& msg1) {
+	//uint64_t receive_time = Time::Now().ToNanosecond();
+	//AINFO<<"line transfer time:"<<receive_time - msg0->timestamp();
+	auto testP = msg0->left1();
+	AINFO<<"point 0.x:"<<testP.x();
+	AINFO<<"trackresult x"<<msg1->trackresult().x();
+	/*Mat m;
 	OcvMat content = msg0->mat();
 	m.create(content.rows(),
 		content.cols(),
@@ -83,23 +87,23 @@ bool Proc(const std::shared_ptr<Frame>& msg0) {
 	}
 	AINFO<<"Point 0.x"<<result[0].x;
 	AINFO<<"line detect cost time"<<Time::Now().ToNanosecond() - alog_start_time;
-	auto to_send = std::make_shared<LineResult>();
-	auto left1 = to_send->mutable_left1();
+	auto to_send = std::make_shared<FusionResult>();
+	auto left1 = mutable_left1();
 	left1->set_x(result[0].x);
 	left1->set_y(result[0].y);
-	auto left2 = to_send->mutable_left2();
+	auto left2 = mutable_left2();
 	left2->set_x(result[1].x);
 	left2->set_y(result[1].y);
-	auto right1 = to_send->mutable_right1();
+	auto right1 = mutable_right1();
 	right1->set_x(result[2].x);
 	right1->set_y(result[2].y);
-	auto right2 = to_send->mutable_right2();
+	auto right2 = mutable_right2();
 	right2->set_x(result[3].x);
 	right2->set_y(result[3].y);
 	writer1->Write(to_send);
 	//imwrite_cv("/apollo/data/log/a.jpg",m);
 	//uint64_t lan = Time::Now().ToNanosecond()-msg0->timestamp();
- 	/*static bool once true;
+ 	static bool once true;
 	if(once){
        	fn = readers_[0]->GetChannelName();
 	AINFO<<"fn:"<<fn;
@@ -121,6 +125,6 @@ flag = false;
 	return true;
 }
 };
-CYBER_REGISTER_COMPONENT(Line);
+CYBER_REGISTER_COMPONENT(FusionFinal);
 
 
