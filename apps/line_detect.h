@@ -6,6 +6,5 @@
 
 using namespace cv;
 using namespace std;
-void process(Mat &frame,Point*result);
-void fitLines(Mat &image,Point*result);
+void lines_process(Mat &frame,Point*result);
 #endif

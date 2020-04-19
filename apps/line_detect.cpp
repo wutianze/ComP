@@ -1,50 +1,100 @@
 #include "line_detect.h"
-/*Point left_line[2];
-Point right_line[2];
+void fitLines(Mat &image, Point*result) {
+	int height = image.rows;
+	int width = image.cols;
 
-void process(Mat &frame, Point *left_line, Point *right_line);
-Mat fitLines(Mat &image, Point *left_line, Point *right_line);
+	//Mat out = Mat::zeros(image.size(), CV_8UC3);
 
-int main(int argc, char** argv) {
-	//读取视频
-	VideoCapture capture("a.mp4");
+	int cx = width / 2;
+	int cy = height / 2;
 
-	int height = capture.get(CAP_PROP_FRAME_HEIGHT);
-	int width = capture.get(CAP_PROP_FRAME_WIDTH);
-	int count = capture.get(CAP_PROP_FRAME_COUNT);
-	int fps = capture.get(CAP_PROP_FPS);
+	vector<Point> left_pts;
+	vector<Point> right_pts;
+	Vec4f left;
 
-	left_line[0] = Point(0,0);
-
-	left_line[1] = Point(0, 0);
-	
-	right_line[0] = Point(0, 0);
-	
-	right_line[1] = Point(0, 0);
-
-	cout << height<<"       "<< width<< "       " <<count<< "       " <<fps << endl;
-
-	//循环读取视频
-	Mat frame;
-	while (true) {
-		int ret = capture.read(frame);
-		if (!ret) {
-			break;
+	for (int i = 100; i < (cx-10); i++)
+	{
+		for (int j = cy; j < height; j++)
+		{
+			int pv = image.at<uchar>(j, i);
+			if (pv == 255) 
+			{
+				left_pts.push_back(Point(i, j));
+			}
 		}
-		imshow("input", frame);
-		process(frame, left_line, right_line);
-
-		char c = waitKey(5);
-		if (c == 27) {
-			break;
-		}
-		
-		
 	}
 
-}*/
+	for (int i = cx; i < (width-20); i++)
+	{
+		for (int j = cy; j < height; j++)
+		{
+			int pv = image.at<uchar>(j, i);
+			if (pv == 255)
+			{
+				right_pts.push_back(Point(i, j));
+			}
+		}
+	}
 
-void process(Mat &frame, Point*result ){
+	if (left_pts.size() > 2)
+	{
+		fitLine(left_pts, left, DIST_L1, 0, 0.01, 0.01);
+		
+		double k1 = left[1] / left[0];
+		double step = left[3] - k1 * left[2];
+
+		int x1 = int((height - step) / k1);
+		int y2 = int((cx - 25)*k1 + step);
+
+		Point left_spot_1 = Point(x1, height);
+		Point left_spot_end = Point((cx - 25), y2);
+		
+
+		//line(out, left_spot_1, left_spot_end, Scalar(0, 0, 255), 8, 8, 0);
+		//left_line[0] = left_spot_1;
+		//left_line[1] = left_spot_end;
+		result[0] = left_spot_1;
+		result[1] = left_spot_end;
+
+	}
+	else
+	{
+		//line(out, left_line[0], left_line[1], Scalar(0, 0, 255), 8, 8, 0);
+	}
+
+
+
+
+	if (right_pts.size()>2)
+	{
+		
+		Point spot_1 = right_pts[0];
+		Point spot_end = right_pts[right_pts.size()-1];
+
+		int x1 = spot_1.x;
+		
+		int y1 = spot_1.y;
+
+		int x2 = spot_end.x;
+		int y2 = spot_end.y;
+
+	
+
+		//line(out, spot_1, spot_end, Scalar(0, 0, 255), 8, 8, 0);
+		//right_line[0] = spot_1;
+		//right_line[1] = spot_end;
+		result[2] = spot_1;
+		result[3] = spot_end;
+	}
+	else
+	{
+		//line(out, right_line[0], right_line[1], Scalar(0, 0, 255), 8, 8, 0);
+	}
+
+	//return out;
+}
+
+void lines_process(Mat &frame, Point*result ){
 	Mat gray,binary;
 	/**灰度化*/
 	cvtColor(frame, gray, COLOR_BGR2GRAY);
@@ -134,101 +184,3 @@ void process(Mat &frame, Point*result ){
 //	imshow("lane-lines", dst);
 
 }
-
-void fitLines(Mat &image, Point*result) {
-	int height = image.rows;
-	int width = image.cols;
-
-	//Mat out = Mat::zeros(image.size(), CV_8UC3);
-
-	int cx = width / 2;
-	int cy = height / 2;
-
-	vector<Point> left_pts;
-	vector<Point> right_pts;
-	Vec4f left;
-	
-
-	for (int i = 100; i < (cx-10); i++)
-	{
-		for (int j = cy; j < height; j++)
-		{
-			int pv = image.at<uchar>(j, i);
-			if (pv == 255) 
-			{
-				left_pts.push_back(Point(i, j));
-			}
-		}
-	}
-
-	for (int i = cx; i < (width-20); i++)
-	{
-		for (int j = cy; j < height; j++)
-		{
-			int pv = image.at<uchar>(j, i);
-			if (pv == 255)
-			{
-				right_pts.push_back(Point(i, j));
-			}
-		}
-	}
-
-	if (left_pts.size() > 2)
-	{
-		fitLine(left_pts, left, DIST_L1, 0, 0.01, 0.01);
-		
-		double k1 = left[1] / left[0];
-		double step = left[3] - k1 * left[2];
-
-		int x1 = int((height - step) / k1);
-		int y2 = int((cx - 25)*k1 + step);
-
-		Point left_spot_1 = Point(x1, height);
-		Point left_spot_end = Point((cx - 25), y2);
-		
-
-		//line(out, left_spot_1, left_spot_end, Scalar(0, 0, 255), 8, 8, 0);
-		//left_line[0] = left_spot_1;
-		//left_line[1] = left_spot_end;
-		result[0] = left_spot_1;
-		result[1] = left_spot_end;
-
-	}
-	else
-	{
-		//line(out, left_line[0], left_line[1], Scalar(0, 0, 255), 8, 8, 0);
-	}
-
-
-
-
-	if (right_pts.size()>2)
-	{
-		
-		Point spot_1 = right_pts[0];
-		Point spot_end = right_pts[right_pts.size()-1];
-
-		int x1 = spot_1.x;
-		
-		int y1 = spot_1.y;
-
-		int x2 = spot_end.x;
-		int y2 = spot_end.y;
-
-	
-
-		//line(out, spot_1, spot_end, Scalar(0, 0, 255), 8, 8, 0);
-		//right_line[0] = spot_1;
-		//right_line[1] = spot_end;
-		result[2] = spot_1;
-		result[3] = spot_end;
-	}
-	else
-	{
-		//line(out, right_line[0], right_line[1], Scalar(0, 0, 255), 8, 8, 0);
-	}
-
-	//return out;
-}
-
-

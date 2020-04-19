@@ -6,24 +6,26 @@
 #include "cyber/AD_Middle_Test/cyber/detect_s/detect_msg.pb.h"
 #include "cyber/component/timer_component.h"
 #include "cyber/time/time.h"
-#include "tracker_opencv.h"
+#include "opencv_util.h"
 using apollo::cyber::Component;
 using apollo::cyber::ComponentBase;
 using apollo::cyber::TimerComponent;
 using apollo::cyber::Time;
 using apollo::cyber::Writer;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::Frame;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::OcvMat;
 using namespace cv;
-class TestTimer : public TimerComponent{
+class CameraTimer : public TimerComponent{
 	private:
 		     //uint64_t i =0;
 		     //std::string to_send;
-		     std::shared_ptr<Writer<OcvMat>> writer1 = nullptr;
+		     std::shared_ptr<Writer<Frame>> writer1 = nullptr;
+		     VideoCapture video;
 bool flag = true;
 	public:
 	bool Init() {
-	writer1 = node_->CreateWriter<OcvMat>("/c0");
-AINFO<<"init finish";	
+	writer1 = node_->CreateWriter<Frame>("/c0");
+	video = video_cv("/apollo/cyber/AD_Middle_Test/cyber/detect_s/chaplin.mp4");
 	/*std::string filename = "/apollo/param"+node_->Name()+".txt";
 	  std::ifstream re(filename);
 	  if(!re.is_open())AINFO<<"open fail";
@@ -58,12 +60,14 @@ bool Proc() {
 			      i++;
 	}*/
 	//Mat m = Mat::zeros(480, 640, CV_8UC3);
-	if(!flag){
+	/*if(!flag){
 	return true;
 	}
-	flag = false;
-	Mat m=imread_cv("/apollo/cyber/AD_Middle_Test/cyber/detect_s/a.png");
-	auto serializableMat = std::make_shared<OcvMat>();
+	flag = false;*/
+	//Mat m=imread_cv("/apollo/cyber/AD_Middle_Test/cyber/detect_s/a.png");
+	Mat m;
+	if(!video.read(m))return false;
+	auto serializableMat = new OcvMat;
 	serializableMat->set_rows(m.rows);
 	serializableMat->set_cols(m.cols);
 	serializableMat->set_elt_type(m.type());
@@ -72,8 +76,11 @@ bool Proc() {
 	size_t dataSize = m.rows * m.cols * m.elemSize();
 	AINFO<<dataSize;
 	serializableMat->set_mat_data(string((char*)m.data,(char*)m.data+dataSize));
-	writer1->Write(serializableMat);
+	auto to_send = std::make_shared<Frame>();
+	to_send->set_timestamp(Time::Now().ToNanosecond());
+	to_send->set_allocated_mat(serializableMat);
+	writer1->Write(to_send);
 	return true;
 }
 };
-CYBER_REGISTER_COMPONENT(TestTimer)
+CYBER_REGISTER_COMPONENT(CameraTimer)

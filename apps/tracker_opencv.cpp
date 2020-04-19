@@ -37,24 +37,23 @@ void tracker_create(string trackerType){
 void tracker_init(Mat& frame, Rect2d& bbox){
     tracker->init(frame, bbox);
 }
-double track_test(Mat& frame, Rect2d& bbox){
-       double timer = (double)getTickCount();
+bool track_test(Mat& frame, Rect2d& bbox){
+       //double timer = (double)getTickCount();
         
         // Update the tracking result
-        bool ok = tracker->update(frame, bbox);
+        return tracker->update(frame, bbox);
         
         // Calculate Frames per second (FPS)
-        return getTickFrequency() / ((double)getTickCount() - timer);
+        //return getTickFrequency() / ((double)getTickCount() - timer);
 
         //return tracker->update(frame, bbox);
 }
-void imwrite_cv(string name, Mat&img){
+/*void imwrite_cv(string name, Mat&img){
 imwrite(name,img);
 }
 Mat imread_cv(string name){
 return imread(name);
 }
-/*
 int main(int argc, char **argv)
 {
     // List of tracker types in OpenCV 3.4.1

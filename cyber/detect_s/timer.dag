@@ -2,9 +2,9 @@
     module_config {
     module_library : "/apollo/bazel-bin/cyber/AD_Middle_Test/cyber/detect_s/libtest_timer.so"
     components {
-        class_name : "C"
+        class_name : "TrackerApollo"
         config {
-            name : "c_0"
+            name : "tracker_0"
             readers {
                 channel: "/c0"
             }
@@ -17,6 +17,16 @@
             #}
         }
       }
+components {
+        class_name : "Line"
+        config {
+            name : "liner_0"
+            readers {
+                channel: "/c0"
+            }
+        }
+      }
+
 #components {
 #        class_name : "C"
 #        config {
@@ -82,10 +92,10 @@
 #      }
 
 timer_components{
-class_name:"TestTimer"
+class_name:"CameraTimer"
 config{
-name:"timer0"
-interval:10
+name:"camera0"
+interval:1000
 }
 }
 #timer_components{

@@ -29,7 +29,9 @@ endif()
 
 add_library(line_detect SHARED line_detect.cpp)
 add_library(tracker_opencv SHARED tracker_opencv.cpp)
+add_library(opencv_util SHARED opencv_util.cpp)
 
 # Link your application with OpenCV libraries
 target_link_libraries(tracker_opencv PRIVATE ${OpenCV_LIBS})
 target_link_libraries(line_detect PRIVATE ${OpenCV_LIBS})
+target_link_libraries(opencv_util PRIVATE ${OpenCV_LIBS})

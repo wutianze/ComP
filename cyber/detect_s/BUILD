@@ -52,16 +52,7 @@ cc_binary(
 		name = "libtest_timer.so",
 		linkopts = ["-shared"],
 		linkstatic = False,
-		deps = [":test_timer_lib",":C_lib"],
-		)
-
-cc_library(
-		name = "test_timer_lib",
-		srcs = ["test_timer.cc","libtracker_opencv.so"],
-		hdrs = ["tracker_opencv.h"],
-		deps = ["//cyber",
-	  ":detect_msg_cc_proto"
-	  ],
+		deps = [":CameraTimer_lib",":TrackerApollo_lib",":Line_lib"],
 		)
 cc_proto_library(
 		name = "detect_msg_cc_proto",
@@ -73,9 +64,25 @@ proto_library(
 		srcs = ["detect_msg.proto"],
 		)
 cc_library(
-		name ="C_lib",
-	srcs = ["C.cc","libtracker_opencv.so"],
-	hdrs = ["tracker_opencv.h"],	
+		name = "CameraTimer_lib",
+		srcs = ["CameraTimer.cc","libopencv_util.so"],
+		hdrs = ["opencv_util.h"],
+		deps = ["//cyber",
+	  ":detect_msg_cc_proto",
+	  ],
+		)
+cc_library(
+		name ="TrackerApollo_lib",
+	srcs = ["TrackerApollo.cc","libtracker_opencv.so","libopencv_util.so"],
+	hdrs = ["tracker_opencv.h","opencv_util.h"],	
+	deps = ["//cyber",
+	  ":detect_msg_cc_proto",
+				],
+		)
+cc_library(
+		name ="Line_lib",
+	srcs = ["Line.cc","libline_detect.so","libopencv_util.so"],
+	hdrs = ["line_detect.h","opencv_util.h"],	
 	deps = ["//cyber",
 	  ":detect_msg_cc_proto",
 				],

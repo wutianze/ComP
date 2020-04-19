@@ -8,4 +8,7 @@ message OcvMat {
     required int32 elt_size = 4;
     required bytes mat_data = 5;
 }
-
+message Frame{
+required uint64 timestamp = 1;
+required OcvMat mat = 2;
+}
