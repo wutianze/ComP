@@ -52,7 +52,7 @@ cc_binary(
 		name = "libtest_timer.so",
 		linkopts = ["-shared"],
 		linkstatic = False,
-		deps = [":CameraTimer_lib",":TrackerApollo_lib",":Line_lib",":FusionFinal_lib"],
+		deps = [":CameraTimer_lib",":TrackerApollo_lib",":Line_lib",":FusionFinal_lib","YoloDetect_lib"],
 		)
 cc_proto_library(
 		name = "detect_msg_cc_proto",
@@ -71,6 +71,15 @@ cc_library(
 	  ":detect_msg_cc_proto",
 	  ],
 		)
+cc_library(
+		name ="YoloDetect_lib",
+	srcs = ["YoloDetect.cc","libdark.so","libopencv_util.so"],
+	hdrs = ["yolo_v2_class.hpp","opencv_util.h"],	
+	deps = ["//cyber",
+	  ":detect_msg_cc_proto",
+				],
+		)
+
 cc_library(
 		name ="TrackerApollo_lib",
 	srcs = ["TrackerApollo.cc","libtracker_opencv.so","libopencv_util.so"],

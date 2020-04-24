@@ -31,3 +31,21 @@ required double width = 4;
 message TrackResult{
 optional Rect2dBase trackresult= 1;
 }
+message Bbox{
+required uint32 x = 1;
+required uint32 y = 2;
+required uint32 w = 3;
+required uint32 h = 4;
+required float prob = 5;
+
+required uint32 obj_id = 6;
+required uint32 track_id = 7;
+required uint32 frames_counter = 8;
+
+//required float prob = 5;
+//required float prob = 5;
+//required float prob = 5;
+}
+message YoloResult{
+repeated Bbox bboxresult= 1;
+}
