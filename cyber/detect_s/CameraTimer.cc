@@ -25,7 +25,9 @@ bool flag = true;
 	public:
 	bool Init() {
 	writer1 = node_->CreateWriter<Frame>("/c0");
-	video = video_cv("/apollo/cyber/AD_Middle_Test/cyber/detect_s/chaplin.mp4");
+	//video = video_cv("/apollo/cyber/AD_Middle_Test/cyber/detect_s/chaplin.mp4");
+	
+	AINFO<<"camera node name:"<<node_->Name();
 	/*std::string filename = "/apollo/param"+node_->Name()+".txt";
 	  std::ifstream re(filename);
 	  if(!re.is_open())AINFO<<"open fail";
@@ -64,9 +66,9 @@ bool Proc() {
 	return true;
 	}
 	flag = false;*/
-	//Mat m=imread_cv("/apollo/cyber/AD_Middle_Test/cyber/detect_s/a.png");
-	Mat m;
-	if(!video.read(m))return false;
+	Mat m=imread_cv("/apollo/yoloDetect/data/example.jpg");
+	//Mat m;
+	//if(!video.read(m))return false;
 	auto serializableMat = new OcvMat;
 	serializableMat->set_rows(m.rows);
 	serializableMat->set_cols(m.cols);
