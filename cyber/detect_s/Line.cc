@@ -73,7 +73,6 @@ bool Proc(const std::shared_ptr<Frame>& msg0) {
 				        m.data);
 	Point*result = new Point[4];
 	uint64_t alog_start_time = Time::Now().ToNanosecond();
-	AINFO<<"before line run";
 	try{
 	lines_process(m,result);
 	}
@@ -81,7 +80,7 @@ bool Proc(const std::shared_ptr<Frame>& msg0) {
 	AINFO<<"sth wrong in line";
 	AINFO<<e.what();
 	}
-	AINFO<<"Point 0.x"<<result[0].x;
+	//AINFO<<"Point 0.x"<<result[0].x;
 	AINFO<<"line detect cost time"<<Time::Now().ToNanosecond() - alog_start_time;
 	auto to_send = std::make_shared<LineResult>();
 	auto left1 = to_send->mutable_left1();

@@ -60,8 +60,9 @@ class TrackerApollo:public Component<Frame>{
   return true;
 }
 bool Proc(const std::shared_ptr<Frame>& msg0) {
-	uint64_t receive_time = Time::Now().ToNanosecond();
+uint64_t receive_time = Time::Now().ToNanosecond();
 	AINFO<<"tracker transfer time:"<<receive_time - msg0->timestamp();
+
 	Mat m;
 	OcvMat content = msg0->mat();
 	m.create(content.rows(),
@@ -73,8 +74,8 @@ bool Proc(const std::shared_ptr<Frame>& msg0) {
 			        reinterpret_cast<unsigned char *>(
 					            const_cast<char *>(content.mat_data().data()) + dataSize),
 				        m.data);
+	
 	uint64_t alog_start_time = Time::Now().ToNanosecond();
-	AINFO<<"rows "<<m.rows<<" cols "<<m.cols;
 	if(t_i){
 t_i = false;
 resultbox = Rect2d(287, 23, 86, 320);

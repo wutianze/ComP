@@ -1,0 +1,20 @@
+# Define all coms in DAG streaming.
+    module_config {
+    module_library : "/apollo/bazel-bin/cyber/AD_Middle_Test/cyber/simple_s/libtest.so"
+    components {
+        class_name : "C"
+        config {
+            name : "c_0"
+            readers {
+                channel: "/c0"
+            }
+                    }
+      }
+timer_components{
+class_name:"S"
+config{
+name:"s0"
+interval:10
+}
+}
+}
