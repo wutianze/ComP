@@ -19,7 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## System dependencies are found with CMake's conventions
 find_package(OpenCV REQUIRED)
 include_directories(include ${OpenCV_INCLUDE_DIRS})
-link_directories(${OpenCV_LIB_DIR})
+link_directories(${OpenCV_LIB_DIR} lib)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -54,7 +54,11 @@ link_directories(${OpenCV_LIB_DIR})
 ## Generate messages in the 'msg' folder
 add_message_files(
   FILES
+  PointDetect.msg
+  LinesResult.msg
   TestImage.msg
+  TrackerResult.msg
+  YoloResult.msg
   #   Message1.msg
 #   Message2.msg
 )
@@ -123,7 +127,7 @@ CATKIN_DEPENDS cv_bridge image_transport roscpp sensor_msgs std_msgs message_run
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -142,8 +146,14 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(Line src/Line.cpp)
 add_executable(CameraTimer src/CameraTimer.cpp)
-target_link_libraries(Line ${catkin_LIBRARIES} ${OpenCV_LIBS})
+add_executable(Tracker src/TrackerRos.cpp)
+add_executable(Fusion src/Fusion.cpp)
+add_executable(YoloDetect src/YoloDetect.cpp)
+target_link_libraries(Line ${catkin_LIBRARIES} ${OpenCV_LIBS} line_detect)
+target_link_libraries(Tracker ${catkin_LIBRARIES} ${OpenCV_LIBS} tracker_opencv)
 target_link_libraries(CameraTimer ${catkin_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(YoloDetect ${catkin_LIBRARIES} ${OpenCV_LIBS} dark)
+target_link_libraries(Fusion ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
