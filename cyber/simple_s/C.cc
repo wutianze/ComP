@@ -60,9 +60,10 @@ class C:public Component<Bytes>{
 		ofs.open("/apollo/data/log/test/multi/"+fn,std::ios::trunc);
 		for(unsigned int i =0;i<lantency.size();i++){
 		vector<double> res = analyze_lantency(lantency[i]);
+		//cout<<"result:"<<i<<endl;
 		for(unsigned int j=0;j<res.size();j++){
 			ofs<<res[j]<<endl;
-			cout<<res[j]<<endl;
+			//cout<<res[j]<<endl;
 		}
 		ofs<<endl;
 		}
