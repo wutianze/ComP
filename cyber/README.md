@@ -14,4 +14,8 @@
 - 运行指令： run.sh msg_size number_of_param.txt_to_generate launch&config_file_name, example: ./run.sh 1024 1 1t1，即发送的消息包含1024byte的实际内容，生成一个param.txt(即只有一个S)，调用的是1t1.launch，并且会把目录下的1t1*.conf（以1t1为前缀的所有调度配置文件）拷贝到/apollo/cyber/conf/下。
 - 准备步骤：进行一个实验前，先根据需要定制dag文件，在同一个进程下（用intra通信）的S和C放在一个dag，不同进程的分两个dag；然后创建一个launch来指定相关dag,并为launch里的每个process_name定制一个conf调度文件；如果修改了cc文件需要编译则在/apollo目录下运行./apollo.sh build_cyber，不然就直接运行./run.sh 1024 1 1t1
 - 目前该目录下提供了1t1和1tn两个例子，根据它们做一些修改就可以了。
-
+## 真实场景测试：
+### 主要测试真实的感知场景
+### 用法：
+- 概述：YoloDetect.cc,Line.cc,CameraTimer.cc,TrackerApollo.cc,FusionFinal.cc分别对应了不同的应用：物体检测、寻线、图片数据产生器、追踪、数据整合。顺序为从CameraTimer产生数据，YoloDetect\Line\TrackerApollo处理这些数据，处理结果汇总到FusionFinal。传输的数据格式定义都在detect_msg.proto中
+- TODO
