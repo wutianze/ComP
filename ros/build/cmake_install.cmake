@@ -133,7 +133,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/ros_test/AD_Middle_Test/ros/build/gtest/cmake_install.cmake")
   include("/ros_test/AD_Middle_Test/ros/build/beginner_tutorials/cmake_install.cmake")
   include("/ros_test/AD_Middle_Test/ros/build/example_pkg/cmake_install.cmake")
-  include("/ros_test/AD_Middle_Test/ros/build/pub_sub/cmake_install.cmake")
+  include("/ros_test/AD_Middle_Test/ros/build/simple_s/cmake_install.cmake")
   include("/ros_test/AD_Middle_Test/ros/build/detect_s/cmake_install.cmake")
 
 endif()

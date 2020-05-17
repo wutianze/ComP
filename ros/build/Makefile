@@ -974,186 +974,17 @@ example_pkg_geneus/fast:
 .PHONY : example_pkg_geneus/fast
 
 #=============================================================================
-# Target rules for targets named pub_sub_gencpp
+# Target rules for targets named simple_s_geneus
 
 # Build rule for target.
-pub_sub_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_sub_gencpp
-.PHONY : pub_sub_gencpp
+simple_s_geneus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_s_geneus
+.PHONY : simple_s_geneus
 
 # fast build rule for target.
-pub_sub_gencpp/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/pub_sub_gencpp.dir/build.make pub_sub/CMakeFiles/pub_sub_gencpp.dir/build
-.PHONY : pub_sub_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named pub_sub_gennodejs
-
-# Build rule for target.
-pub_sub_gennodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_sub_gennodejs
-.PHONY : pub_sub_gennodejs
-
-# fast build rule for target.
-pub_sub_gennodejs/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/pub_sub_gennodejs.dir/build.make pub_sub/CMakeFiles/pub_sub_gennodejs.dir/build
-.PHONY : pub_sub_gennodejs/fast
-
-#=============================================================================
-# Target rules for targets named _pub_sub_generate_messages_check_deps_AddTwoInts
-
-# Build rule for target.
-_pub_sub_generate_messages_check_deps_AddTwoInts: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _pub_sub_generate_messages_check_deps_AddTwoInts
-.PHONY : _pub_sub_generate_messages_check_deps_AddTwoInts
-
-# fast build rule for target.
-_pub_sub_generate_messages_check_deps_AddTwoInts/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/_pub_sub_generate_messages_check_deps_AddTwoInts.dir/build.make pub_sub/CMakeFiles/_pub_sub_generate_messages_check_deps_AddTwoInts.dir/build
-.PHONY : _pub_sub_generate_messages_check_deps_AddTwoInts/fast
-
-#=============================================================================
-# Target rules for targets named pub_sub_genlisp
-
-# Build rule for target.
-pub_sub_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_sub_genlisp
-.PHONY : pub_sub_genlisp
-
-# fast build rule for target.
-pub_sub_genlisp/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/pub_sub_genlisp.dir/build.make pub_sub/CMakeFiles/pub_sub_genlisp.dir/build
-.PHONY : pub_sub_genlisp/fast
-
-#=============================================================================
-# Target rules for targets named pub_sub_generate_messages
-
-# Build rule for target.
-pub_sub_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_sub_generate_messages
-.PHONY : pub_sub_generate_messages
-
-# fast build rule for target.
-pub_sub_generate_messages/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/pub_sub_generate_messages.dir/build.make pub_sub/CMakeFiles/pub_sub_generate_messages.dir/build
-.PHONY : pub_sub_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named pub_sub_generate_messages_eus
-
-# Build rule for target.
-pub_sub_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_sub_generate_messages_eus
-.PHONY : pub_sub_generate_messages_eus
-
-# fast build rule for target.
-pub_sub_generate_messages_eus/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/pub_sub_generate_messages_eus.dir/build.make pub_sub/CMakeFiles/pub_sub_generate_messages_eus.dir/build
-.PHONY : pub_sub_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named pub_sub_geneus
-
-# Build rule for target.
-pub_sub_geneus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_sub_geneus
-.PHONY : pub_sub_geneus
-
-# fast build rule for target.
-pub_sub_geneus/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/pub_sub_geneus.dir/build.make pub_sub/CMakeFiles/pub_sub_geneus.dir/build
-.PHONY : pub_sub_geneus/fast
-
-#=============================================================================
-# Target rules for targets named pub_sub_generate_messages_cpp
-
-# Build rule for target.
-pub_sub_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_sub_generate_messages_cpp
-.PHONY : pub_sub_generate_messages_cpp
-
-# fast build rule for target.
-pub_sub_generate_messages_cpp/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/pub_sub_generate_messages_cpp.dir/build.make pub_sub/CMakeFiles/pub_sub_generate_messages_cpp.dir/build
-.PHONY : pub_sub_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named _pub_sub_generate_messages_check_deps_Num
-
-# Build rule for target.
-_pub_sub_generate_messages_check_deps_Num: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _pub_sub_generate_messages_check_deps_Num
-.PHONY : _pub_sub_generate_messages_check_deps_Num
-
-# fast build rule for target.
-_pub_sub_generate_messages_check_deps_Num/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/_pub_sub_generate_messages_check_deps_Num.dir/build.make pub_sub/CMakeFiles/_pub_sub_generate_messages_check_deps_Num.dir/build
-.PHONY : _pub_sub_generate_messages_check_deps_Num/fast
-
-#=============================================================================
-# Target rules for targets named listener
-
-# Build rule for target.
-listener: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 listener
-.PHONY : listener
-
-# fast build rule for target.
-listener/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/listener.dir/build.make pub_sub/CMakeFiles/listener.dir/build
-.PHONY : listener/fast
-
-#=============================================================================
-# Target rules for targets named pub_sub_generate_messages_lisp
-
-# Build rule for target.
-pub_sub_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_sub_generate_messages_lisp
-.PHONY : pub_sub_generate_messages_lisp
-
-# fast build rule for target.
-pub_sub_generate_messages_lisp/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/pub_sub_generate_messages_lisp.dir/build.make pub_sub/CMakeFiles/pub_sub_generate_messages_lisp.dir/build
-.PHONY : pub_sub_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named pub_sub_generate_messages_nodejs
-
-# Build rule for target.
-pub_sub_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_sub_generate_messages_nodejs
-.PHONY : pub_sub_generate_messages_nodejs
-
-# fast build rule for target.
-pub_sub_generate_messages_nodejs/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/pub_sub_generate_messages_nodejs.dir/build.make pub_sub/CMakeFiles/pub_sub_generate_messages_nodejs.dir/build
-.PHONY : pub_sub_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named pub_sub_generate_messages_py
-
-# Build rule for target.
-pub_sub_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_sub_generate_messages_py
-.PHONY : pub_sub_generate_messages_py
-
-# fast build rule for target.
-pub_sub_generate_messages_py/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/pub_sub_generate_messages_py.dir/build.make pub_sub/CMakeFiles/pub_sub_generate_messages_py.dir/build
-.PHONY : pub_sub_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named pub_sub_genpy
-
-# Build rule for target.
-pub_sub_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pub_sub_genpy
-.PHONY : pub_sub_genpy
-
-# fast build rule for target.
-pub_sub_genpy/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/pub_sub_genpy.dir/build.make pub_sub/CMakeFiles/pub_sub_genpy.dir/build
-.PHONY : pub_sub_genpy/fast
+simple_s_geneus/fast:
+	$(MAKE) -f simple_s/CMakeFiles/simple_s_geneus.dir/build.make simple_s/CMakeFiles/simple_s_geneus.dir/build
+.PHONY : simple_s_geneus/fast
 
 #=============================================================================
 # Target rules for targets named talker
@@ -1165,8 +996,164 @@ talker: cmake_check_build_system
 
 # fast build rule for target.
 talker/fast:
-	$(MAKE) -f pub_sub/CMakeFiles/talker.dir/build.make pub_sub/CMakeFiles/talker.dir/build
+	$(MAKE) -f simple_s/CMakeFiles/talker.dir/build.make simple_s/CMakeFiles/talker.dir/build
 .PHONY : talker/fast
+
+#=============================================================================
+# Target rules for targets named simple_s_gencpp
+
+# Build rule for target.
+simple_s_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_s_gencpp
+.PHONY : simple_s_gencpp
+
+# fast build rule for target.
+simple_s_gencpp/fast:
+	$(MAKE) -f simple_s/CMakeFiles/simple_s_gencpp.dir/build.make simple_s/CMakeFiles/simple_s_gencpp.dir/build
+.PHONY : simple_s_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named simple_s_generate_messages_nodejs
+
+# Build rule for target.
+simple_s_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_s_generate_messages_nodejs
+.PHONY : simple_s_generate_messages_nodejs
+
+# fast build rule for target.
+simple_s_generate_messages_nodejs/fast:
+	$(MAKE) -f simple_s/CMakeFiles/simple_s_generate_messages_nodejs.dir/build.make simple_s/CMakeFiles/simple_s_generate_messages_nodejs.dir/build
+.PHONY : simple_s_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named simple_s_generate_messages_py
+
+# Build rule for target.
+simple_s_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_s_generate_messages_py
+.PHONY : simple_s_generate_messages_py
+
+# fast build rule for target.
+simple_s_generate_messages_py/fast:
+	$(MAKE) -f simple_s/CMakeFiles/simple_s_generate_messages_py.dir/build.make simple_s/CMakeFiles/simple_s_generate_messages_py.dir/build
+.PHONY : simple_s_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named simple_s_generate_messages_cpp
+
+# Build rule for target.
+simple_s_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_s_generate_messages_cpp
+.PHONY : simple_s_generate_messages_cpp
+
+# fast build rule for target.
+simple_s_generate_messages_cpp/fast:
+	$(MAKE) -f simple_s/CMakeFiles/simple_s_generate_messages_cpp.dir/build.make simple_s/CMakeFiles/simple_s_generate_messages_cpp.dir/build
+.PHONY : simple_s_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named simple_s_generate_messages
+
+# Build rule for target.
+simple_s_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_s_generate_messages
+.PHONY : simple_s_generate_messages
+
+# fast build rule for target.
+simple_s_generate_messages/fast:
+	$(MAKE) -f simple_s/CMakeFiles/simple_s_generate_messages.dir/build.make simple_s/CMakeFiles/simple_s_generate_messages.dir/build
+.PHONY : simple_s_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named simple_s_generate_messages_eus
+
+# Build rule for target.
+simple_s_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_s_generate_messages_eus
+.PHONY : simple_s_generate_messages_eus
+
+# fast build rule for target.
+simple_s_generate_messages_eus/fast:
+	$(MAKE) -f simple_s/CMakeFiles/simple_s_generate_messages_eus.dir/build.make simple_s/CMakeFiles/simple_s_generate_messages_eus.dir/build
+.PHONY : simple_s_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named _simple_s_generate_messages_check_deps_Test
+
+# Build rule for target.
+_simple_s_generate_messages_check_deps_Test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _simple_s_generate_messages_check_deps_Test
+.PHONY : _simple_s_generate_messages_check_deps_Test
+
+# fast build rule for target.
+_simple_s_generate_messages_check_deps_Test/fast:
+	$(MAKE) -f simple_s/CMakeFiles/_simple_s_generate_messages_check_deps_Test.dir/build.make simple_s/CMakeFiles/_simple_s_generate_messages_check_deps_Test.dir/build
+.PHONY : _simple_s_generate_messages_check_deps_Test/fast
+
+#=============================================================================
+# Target rules for targets named simple_s_generate_messages_lisp
+
+# Build rule for target.
+simple_s_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_s_generate_messages_lisp
+.PHONY : simple_s_generate_messages_lisp
+
+# fast build rule for target.
+simple_s_generate_messages_lisp/fast:
+	$(MAKE) -f simple_s/CMakeFiles/simple_s_generate_messages_lisp.dir/build.make simple_s/CMakeFiles/simple_s_generate_messages_lisp.dir/build
+.PHONY : simple_s_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named simple_s_genlisp
+
+# Build rule for target.
+simple_s_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_s_genlisp
+.PHONY : simple_s_genlisp
+
+# fast build rule for target.
+simple_s_genlisp/fast:
+	$(MAKE) -f simple_s/CMakeFiles/simple_s_genlisp.dir/build.make simple_s/CMakeFiles/simple_s_genlisp.dir/build
+.PHONY : simple_s_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named simple_s_gennodejs
+
+# Build rule for target.
+simple_s_gennodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_s_gennodejs
+.PHONY : simple_s_gennodejs
+
+# fast build rule for target.
+simple_s_gennodejs/fast:
+	$(MAKE) -f simple_s/CMakeFiles/simple_s_gennodejs.dir/build.make simple_s/CMakeFiles/simple_s_gennodejs.dir/build
+.PHONY : simple_s_gennodejs/fast
+
+#=============================================================================
+# Target rules for targets named simple_s_genpy
+
+# Build rule for target.
+simple_s_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_s_genpy
+.PHONY : simple_s_genpy
+
+# fast build rule for target.
+simple_s_genpy/fast:
+	$(MAKE) -f simple_s/CMakeFiles/simple_s_genpy.dir/build.make simple_s/CMakeFiles/simple_s_genpy.dir/build
+.PHONY : simple_s_genpy/fast
+
+#=============================================================================
+# Target rules for targets named listener
+
+# Build rule for target.
+listener: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 listener
+.PHONY : listener
+
+# fast build rule for target.
+listener/fast:
+	$(MAKE) -f simple_s/CMakeFiles/listener.dir/build.make simple_s/CMakeFiles/listener.dir/build
+.PHONY : listener/fast
 
 #=============================================================================
 # Target rules for targets named _detect_s_generate_messages_check_deps_PointDetect
@@ -1646,21 +1633,20 @@ help:
 	@echo "... example_pkg_generate_messages_eus"
 	@echo "... nodelet_generate_messages_eus"
 	@echo "... example_pkg_geneus"
-	@echo "... pub_sub_gencpp"
-	@echo "... pub_sub_gennodejs"
-	@echo "... _pub_sub_generate_messages_check_deps_AddTwoInts"
-	@echo "... pub_sub_genlisp"
-	@echo "... pub_sub_generate_messages"
-	@echo "... pub_sub_generate_messages_eus"
-	@echo "... pub_sub_geneus"
-	@echo "... pub_sub_generate_messages_cpp"
-	@echo "... _pub_sub_generate_messages_check_deps_Num"
-	@echo "... listener"
-	@echo "... pub_sub_generate_messages_lisp"
-	@echo "... pub_sub_generate_messages_nodejs"
-	@echo "... pub_sub_generate_messages_py"
-	@echo "... pub_sub_genpy"
+	@echo "... simple_s_geneus"
 	@echo "... talker"
+	@echo "... simple_s_gencpp"
+	@echo "... simple_s_generate_messages_nodejs"
+	@echo "... simple_s_generate_messages_py"
+	@echo "... simple_s_generate_messages_cpp"
+	@echo "... simple_s_generate_messages"
+	@echo "... simple_s_generate_messages_eus"
+	@echo "... _simple_s_generate_messages_check_deps_Test"
+	@echo "... simple_s_generate_messages_lisp"
+	@echo "... simple_s_genlisp"
+	@echo "... simple_s_gennodejs"
+	@echo "... simple_s_genpy"
+	@echo "... listener"
 	@echo "... _detect_s_generate_messages_check_deps_PointDetect"
 	@echo "... _detect_s_generate_messages_check_deps_TestImage"
 	@echo "... _detect_s_generate_messages_check_deps_TrackerResult"

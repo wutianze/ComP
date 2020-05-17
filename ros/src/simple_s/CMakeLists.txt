@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(pub_sub)
+project(simple_s)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   genmsg
+  message_filters
 )
 
 ## System dependencies are found with CMake's conventions
@@ -55,17 +56,7 @@ add_message_files(
 	DIRECTORY
 	msg
 	FILES
-	Num.msg
-)
-
-## Generate services in the 'srv' folder
-add_service_files(
-	DIRECTORY
-	srv
-	FILES
-	AddTwoInts.srv
-	#Service1.srv
-	# Service2.srv
+	Test.msg
 )
 
 ## Generate actions in the 'action' folder
@@ -79,7 +70,7 @@ add_service_files(
 generate_messages(
   DEPENDENCIES
   std_msgs
-)
+  )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -112,7 +103,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES pub_sub
+#  LIBRARIES simple_s
 #  CATKIN_DEPENDS roscpp std_msgs
 #  DEPENDS system_lib
 )
@@ -130,7 +121,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/pub_sub.cpp
+#   src/${PROJECT_NAME}/simple_s.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -210,7 +201,7 @@ add_dependencies(listener beginner_tutorials_generate_messages_cpp)
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_pub_sub.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_simple_s.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

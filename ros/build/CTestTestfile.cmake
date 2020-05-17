@@ -7,5 +7,5 @@
 subdirs("gtest")
 subdirs("beginner_tutorials")
 subdirs("example_pkg")
-subdirs("pub_sub")
+subdirs("simple_s")
 subdirs("detect_s")
