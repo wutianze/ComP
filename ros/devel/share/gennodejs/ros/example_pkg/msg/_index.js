@@ -1,8 +1,8 @@
 
 "use strict";
 
-let Num = require('./Num.js');
+let Test = require('./Test.js');
 
 module.exports = {
-  Num: Num,
+  Test: Test,
 };

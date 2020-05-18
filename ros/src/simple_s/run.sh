@@ -22,9 +22,9 @@ done
 sleep 3
 #rosnode kill s0
 kill -s SIGINT `ps x | grep listener | grep -v grep | awk '{print $1}'`
-filesname=$(ls "/ros_test/log/multi")
-for f in $filesname
-do
-	echo $f
-	cat /ros_test/log/multi/$f
-done
+#filesname=$(ls "/ros_test/log/multi")
+#for f in $filesname
+#do
+#	echo $f
+#	#cat /ros_test/log/multi/$f
+#done

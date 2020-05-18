@@ -14,6 +14,7 @@ void timerCallback(const ros::TimerEvent& e){
 	//msg.timestamp = ros::Time::now().toNSec();
 	msg.header.frame_id = to_string(count_num);
 	msg.header.stamp = ros::Time::now();
+	//ROS_INFO("time send:%d",msg.header.stamp.nsec);
 	publisher.publish(msg);
 	//ROS_INFO("publisher one");
 }

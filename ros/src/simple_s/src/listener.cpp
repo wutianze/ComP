@@ -51,7 +51,7 @@ void mySigIntHandler(int sig){
 		cout<<"result:"<<i<<endl;
 		for(unsigned int j=0;j<res.size();j++){
 			writer<<res[j]<<endl;
-			//cout<<res[j]<<endl;
+			cout<<res[j]<<endl;
 		}
 		writer<<endl;
 	}
@@ -62,7 +62,7 @@ void chatterCallback1(const simple_s::Test::ConstPtr& msg)
 {
 	latency[0].push_back((ros::Time::now() - msg->header.stamp).toNSec());
 	count_num++;
-	//ROS_INFO("receive one");
+	//ROS_INFO("msg.stamp:%d",msg->header.stamp.nsec);
 }
 void chatterCallback2(const simple_s::Test::ConstPtr& msg0,const simple_s::Test::ConstPtr& msg1)
 {

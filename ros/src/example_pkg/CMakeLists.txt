@@ -45,7 +45,7 @@ find_package(catkin REQUIRED COMPONENTS nodelet roscpp rospy std_msgs message_ge
 ## Generate messages in the 'msg' folder
 add_message_files(
   FILES
-  Num.msg
+  Test.msg
   #   Message1.msg
 #   Message2.msg
 )
