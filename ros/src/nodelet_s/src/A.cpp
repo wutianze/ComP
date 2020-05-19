@@ -3,20 +3,20 @@
 #include <ros/ros.h>
 #include <stdio.h>
 #include <pthread.h>
-#include "example_pkg/Test.h"
+#include "nodelet_s/Test.h"
 #include <std_msgs/String.h>
 #include <fstream>
 int hz;
 int ssize;
 std::string channel_name;
 int count_num;
-namespace example_pkg
+namespace nodelet_s
 {
 	class A:public nodelet::Nodelet{
 		public:
 			ros::Publisher pub;
 			//pthread_t tid;
-						ros::Timer timer_;
+			ros::Timer timer_;
 			~A(){
 				//pthread_join(tid,NULL);
 			}
@@ -63,4 +63,4 @@ namespace example_pkg
 	};
 }
 // watch the capitalization carefully
-PLUGINLIB_EXPORT_CLASS(example_pkg::A, nodelet::Nodelet)
+PLUGINLIB_EXPORT_CLASS(nodelet_s::A, nodelet::Nodelet)

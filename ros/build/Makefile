@@ -671,7 +671,7 @@ B : cmake_check_build_system
 
 # fast build rule for target.
 B/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/B.dir/build.make example_pkg/CMakeFiles/B.dir/build
+	$(MAKE) -f nodelet_s/CMakeFiles/B.dir/build.make nodelet_s/CMakeFiles/B.dir/build
 .PHONY : B/fast
 
 #=============================================================================
@@ -684,73 +684,60 @@ A : cmake_check_build_system
 
 # fast build rule for target.
 A/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/A.dir/build.make example_pkg/CMakeFiles/A.dir/build
+	$(MAKE) -f nodelet_s/CMakeFiles/A.dir/build.make nodelet_s/CMakeFiles/A.dir/build
 .PHONY : A/fast
 
 #=============================================================================
-# Target rules for targets named example_pkg_genpy
+# Target rules for targets named nodelet_s_genpy
 
 # Build rule for target.
-example_pkg_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg_genpy
-.PHONY : example_pkg_genpy
+nodelet_s_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_s_genpy
+.PHONY : nodelet_s_genpy
 
 # fast build rule for target.
-example_pkg_genpy/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg_genpy.dir/build.make example_pkg/CMakeFiles/example_pkg_genpy.dir/build
-.PHONY : example_pkg_genpy/fast
+nodelet_s_genpy/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_s_genpy.dir/build.make nodelet_s/CMakeFiles/nodelet_s_genpy.dir/build
+.PHONY : nodelet_s_genpy/fast
 
 #=============================================================================
-# Target rules for targets named example_pkg_generate_messages_py
+# Target rules for targets named nodelet_s_gennodejs
 
 # Build rule for target.
-example_pkg_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg_generate_messages_py
-.PHONY : example_pkg_generate_messages_py
+nodelet_s_gennodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_s_gennodejs
+.PHONY : nodelet_s_gennodejs
 
 # fast build rule for target.
-example_pkg_generate_messages_py/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg_generate_messages_py.dir/build.make example_pkg/CMakeFiles/example_pkg_generate_messages_py.dir/build
-.PHONY : example_pkg_generate_messages_py/fast
+nodelet_s_gennodejs/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_s_gennodejs.dir/build.make nodelet_s/CMakeFiles/nodelet_s_gennodejs.dir/build
+.PHONY : nodelet_s_gennodejs/fast
 
 #=============================================================================
-# Target rules for targets named example_pkg_genlisp
+# Target rules for targets named nodelet_s_generate_messages_nodejs
 
 # Build rule for target.
-example_pkg_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg_genlisp
-.PHONY : example_pkg_genlisp
+nodelet_s_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_s_generate_messages_nodejs
+.PHONY : nodelet_s_generate_messages_nodejs
 
 # fast build rule for target.
-example_pkg_genlisp/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg_genlisp.dir/build.make example_pkg/CMakeFiles/example_pkg_genlisp.dir/build
-.PHONY : example_pkg_genlisp/fast
+nodelet_s_generate_messages_nodejs/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_s_generate_messages_nodejs.dir/build.make nodelet_s/CMakeFiles/nodelet_s_generate_messages_nodejs.dir/build
+.PHONY : nodelet_s_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named example_pkg_generate_messages_lisp
+# Target rules for targets named nodelet_s_generate_messages_lisp
 
 # Build rule for target.
-example_pkg_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg_generate_messages_lisp
-.PHONY : example_pkg_generate_messages_lisp
+nodelet_s_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_s_generate_messages_lisp
+.PHONY : nodelet_s_generate_messages_lisp
 
 # fast build rule for target.
-example_pkg_generate_messages_lisp/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg_generate_messages_lisp.dir/build.make example_pkg/CMakeFiles/example_pkg_generate_messages_lisp.dir/build
-.PHONY : example_pkg_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named example_pkg_gennodejs
-
-# Build rule for target.
-example_pkg_gennodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg_gennodejs
-.PHONY : example_pkg_gennodejs
-
-# fast build rule for target.
-example_pkg_gennodejs/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg_gennodejs.dir/build.make example_pkg/CMakeFiles/example_pkg_gennodejs.dir/build
-.PHONY : example_pkg_gennodejs/fast
+nodelet_s_generate_messages_lisp/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_s_generate_messages_lisp.dir/build.make nodelet_s/CMakeFiles/nodelet_s_generate_messages_lisp.dir/build
+.PHONY : nodelet_s_generate_messages_lisp/fast
 
 #=============================================================================
 # Target rules for targets named nodelet_generate_messages_lisp
@@ -762,21 +749,8 @@ nodelet_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 nodelet_generate_messages_lisp/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make example_pkg/CMakeFiles/nodelet_generate_messages_lisp.dir/build
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make nodelet_s/CMakeFiles/nodelet_generate_messages_lisp.dir/build
 .PHONY : nodelet_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named example_pkg_generate_messages_nodejs
-
-# Build rule for target.
-example_pkg_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg_generate_messages_nodejs
-.PHONY : example_pkg_generate_messages_nodejs
-
-# fast build rule for target.
-example_pkg_generate_messages_nodejs/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg_generate_messages_nodejs.dir/build.make example_pkg/CMakeFiles/example_pkg_generate_messages_nodejs.dir/build
-.PHONY : example_pkg_generate_messages_nodejs/fast
 
 #=============================================================================
 # Target rules for targets named bond_generate_messages_cpp
@@ -788,7 +762,7 @@ bond_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 bond_generate_messages_cpp/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/bond_generate_messages_cpp.dir/build.make example_pkg/CMakeFiles/bond_generate_messages_cpp.dir/build
+	$(MAKE) -f nodelet_s/CMakeFiles/bond_generate_messages_cpp.dir/build.make nodelet_s/CMakeFiles/bond_generate_messages_cpp.dir/build
 .PHONY : bond_generate_messages_cpp/fast
 
 #=============================================================================
@@ -801,8 +775,60 @@ nodelet_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 nodelet_generate_messages_nodejs/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/nodelet_generate_messages_nodejs.dir/build.make example_pkg/CMakeFiles/nodelet_generate_messages_nodejs.dir/build
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_generate_messages_nodejs.dir/build.make nodelet_s/CMakeFiles/nodelet_generate_messages_nodejs.dir/build
 .PHONY : nodelet_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named nodelet_s_generate_messages_py
+
+# Build rule for target.
+nodelet_s_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_s_generate_messages_py
+.PHONY : nodelet_s_generate_messages_py
+
+# fast build rule for target.
+nodelet_s_generate_messages_py/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_s_generate_messages_py.dir/build.make nodelet_s/CMakeFiles/nodelet_s_generate_messages_py.dir/build
+.PHONY : nodelet_s_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named nodelet_generate_messages_cpp
+
+# Build rule for target.
+nodelet_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_cpp
+.PHONY : nodelet_generate_messages_cpp
+
+# fast build rule for target.
+nodelet_generate_messages_cpp/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make nodelet_s/CMakeFiles/nodelet_generate_messages_cpp.dir/build
+.PHONY : nodelet_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named nodelet_s_genlisp
+
+# Build rule for target.
+nodelet_s_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_s_genlisp
+.PHONY : nodelet_s_genlisp
+
+# fast build rule for target.
+nodelet_s_genlisp/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_s_genlisp.dir/build.make nodelet_s/CMakeFiles/nodelet_s_genlisp.dir/build
+.PHONY : nodelet_s_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named nodelet_s_generate_messages
+
+# Build rule for target.
+nodelet_s_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_s_generate_messages
+.PHONY : nodelet_s_generate_messages
+
+# fast build rule for target.
+nodelet_s_generate_messages/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_s_generate_messages.dir/build.make nodelet_s/CMakeFiles/nodelet_s_generate_messages.dir/build
+.PHONY : nodelet_s_generate_messages/fast
 
 #=============================================================================
 # Target rules for targets named bond_generate_messages_eus
@@ -814,7 +840,7 @@ bond_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 bond_generate_messages_eus/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/bond_generate_messages_eus.dir/build.make example_pkg/CMakeFiles/bond_generate_messages_eus.dir/build
+	$(MAKE) -f nodelet_s/CMakeFiles/bond_generate_messages_eus.dir/build.make nodelet_s/CMakeFiles/bond_generate_messages_eus.dir/build
 .PHONY : bond_generate_messages_eus/fast
 
 #=============================================================================
@@ -827,8 +853,34 @@ bond_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 bond_generate_messages_py/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/bond_generate_messages_py.dir/build.make example_pkg/CMakeFiles/bond_generate_messages_py.dir/build
+	$(MAKE) -f nodelet_s/CMakeFiles/bond_generate_messages_py.dir/build.make nodelet_s/CMakeFiles/bond_generate_messages_py.dir/build
 .PHONY : bond_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named nodelet_generate_messages_eus
+
+# Build rule for target.
+nodelet_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_eus
+.PHONY : nodelet_generate_messages_eus
+
+# fast build rule for target.
+nodelet_generate_messages_eus/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_generate_messages_eus.dir/build.make nodelet_s/CMakeFiles/nodelet_generate_messages_eus.dir/build
+.PHONY : nodelet_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named nodelet_s_gencpp
+
+# Build rule for target.
+nodelet_s_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_s_gencpp
+.PHONY : nodelet_s_gencpp
+
+# fast build rule for target.
+nodelet_s_gencpp/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_s_gencpp.dir/build.make nodelet_s/CMakeFiles/nodelet_s_gencpp.dir/build
+.PHONY : nodelet_s_gencpp/fast
 
 #=============================================================================
 # Target rules for targets named bond_generate_messages_lisp
@@ -840,7 +892,7 @@ bond_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 bond_generate_messages_lisp/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/bond_generate_messages_lisp.dir/build.make example_pkg/CMakeFiles/bond_generate_messages_lisp.dir/build
+	$(MAKE) -f nodelet_s/CMakeFiles/bond_generate_messages_lisp.dir/build.make nodelet_s/CMakeFiles/bond_generate_messages_lisp.dir/build
 .PHONY : bond_generate_messages_lisp/fast
 
 #=============================================================================
@@ -853,7 +905,7 @@ nodelet_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 nodelet_generate_messages_py/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/nodelet_generate_messages_py.dir/build.make example_pkg/CMakeFiles/nodelet_generate_messages_py.dir/build
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_generate_messages_py.dir/build.make nodelet_s/CMakeFiles/nodelet_generate_messages_py.dir/build
 .PHONY : nodelet_generate_messages_py/fast
 
 #=============================================================================
@@ -866,112 +918,60 @@ bond_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 bond_generate_messages_nodejs/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/bond_generate_messages_nodejs.dir/build.make example_pkg/CMakeFiles/bond_generate_messages_nodejs.dir/build
+	$(MAKE) -f nodelet_s/CMakeFiles/bond_generate_messages_nodejs.dir/build.make nodelet_s/CMakeFiles/bond_generate_messages_nodejs.dir/build
 .PHONY : bond_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named example_pkg_generate_messages
+# Target rules for targets named _nodelet_s_generate_messages_check_deps_Test
 
 # Build rule for target.
-example_pkg_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg_generate_messages
-.PHONY : example_pkg_generate_messages
+_nodelet_s_generate_messages_check_deps_Test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _nodelet_s_generate_messages_check_deps_Test
+.PHONY : _nodelet_s_generate_messages_check_deps_Test
 
 # fast build rule for target.
-example_pkg_generate_messages/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg_generate_messages.dir/build.make example_pkg/CMakeFiles/example_pkg_generate_messages.dir/build
-.PHONY : example_pkg_generate_messages/fast
+_nodelet_s_generate_messages_check_deps_Test/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/_nodelet_s_generate_messages_check_deps_Test.dir/build.make nodelet_s/CMakeFiles/_nodelet_s_generate_messages_check_deps_Test.dir/build
+.PHONY : _nodelet_s_generate_messages_check_deps_Test/fast
 
 #=============================================================================
-# Target rules for targets named _example_pkg_generate_messages_check_deps_Test
+# Target rules for targets named nodelet_s_generate_messages_cpp
 
 # Build rule for target.
-_example_pkg_generate_messages_check_deps_Test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _example_pkg_generate_messages_check_deps_Test
-.PHONY : _example_pkg_generate_messages_check_deps_Test
+nodelet_s_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_s_generate_messages_cpp
+.PHONY : nodelet_s_generate_messages_cpp
 
 # fast build rule for target.
-_example_pkg_generate_messages_check_deps_Test/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/_example_pkg_generate_messages_check_deps_Test.dir/build.make example_pkg/CMakeFiles/_example_pkg_generate_messages_check_deps_Test.dir/build
-.PHONY : _example_pkg_generate_messages_check_deps_Test/fast
+nodelet_s_generate_messages_cpp/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_s_generate_messages_cpp.dir/build.make nodelet_s/CMakeFiles/nodelet_s_generate_messages_cpp.dir/build
+.PHONY : nodelet_s_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named example_pkg_gencpp
+# Target rules for targets named nodelet_s_geneus
 
 # Build rule for target.
-example_pkg_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg_gencpp
-.PHONY : example_pkg_gencpp
+nodelet_s_geneus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_s_geneus
+.PHONY : nodelet_s_geneus
 
 # fast build rule for target.
-example_pkg_gencpp/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg_gencpp.dir/build.make example_pkg/CMakeFiles/example_pkg_gencpp.dir/build
-.PHONY : example_pkg_gencpp/fast
+nodelet_s_geneus/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_s_geneus.dir/build.make nodelet_s/CMakeFiles/nodelet_s_geneus.dir/build
+.PHONY : nodelet_s_geneus/fast
 
 #=============================================================================
-# Target rules for targets named example_pkg_generate_messages_eus
+# Target rules for targets named nodelet_s_generate_messages_eus
 
 # Build rule for target.
-example_pkg_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg_generate_messages_eus
-.PHONY : example_pkg_generate_messages_eus
+nodelet_s_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_s_generate_messages_eus
+.PHONY : nodelet_s_generate_messages_eus
 
 # fast build rule for target.
-example_pkg_generate_messages_eus/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg_generate_messages_eus.dir/build.make example_pkg/CMakeFiles/example_pkg_generate_messages_eus.dir/build
-.PHONY : example_pkg_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named nodelet_generate_messages_eus
-
-# Build rule for target.
-nodelet_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_eus
-.PHONY : nodelet_generate_messages_eus
-
-# fast build rule for target.
-nodelet_generate_messages_eus/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/nodelet_generate_messages_eus.dir/build.make example_pkg/CMakeFiles/nodelet_generate_messages_eus.dir/build
-.PHONY : nodelet_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named example_pkg_geneus
-
-# Build rule for target.
-example_pkg_geneus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg_geneus
-.PHONY : example_pkg_geneus
-
-# fast build rule for target.
-example_pkg_geneus/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg_geneus.dir/build.make example_pkg/CMakeFiles/example_pkg_geneus.dir/build
-.PHONY : example_pkg_geneus/fast
-
-#=============================================================================
-# Target rules for targets named nodelet_generate_messages_cpp
-
-# Build rule for target.
-nodelet_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_cpp
-.PHONY : nodelet_generate_messages_cpp
-
-# fast build rule for target.
-nodelet_generate_messages_cpp/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make example_pkg/CMakeFiles/nodelet_generate_messages_cpp.dir/build
-.PHONY : nodelet_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named example_pkg_generate_messages_cpp
-
-# Build rule for target.
-example_pkg_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 example_pkg_generate_messages_cpp
-.PHONY : example_pkg_generate_messages_cpp
-
-# fast build rule for target.
-example_pkg_generate_messages_cpp/fast:
-	$(MAKE) -f example_pkg/CMakeFiles/example_pkg_generate_messages_cpp.dir/build.make example_pkg/CMakeFiles/example_pkg_generate_messages_cpp.dir/build
-.PHONY : example_pkg_generate_messages_cpp/fast
+nodelet_s_generate_messages_eus/fast:
+	$(MAKE) -f nodelet_s/CMakeFiles/nodelet_s_generate_messages_eus.dir/build.make nodelet_s/CMakeFiles/nodelet_s_generate_messages_eus.dir/build
+.PHONY : nodelet_s_generate_messages_eus/fast
 
 #=============================================================================
 # Target rules for targets named simple_s_geneus
@@ -1611,28 +1611,28 @@ help:
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... B"
 	@echo "... A"
-	@echo "... example_pkg_genpy"
-	@echo "... example_pkg_generate_messages_py"
-	@echo "... example_pkg_genlisp"
-	@echo "... example_pkg_generate_messages_lisp"
-	@echo "... example_pkg_gennodejs"
+	@echo "... nodelet_s_genpy"
+	@echo "... nodelet_s_gennodejs"
+	@echo "... nodelet_s_generate_messages_nodejs"
+	@echo "... nodelet_s_generate_messages_lisp"
 	@echo "... nodelet_generate_messages_lisp"
-	@echo "... example_pkg_generate_messages_nodejs"
 	@echo "... bond_generate_messages_cpp"
 	@echo "... nodelet_generate_messages_nodejs"
+	@echo "... nodelet_s_generate_messages_py"
+	@echo "... nodelet_generate_messages_cpp"
+	@echo "... nodelet_s_genlisp"
+	@echo "... nodelet_s_generate_messages"
 	@echo "... bond_generate_messages_eus"
 	@echo "... bond_generate_messages_py"
+	@echo "... nodelet_generate_messages_eus"
+	@echo "... nodelet_s_gencpp"
 	@echo "... bond_generate_messages_lisp"
 	@echo "... nodelet_generate_messages_py"
 	@echo "... bond_generate_messages_nodejs"
-	@echo "... example_pkg_generate_messages"
-	@echo "... _example_pkg_generate_messages_check_deps_Test"
-	@echo "... example_pkg_gencpp"
-	@echo "... example_pkg_generate_messages_eus"
-	@echo "... nodelet_generate_messages_eus"
-	@echo "... example_pkg_geneus"
-	@echo "... nodelet_generate_messages_cpp"
-	@echo "... example_pkg_generate_messages_cpp"
+	@echo "... _nodelet_s_generate_messages_check_deps_Test"
+	@echo "... nodelet_s_generate_messages_cpp"
+	@echo "... nodelet_s_geneus"
+	@echo "... nodelet_s_generate_messages_eus"
 	@echo "... simple_s_geneus"
 	@echo "... talker"
 	@echo "... simple_s_gencpp"

@@ -8,7 +8,7 @@
 #include <message_filters/subscriber.h>
 #include <message_filters/synchronizer.h>
 #include <message_filters/sync_policies/approximate_time.h>
-#include "example_pkg/Test.h"
+#include "nodelet_s/Test.h"
 using namespace std;
 using namespace message_filters;
 vector<vector<uint64_t>>latency;
@@ -39,16 +39,16 @@ vector<double>analyze_latency(vector<uint64_t>&p){
 				return res;
 			}
 
-void callback2(const example_pkg::Test::ConstPtr& msg0,const example_pkg::Test::ConstPtr& msg1)
+void callback2(const nodelet_s::Test::ConstPtr& msg0,const nodelet_s::Test::ConstPtr& msg1)
 			{
 				ros::Time rec_time = ros::Time::now();
 				latency[0].push_back((rec_time - msg0->header.stamp).toNSec());
 				latency[1].push_back((rec_time - msg1->header.stamp).toNSec());
 				count_num++;
-				ROS_INFO("receive two");
+				//ROS_INFO("receive two");
 			}
 
-namespace example_pkg
+namespace nodelet_s
 {
 
 	class B:public nodelet::Nodelet{
@@ -58,9 +58,9 @@ namespace example_pkg
 			int channel_num;
 			//bool flag = true;
 			ros::Subscriber sub;
-			message_filters::Subscriber<example_pkg::Test> *sub1;
-			message_filters::Subscriber<example_pkg::Test> *sub2;
-			Synchronizer<sync_policies::ApproximateTime<example_pkg::Test,example_pkg::Test>> *sync;
+			message_filters::Subscriber<nodelet_s::Test> *sub1;
+			message_filters::Subscriber<nodelet_s::Test> *sub2;
+			Synchronizer<sync_policies::ApproximateTime<nodelet_s::Test,nodelet_s::Test>> *sync;
 
 
 			//vector<vector<uint64_t>>latency;
@@ -78,7 +78,7 @@ namespace example_pkg
 			}
 			void callback(const Test::ConstPtr& input)
 			{
-				ROS_INFO("receive one");
+				//ROS_INFO("receive one");
 				count_num++;
 				/*if(flag){
 				  init_time=ros::Time::now().toSec();
@@ -102,31 +102,24 @@ namespace example_pkg
 				ros::NodeHandle& private_nh = getPrivateNodeHandle();
 				private_nh.getParam("channel_name",channel_name);
 				private_nh.getParam("channel_num",channel_num);
-					ROS_INFO("channel num %d",channel_num);
+				ROS_INFO("channel num %d",channel_num);
 				if(channel_num == 1){
 				sub = private_nh.subscribe("/A0/"+channel_name, 1, &B::callback, this);    
 				}else{
-				//message_filters::Subscriber<example_pkg::Test> sub1(private_nh, "/A0/"+channel_name, 1);
-				//message_filters::Subscriber<example_pkg::Test> sub2(private_nh, "/A1/"+channel_name, 1);
-				//Synchronizer<sync_policies::ApproximateTime<example_pkg::Test,example_pkg::Test>>sync(sync_policies::ApproximateTime<example_pkg::Test,example_pkg::Test>(10),sub1,sub2);
-				sub1 = new message_filters::Subscriber<example_pkg::Test>(private_nh, "/A0/"+channel_name, 1);
-				sub2 = new message_filters::Subscriber<example_pkg::Test>(private_nh, "/A1/"+channel_name, 1);
-				sync = new Synchronizer<sync_policies::ApproximateTime<example_pkg::Test,example_pkg::Test>>(sync_policies::ApproximateTime<example_pkg::Test,example_pkg::Test>(10),*sub1,*sub2);
+				//message_filters::Subscriber<nodelet_s::Test> sub1(private_nh, "/A0/"+channel_name, 1);
+				//message_filters::Subscriber<nodelet_s::Test> sub2(private_nh, "/A1/"+channel_name, 1);
+				//Synchronizer<sync_policies::ApproximateTime<nodelet_s::Test,nodelet_s::Test>>sync(sync_policies::ApproximateTime<nodelet_s::Test,nodelet_s::Test>(10),sub1,sub2);
+				sub1 = new message_filters::Subscriber<nodelet_s::Test>(private_nh, "/A0/"+channel_name, 1);
+				sub2 = new message_filters::Subscriber<nodelet_s::Test>(private_nh, "/A1/"+channel_name, 1);
+				sync = new Synchronizer<sync_policies::ApproximateTime<nodelet_s::Test,nodelet_s::Test>>(sync_policies::ApproximateTime<nodelet_s::Test,nodelet_s::Test>(10),*sub1,*sub2);
 				sync->registerCallback(boost::bind(&callback2, _1,_2));
 				}
 				for(int i=0;i<channel_num;i++){
 				vector<uint64_t>tmp;
 				latency.push_back(tmp);
 				}
-								//writer.open("/ros_test/log/multi/"+record,std::ios::trunc|std::ios::out);
-			
-				//writer.close();
 			}
-
-			
-			
-
 	};}
 
 // watch the capitalization carefully
-PLUGINLIB_EXPORT_CLASS(example_pkg::B, nodelet::Nodelet)
+PLUGINLIB_EXPORT_CLASS(nodelet_s::B, nodelet::Nodelet)
