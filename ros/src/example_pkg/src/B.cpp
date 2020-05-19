@@ -5,11 +5,14 @@
 #include <fstream>
 #include <vector>
 #include<numeric>
+#include <message_filters/subscriber.h>
+#include <message_filters/synchronizer.h>
+#include <message_filters/sync_policies/approximate_time.h>
 #include "example_pkg/Test.h"
 using namespace std;
-void a(vector<uint64_t>&p){
-cout<<"in a:"<<p.size();
-}
+using namespace message_filters;
+vector<vector<uint64_t>>latency;
+uint64_t count_num = 0;	
 vector<double>analyze_latency(vector<uint64_t>&p){
 				vector<double>res;
 				sort(p.begin(),p.end());
@@ -36,22 +39,31 @@ vector<double>analyze_latency(vector<uint64_t>&p){
 				return res;
 			}
 
+void callback2(const example_pkg::Test::ConstPtr& msg0,const example_pkg::Test::ConstPtr& msg1)
+			{
+				ros::Time rec_time = ros::Time::now();
+				latency[0].push_back((rec_time - msg0->header.stamp).toNSec());
+				latency[1].push_back((rec_time - msg1->header.stamp).toNSec());
+				count_num++;
+				ROS_INFO("receive two");
+			}
+
 namespace example_pkg
 {
 
 	class B:public nodelet::Nodelet{
 		private:
-			std::fstream writer;
-			ros::Subscriber sub;
-			uint64_t count = 0;	
-			uint64_t max_id = 0;
-			std::string record;
+			//std::fstream writer;
 			std::string channel_name;
-			double init_time;
+			int channel_num;
 			//bool flag = true;
+			ros::Subscriber sub;
+			message_filters::Subscriber<example_pkg::Test> *sub1;
+			message_filters::Subscriber<example_pkg::Test> *sub2;
+			Synchronizer<sync_policies::ApproximateTime<example_pkg::Test,example_pkg::Test>> *sync;
 
-			vector<vector<uint64_t>>latency;
 
+			//vector<vector<uint64_t>>latency;
 			
 			~B(){
 				std::cout<<"release B"<<latency.size()<<endl;
@@ -64,37 +76,56 @@ namespace example_pkg
 					}
 				}
 			}
-			void onInit()
-			{
-				NODELET_DEBUG("Initializing nodelet B");
-				ros::NodeHandle& private_nh = getPrivateNodeHandle();
-				private_nh.getParam("channel_name",channel_name);
-				private_nh.getParam("record",record);
-				sub = private_nh.subscribe(channel_name, 1, &B::callback, this);    
-				vector<uint64_t>tmp;
-				latency.push_back(tmp);
-				//writer.open("/ros_test/log/multi/"+record,std::ios::trunc|std::ios::out);
-				//writer.close();
-			}
-
 			void callback(const Test::ConstPtr& input)
 			{
 				ROS_INFO("receive one");
-				count++;
+				count_num++;
 				/*if(flag){
-					init_time=ros::Time::now().toSec();
-					flag = false;
-				}
-				*/
-				//ROS_INFO("%lf",double(count)/(ros::Time::now().toSec()-init_time));
+				  init_time=ros::Time::now().toSec();
+				  flag = false;
+				  }
+				  */
+				//ROS_INFO("%lf",double(count_num)/(ros::Time::now().toSec()-init_time));
 				latency[0].push_back((ros::Time::now() - input->header.stamp).toNSec());
 				/*uint64_t lan = ros::Time::now().toNSec()-input->timestamp;
 				  writer.open("/ros_test/log/multi/"+record,std::ios::app|std::ios::out);
 				  writer<<lan<<std::endl;
 				  writer.close();
-				  count++;
-				  ROS_INFO("%s:loss rate:%f",record.c_str(),double(input->id-count)/double(input->id));*/
+				  count_num++;
+				  ROS_INFO("%s:loss rate:%f",record.c_str(),double(input->id-count_num)/double(input->id));*/
 			}
+			
+			
+			void onInit()
+			{
+				NODELET_DEBUG("Initializing nodelet B");
+				ros::NodeHandle& private_nh = getPrivateNodeHandle();
+				private_nh.getParam("channel_name",channel_name);
+				private_nh.getParam("channel_num",channel_num);
+					ROS_INFO("channel num %d",channel_num);
+				if(channel_num == 1){
+				sub = private_nh.subscribe("/A0/"+channel_name, 1, &B::callback, this);    
+				}else{
+				//message_filters::Subscriber<example_pkg::Test> sub1(private_nh, "/A0/"+channel_name, 1);
+				//message_filters::Subscriber<example_pkg::Test> sub2(private_nh, "/A1/"+channel_name, 1);
+				//Synchronizer<sync_policies::ApproximateTime<example_pkg::Test,example_pkg::Test>>sync(sync_policies::ApproximateTime<example_pkg::Test,example_pkg::Test>(10),sub1,sub2);
+				sub1 = new message_filters::Subscriber<example_pkg::Test>(private_nh, "/A0/"+channel_name, 1);
+				sub2 = new message_filters::Subscriber<example_pkg::Test>(private_nh, "/A1/"+channel_name, 1);
+				sync = new Synchronizer<sync_policies::ApproximateTime<example_pkg::Test,example_pkg::Test>>(sync_policies::ApproximateTime<example_pkg::Test,example_pkg::Test>(10),*sub1,*sub2);
+				sync->registerCallback(boost::bind(&callback2, _1,_2));
+				}
+				for(int i=0;i<channel_num;i++){
+				vector<uint64_t>tmp;
+				latency.push_back(tmp);
+				}
+								//writer.open("/ros_test/log/multi/"+record,std::ios::trunc|std::ios::out);
+			
+				//writer.close();
+			}
+
+			
+			
+
 	};}
 
 // watch the capitalization carefully
