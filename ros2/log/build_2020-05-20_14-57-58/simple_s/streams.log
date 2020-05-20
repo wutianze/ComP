@@ -1,0 +1,34 @@
+[0.023s] Invoking command in '/ros2_test/AD_Middle_Test/ros2/build/simple_s': AMENT_PREFIX_PATH=/ros2_test/AD_Middle_Test/ros2/install/test_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/ros2_test/AD_Middle_Test/ros2/install/test_interfaces:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/build/simple_s -- -j40 -l40
+[0.082s] [35m[1mScanning dependencies of target listener[0m
+[0.112s] [ 50%] Built target talker
+[0.119s] [ 75%] [32mBuilding CXX object CMakeFiles/listener.dir/src/listener.cpp.o[0m
+[1.983s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In member function ‘[01m[Kvoid MinimalSubscriber::topic_callback(test_interfaces::msg::Test_<std::allocator<void> >::SharedPtr) const[m[K’:
+[1.983s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:67:4:[m[K [01;31m[Kerror: [m[Kincrement of member ‘[01m[KMinimalSubscriber::count_[m[K’ in read-only object
+[1.983s]    67 |    [01;31m[Kcount_[m[K++;
+[1.984s]       |    [01;31m[K^~~~~~[m[K
+[2.520s] In file included from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/c++allocator.h:33[m[K,
+[2.520s]                  from [01m[K/usr/include/c++/9/bits/allocator.h:46[m[K,
+[2.520s]                  from [01m[K/usr/include/c++/9/memory:63[m[K,
+[2.520s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:1[m[K:
+[2.520s] /usr/include/c++/9/ext/new_allocator.h: In instantiation of ‘[01m[Kvoid __gnu_cxx::new_allocator<_Tp>::construct(_Up*, _Args&& ...) [with _Up = MinimalSubscriber; _Args = {}; _Tp = MinimalSubscriber][m[K’:
+[2.520s] [01m[K/usr/include/c++/9/bits/alloc_traits.h:482:2:[m[K   required from ‘[01m[Kstatic void std::allocator_traits<std::allocator<_Tp1> >::construct(std::allocator_traits<std::allocator<_Tp1> >::allocator_type&, _Up*, _Args&& ...) [with _Up = MinimalSubscriber; _Args = {}; _Tp = MinimalSubscriber; std::allocator_traits<std::allocator<_Tp1> >::allocator_type = std::allocator<MinimalSubscriber>][m[K’
+[2.521s] [01m[K/usr/include/c++/9/bits/shared_ptr_base.h:548:39:[m[K   required from ‘[01m[Kstd::_Sp_counted_ptr_inplace<_Tp, _Alloc, _Lp>::_Sp_counted_ptr_inplace(_Alloc, _Args&& ...) [with _Args = {}; _Tp = MinimalSubscriber; _Alloc = std::allocator<MinimalSubscriber>; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.521s] [01m[K/usr/include/c++/9/bits/shared_ptr_base.h:679:16:[m[K   required from ‘[01m[Kstd::__shared_count<_Lp>::__shared_count(_Tp*&, std::_Sp_alloc_shared_tag<_Alloc>, _Args&& ...) [with _Tp = MinimalSubscriber; _Alloc = std::allocator<MinimalSubscriber>; _Args = {}; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.521s] [01m[K/usr/include/c++/9/bits/shared_ptr_base.h:1344:71:[m[K   required from ‘[01m[Kstd::__shared_ptr<_Tp, _Lp>::__shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<MinimalSubscriber>; _Args = {}; _Tp = MinimalSubscriber; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.521s] [01m[K/usr/include/c++/9/bits/shared_ptr.h:359:59:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp>::shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<MinimalSubscriber>; _Args = {}; _Tp = MinimalSubscriber][m[K’
+[2.521s] [01m[K/usr/include/c++/9/bits/shared_ptr.h:701:14:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp> std::allocate_shared(const _Alloc&, _Args&& ...) [with _Tp = MinimalSubscriber; _Alloc = std::allocator<MinimalSubscriber>; _Args = {}][m[K’
+[2.521s] [01m[K/usr/include/c++/9/bits/shared_ptr.h:717:39:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp> std::make_shared(_Args&& ...) [with _Tp = MinimalSubscriber; _Args = {}][m[K’
+[2.521s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:77:51:[m[K   required from here
+[2.522s] [01m[K/usr/include/c++/9/ext/new_allocator.h:145:20:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KMinimalSubscriber::MinimalSubscriber()[m[K’
+[2.522s]   145 |  noexcept(noexcept([01;31m[K::new((void *)__p)[m[K
+[2.522s]       |                    [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[2.522s]   146 | [01;31m[K       _Up(std::forward<_Args>(__args)...)[m[K))
+[2.522s]       |        [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.522s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:40:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KMinimalSubscriber::MinimalSubscriber(std::string, int)[m[K’
+[2.522s]    40 |   [01;36m[KMinimalSubscriber[m[K(string channel_name, int subscriber_num)
+[2.523s]       |   [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[2.523s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:40:3:[m[K [01;36m[Knote: [m[K  candidate expects 2 arguments, 0 provided
+[3.531s] make[2]: *** [CMakeFiles/listener.dir/build.make:63: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+[3.531s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/listener.dir/all] Error 2
+[3.531s] make: *** [Makefile:141: all] Error 2
+[3.534s] Invoked command in '/ros2_test/AD_Middle_Test/ros2/build/simple_s' returned '2': AMENT_PREFIX_PATH=/ros2_test/AD_Middle_Test/ros2/install/test_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/ros2_test/AD_Middle_Test/ros2/install/test_interfaces:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/build/simple_s -- -j40 -l40
