@@ -22,6 +22,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(test_interfaces REQUIRED)
+find_package(message_filters REQUIRED)
 
 
 add_executable(talker src/talker.cpp)
@@ -31,7 +32,7 @@ ament_target_dependencies(talker rclcpp test_interfaces)
 #  $<INSTALL_INTERFACE:include>)
 
 add_executable(listener src/listener.cpp)
-ament_target_dependencies(listener rclcpp test_interfaces)
+ament_target_dependencies(listener rclcpp test_interfaces message_filters)
 
 
 install(TARGETS talker listener
