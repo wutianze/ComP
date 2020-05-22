@@ -7,6 +7,7 @@
 #include <message_filters/sync_policies/approximate_time.h>
 #include <message_filters/time_synchronizer.h>
 
+#include "rclcpp/qos.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "test_interfaces/msg/test.hpp"     // CHANGE
 //using std::placeholders::_1;
@@ -53,15 +54,18 @@ class MinimalSubscriber : public rclcpp::Node
 				vector<uint64_t>tmp;
 				latency.push_back(tmp);
 			}
+			
+			//rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data));
+			rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_default));
 			if(channel_num == 1){
 			subscription_ = this->create_subscription<test_interfaces::msg::Test>(          // CHANGE
-					channel_name, 1, std::bind(&MinimalSubscriber::topic_callback, this, std::placeholders::_1));
+					channel_name, qos_, std::bind(&MinimalSubscriber::topic_callback, this, std::placeholders::_1));
 			}else if(channel_num == 2){
-			sub1.subscribe(this,channel_name+'0');
-			sub2.subscribe(this,channel_name+'1');
+			sub1.subscribe(this,channel_name+'0',rmw_qos_profile_default);
+			sub2.subscribe(this,channel_name+'1',rmw_qos_profile_default);
 			//this->sync_ = new TimeSynchronizer<test_interfaces::msg::Test,test_interfaces::msg::Test>(sub1,sub2,10);
 			//this->sync_->registerCallback(&MinimalSubscriber::topic_callback2,this);
-			this->sync_= new Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>(sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>(10),sub1,sub2);
+			this->sync_= std::make_shared<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>>(sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>(10),sub1,sub2);
 			this->sync_->registerCallback(&MinimalSubscriber::topic_callback2,this);
 			}
 			
@@ -96,7 +100,7 @@ class MinimalSubscriber : public rclcpp::Node
 		message_filters::Subscriber<test_interfaces::msg::Test>sub1;
 		message_filters::Subscriber<test_interfaces::msg::Test>sub2;
 
-		Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>*sync_;
+		shared_ptr<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>>sync_;
 		//TimeSynchronizer<test_interfaces::msg::Test,test_interfaces::msg::Test>*sync_;
 
 };

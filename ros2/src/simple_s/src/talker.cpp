@@ -2,16 +2,19 @@
 #include <memory>
 #include "rclcpp/rclcpp.hpp"
 #include "test_interfaces/msg/test.hpp"     // CHANGE
-
+#include "rclcpp/qos.hpp"
 //using namespace std::chrono_literals;
 using namespace std;
 class MinimalPublisher : public rclcpp::Node
 {
 	public:
 		MinimalPublisher(int sleep_ms, int64_t str_size, string channel_name)
-			: Node("minimal_publisher"), count_(0)
+			: Node("minimal_publisher"),  count_(0)
 		{
-			publisher_ = this->create_publisher<test_interfaces::msg::Test>(channel_name, 1);    // CHANGE
+			//rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data));
+			rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_default));
+			
+			publisher_ = this->create_publisher<test_interfaces::msg::Test>(channel_name, qos_);    // CHANGE
 			timer_ = this->create_wall_timer(
 				std::chrono::duration<int,std::milli>(sleep_ms), std::bind(&MinimalPublisher::timer_callback, this));
 			message = test_interfaces::msg::Test();                               // CHANGE

@@ -207,6 +207,19 @@ simple_s_uninstall/fast:
 .PHONY : simple_s_uninstall/fast
 
 #=============================================================================
+# Target rules for targets named intra_pipe
+
+# Build rule for target.
+intra_pipe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 intra_pipe
+.PHONY : intra_pipe
+
+# fast build rule for target.
+intra_pipe/fast:
+	$(MAKE) -f CMakeFiles/intra_pipe.dir/build.make CMakeFiles/intra_pipe.dir/build
+.PHONY : intra_pipe/fast
+
+#=============================================================================
 # Target rules for targets named uninstall
 
 # Build rule for target.
@@ -218,6 +231,33 @@ uninstall: cmake_check_build_system
 uninstall/fast:
 	$(MAKE) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/build
 .PHONY : uninstall/fast
+
+src/intra_pipe.o: src/intra_pipe.cpp.o
+
+.PHONY : src/intra_pipe.o
+
+# target to build an object file
+src/intra_pipe.cpp.o:
+	$(MAKE) -f CMakeFiles/intra_pipe.dir/build.make CMakeFiles/intra_pipe.dir/src/intra_pipe.cpp.o
+.PHONY : src/intra_pipe.cpp.o
+
+src/intra_pipe.i: src/intra_pipe.cpp.i
+
+.PHONY : src/intra_pipe.i
+
+# target to preprocess a source file
+src/intra_pipe.cpp.i:
+	$(MAKE) -f CMakeFiles/intra_pipe.dir/build.make CMakeFiles/intra_pipe.dir/src/intra_pipe.cpp.i
+.PHONY : src/intra_pipe.cpp.i
+
+src/intra_pipe.s: src/intra_pipe.cpp.s
+
+.PHONY : src/intra_pipe.s
+
+# target to generate assembly for a file
+src/intra_pipe.cpp.s:
+	$(MAKE) -f CMakeFiles/intra_pipe.dir/build.make CMakeFiles/intra_pipe.dir/src/intra_pipe.cpp.s
+.PHONY : src/intra_pipe.cpp.s
 
 src/listener.o: src/listener.cpp.o
 
@@ -289,7 +329,11 @@ help:
 	@echo "... listener"
 	@echo "... talker"
 	@echo "... simple_s_uninstall"
+	@echo "... intra_pipe"
 	@echo "... uninstall"
+	@echo "... src/intra_pipe.o"
+	@echo "... src/intra_pipe.i"
+	@echo "... src/intra_pipe.s"
 	@echo "... src/listener.o"
 	@echo "... src/listener.i"
 	@echo "... src/listener.s"

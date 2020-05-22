@@ -34,8 +34,10 @@ ament_target_dependencies(talker rclcpp test_interfaces)
 add_executable(listener src/listener.cpp)
 ament_target_dependencies(listener rclcpp test_interfaces message_filters)
 
+add_executable(intra_pipe src/intra_pipe.cpp)
+ament_target_dependencies(intra_pipe rclcpp test_interfaces message_filters)
 
-install(TARGETS talker listener
+install(TARGETS talker listener intra_pipe
   EXPORT export_${PROJECT_NAME}
   DESTINATION lib/${PROJECT_NAME})
 
