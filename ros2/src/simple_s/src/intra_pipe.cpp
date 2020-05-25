@@ -63,13 +63,13 @@ struct Producer : public rclcpp::Node
 			}
 			static int32_t count = 0;
 			test_interfaces::msg::Test::UniquePtr msg(new test_interfaces::msg::Test());
-			msg->id = count++;
+			msg->header.frame_id = count++;
 			msg->content = string(str_size,'a');
 			printf(
 					"Published message with content size: %lu, and address: 0x%" PRIXPTR "\n", (msg->content).size(),
 					reinterpret_cast<std::uintptr_t>(msg.get()));
 			
-			msg->timestamp = this->now().nanoseconds();
+			msg->header.stamp = this->now();
 			pub_ptr->publish(std::move(msg));
 		};
 		timer_ = this->create_wall_timer(std::chrono::duration<int,std::milli>(sleep_ms), callback);
@@ -96,9 +96,12 @@ struct Consumer : public rclcpp::Node
 				channel_name,
 				10,
 				[this](test_interfaces::msg::Test::UniquePtr msg) {
-				uint64_t rec_time = this->now().nanoseconds();
-				RCLCPP_INFO(this->get_logger(), "I heard: '%d',rec_time:'%lu', content size:%lu", msg->id,rec_time,(msg->content).size());              // CHANGE
-				latency[0].push_back(rec_time-msg->timestamp);
+				//uint64_t rec_time = this->now().nanoseconds();
+				
+				rclcpp::Time rec_time = this->now();
+				RCLCPP_INFO(this->get_logger(),"heard one");
+				//RCLCPP_INFO(this->get_logger(), "I heard: '%d',rec_time:'%lu', content size:%lu", msg->id,rec_time,(msg->content).size());              // CHANGE
+				latency[0].push_back((rec_time-msg->header.stamp).nanoseconds());
 				//printf(
 				//		" Received message content size: %lu, and address: 0x%" PRIXPTR "\n", (msg->content).size(),
 				//		reinterpret_cast<std::uintptr_t>(msg.get()));
@@ -124,10 +127,10 @@ struct Consumer : public rclcpp::Node
 	}
 	void topic_callback2(const test_interfaces::msg::Test::SharedPtr msg0,const test_interfaces::msg::Test::SharedPtr msg1)
 	{
-		uint64_t rec_time = this->now().nanoseconds();
+		rclcpp::Time rec_time = this->now();
 		RCLCPP_INFO(this->get_logger(), "I heard two");              // CHANGE
-		latency[0].push_back((rec_time - msg0->timestamp));
-		latency[1].push_back((rec_time - msg1->timestamp));
+		latency[0].push_back((rec_time - msg0->header.stamp).nanoseconds());
+		latency[1].push_back((rec_time - msg1->header.stamp).nanoseconds());
 	}
 	rclcpp::Subscription<test_interfaces::msg::Test>::SharedPtr sub_;
 	message_filters::Subscriber<test_interfaces::msg::Test>sub1;
@@ -146,7 +149,8 @@ int main(int argc, char * argv[])
 	vector<shared_ptr<Producer>>pvec;
 	vector<shared_ptr<Consumer>>cvec;
 	for(int i=0;i<pub_num;i++){
-	auto producer = std::make_shared<Producer>("producer"+to_string(i),atoi(argv[2]),atoll(argv[3]),string(argv[1])+to_string(i));
+	auto producer = std::make_shared<Producer>("producer"+to_string(i),atoi(argv[2]),atoll(argv[3]),string(argv[1]));// for 1 to 1 
+	//auto producer = std::make_shared<Producer>("producer"+to_string(i),atoi(argv[2]),atoll(argv[3]),string(argv[1])+to_string(i)); //for N to 1
 	pvec.push_back(producer);
 	executor.add_node(producer);
 	}

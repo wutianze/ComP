@@ -81,9 +81,28 @@ rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: CMakeFiles/te
 rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: CMakeFiles/test_interfaces__python.dir/build.make
 rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /usr/lib/x86_64-linux-gnu/libpython3.8.so
 rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: libtest_interfaces__rosidl_typesupport_c.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/share/builtin_interfaces/cmake/../../../lib/libbuiltin_interfaces__python.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/share/std_msgs/cmake/../../../lib/libstd_msgs__python.so
 rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: libtest_interfaces__rosidl_generator_c.so
 rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/librosidl_runtime_c.so
 rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/librosidl_typesupport_c.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_generator_c.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/librosidl_typesupport_cpp.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/librosidl_typesupport_introspection_c.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/librosidl_typesupport_introspection_cpp.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/librosidl_runtime_c.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/librosidl_typesupport_c.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_generator_c.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/librosidl_typesupport_cpp.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/librosidl_typesupport_introspection_c.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/librosidl_typesupport_introspection_cpp.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_c.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_cpp.so
+rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_generator_c.so
 rosidl_generator_py/test_interfaces/libtest_interfaces__python.so: CMakeFiles/test_interfaces__python.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C shared library rosidl_generator_py/test_interfaces/libtest_interfaces__python.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_interfaces__python.dir/link.txt --verbose=$(VERBOSE)

@@ -10,6 +10,10 @@
 #include <stdint.h>
 #include <type_traits>
 
+// Include directives for member types
+// Member 'header'
+#include "std_msgs/msg/detail/header__traits.hpp"
+
 namespace rosidl_generator_traits
 {
 

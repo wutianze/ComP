@@ -270,7 +270,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3.8/site-packages/test_interfaces/test_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3.8/site-packages/test_interfaces/test_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so"
-         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces:/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces:/opt/ros/foxy/lib:"
+         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces:/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces:/opt/ros/foxy/lib:/opt/ros/foxy/share/builtin_interfaces/cmake/../../../lib:/opt/ros/foxy/share/std_msgs/cmake/../../../lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3.8/site-packages/test_interfaces/test_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so")
@@ -293,7 +293,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3.8/site-packages/test_interfaces/test_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3.8/site-packages/test_interfaces/test_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so"
-         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces:/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces:/opt/ros/foxy/lib:"
+         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces:/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces:/opt/ros/foxy/lib:/opt/ros/foxy/share/builtin_interfaces/cmake/../../../lib:/opt/ros/foxy/share/std_msgs/cmake/../../../lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3.8/site-packages/test_interfaces/test_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so")
@@ -316,7 +316,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3.8/site-packages/test_interfaces/test_interfaces_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3.8/site-packages/test_interfaces/test_interfaces_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so"
-         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces:/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces:/opt/ros/foxy/lib:"
+         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces:/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces:/opt/ros/foxy/lib:/opt/ros/foxy/share/builtin_interfaces/cmake/../../../lib:/opt/ros/foxy/share/std_msgs/cmake/../../../lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3.8/site-packages/test_interfaces/test_interfaces_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so")
@@ -339,7 +339,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libtest_interfaces__python.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libtest_interfaces__python.so"
-         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces:/opt/ros/foxy/lib:"
+         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces:/opt/ros/foxy/share/builtin_interfaces/cmake/../../../lib:/opt/ros/foxy/share/std_msgs/cmake/../../../lib:/opt/ros/foxy/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libtest_interfaces__python.so")
@@ -408,6 +408,10 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_interfaces/cmake" TYPE FILE FILES "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_cmake/rosidl_cmake-extras.cmake")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_interfaces/cmake" TYPE FILE FILES "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

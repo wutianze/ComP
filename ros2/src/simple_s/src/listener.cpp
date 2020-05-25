@@ -82,17 +82,18 @@ class MinimalSubscriber : public rclcpp::Node
 
 		void topic_callback(const test_interfaces::msg::Test::SharedPtr msg)       // CHANGE
 		{
-			uint64_t rec_time = this->now().nanoseconds();
-			RCLCPP_INFO(this->get_logger(), "I heard: '%d',rec_time:'%lu'", msg->id,rec_time);              // CHANGE
-			latency[0].push_back(rec_time-msg->timestamp);
+			uint64_t rec_la = (this->now()-(msg->header).stamp).nanoseconds();
+			RCLCPP_INFO(this->get_logger(), "I heard: '%d',rec_la:'%lu'", (msg->header).frame_id,rec_la);              // CHANGE
+			latency[0].push_back(rec_la);
 			this->count_++;
 		}
 		void topic_callback2(const test_interfaces::msg::Test::SharedPtr& msg0,const test_interfaces::msg::Test::SharedPtr& msg1)
 		{
-			uint64_t rec_time = this->now().nanoseconds();
+			rclcpp::Time rec_time = this->now();
+			//uint64_t rec_la = (this->now()-(msg->header).stamp).nanoseconds();
 			RCLCPP_INFO(this->get_logger(), "I heard two");              // CHANGE
-			latency[0].push_back((rec_time - msg0->timestamp));
-			latency[1].push_back((rec_time - msg1->timestamp));
+			latency[0].push_back((rec_time - msg0->header.stamp).nanoseconds());
+			latency[1].push_back((rec_time - msg1->header.stamp).nanoseconds());
 			this->count_++;
 		}	
 		int count_;

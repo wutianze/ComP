@@ -24,9 +24,9 @@ class MinimalPublisher : public rclcpp::Node
 	private:
 		void timer_callback()
 		{
-			message.id = this->count_++;                                        // CHANGE
-			message.timestamp = this->now().nanoseconds();
-			RCLCPP_INFO(this->get_logger(), "Publishing: '%lu'", message.timestamp);    // CHANGE
+			message.header.frame_id = this->count_++;                                        // CHANGE
+			message.header.stamp = this->now();
+			//RCLCPP_INFO(this->get_logger(), "Publishing: '%lu'", message.header.stamp);    // CHANGE
 			publisher_->publish(message);
 		}
 		rclcpp::TimerBase::SharedPtr timer_;

@@ -242,6 +242,8 @@ CMakeFiles/talker.dir/src/talker.cpp.o: /opt/ros/foxy/include/rosidl_runtime_cpp
 CMakeFiles/talker.dir/src/talker.cpp.o: /opt/ros/foxy/include/rosidl_typesupport_cpp/message_type_support.hpp
 CMakeFiles/talker.dir/src/talker.cpp.o: /opt/ros/foxy/include/rosidl_typesupport_cpp/service_type_support.hpp
 CMakeFiles/talker.dir/src/talker.cpp.o: /opt/ros/foxy/include/rosidl_typesupport_interface/macros.h
+CMakeFiles/talker.dir/src/talker.cpp.o: /opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp
+CMakeFiles/talker.dir/src/talker.cpp.o: /opt/ros/foxy/include/std_msgs/msg/detail/header__traits.hpp
 CMakeFiles/talker.dir/src/talker.cpp.o: /opt/ros/foxy/include/tracetools/config.h
 CMakeFiles/talker.dir/src/talker.cpp.o: /opt/ros/foxy/include/tracetools/tracetools.h
 CMakeFiles/talker.dir/src/talker.cpp.o: /opt/ros/foxy/include/tracetools/utils.hpp

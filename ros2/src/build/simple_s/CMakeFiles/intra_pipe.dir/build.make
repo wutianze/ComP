@@ -95,6 +95,10 @@ intra_pipe: /opt/ros/foxy/lib/librosgraph_msgs__rosidl_typesupport_c.so
 intra_pipe: /opt/ros/foxy/lib/librosgraph_msgs__rosidl_typesupport_cpp.so
 intra_pipe: /opt/ros/foxy/lib/librosgraph_msgs__rosidl_generator_c.so
 intra_pipe: /opt/ros/foxy/lib/librcl_yaml_param_parser.so
+intra_pipe: /opt/ros/foxy/lib/libstatistics_msgs__rosidl_typesupport_c.so
+intra_pipe: /opt/ros/foxy/lib/libstatistics_msgs__rosidl_typesupport_cpp.so
+intra_pipe: /opt/ros/foxy/lib/libstatistics_msgs__rosidl_generator_c.so
+intra_pipe: /opt/ros/foxy/lib/libtracetools.so
 intra_pipe: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
 intra_pipe: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
 intra_pipe: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_generator_c.so
@@ -103,10 +107,9 @@ intra_pipe: /opt/ros/foxy/lib/librosidl_typesupport_cpp.so
 intra_pipe: /opt/ros/foxy/lib/librosidl_runtime_c.so
 intra_pipe: /opt/ros/foxy/lib/librosidl_typesupport_introspection_c.so
 intra_pipe: /opt/ros/foxy/lib/librosidl_typesupport_introspection_cpp.so
-intra_pipe: /opt/ros/foxy/lib/libstatistics_msgs__rosidl_typesupport_c.so
-intra_pipe: /opt/ros/foxy/lib/libstatistics_msgs__rosidl_typesupport_cpp.so
-intra_pipe: /opt/ros/foxy/lib/libstatistics_msgs__rosidl_generator_c.so
-intra_pipe: /opt/ros/foxy/lib/libtracetools.so
+intra_pipe: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_c.so
+intra_pipe: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_cpp.so
+intra_pipe: /opt/ros/foxy/lib/libstd_msgs__rosidl_generator_c.so
 intra_pipe: /ros2_test/AD_Middle_Test/ros2/src/install/test_interfaces/lib/libtest_interfaces__rosidl_typesupport_c.so
 intra_pipe: /ros2_test/AD_Middle_Test/ros2/src/install/test_interfaces/lib/libtest_interfaces__rosidl_typesupport_cpp.so
 intra_pipe: /ros2_test/AD_Middle_Test/ros2/src/install/test_interfaces/lib/libtest_interfaces__rosidl_generator_c.so

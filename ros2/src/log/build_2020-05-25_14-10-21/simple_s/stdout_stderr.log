@@ -1,0 +1,147 @@
+[0.059s] -- Found ament_cmake: 0.8.1 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.095s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.386s] -- Found rclcpp: 0.8.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.443s] -- Found rosidl_adapter: 0.8.2 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.473s] -- Found rmw_implementation_cmake: 0.8.1 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.476s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.588s] -- Found std_msgs: 0.8.1 (/opt/ros/foxy/share/std_msgs/cmake)
+[0.596s] -- Found test_interfaces: 0.0.0 (/ros2_test/AD_Middle_Test/ros2/src/install/test_interfaces/share/test_interfaces/cmake)
+[0.604s] -- Found message_filters: 3.2.3 (/opt/ros/foxy/share/message_filters/cmake)
+[0.708s] -- Found ament_lint_auto: 0.9.1 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[0.818s] -- Added test 'copyright' to check for copyright in CMake / C / C++ / Python code
+[0.820s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.821s] -- Configured cppcheck include dirs: 
+[0.822s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[0.823s] -- Added test 'lint_cmake' to check CMake code style
+[0.825s] -- Added test 'uncrustify' to check C / C++ code style
+[0.825s] -- Added test 'xmllint' to check XML markup files
+[0.829s] -- Configuring done
+[0.878s] -- Generating done
+[0.880s] -- Build files have been written to: /ros2_test/AD_Middle_Test/ros2/src/build/simple_s
+[0.918s] [35m[1mScanning dependencies of target intra_pipe[0m
+[0.918s] [35m[1mScanning dependencies of target talker[0m
+[0.919s] [35m[1mScanning dependencies of target listener[0m
+[0.963s] [ 16%] [32mBuilding CXX object CMakeFiles/talker.dir/src/talker.cpp.o[0m
+[0.964s] [ 33%] [32mBuilding CXX object CMakeFiles/listener.dir/src/listener.cpp.o[0m
+[0.966s] [ 50%] [32mBuilding CXX object CMakeFiles/intra_pipe.dir/src/intra_pipe.cpp.o[0m
+[2.878s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:[m[K In lambda function:
+[2.879s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:66:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kid[m[K’
+[2.879s]    66 |    msg->[01;31m[Kid[m[K = count++;
+[2.879s]       |         [01;31m[K^~[m[K
+[2.879s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:72:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ has no member named ‘[01m[Ktimestamp[m[K’
+[2.879s]    72 |    msg->[01;31m[Ktimestamp[m[K = this->now().nanoseconds();
+[2.879s]       |         [01;31m[K^~~~~~~~~[m[K
+[2.885s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:[m[K In member function ‘[01m[Kvoid MinimalPublisher::timer_callback()[m[K’:
+[2.885s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:27:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing Test = struct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kid[m[K’
+[2.885s]    27 |    message.[01;31m[Kid[m[K = this->count_++;                                        // CHANGE
+[2.885s]       |            [01;31m[K^~[m[K
+[2.885s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:28:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing Test = struct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktimestamp[m[K’
+[2.885s]    28 |    message.[01;31m[Ktimestamp[m[K = this->now().nanoseconds();
+[2.885s]       |            [01;31m[K^~~~~~~~~[m[K
+[2.886s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[2.886s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[2.886s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[2.886s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[2.887s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[2.887s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[2.887s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[2.887s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[2.887s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[2.887s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:3[m[K:
+[2.887s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:29:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing Test = struct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktimestamp[m[K’
+[2.888s]    29 |    RCLCPP_INFO(this->get_logger(), "Publishing: '%lu'", message.[01;31m[Ktimestamp[m[K);    // CHANGE
+[2.888s]       |                                                                 [01;31m[K^~~~~~~~~[m[K
+[2.888s] [01m[K/opt/ros/foxy/include/rcutils/logging_macros.h:72:64:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KRCUTILS_LOG_COND_NAMED[m[K’
+[2.888s]    72 |       rcutils_log(&__rcutils_logging_location, severity, name, [01;36m[K__VA_ARGS__[m[K); \
+[2.888s]       |                                                                [01;36m[K^~~~~~~~~~~[m[K
+[2.888s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:542:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCUTILS_LOG_INFO_NAMED[m[K’
+[2.888s]   542 |     [01;36m[KRCUTILS_LOG_INFO_NAMED[m[K( \
+[2.889s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.889s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:545:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_ALL_BUT_FIRST_ARGS[m[K’
+[2.889s]   545 |         [01;36m[KRCLCPP_ALL_BUT_FIRST_ARGS[m[K(__VA_ARGS__,"")); \
+[2.889s]       |         [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.889s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:29:4:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_INFO[m[K’
+[2.889s]    29 |    [01;36m[KRCLCPP_INFO[m[K(this->get_logger(), "Publishing: '%lu'", message.timestamp);    // CHANGE
+[2.889s]       |    [01;36m[K^~~~~~~~~~~[m[K
+[2.916s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[2.916s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[2.916s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[2.916s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[2.916s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[2.916s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[2.916s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[2.916s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[2.917s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[2.917s]                  from [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:38[m[K,
+[2.917s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:9[m[K:
+[2.917s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:[m[K In lambda function:
+[2.917s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:100:92:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kid[m[K’
+[2.917s]   100 |     RCLCPP_INFO(this->get_logger(), "I heard: '%d',rec_time:'%lu', content size:%lu", msg->[01;31m[Kid[m[K,rec_time,(msg->content).size());              // CHANGE
+[2.917s]       |                                                                                            [01;31m[K^~[m[K
+[2.918s] [01m[K/opt/ros/foxy/include/rcutils/logging_macros.h:72:64:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KRCUTILS_LOG_COND_NAMED[m[K’
+[2.918s]    72 |       rcutils_log(&__rcutils_logging_location, severity, name, [01;36m[K__VA_ARGS__[m[K); \
+[2.918s]       |                                                                [01;36m[K^~~~~~~~~~~[m[K
+[2.918s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:542:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCUTILS_LOG_INFO_NAMED[m[K’
+[2.918s]   542 |     [01;36m[KRCUTILS_LOG_INFO_NAMED[m[K( \
+[2.918s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.918s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:545:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_ALL_BUT_FIRST_ARGS[m[K’
+[2.919s]   545 |         [01;36m[KRCLCPP_ALL_BUT_FIRST_ARGS[m[K(__VA_ARGS__,"")); \
+[2.919s]       |         [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.919s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:100:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_INFO[m[K’
+[2.919s]   100 |     [01;36m[KRCLCPP_INFO[m[K(this->get_logger(), "I heard: '%d',rec_time:'%lu', content size:%lu", msg->id,rec_time,(msg->content).size());              // CHANGE
+[2.919s]       |     [01;36m[K^~~~~~~~~~~[m[K
+[2.919s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:101:40:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ has no member named ‘[01m[Ktimestamp[m[K’
+[2.919s]   101 |     latency[0].push_back(rec_time-msg->[01;31m[Ktimestamp[m[K);
+[2.919s]       |                                        [01;31m[K^~~~~~~~~[m[K
+[2.995s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[2.995s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[2.995s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[2.995s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[2.996s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[2.996s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[2.996s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[2.996s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[2.996s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[2.996s]                  from [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:38[m[K,
+[2.996s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:5[m[K:
+[2.996s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In member function ‘[01m[Kvoid MinimalSubscriber::topic_callback(test_interfaces::msg::Test_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.997s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:86:73:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kid[m[K’
+[2.997s]    86 |    RCLCPP_INFO(this->get_logger(), "I heard: '%d',rec_time:'%lu'", msg->[01;31m[Kid[m[K,rec_time);              // CHANGE
+[2.997s]       |                                                                         [01;31m[K^~[m[K
+[2.997s] [01m[K/opt/ros/foxy/include/rcutils/logging_macros.h:72:64:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KRCUTILS_LOG_COND_NAMED[m[K’
+[2.997s]    72 |       rcutils_log(&__rcutils_logging_location, severity, name, [01;36m[K__VA_ARGS__[m[K); \
+[2.997s]       |                                                                [01;36m[K^~~~~~~~~~~[m[K
+[2.997s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:542:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCUTILS_LOG_INFO_NAMED[m[K’
+[2.998s]   542 |     [01;36m[KRCUTILS_LOG_INFO_NAMED[m[K( \
+[2.998s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.998s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:545:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_ALL_BUT_FIRST_ARGS[m[K’
+[2.998s]   545 |         [01;36m[KRCLCPP_ALL_BUT_FIRST_ARGS[m[K(__VA_ARGS__,"")); \
+[2.998s]       |         [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.998s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:86:4:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_INFO[m[K’
+[2.998s]    86 |    [01;36m[KRCLCPP_INFO[m[K(this->get_logger(), "I heard: '%d',rec_time:'%lu'", msg->id,rec_time);              // CHANGE
+[2.999s]       |    [01;36m[K^~~~~~~~~~~[m[K
+[2.999s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:87:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktimestamp[m[K’
+[2.999s]    87 |    latency[0].push_back(rec_time-msg->[01;31m[Ktimestamp[m[K);
+[2.999s]       |                                       [01;31m[K^~~~~~~~~[m[K
+[2.999s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In member function ‘[01m[Kvoid MinimalSubscriber::topic_callback2(const SharedPtr&, const SharedPtr&)[m[K’:
+[2.999s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:94:43:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktimestamp[m[K’
+[2.999s]    94 |    latency[0].push_back((rec_time - msg0->[01;31m[Ktimestamp[m[K));
+[3.000s]       |                                           [01;31m[K^~~~~~~~~[m[K
+[3.000s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:95:43:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktimestamp[m[K’
+[3.000s]    95 |    latency[1].push_back((rec_time - msg1->[01;31m[Ktimestamp[m[K));
+[3.000s]       |                                           [01;31m[K^~~~~~~~~[m[K
+[3.018s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:[m[K In member function ‘[01m[Kvoid Consumer::topic_callback2(test_interfaces::msg::Test_<std::allocator<void> >::SharedPtr, test_interfaces::msg::Test_<std::allocator<void> >::SharedPtr)[m[K’:
+[3.019s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:129:42:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktimestamp[m[K’
+[3.019s]   129 |   latency[0].push_back((rec_time - msg0->[01;31m[Ktimestamp[m[K));
+[3.019s]       |                                          [01;31m[K^~~~~~~~~[m[K
+[3.019s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:130:42:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::Test_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::Test_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktimestamp[m[K’
+[3.019s]   130 |   latency[1].push_back((rec_time - msg1->[01;31m[Ktimestamp[m[K));
+[3.019s]       |                                          [01;31m[K^~~~~~~~~[m[K
+[3.906s] make[2]: *** [CMakeFiles/talker.dir/build.make:63: CMakeFiles/talker.dir/src/talker.cpp.o] Error 1
+[3.907s] make[1]: *** [CMakeFiles/Makefile2:109: CMakeFiles/talker.dir/all] Error 2
+[3.907s] make[1]: *** Waiting for unfinished jobs....
+[5.332s] make[2]: *** [CMakeFiles/listener.dir/build.make:63: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+[5.332s] make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/listener.dir/all] Error 2
+[5.605s] make[2]: *** [CMakeFiles/intra_pipe.dir/build.make:63: CMakeFiles/intra_pipe.dir/src/intra_pipe.cpp.o] Error 1
+[5.606s] make[1]: *** [CMakeFiles/Makefile2:163: CMakeFiles/intra_pipe.dir/all] Error 2
+[5.606s] make: *** [Makefile:141: all] Error 2

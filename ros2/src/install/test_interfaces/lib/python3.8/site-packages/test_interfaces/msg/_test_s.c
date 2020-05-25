@@ -19,6 +19,10 @@
 #include "rosidl_runtime_c/string.h"
 #include "rosidl_runtime_c/string_functions.h"
 
+ROSIDL_GENERATOR_C_IMPORT
+bool std_msgs__msg__header__convert_from_py(PyObject * _pymsg, void * _ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * std_msgs__msg__header__convert_to_py(void * raw_ros_message);
 
 ROSIDL_GENERATOR_C_EXPORT
 bool test_interfaces__msg__test__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -53,6 +57,17 @@ bool test_interfaces__msg__test__convert_from_py(PyObject * _pymsg, void * _ros_
     assert(strncmp("test_interfaces.msg._test.Test", full_classname_dest, 30) == 0);
   }
   test_interfaces__msg__Test * ros_message = _ros_message;
+  {  // header
+    PyObject * field = PyObject_GetAttrString(_pymsg, "header");
+    if (!field) {
+      return false;
+    }
+    if (!std_msgs__msg__header__convert_from_py(field, &ros_message->header)) {
+      Py_DECREF(field);
+      return false;
+    }
+    Py_DECREF(field);
+  }
   {  // content
     PyObject * field = PyObject_GetAttrString(_pymsg, "content");
     if (!field) {
@@ -66,24 +81,6 @@ bool test_interfaces__msg__test__convert_from_py(PyObject * _pymsg, void * _ros_
     }
     rosidl_runtime_c__String__assign(&ros_message->content, PyBytes_AS_STRING(encoded_field));
     Py_DECREF(encoded_field);
-    Py_DECREF(field);
-  }
-  {  // id
-    PyObject * field = PyObject_GetAttrString(_pymsg, "id");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->id = PyLong_AsLongLong(field);
-    Py_DECREF(field);
-  }
-  {  // timestamp
-    PyObject * field = PyObject_GetAttrString(_pymsg, "timestamp");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->timestamp = PyLong_AsLongLong(field);
     Py_DECREF(field);
   }
 
@@ -108,6 +105,20 @@ PyObject * test_interfaces__msg__test__convert_to_py(void * raw_ros_message)
     }
   }
   test_interfaces__msg__Test * ros_message = (test_interfaces__msg__Test *)raw_ros_message;
+  {  // header
+    PyObject * field = NULL;
+    field = std_msgs__msg__header__convert_to_py(&ros_message->header);
+    if (!field) {
+      return NULL;
+    }
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "header", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
   {  // content
     PyObject * field = NULL;
     field = PyUnicode_DecodeUTF8(
@@ -119,28 +130,6 @@ PyObject * test_interfaces__msg__test__convert_to_py(void * raw_ros_message)
     }
     {
       int rc = PyObject_SetAttrString(_pymessage, "content", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // id
-    PyObject * field = NULL;
-    field = PyLong_FromLongLong(ros_message->id);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "id", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // timestamp
-    PyObject * field = NULL;
-    field = PyLong_FromLongLong(ros_message->timestamp);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "timestamp", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
