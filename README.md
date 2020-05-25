@@ -13,7 +13,7 @@ cyber and ros should run by root.
 # Cyber， [官方文档汇总](https://github.com/ApolloAuto/apollo/tree/master/cyber)
 - 启动容器，[官方链接](https://github.com/ApolloAuto/apollo/blob/master/docs/cyber/CyberRT_Docker.md)：
 1. clone the git project
-2. checkout to r5.5.0(not sure if necessary)
+2. checkout to r5.5.0(not sure if necessary)[2,3,4部分文档](https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md#Set-up-the-Docker-environment)
 3. sudo groupadd docker, sudo usermod -aG docker $USER # this can make docker run without sudo, however when running the cyber script you may still need sudo
 4. echo "export APOLLO_HOME=$(pwd)" >> ~/.bashrc && source ~/.bashrc
 5. follow the doc of cyber to run docker/script/cyber_start.sh & cyber_into.sh
@@ -28,3 +28,6 @@ source /apollo/cyber/setup.bash（import, or you cannot use cyber_* commands）
 - 具体运行见 Cyber实操.md
 
 - [cyber原理学习](https://blog.csdn.net/qq_25762163/category_9599333.html)
+
+# 数据处理：
+使用drawTmp.py
