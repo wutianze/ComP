@@ -49,7 +49,7 @@ package(default_visibility = ["//visibility:public"])
 #		hdrs = ["tracker_opencv.h"],
 #		)
 cc_binary(
-		name = "libtest_timer.so",
+		name = "libdetect_s.so",
 		linkopts = ["-shared"],
 		linkstatic = False,
 		deps = [":CameraTimer_lib",":TrackerApollo_lib",":Line_lib",":FusionFinal_lib","YoloDetect_lib"],
