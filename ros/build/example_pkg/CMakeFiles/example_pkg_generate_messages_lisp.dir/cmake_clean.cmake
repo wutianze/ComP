@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/example_pkg_generate_messages_lisp"
-  "/ros_test/AD_Middle_Test/ros/devel/share/common-lisp/ros/example_pkg/msg/Num.lisp"
+  "/ros_test/AD_Middle_Test/ros/devel/share/common-lisp/ros/example_pkg/msg/Test.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

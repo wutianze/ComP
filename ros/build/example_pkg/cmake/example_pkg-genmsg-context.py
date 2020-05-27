@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/ros_test/AD_Middle_Test/ros/src/example_pkg/msg/Num.msg"
+messages_str = "/ros_test/AD_Middle_Test/ros/src/example_pkg/msg/Test.msg"
 services_str = ""
 pkg_name = "example_pkg"
 dependencies_str = "std_msgs"

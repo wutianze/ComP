@@ -53,16 +53,17 @@ CMAKE_BINARY_DIR = /ros_test/AD_Middle_Test/ros/build
 # Include the progress variables for this target.
 include example_pkg/CMakeFiles/example_pkg_generate_messages_nodejs.dir/progress.make
 
-example_pkg/CMakeFiles/example_pkg_generate_messages_nodejs: /ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg/Num.js
+example_pkg/CMakeFiles/example_pkg_generate_messages_nodejs: /ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg/Test.js
 
 
-/ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg/Num.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
-/ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg/Num.js: /ros_test/AD_Middle_Test/ros/src/example_pkg/msg/Num.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/ros_test/AD_Middle_Test/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from example_pkg/Num.msg"
-	cd /ros_test/AD_Middle_Test/ros/build/example_pkg && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /ros_test/AD_Middle_Test/ros/src/example_pkg/msg/Num.msg -Iexample_pkg:/ros_test/AD_Middle_Test/ros/src/example_pkg/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p example_pkg -o /ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg
+/ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg/Test.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
+/ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg/Test.js: /ros_test/AD_Middle_Test/ros/src/example_pkg/msg/Test.msg
+/ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg/Test.js: /opt/ros/melodic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/ros_test/AD_Middle_Test/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from example_pkg/Test.msg"
+	cd /ros_test/AD_Middle_Test/ros/build/example_pkg && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /ros_test/AD_Middle_Test/ros/src/example_pkg/msg/Test.msg -Iexample_pkg:/ros_test/AD_Middle_Test/ros/src/example_pkg/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p example_pkg -o /ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg
 
 example_pkg_generate_messages_nodejs: example_pkg/CMakeFiles/example_pkg_generate_messages_nodejs
-example_pkg_generate_messages_nodejs: /ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg/Num.js
+example_pkg_generate_messages_nodejs: /ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg/Test.js
 example_pkg_generate_messages_nodejs: example_pkg/CMakeFiles/example_pkg_generate_messages_nodejs.dir/build.make
 
 .PHONY : example_pkg_generate_messages_nodejs

@@ -1,0 +1,49 @@
+[2.030s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In member function ‘[01m[Kvoid MinimalSubscriber::topic_callback(test_interfaces::msg::Test_<std::allocator<void> >::SharedPtr) const[m[K’:
+[2.030s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:38:50:[m[K [01;31m[Kerror: [m[Kpassing ‘[01m[Kconst value_type[m[K’ {aka ‘[01m[Kconst std::vector<long unsigned int>[m[K’} as ‘[01m[Kthis[m[K’ argument discards qualifiers [[01;31m[K-fpermissive[m[K]
+[2.031s]    38 |    latency[0].push_back(msg->timestamp - rec_time[01;31m[K)[m[K;
+[2.031s]       |                                                  [01;31m[K^[m[K
+[2.031s] In file included from [01m[K/usr/include/c++/9/vector:67[m[K,
+[2.031s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:27[m[K,
+[2.031s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[2.031s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[2.031s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[2.032s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:3[m[K:
+[2.032s] [01m[K/usr/include/c++/9/bits/stl_vector.h:1200:7:[m[K [01;36m[Knote: [m[K  in call to ‘[01m[Kvoid std::vector<_Tp, _Alloc>::push_back(std::vector<_Tp, _Alloc>::value_type&&) [with _Tp = long unsigned int; _Alloc = std::allocator<long unsigned int>; std::vector<_Tp, _Alloc>::value_type = long unsigned int][m[K’
+[2.032s]  1200 |       [01;36m[Kpush_back[m[K(value_type&& __x)
+[2.032s]       |       [01;36m[K^~~~~~~~~[m[K
+[2.032s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:39:4:[m[K [01;31m[Kerror: [m[Kincrement of member ‘[01m[KMinimalSubscriber::count_[m[K’ in read-only object
+[2.032s]    39 |    [01;31m[Kcount_[m[K++;
+[2.032s]       |    [01;31m[K^~~~~~[m[K
+[2.033s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In member function ‘[01m[Kstd::vector<double, std::allocator<double> > MinimalSubscriber::analyze_latency(std::vector<long unsigned int>&)[m[K’:
+[2.033s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:56:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kaccumulate[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[2.033s]    56 |    double sum = std::[01;31m[Kaccumulate[m[K(std::begin(p), std::end(p), 0.0);
+[2.033s]       |                      [01;31m[K^~~~~~~~~~[m[K
+[2.034s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:63:19:[m[K [01;31m[Kerror: [m[K‘[01m[Ksqrt[m[K’ was not declared in this scope
+[2.035s]    63 |    double stdev = [01;31m[Ksqrt[m[K(accum/(size-1));
+[2.035s]       |                   [01;31m[K^~~~[m[K
+[2.620s] In file included from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/c++allocator.h:33[m[K,
+[2.621s]                  from [01m[K/usr/include/c++/9/bits/allocator.h:46[m[K,
+[2.621s]                  from [01m[K/usr/include/c++/9/memory:63[m[K,
+[2.621s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:1[m[K:
+[2.621s] /usr/include/c++/9/ext/new_allocator.h: In instantiation of ‘[01m[Kvoid __gnu_cxx::new_allocator<_Tp>::construct(_Up*, _Args&& ...) [with _Up = MinimalSubscriber; _Args = {}; _Tp = MinimalSubscriber][m[K’:
+[2.621s] [01m[K/usr/include/c++/9/bits/alloc_traits.h:482:2:[m[K   required from ‘[01m[Kstatic void std::allocator_traits<std::allocator<_Tp1> >::construct(std::allocator_traits<std::allocator<_Tp1> >::allocator_type&, _Up*, _Args&& ...) [with _Up = MinimalSubscriber; _Args = {}; _Tp = MinimalSubscriber; std::allocator_traits<std::allocator<_Tp1> >::allocator_type = std::allocator<MinimalSubscriber>][m[K’
+[2.621s] [01m[K/usr/include/c++/9/bits/shared_ptr_base.h:548:39:[m[K   required from ‘[01m[Kstd::_Sp_counted_ptr_inplace<_Tp, _Alloc, _Lp>::_Sp_counted_ptr_inplace(_Alloc, _Args&& ...) [with _Args = {}; _Tp = MinimalSubscriber; _Alloc = std::allocator<MinimalSubscriber>; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.622s] [01m[K/usr/include/c++/9/bits/shared_ptr_base.h:679:16:[m[K   required from ‘[01m[Kstd::__shared_count<_Lp>::__shared_count(_Tp*&, std::_Sp_alloc_shared_tag<_Alloc>, _Args&& ...) [with _Tp = MinimalSubscriber; _Alloc = std::allocator<MinimalSubscriber>; _Args = {}; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.622s] [01m[K/usr/include/c++/9/bits/shared_ptr_base.h:1344:71:[m[K   required from ‘[01m[Kstd::__shared_ptr<_Tp, _Lp>::__shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<MinimalSubscriber>; _Args = {}; _Tp = MinimalSubscriber; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.622s] [01m[K/usr/include/c++/9/bits/shared_ptr.h:359:59:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp>::shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<MinimalSubscriber>; _Args = {}; _Tp = MinimalSubscriber][m[K’
+[2.622s] [01m[K/usr/include/c++/9/bits/shared_ptr.h:701:14:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp> std::allocate_shared(const _Alloc&, _Args&& ...) [with _Tp = MinimalSubscriber; _Alloc = std::allocator<MinimalSubscriber>; _Args = {}][m[K’
+[2.622s] [01m[K/usr/include/c++/9/bits/shared_ptr.h:717:39:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp> std::make_shared(_Args&& ...) [with _Tp = MinimalSubscriber; _Args = {}][m[K’
+[2.622s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:75:51:[m[K   required from here
+[2.622s] [01m[K/usr/include/c++/9/ext/new_allocator.h:145:20:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KMinimalSubscriber::MinimalSubscriber()[m[K’
+[2.623s]   145 |  noexcept(noexcept([01;31m[K::new((void *)__p)[m[K
+[2.623s]       |                    [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[2.623s]   146 | [01;31m[K       _Up(std::forward<_Args>(__args)...)[m[K))
+[2.623s]       |        [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.623s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:12:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KMinimalSubscriber::MinimalSubscriber(std::string, int)[m[K’
+[2.623s]    12 |   [01;36m[KMinimalSubscriber[m[K(string channel_name, int subscriber_num)
+[2.623s]       |   [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[2.623s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:12:3:[m[K [01;36m[Knote: [m[K  candidate expects 2 arguments, 0 provided
+[3.654s] make[2]: *** [CMakeFiles/listener.dir/build.make:63: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+[3.654s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/listener.dir/all] Error 2
+[3.654s] make[1]: *** Waiting for unfinished jobs....
+[4.614s] make: *** [Makefile:141: all] Error 2

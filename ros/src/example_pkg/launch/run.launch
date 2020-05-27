@@ -1,9 +1,0 @@
-<launch>
-  <node pkg="nodelet" type="nodelet" name="standalone_nodelet"  args="manager" output="screen"/>
-  <node pkg="nodelet" type="nodelet" name="A" args="load example_pkg/A standalone_nodelet" output="screen">
-<rosparam file="$(find example_pkg)/size.yaml"/>
-<remap from="/A/out" to="B/in"/>  
-</node>
-<node pkg="nodelet" type="nodelet" name="B" args="load example_pkg/B standalone_nodelet" output="screen">
-</node>
-</launch>

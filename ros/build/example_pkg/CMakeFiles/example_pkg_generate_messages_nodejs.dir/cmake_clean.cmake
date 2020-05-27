@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/example_pkg_generate_messages_nodejs"
-  "/ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg/Num.js"
+  "/ros_test/AD_Middle_Test/ros/devel/share/gennodejs/ros/example_pkg/msg/Test.js"
 )
 
 # Per-language clean rules from dependency scanning.

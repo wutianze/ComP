@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/example_pkg_generate_messages_eus"
-  "/ros_test/AD_Middle_Test/ros/devel/share/roseus/ros/example_pkg/msg/Num.l"
+  "/ros_test/AD_Middle_Test/ros/devel/share/roseus/ros/example_pkg/msg/Test.l"
   "/ros_test/AD_Middle_Test/ros/devel/share/roseus/ros/example_pkg/manifest.l"
 )
 
