@@ -1,0 +1,10 @@
+[0.081s] [35m[1mScanning dependencies of target listener[0m
+[0.116s] [ 50%] Built target talker
+[0.119s] [ 75%] [32mBuilding CXX object CMakeFiles/listener.dir/src/listener.cpp.o[0m
+[2.047s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In constructor ‘[01m[KMinimalSubscriber::MinimalSubscriber(std::string, int)[m[K’:
+[2.047s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:64:10:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[KregisterCallback[m[K’ in ‘[01m[K((MinimalSubscriber*)this)->MinimalSubscriber::sync_[m[K’, which is of pointer type ‘[01m[Kmessage_filters::TimeSynchronizer<test_interfaces::msg::Test_<std::allocator<void> >, test_interfaces::msg::Test_<std::allocator<void> > >*[m[K’ (maybe you meant to use ‘[01m[K->[m[K’ ?)
+[2.047s]    64 |    sync_.[01;31m[KregisterCallback[m[K(std::bind(&MinimalSubscriber::topic_callback2,this,std::placeholders::_1,std::placeholders::_2));
+[2.047s]       |          [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[4.029s] make[2]: *** [CMakeFiles/listener.dir/build.make:63: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+[4.029s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/listener.dir/all] Error 2
+[4.029s] make: *** [Makefile:141: all] Error 2

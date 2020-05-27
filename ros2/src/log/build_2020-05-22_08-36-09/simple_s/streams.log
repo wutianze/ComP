@@ -1,0 +1,23 @@
+[0.021s] Invoking command in '/ros2_test/AD_Middle_Test/ros2/src/build/simple_s': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/src/build/simple_s -- -j30 -l30
+[0.081s] [35m[1mScanning dependencies of target talker[0m
+[0.109s] [ 50%] Built target listener
+[0.118s] [ 75%] [32mBuilding CXX object CMakeFiles/talker.dir/src/talker.cpp.o[0m
+[1.879s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:[m[K In constructor ‘[01m[KMinimalPublisher::MinimalPublisher(int, int64_t, std::string)[m[K’:
+[1.879s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:16:80:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KMinimalPublisher::create_publisher<test_interfaces::msg::Test>(std::string&)[m[K’
+[1.879s]    16 |    publisher_ = this->create_publisher<test_interfaces::msg::Test>(channel_name[01;31m[K)[m[K;    // CHANGE
+[1.879s]       |                                                                                [01;31m[K^[m[K
+[1.879s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[1.880s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[1.880s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[1.880s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:3[m[K:
+[1.880s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:179:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)[m[K’
+[1.880s]   179 |   [01;36m[Kcreate_publisher[m[K(
+[1.880s]       |   [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[1.880s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:179:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[1.881s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:16:80:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 1 provided
+[1.881s]    16 |    publisher_ = this->create_publisher<test_interfaces::msg::Test>(channel_name[01;36m[K)[m[K;    // CHANGE
+[1.881s]       |                                                                                [01;36m[K^[m[K
+[2.583s] make[2]: *** [CMakeFiles/talker.dir/build.make:63: CMakeFiles/talker.dir/src/talker.cpp.o] Error 1
+[2.583s] make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/talker.dir/all] Error 2
+[2.583s] make: *** [Makefile:141: all] Error 2
+[2.586s] Invoked command in '/ros2_test/AD_Middle_Test/ros2/src/build/simple_s' returned '2': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/src/build/simple_s -- -j30 -l30

@@ -1,0 +1,19 @@
+[2.055s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:98:71:[m[K [01;31m[Kerror: [m[Kwrong number of template arguments (2, should be 1)
+[2.056s]    98 |     Synchronizer<test_interfaces::msg::Test,test_interfaces::msg::Test[01;31m[K>[m[K*sync_;
+[2.056s]       |                                                                       [01;31m[K^[m[K
+[2.056s] In file included from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:6[m[K:
+[2.056s] [01m[K/opt/ros/foxy/include/message_filters/synchronizer.h:53:7:[m[K [01;36m[Knote: [m[Kprovided for ‘[01m[Ktemplate<class Policy> class message_filters::Synchronizer[m[K’
+[2.056s]    53 | class [01;36m[KSynchronizer[m[K : public noncopyable, public Policy
+[2.056s]       |       [01;36m[K^~~~~~~~~~~~[m[K
+[2.090s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In constructor ‘[01m[KMinimalSubscriber::MinimalSubscriber(std::string, int)[m[K’:
+[2.090s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:63:12:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kmessage_filters::TimeSynchronizer<test_interfaces::msg::Test_<std::allocator<void> >, test_interfaces::msg::Test_<std::allocator<void> > >[m[K’ to ‘[01m[Kint*[m[K’ in assignment
+[2.091s]    63 |    sync_ = [01;31m[KTimeSynchronizer<test_interfaces::msg::Test,test_interfaces::msg::Test>(sub1,sub2,10)[m[K;
+[2.091s]       |            [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.091s]       |            [01;31m[K|[m[K
+[2.091s]       |            [01;31m[Kmessage_filters::TimeSynchronizer<test_interfaces::msg::Test_<std::allocator<void> >, test_interfaces::msg::Test_<std::allocator<void> > >[m[K
+[2.091s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:64:10:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[KregisterCallback[m[K’ in ‘[01m[K((MinimalSubscriber*)this)->MinimalSubscriber::sync_[m[K’, which is of non-class type ‘[01m[Kint*[m[K’
+[2.091s]    64 |    sync_.[01;31m[KregisterCallback[m[K(std::bind(&MinimalSubscriber::topic_callback2,this,std::placeholders::_1,std::placeholders::_2));
+[2.092s]       |          [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[4.089s] make[2]: *** [CMakeFiles/listener.dir/build.make:63: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+[4.089s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/listener.dir/all] Error 2
+[4.089s] make: *** [Makefile:141: all] Error 2

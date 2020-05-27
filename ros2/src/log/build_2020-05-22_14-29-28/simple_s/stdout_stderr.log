@@ -1,0 +1,50 @@
+[0.062s] -- Found ament_cmake: 0.8.1 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.112s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.389s] -- Found rclcpp: 0.8.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.446s] -- Found rosidl_adapter: 0.8.2 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.476s] -- Found rmw_implementation_cmake: 0.8.1 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.479s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.592s] -- Found std_msgs: 0.8.1 (/opt/ros/foxy/share/std_msgs/cmake)
+[0.601s] -- Found test_interfaces: 0.0.0 (/ros2_test/AD_Middle_Test/ros2/src/install/test_interfaces/share/test_interfaces/cmake)
+[0.605s] -- Found message_filters: 3.2.3 (/opt/ros/foxy/share/message_filters/cmake)
+[0.695s] -- Found ament_lint_auto: 0.9.1 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[0.806s] -- Added test 'copyright' to check for copyright in CMake / C / C++ / Python code
+[0.807s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.808s] -- Configured cppcheck include dirs: 
+[0.809s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[0.810s] -- Added test 'lint_cmake' to check CMake code style
+[0.812s] -- Added test 'uncrustify' to check C / C++ code style
+[0.812s] -- Added test 'xmllint' to check XML markup files
+[0.816s] -- Configuring done
+[0.860s] -- Generating done
+[0.863s] -- Build files have been written to: /ros2_test/AD_Middle_Test/ros2/src/build/simple_s
+[0.896s] [35m[1mScanning dependencies of target intra_pipe[0m
+[0.923s] [ 66%] Built target talker
+[0.924s] [ 66%] Built target listener
+[0.953s] [ 83%] [32mBuilding CXX object CMakeFiles/intra_pipe.dir/src/intra_pipe.cpp.o[0m
+[2.722s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:[m[K In function ‘[01m[Kstd::vector<double, std::allocator<double> > analyze_latency(std::vector<long unsigned int>&)[m[K’:
+[2.722s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:29:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kaccumulate[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[2.722s]    29 |    double sum = std::[01;31m[Kaccumulate[m[K(std::begin(p), std::end(p), 0.0);
+[2.722s]       |                      [01;31m[K^~~~~~~~~~[m[K
+[2.723s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:36:19:[m[K [01;31m[Kerror: [m[K‘[01m[Ksqrt[m[K’ was not declared in this scope
+[2.723s]    36 |    double stdev = [01;31m[Ksqrt[m[K(accum/(size-1));
+[2.723s]       |                   [01;31m[K^~~~[m[K
+[2.731s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:[m[K At global scope:
+[2.731s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:73:1:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K}[m[K’ token
+[2.731s]    73 | [01;31m[K}[m[K;
+[2.731s]       | [01;31m[K^[m[K
+[2.745s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:[m[K In lambda function:
+[2.745s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:61:6:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 2 has type ‘[01m[Kstd::__cxx11::basic_string<char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wformat=[m[K]
+[2.745s]    61 |      [01;35m[K"Published message with content size: %d, and address: 0x%" PRIXPTR "\n"[m[K, [32m[K(msg->content).size()[m[K,
+[2.745s]       |      [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.745s]       |                                                                                                   [32m[K|[m[K
+[2.745s]       |                                                                                                   [32m[Kstd::__cxx11::basic_string<char>::size_type {aka long unsigned int}[m[K
+[2.770s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:[m[K In lambda function:
+[2.770s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:92:7:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 2 has type ‘[01m[Kstd::__cxx11::basic_string<char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wformat=[m[K]
+[2.771s]    92 |       [01;35m[K" Received message content size: %d, and address: 0x%" PRIXPTR "\n"[m[K, [32m[K(msg->content).size()[m[K,
+[2.771s]       |       [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.771s]       |                                                                                               [32m[K|[m[K
+[2.771s]       |                                                                                               [32m[Kstd::__cxx11::basic_string<char>::size_type {aka long unsigned int}[m[K
+[4.567s] make[2]: *** [CMakeFiles/intra_pipe.dir/build.make:63: CMakeFiles/intra_pipe.dir/src/intra_pipe.cpp.o] Error 1
+[4.567s] make[1]: *** [CMakeFiles/Makefile2:163: CMakeFiles/intra_pipe.dir/all] Error 2
+[4.567s] make: *** [Makefile:141: all] Error 2
