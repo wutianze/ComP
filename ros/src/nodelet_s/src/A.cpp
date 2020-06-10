@@ -36,7 +36,7 @@ namespace nodelet_s
 			}
 			}*/
 			void CB(const ros::TimerEvent& event){
-			ROS_INFO("publish one");
+			//ROS_INFO("publish one");
 			TestPtr output(new Test());
 			output->content = std::string(ssize,'a');
 			output->header.stamp = ros::Time::now();
