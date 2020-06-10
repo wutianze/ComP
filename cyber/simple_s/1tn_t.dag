@@ -1,7 +1,14 @@
 # Define all coms in DAG streaming.
     module_config {
     module_library : "/apollo/bazel-bin/cyber/AD_Middle_Test/cyber/simple_s/libtest.so"
-    components { class_name : "C"
+ timer_components{
+class_name:"S"
+config{
+name:"s0"
+interval:20
+}
+}   
+components { class_name : "C"
         config {
             name : "c_0"
             readers {
@@ -14,7 +21,7 @@ components {
         config {
             name : "c_1"
             readers {
-                channel: "/c1"
+                channel: "/c0"
             }
         }
       }components {
@@ -22,7 +29,7 @@ components {
         config {
             name : "c_2"
             readers {
-                channel: "/c2"
+                channel: "/c0"
             }
         }
       }components {
@@ -30,16 +37,16 @@ components {
        config {
             name : "c_3"
             readers {
-               channel: "/c3"
+               channel: "/c0"
             }
         }
       }
-# components {
+#components {
 #        class_name : "C"
 #        config {
 #            name : "c_4"
 #            readers {
-#                channel: "/c4"
+#                channel: "/c0"
 #            }
 #        }
 #      }components {
@@ -47,23 +54,23 @@ components {
 #        config {
 #            name : "c_5"
 #            readers {
-#                channel: "/c5"
-#            }
-#        }
-#     }components {
-#       class_name : "C"
-#        config {
-#            name : "c_6"
-#            readers {
-#                channel: "/c6"
+#                channel: "/c0"
 #            }
 #        }
 #      }components {
 #        class_name : "C"
-#       config {
+#        config {
+#           name : "c_6"
+#            readers {
+#                channel: "/c0"
+#            }
+#        }
+#      }components {
+#        class_name : "C"
+#        config {
 #            name : "c_7"
 #            readers {
-#                channel: "/c7"
+#                channel: "/c0"
 #            }
 #        }
 #      }
