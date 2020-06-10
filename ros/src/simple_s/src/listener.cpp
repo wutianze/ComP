@@ -13,6 +13,7 @@ using namespace message_filters;
 string node_name = ros::this_node::getName();
 std::fstream writer;
 uint64_t count_num = 0;
+uint64_t rec_num = 0;
 int num_sub = 0;
 vector<vector<uint64_t>>latency;
 
@@ -45,23 +46,31 @@ vector<double>analyze_latency(vector<uint64_t>&p){
 }
 void mySigIntHandler(int sig){
 	ROS_INFO("sig handler");
-	writer.open("/ros_test/log/multi/"+node_name,std::ios::trunc|std::ios::out);
+	
+	string loss_rate = to_string(double(count_num-1.0)/double(rec_num));
 	for(unsigned int i =0;i<latency.size();i++){
-		vector<double> res = analyze_latency(latency[i]);
+	writer.open("/ros_test/log/test/tmp/"+node_name+"_"+to_string(i)+'_'+loss_rate+"loss",std::ios::trunc|std::ios::out);
+		/*vector<double> res = analyze_latency(latency[i]);
 		cout<<"result:"<<i<<endl;
 		for(unsigned int j=0;j<res.size();j++){
 			writer<<res[j]<<endl;
 			cout<<res[j]<<endl;
+		}*/
+		for(unsigned int j =0;j<latency[i].size();j++){
+		writer<<latency[i][j]<<endl;
 		}
-		writer<<endl;
-	}
 	writer.close();
+	}
 	ros::shutdown();
 }
 void chatterCallback1(const simple_s::Test::ConstPtr& msg)
 {
 	latency[0].push_back((ros::Time::now() - msg->header.stamp).toNSec());
+	if(msg->header.seq > rec_num){
+	rec_num = msg->header.seq;
+	}
 	count_num++;
+	//ROS_INFO("seq:%u,count:%u",msg->header.seq,count_num);
 	//ROS_INFO("msg.stamp:%d",msg->header.stamp.nsec);
 }
 void chatterCallback2(const simple_s::Test::ConstPtr& msg0,const simple_s::Test::ConstPtr& msg1)
@@ -81,14 +90,14 @@ int main(int argc, char **argv)
 	num_sub = atoi(argv[2]);
 	ros::NodeHandle n;
 	
+	count_num = 0;
 	node_name = ros::this_node::getName();
 	for(int i=0;i<num_sub;i++){
 		vector<uint64_t>tmp;
 		latency.push_back(tmp);
 	}
 	if(num_sub == 1){
-		ros::Subscriber sub = n.subscribe(channel_name, 1, chatterCallback1);
-		
+		ros::Subscriber sub = n.subscribe(channel_name, 1, chatterCallback1,ros::TransportHints().tcpNoDelay());//.udp());
 		ros::spin();
 	}else{//change the code as you need
 		message_filters::Subscriber<simple_s::Test> sub1(n, channel_name+'0', 1);

@@ -1,0 +1,81 @@
+[0.021s] Invoking command in '/ros2_test/AD_Middle_Test/ros2/build/simple_s': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/build/simple_s -- -j4 -l4
+[0.098s] [35m[1mScanning dependencies of target talker[0m
+[0.098s] [35m[1mScanning dependencies of target listener[0m
+[0.098s] [35m[1mScanning dependencies of target intra_pipe[0m
+[0.126s] [ 16%] [32mBuilding CXX object CMakeFiles/talker.dir/src/talker.cpp.o[0m
+[0.130s] [ 33%] [32mBuilding CXX object CMakeFiles/listener.dir/src/listener.cpp.o[0m
+[0.144s] [ 50%] [32mBuilding CXX object CMakeFiles/intra_pipe.dir/src/intra_pipe.cpp.o[0m
+[2.149s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:[m[K In lambda function:
+[2.149s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:106:35:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kstd_msgs::msg::Header_<std::allocator<void> >::_frame_id_type[m[K’ {aka ‘[01m[Kstd::__cxx11::basic_string<char>[m[K’} to ‘[01m[Kconst char*[m[K’
+[2.150s]   106 |     if(rec_max < atoi([01;31m[Kmsg->header.frame_id[m[K)){
+[2.150s]       |                       [01;31m[K~~~~~~~~~~~~^~~~~~~~[m[K
+[2.150s]       |                                   [01;31m[K|[m[K
+[2.150s]       |                                   [01;31m[Kstd_msgs::msg::Header_<std::allocator<void> >::_frame_id_type {aka std::__cxx11::basic_string<char>}[m[K
+[2.150s] In file included from [01m[K/usr/include/c++/9/cstdlib:75[m[K,
+[2.150s]                  from [01m[K/usr/include/c++/9/ext/string_conversions.h:41[m[K,
+[2.150s]                  from [01m[K/usr/include/c++/9/bits/basic_string.h:6493[m[K,
+[2.150s]                  from [01m[K/usr/include/c++/9/string:55[m[K,
+[2.151s]                  from [01m[K/usr/include/c++/9/stdexcept:39[m[K,
+[2.151s]                  from [01m[K/usr/include/c++/9/array:39[m[K,
+[2.151s]                  from [01m[K/usr/include/c++/9/tuple:39[m[K,
+[2.151s]                  from [01m[K/usr/include/c++/9/bits/unique_ptr.h:37[m[K,
+[2.151s]                  from [01m[K/usr/include/c++/9/memory:80[m[K,
+[2.151s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:4[m[K:
+[2.151s] [01m[K/usr/include/stdlib.h:104:30:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kint atoi(const char*)[m[K’
+[2.152s]   104 | extern int atoi ([01;36m[Kconst char *__nptr[m[K)
+[2.152s]       |                  [01;36m[K~~~~~~~~~~~~^~~~~~[m[K
+[2.152s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:107:27:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kstd_msgs::msg::Header_<std::allocator<void> >::_frame_id_type[m[K’ {aka ‘[01m[Kstd::__cxx11::basic_string<char>[m[K’} to ‘[01m[Kuint64_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} in assignment
+[2.152s]   107 |     rec_max = [01;31m[Kmsg->header.frame_id[m[K;
+[2.152s]       |               [01;31m[K~~~~~~~~~~~~^~~~~~~~[m[K
+[2.152s]       |                           [01;31m[K|[m[K
+[2.152s]       |                           [01;31m[Kstd_msgs::msg::Header_<std::allocator<void> >::_frame_id_type {aka std::__cxx11::basic_string<char>}[m[K
+[2.234s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In member function ‘[01m[Kvoid MinimalSubscriber::topic_callback(test_interfaces::msg::Test_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.235s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:95:51:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing _stamp_type = struct builtin_interfaces::msg::Time_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct builtin_interfaces::msg::Time_<std::allocator<void> >[m[K’} has no member named ‘[01m[Knanoseconds[m[K’; did you mean ‘[01m[Knanosec[m[K’?
+[2.235s]    95 |    uint64_t rec_la = rec_time-(msg->header).stamp.[01;31m[Knanoseconds[m[K();
+[2.235s]       |                                                   [01;31m[K^~~~~~~~~~~[m[K
+[2.235s]       |                                                   [32m[Knanosec[m[K
+[2.235s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:96:32:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kstd_msgs::msg::Header_<std::allocator<void> >::_frame_id_type[m[K’ {aka ‘[01m[Kstd::__cxx11::basic_string<char>[m[K’} to ‘[01m[Kconst char*[m[K’
+[2.235s]    96 |    if(rec_max<atoi([01;31m[Kmsg->header.frame_id[m[K)){
+[2.235s]       |                    [01;31m[K~~~~~~~~~~~~^~~~~~~~[m[K
+[2.236s]       |                                [01;31m[K|[m[K
+[2.236s]       |                                [01;31m[Kstd_msgs::msg::Header_<std::allocator<void> >::_frame_id_type {aka std::__cxx11::basic_string<char>}[m[K
+[2.236s] In file included from [01m[K/usr/include/c++/9/cstdlib:75[m[K,
+[2.236s]                  from [01m[K/usr/include/c++/9/ext/string_conversions.h:41[m[K,
+[2.236s]                  from [01m[K/usr/include/c++/9/bits/basic_string.h:6493[m[K,
+[2.236s]                  from [01m[K/usr/include/c++/9/string:55[m[K,
+[2.236s]                  from [01m[K/usr/include/c++/9/stdexcept:39[m[K,
+[2.236s]                  from [01m[K/usr/include/c++/9/array:39[m[K,
+[2.237s]                  from [01m[K/usr/include/c++/9/tuple:39[m[K,
+[2.237s]                  from [01m[K/usr/include/c++/9/bits/unique_ptr.h:37[m[K,
+[2.237s]                  from [01m[K/usr/include/c++/9/memory:80[m[K,
+[2.237s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:1[m[K:
+[2.237s] [01m[K/usr/include/stdlib.h:104:30:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kint atoi(const char*)[m[K’
+[2.237s]   104 | extern int atoi ([01;36m[Kconst char *__nptr[m[K)
+[2.237s]       |                  [01;36m[K~~~~~~~~~~~~^~~~~~[m[K
+[2.238s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:97:31:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kstd_msgs::msg::Header_<std::allocator<void> >::_frame_id_type[m[K’ {aka ‘[01m[Kstd::__cxx11::basic_string<char>[m[K’} to ‘[01m[Kconst char*[m[K’
+[2.238s]    97 |    rec_max = atoi([01;31m[Kmsg->header.frame_id[m[K);
+[2.238s]       |                   [01;31m[K~~~~~~~~~~~~^~~~~~~~[m[K
+[2.238s]       |                               [01;31m[K|[m[K
+[2.238s]       |                               [01;31m[Kstd_msgs::msg::Header_<std::allocator<void> >::_frame_id_type {aka std::__cxx11::basic_string<char>}[m[K
+[2.238s] In file included from [01m[K/usr/include/c++/9/cstdlib:75[m[K,
+[2.238s]                  from [01m[K/usr/include/c++/9/ext/string_conversions.h:41[m[K,
+[2.238s]                  from [01m[K/usr/include/c++/9/bits/basic_string.h:6493[m[K,
+[2.239s]                  from [01m[K/usr/include/c++/9/string:55[m[K,
+[2.239s]                  from [01m[K/usr/include/c++/9/stdexcept:39[m[K,
+[2.239s]                  from [01m[K/usr/include/c++/9/array:39[m[K,
+[2.239s]                  from [01m[K/usr/include/c++/9/tuple:39[m[K,
+[2.239s]                  from [01m[K/usr/include/c++/9/bits/unique_ptr.h:37[m[K,
+[2.239s]                  from [01m[K/usr/include/c++/9/memory:80[m[K,
+[2.239s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:1[m[K:
+[2.240s] [01m[K/usr/include/stdlib.h:104:30:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kint atoi(const char*)[m[K’
+[2.240s]   104 | extern int atoi ([01;36m[Kconst char *__nptr[m[K)
+[2.240s]       |                  [01;36m[K~~~~~~~~~~~~^~~~~~[m[K
+[4.663s] make[2]: *** [CMakeFiles/listener.dir/build.make:63: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+[4.664s] make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/listener.dir/all] Error 2
+[4.664s] make[1]: *** Waiting for unfinished jobs....
+[4.714s] [ 66%] [32m[1mLinking CXX executable talker[0m
+[4.901s] make[2]: *** [CMakeFiles/intra_pipe.dir/build.make:63: CMakeFiles/intra_pipe.dir/src/intra_pipe.cpp.o] Error 1
+[4.901s] make[1]: *** [CMakeFiles/Makefile2:163: CMakeFiles/intra_pipe.dir/all] Error 2
+[4.921s] [ 66%] Built target talker
+[4.922s] make: *** [Makefile:141: all] Error 2
+[4.924s] Invoked command in '/ros2_test/AD_Middle_Test/ros2/build/simple_s' returned '2': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/build/simple_s -- -j4 -l4
