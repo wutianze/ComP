@@ -13,6 +13,10 @@
 
 
 // Include directives for member types
+// Member `header`
+#include "std_msgs/msg/header.h"
+// Member `header`
+#include "std_msgs/msg/detail/header__rosidl_typesupport_introspection_c.h"
 // Member `content`
 #include "rosidl_runtime_c/string_functions.h"
 
@@ -37,6 +41,21 @@ void Test__rosidl_typesupport_introspection_c__Test_fini_function(void * message
 
 static rosidl_typesupport_introspection_c__MessageMember Test__rosidl_typesupport_introspection_c__Test_message_member_array[3] = {
   {
+    "header",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_MESSAGE,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message (initialized later)
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(test_interfaces__msg__Test, header),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
     "content",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_STRING,  // type
     0,  // upper bound of string
@@ -52,29 +71,14 @@ static rosidl_typesupport_introspection_c__MessageMember Test__rosidl_typesuppor
     NULL  // resize(index) function pointer
   },
   {
-    "id",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_INT64,  // type
+    "count",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(test_interfaces__msg__Test, id),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "timestamp",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_INT64,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(test_interfaces__msg__Test, timestamp),  // bytes offset in struct
+    offsetof(test_interfaces__msg__Test, count),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -104,6 +108,8 @@ static rosidl_message_type_support_t Test__rosidl_typesupport_introspection_c__T
 ROSIDL_TYPESUPPORT_INTROSPECTION_C_EXPORT_test_interfaces
 const rosidl_message_type_support_t *
 ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, test_interfaces, msg, Test)() {
+  Test__rosidl_typesupport_introspection_c__Test_message_member_array[0].members_ =
+    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, std_msgs, msg, Header)();
   if (!Test__rosidl_typesupport_introspection_c__Test_message_type_support_handle.typesupport_identifier) {
     Test__rosidl_typesupport_introspection_c__Test_message_type_support_handle.typesupport_identifier =
       rosidl_typesupport_introspection_c__identifier;

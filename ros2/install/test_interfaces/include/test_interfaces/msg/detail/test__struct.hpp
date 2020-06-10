@@ -14,6 +14,10 @@
 #include <vector>
 
 
+// Include directives for member types
+// Member 'header'
+#include "std_msgs/msg/detail/header__struct.hpp"
+
 #ifndef _WIN32
 # define DEPRECATED__test_interfaces__msg__Test __attribute__((deprecated))
 #else
@@ -33,56 +37,56 @@ struct Test_
   using Type = Test_<ContainerAllocator>;
 
   explicit Test_(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : header(_init)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->content = "";
-      this->id = 0ll;
-      this->timestamp = 0ll;
+      this->count = 0ull;
     }
   }
 
   explicit Test_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
-  : content(_alloc)
+  : header(_alloc, _init),
+    content(_alloc)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->content = "";
-      this->id = 0ll;
-      this->timestamp = 0ll;
+      this->count = 0ull;
     }
   }
 
   // field types and members
+  using _header_type =
+    std_msgs::msg::Header_<ContainerAllocator>;
+  _header_type header;
   using _content_type =
     std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other>;
   _content_type content;
-  using _id_type =
-    int64_t;
-  _id_type id;
-  using _timestamp_type =
-    int64_t;
-  _timestamp_type timestamp;
+  using _count_type =
+    uint64_t;
+  _count_type count;
 
   // setters for named parameter idiom
+  Type & set__header(
+    const std_msgs::msg::Header_<ContainerAllocator> & _arg)
+  {
+    this->header = _arg;
+    return *this;
+  }
   Type & set__content(
     const std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other> & _arg)
   {
     this->content = _arg;
     return *this;
   }
-  Type & set__id(
-    const int64_t & _arg)
+  Type & set__count(
+    const uint64_t & _arg)
   {
-    this->id = _arg;
-    return *this;
-  }
-  Type & set__timestamp(
-    const int64_t & _arg)
-  {
-    this->timestamp = _arg;
+    this->count = _arg;
     return *this;
   }
 
@@ -128,13 +132,13 @@ struct Test_
   // comparison operators
   bool operator==(const Test_ & other) const
   {
+    if (this->header != other.header) {
+      return false;
+    }
     if (this->content != other.content) {
       return false;
     }
-    if (this->id != other.id) {
-      return false;
-    }
-    if (this->timestamp != other.timestamp) {
+    if (this->count != other.count) {
       return false;
     }
     return true;

@@ -39,6 +39,21 @@ void Test_fini_function(void * message_memory)
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMember Test_message_member_array[3] = {
   {
+    "header",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
+    0,  // upper bound of string
+    ::rosidl_typesupport_introspection_cpp::get_message_type_support_handle<std_msgs::msg::Header>(),  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(test_interfaces::msg::Test, header),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
     "content",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_STRING,  // type
     0,  // upper bound of string
@@ -54,29 +69,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember Test_message_
     nullptr  // resize(index) function pointer
   },
   {
-    "id",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
+    "count",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(test_interfaces::msg::Test, id),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "timestamp",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(test_interfaces::msg::Test, timestamp),  // bytes offset in struct
+    offsetof(test_interfaces::msg::Test, count),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer

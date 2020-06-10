@@ -10,6 +10,8 @@
 
 
 // Include directives for member types
+// Member `header`
+#include "std_msgs/msg/detail/header__functions.h"
 // Member `content`
 #include "rosidl_runtime_c/string_functions.h"
 
@@ -19,13 +21,17 @@ test_interfaces__msg__Test__init(test_interfaces__msg__Test * msg)
   if (!msg) {
     return false;
   }
+  // header
+  if (!std_msgs__msg__Header__init(&msg->header)) {
+    test_interfaces__msg__Test__fini(msg);
+    return false;
+  }
   // content
   if (!rosidl_runtime_c__String__init(&msg->content)) {
     test_interfaces__msg__Test__fini(msg);
     return false;
   }
-  // id
-  // timestamp
+  // count
   return true;
 }
 
@@ -35,10 +41,11 @@ test_interfaces__msg__Test__fini(test_interfaces__msg__Test * msg)
   if (!msg) {
     return;
   }
+  // header
+  std_msgs__msg__Header__fini(&msg->header);
   // content
   rosidl_runtime_c__String__fini(&msg->content);
-  // id
-  // timestamp
+  // count
 }
 
 test_interfaces__msg__Test *

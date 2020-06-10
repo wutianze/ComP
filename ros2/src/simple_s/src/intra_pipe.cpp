@@ -6,6 +6,7 @@
 #include <utility>
 #include<cmath>
 #include<numeric>
+#include<fstream>
 #include <message_filters/subscriber.h>
 #include <message_filters/synchronizer.h>
 #include <message_filters/sync_policies/approximate_time.h>
@@ -17,7 +18,8 @@
 using namespace std::chrono_literals;
 using namespace std;
 using namespace message_filters;
-
+fstream writer;
+/*
 vector<vector<uint64_t>>latency;
 vector<double>analyze_latency(vector<uint64_t>&p){
 	vector<double>res;
@@ -45,15 +47,16 @@ vector<double>analyze_latency(vector<uint64_t>&p){
 	res.push_back(stdev);
 	return res;
 }
-
+*/
 struct Producer : public rclcpp::Node
 {
 	Producer(const std::string & name, const int &sleep_ms, const int64_t &str_size, const std::string &channel_name)
 		: Node(name, rclcpp::NodeOptions().use_intra_process_comms(true))
 	{
-		rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data));
+		//rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data));
 		//Create a publisher on the output topic.
-		pub_ = this->create_publisher<test_interfaces::msg::Test>(channel_name, qos_);
+		//pub_ = this->create_publisher<test_interfaces::msg::Test>(channel_name, qos_);
+		pub_ = this->create_publisher<test_interfaces::msg::Test>(channel_name, 1);
 		std::weak_ptr<std::remove_pointer<decltype(pub_.get())>::type> captured_pub = pub_;
 		//Create a timer which publishes on the output topic at ~1Hz.
 		auto callback = [captured_pub, str_size, this]() -> void {
@@ -63,11 +66,12 @@ struct Producer : public rclcpp::Node
 			}
 			static int32_t count = 0;
 			test_interfaces::msg::Test::UniquePtr msg(new test_interfaces::msg::Test());
-			msg->header.frame_id = count++;
+			msg->count = count;
+			count++;
 			msg->content = string(str_size,'a');
-			printf(
-					"Published message with content size: %lu, and address: 0x%" PRIXPTR "\n", (msg->content).size(),
-					reinterpret_cast<std::uintptr_t>(msg.get()));
+			//printf(
+			//		"Published message with content size: %lu, and address: 0x%" PRIXPTR "\n", (msg->content).size(),
+			//		reinterpret_cast<std::uintptr_t>(msg.get()));
 			
 			msg->header.stamp = this->now();
 			pub_ptr->publish(std::move(msg));
@@ -85,23 +89,31 @@ struct Consumer : public rclcpp::Node
 	Consumer(const std::string & name, const std::string & channel_name, const int& channel_num)
 		: Node(name, rclcpp::NodeOptions().use_intra_process_comms(true))
 	{
+		file_name = name;
 		for(int i=0;i<channel_num;i++){
 			vector<uint64_t>tmp;
+			vector<uint64_t>tmp1;
 			latency.push_back(tmp);
+			//countV.push_back(tmp1);
 		}
-
+		rec_count = 0;
+		rec_max = 0;
 		//Create a subscription on the input topic which prints on receipt of new messages.
 		if(channel_num == 1){
 		sub_ = this->create_subscription<test_interfaces::msg::Test>(
 				channel_name,
-				10,
+				1,
 				[this](test_interfaces::msg::Test::UniquePtr msg) {
 				//uint64_t rec_time = this->now().nanoseconds();
-				
 				rclcpp::Time rec_time = this->now();
-				RCLCPP_INFO(this->get_logger(),"heard one");
+				if(rec_max < msg->count){
+				rec_max = msg->count;
+				}	
+				rec_count++;
+				//RCLCPP_INFO(this->get_logger(),"heard one");
 				//RCLCPP_INFO(this->get_logger(), "I heard: '%d',rec_time:'%lu', content size:%lu", msg->id,rec_time,(msg->content).size());              // CHANGE
 				latency[0].push_back((rec_time-msg->header.stamp).nanoseconds());
+				//countV[0].push_back(msg->count);
 				//printf(
 				//		" Received message content size: %lu, and address: 0x%" PRIXPTR "\n", (msg->content).size(),
 				//		reinterpret_cast<std::uintptr_t>(msg.get()));
@@ -117,12 +129,19 @@ struct Consumer : public rclcpp::Node
 		}
 	}
 	~Consumer(){
+		string loss_rate = to_string(double(rec_count-1)/double(rec_max));
 		for(unsigned int i =0;i<latency.size();i++){
-			vector<double> res = analyze_latency(latency[i]);
+			/*vector<double> res = analyze_latency(latency[i]);
 			cout<<"result:"<<i<<endl;
 			for(unsigned int j=0;j<res.size();j++){
 				cout<<res[j]<<endl;
+			}*/
+			cout<<"release Consumer"<<endl;
+			writer.open("/ros2_test/log/test/tmp/"+file_name+'_'+to_string(i)+'_'+loss_rate+"loss",std::ios::trunc|std::ios::out);
+			for(unsigned int j=0;j<latency[i].size();j++){
+			writer<<latency[i][j]<<endl;//<<','<<countV[i][j]<<endl;
 			}
+			writer.close();
 		}
 	}
 	void topic_callback2(const test_interfaces::msg::Test::SharedPtr msg0,const test_interfaces::msg::Test::SharedPtr msg1)
@@ -136,6 +155,11 @@ struct Consumer : public rclcpp::Node
 	message_filters::Subscriber<test_interfaces::msg::Test>sub1;
 	message_filters::Subscriber<test_interfaces::msg::Test>sub2;
 	shared_ptr<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>>sync_;
+	string file_name;
+	vector<vector<uint64_t>>latency;
+	//vector<vector<uint64_t>>countV;
+	uint64_t rec_count;
+	uint64_t rec_max;
 };
 
 int main(int argc, char * argv[])
@@ -148,16 +172,17 @@ int main(int argc, char * argv[])
 	cout<<"pub_num"<<pub_num<<" sub_num"<<sub_num<<endl;
 	vector<shared_ptr<Producer>>pvec;
 	vector<shared_ptr<Consumer>>cvec;
+	
+	for(int i=0;i<sub_num;i++){	
+	auto consumer = std::make_shared<Consumer>("c_"+to_string(i),string(argv[1])+to_string(i),atoi(argv[4]));
+	cvec.push_back(consumer);
+	executor.add_node(consumer);
+	}
 	for(int i=0;i<pub_num;i++){
-	auto producer = std::make_shared<Producer>("producer"+to_string(i),atoi(argv[2]),atoll(argv[3]),string(argv[1]));// for 1 to 1 
+	auto producer = std::make_shared<Producer>("producer"+to_string(i),atoi(argv[2]),atoll(argv[3]),string(argv[1])+to_string(i));// for 1 to 1 
 	//auto producer = std::make_shared<Producer>("producer"+to_string(i),atoi(argv[2]),atoll(argv[3]),string(argv[1])+to_string(i)); //for N to 1
 	pvec.push_back(producer);
 	executor.add_node(producer);
-	}
-	for(int i=0;i<sub_num;i++){	
-	auto consumer = std::make_shared<Consumer>("consumer"+to_string(i),string(argv[1]),atoi(argv[4]));
-	cvec.push_back(consumer);
-	executor.add_node(consumer);
 	}
 	executor.spin();
 

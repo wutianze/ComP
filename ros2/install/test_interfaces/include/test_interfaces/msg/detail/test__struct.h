@@ -18,15 +18,17 @@ extern "C"
 // Constants defined in the message
 
 // Include directives for member types
+// Member 'header'
+#include "std_msgs/msg/detail/header__struct.h"
 // Member 'content'
 #include "rosidl_runtime_c/string.h"
 
 // Struct defined in msg/Test in the package test_interfaces.
 typedef struct test_interfaces__msg__Test
 {
+  std_msgs__msg__Header header;
   rosidl_runtime_c__String content;
-  int64_t id;
-  int64_t timestamp;
+  uint64_t count;
 } test_interfaces__msg__Test;
 
 // Struct for a sequence of test_interfaces__msg__Test.

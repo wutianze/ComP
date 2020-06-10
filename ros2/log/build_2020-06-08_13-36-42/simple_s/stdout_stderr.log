@@ -1,0 +1,28 @@
+[0.081s] [35m[1mScanning dependencies of target intra_pipe[0m
+[0.091s] [35m[1mScanning dependencies of target listener[0m
+[0.124s] [ 33%] Built target talker
+[0.131s] [ 50%] [32mBuilding CXX object CMakeFiles/intra_pipe.dir/src/intra_pipe.cpp.o[0m
+[0.134s] [ 66%] [32mBuilding CXX object CMakeFiles/listener.dir/src/listener.cpp.o[0m
+[2.125s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:[m[K In lambda function:
+[2.125s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:106:16:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kuint64_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K-Wsign-compare[m[K]
+[2.125s]   106 |     if([01;35m[Krec_max < atoi(msg->header.frame_id.c_str())[m[K){
+[2.125s]       |        [01;35m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.125s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:107:41:[m[K [01;31m[Kerror: [m[Kinvalid conversion from ‘[01m[Kconst char*[m[K’ to ‘[01m[Kuint64_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;31m[K-fpermissive[m[K]
+[2.125s]   107 |     rec_max = [01;31m[Kmsg->header.frame_id.c_str()[m[K;
+[2.126s]       |               [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~^~[m[K
+[2.126s]       |                                         [01;31m[K|[m[K
+[2.126s]       |                                         [01;31m[Kconst char*[m[K
+[2.218s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In member function ‘[01m[Kvoid MinimalSubscriber::topic_callback(test_interfaces::msg::Test_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.218s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:95:51:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing _stamp_type = struct builtin_interfaces::msg::Time_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct builtin_interfaces::msg::Time_<std::allocator<void> >[m[K’} has no member named ‘[01m[Knanoseconds[m[K’; did you mean ‘[01m[Knanosec[m[K’?
+[2.219s]    95 |    uint64_t rec_la = rec_time-(msg->header).stamp.[01;31m[Knanoseconds[m[K();
+[2.219s]       |                                                   [01;31m[K^~~~~~~~~~~[m[K
+[2.219s]       |                                                   [32m[Knanosec[m[K
+[2.219s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:96:14:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kuint64_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K-Wsign-compare[m[K]
+[2.219s]    96 |    if([01;35m[Krec_max<atoi(msg->header.frame_id.c_str())[m[K){
+[2.219s]       |       [01;35m[K~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.616s] make[2]: *** [CMakeFiles/listener.dir/build.make:63: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+[4.616s] make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/listener.dir/all] Error 2
+[4.616s] make[1]: *** Waiting for unfinished jobs....
+[4.844s] make[2]: *** [CMakeFiles/intra_pipe.dir/build.make:63: CMakeFiles/intra_pipe.dir/src/intra_pipe.cpp.o] Error 1
+[4.844s] make[1]: *** [CMakeFiles/Makefile2:163: CMakeFiles/intra_pipe.dir/all] Error 2
+[4.845s] make: *** [Makefile:141: all] Error 2
