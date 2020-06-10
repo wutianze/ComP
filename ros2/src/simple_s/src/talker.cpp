@@ -11,8 +11,8 @@ class MinimalPublisher : public rclcpp::Node
 		MinimalPublisher(int sleep_ms, int64_t str_size, string channel_name)
 			: Node("minimal_publisher"),  count_(0)
 		{
-			//rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data));
-			rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_default));
+			rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data));
+			//rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_default));
 			
 			publisher_ = this->create_publisher<test_interfaces::msg::Test>(channel_name, qos_);    // CHANGE
 			timer_ = this->create_wall_timer(
@@ -24,7 +24,9 @@ class MinimalPublisher : public rclcpp::Node
 	private:
 		void timer_callback()
 		{
-			message.header.frame_id = this->count_++;                                        // CHANGE
+			message.count = this->count_;                                        // CHANGE
+			//RCLCPP_INFO(this->get_logger(), to_string(strtoull(message.header.frame_id.c_str(),NULL,0)));              // CHANGE
+			this->count_++;
 			message.header.stamp = this->now();
 			//RCLCPP_INFO(this->get_logger(), "Publishing: '%lu'", message.header.stamp);    // CHANGE
 			publisher_->publish(message);

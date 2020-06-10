@@ -1,0 +1,16 @@
+[2.111s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:[m[K In lambda function:
+[2.112s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/intra_pipe.cpp:106:16:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kuint64_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K-Wsign-compare[m[K]
+[2.112s]   106 |     if([01;35m[Krec_max < atoi(msg->header.frame_id.c_str())[m[K){
+[2.112s]       |        [01;35m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.341s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In member function ‘[01m[Kvoid MinimalSubscriber::topic_callback(test_interfaces::msg::Test_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.341s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:95:51:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing _stamp_type = struct builtin_interfaces::msg::Time_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct builtin_interfaces::msg::Time_<std::allocator<void> >[m[K’} has no member named ‘[01m[Knanoseconds[m[K’; did you mean ‘[01m[Knanosec[m[K’?
+[2.342s]    95 |    uint64_t rec_la = rec_time-(msg->header).stamp.[01;31m[Knanoseconds[m[K();
+[2.342s]       |                                                   [01;31m[K^~~~~~~~~~~[m[K
+[2.342s]       |                                                   [32m[Knanosec[m[K
+[2.342s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:96:14:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kuint64_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K-Wsign-compare[m[K]
+[2.342s]    96 |    if([01;35m[Krec_max<atoi(msg->header.frame_id.c_str())[m[K){
+[2.342s]       |       [01;35m[K~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.920s] make[2]: *** [CMakeFiles/listener.dir/build.make:63: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+[4.921s] make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/listener.dir/all] Error 2
+[4.921s] make[1]: *** Waiting for unfinished jobs....
+[10.278s] make: *** [Makefile:141: all] Error 2

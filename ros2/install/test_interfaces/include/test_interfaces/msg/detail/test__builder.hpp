@@ -20,32 +20,16 @@ namespace msg
 namespace builder
 {
 
-class Init_Test_timestamp
+class Init_Test_count
 {
 public:
-  explicit Init_Test_timestamp(::test_interfaces::msg::Test & msg)
+  explicit Init_Test_count(::test_interfaces::msg::Test & msg)
   : msg_(msg)
   {}
-  ::test_interfaces::msg::Test timestamp(::test_interfaces::msg::Test::_timestamp_type arg)
+  ::test_interfaces::msg::Test count(::test_interfaces::msg::Test::_count_type arg)
   {
-    msg_.timestamp = std::move(arg);
+    msg_.count = std::move(arg);
     return std::move(msg_);
-  }
-
-private:
-  ::test_interfaces::msg::Test msg_;
-};
-
-class Init_Test_id
-{
-public:
-  explicit Init_Test_id(::test_interfaces::msg::Test & msg)
-  : msg_(msg)
-  {}
-  Init_Test_timestamp id(::test_interfaces::msg::Test::_id_type arg)
-  {
-    msg_.id = std::move(arg);
-    return Init_Test_timestamp(msg_);
   }
 
 private:
@@ -55,13 +39,29 @@ private:
 class Init_Test_content
 {
 public:
-  Init_Test_content()
-  : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
+  explicit Init_Test_content(::test_interfaces::msg::Test & msg)
+  : msg_(msg)
   {}
-  Init_Test_id content(::test_interfaces::msg::Test::_content_type arg)
+  Init_Test_count content(::test_interfaces::msg::Test::_content_type arg)
   {
     msg_.content = std::move(arg);
-    return Init_Test_id(msg_);
+    return Init_Test_count(msg_);
+  }
+
+private:
+  ::test_interfaces::msg::Test msg_;
+};
+
+class Init_Test_header
+{
+public:
+  Init_Test_header()
+  : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
+  {}
+  Init_Test_content header(::test_interfaces::msg::Test::_header_type arg)
+  {
+    msg_.header = std::move(arg);
+    return Init_Test_content(msg_);
   }
 
 private:
@@ -79,7 +79,7 @@ template<>
 inline
 auto build<::test_interfaces::msg::Test>()
 {
-  return test_interfaces::msg::builder::Init_Test_content();
+  return test_interfaces::msg::builder::Init_Test_header();
 }
 
 }  // namespace test_interfaces

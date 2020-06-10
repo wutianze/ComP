@@ -25,12 +25,12 @@ using apollo::cyber::ComponentBase;
 using apollo::cyber::AD_Middle_Test::cyber::Bytes;
 using apollo::cyber::Time;
 using namespace std;
-class C:public Component<Bytes>{
+class C:public Component<Bytes>{// more channel example: Component<Bytes,Bytes,Bytes> means receive three channels, and you need to change Proc() too
 	private:
   	std::ofstream ofs;
   	std::string fn;
-	vector<vector<uint64_t>>lantency;
-	vector<double>analyze_lantency(vector<uint64_t>&p){
+	vector<vector<uint64_t>>latency;
+	vector<double>analyze_latency(vector<uint64_t>&p){
 		vector<double>res;
 		sort(p.begin(),p.end());
 		int size = p.size();
@@ -38,11 +38,11 @@ class C:public Component<Bytes>{
 		res.push_back(p[static_cast<int>((size-1)*0.99)]);// 99th
 		
 		// for box-plot
-		res.push_back(p[0]);// smallest lantency
+		res.push_back(p[0]);// smallest latency
 		res.push_back(p[static_cast<int>((size-1)*0.25)]);// 25th
 		res.push_back(p[static_cast<int>((size-1)*0.5)]);// 50th
 		res.push_back(p[static_cast<int>((size-1)*0.75)]);// 75th
-		res.push_back(p[size-1]);// biggest lantency
+		res.push_back(p[size-1]);// biggest latency
 
 		double sum = std::accumulate(std::begin(p), std::end(p), 0.0);
 		double mean =  sum / size;
@@ -57,17 +57,21 @@ class C:public Component<Bytes>{
 		return res;
 		}
 	~C(){
-		ofs.open("/apollo/data/log/test/multi/"+fn,std::ios::trunc);
-		for(unsigned int i =0;i<lantency.size();i++){
-		vector<double> res = analyze_lantency(lantency[i]);
-		//cout<<"result:"<<i<<endl;
-		for(unsigned int j=0;j<res.size();j++){
-			ofs<<res[j]<<endl;
-			//cout<<res[j]<<endl;
-		}
-		ofs<<endl;
+		for(unsigned int i =0;i<latency.size();i++){
+		ofs.open("/apollo/data/log/test/tmp/"+fn+'_'+to_string(i),std::ios::trunc);
+		for(unsigned int j=0;j<latency[i].size();j++){
+		ofs<<latency[i][j]<<endl;
 		}
 		ofs.close();
+		//vector<double> res = analyze_latency(lantency[i]);
+		//cout<<"result:"<<i<<endl;
+		//for(unsigned int j=0;j<res.size();j++){
+		//	ofs<<res[j]<<endl;
+			//cout<<res[j]<<endl;
+		//}
+		//ofs<<endl;
+		}
+		//ofs.close();
 		AINFO<<"C release";
 	}
 	public:
@@ -77,17 +81,17 @@ class C:public Component<Bytes>{
 	// how many channels C listens
 	for(int i=0;i<1;i++){
 		vector<uint64_t>tmp;
-		lantency.push_back(tmp);
+		latency.push_back(tmp);
 	}
   	return true;
 }
 bool Proc(const std::shared_ptr<Bytes>& msg0) {
 	uint64_t receive_time = Time::Now().ToNanosecond();
 	uint64_t lan0 = receive_time-msg0->timestamp();
-	lantency[0].push_back(lan0);
+	latency[0].push_back(lan0);
 	return true;
 }
-bool Proc(const std::shared_ptr<Bytes>& msg0,const std::shared_ptr<Bytes>& msg1,const std::shared_ptr<Bytes>& msg2,const std::shared_ptr<Bytes>& msg3) {
+bool Proc(const std::shared_ptr<Bytes>& msg0,const std::shared_ptr<Bytes>& msg1,const std::shared_ptr<Bytes>& msg2,const std::shared_ptr<Bytes>& msg3) {// more channel example
 	uint64_t receive_time = Time::Now().ToNanosecond();
 	uint64_t lans[4];
 	lans[0] = receive_time-msg0->timestamp();
@@ -95,7 +99,7 @@ bool Proc(const std::shared_ptr<Bytes>& msg0,const std::shared_ptr<Bytes>& msg1,
 	lans[2] = receive_time-msg2->timestamp();
 	lans[3] = receive_time-msg3->timestamp();
 	for(int i=0;i<4;i++){
-		lantency[i].push_back(lans[i]);
+		latency[i].push_back(lans[i]);
 	}
 	return true;
 }

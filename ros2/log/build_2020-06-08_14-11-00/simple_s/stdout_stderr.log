@@ -1,0 +1,137 @@
+[0.091s] [35m[1mScanning dependencies of target talker[0m
+[0.100s] [35m[1mScanning dependencies of target listener[0m
+[0.113s] [ 33%] Built target intra_pipe
+[0.125s] [ 50%] [32mBuilding CXX object CMakeFiles/talker.dir/src/talker.cpp.o[0m
+[0.134s] [ 66%] [32mBuilding CXX object CMakeFiles/listener.dir/src/listener.cpp.o[0m
+[1.924s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[1.924s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[1.924s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[1.924s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[1.924s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[1.925s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[1.925s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[1.925s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[1.925s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[1.925s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:3[m[K:
+[1.925s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:[m[K In member function ‘[01m[Kvoid MinimalPublisher::timer_callback()[m[K’:
+[1.925s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:28:44:[m[K [01;31m[Kerror: [m[Kinvalid conversion from ‘[01m[Klong long unsigned int[m[K’ to ‘[01m[Kconst char*[m[K’ [[01;31m[K-fpermissive[m[K]
+[1.926s]    28 |    RCLCPP_INFO(this->get_logger(), [01;31m[Kstrtoull(message.header.frame_id.c_str(),NULL,0)[m[K);              // CHANGE
+[1.926s]       |                                    [01;31m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[1.926s]       |                                            [01;31m[K|[m[K
+[1.926s]       |                                            [01;31m[Klong long unsigned int[m[K
+[1.926s] [01m[K/opt/ros/foxy/include/rcutils/logging_macros.h:72:64:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KRCUTILS_LOG_COND_NAMED[m[K’
+[1.926s]    72 |       rcutils_log(&__rcutils_logging_location, severity, name, [01;36m[K__VA_ARGS__[m[K); \
+[1.926s]       |                                                                [01;36m[K^~~~~~~~~~~[m[K
+[1.926s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:542:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCUTILS_LOG_INFO_NAMED[m[K’
+[1.927s]   542 |     [01;36m[KRCUTILS_LOG_INFO_NAMED[m[K( \
+[1.927s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[1.927s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:544:28:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_FIRST_ARG[m[K’
+[1.927s]   544 |       rclcpp::get_c_string([01;36m[KRCLCPP_FIRST_ARG[m[K(__VA_ARGS__, "")), \
+[1.927s]       |                            [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[1.927s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:28:4:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_INFO[m[K’
+[1.927s]    28 |    [01;36m[KRCLCPP_INFO[m[K(this->get_logger(), strtoull(message.header.frame_id.c_str(),NULL,0));              // CHANGE
+[1.928s]       |    [01;36m[K^~~~~~~~~~~[m[K
+[1.928s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:36[m[K,
+[1.928s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[1.928s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[1.928s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[1.928s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[1.928s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[1.928s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[1.929s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[1.929s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[1.929s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/talker.cpp:3[m[K:
+[1.929s] [01m[K/opt/ros/foxy/include/rclcpp/utilities.hpp:295:27:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kconst char* rclcpp::get_c_string(const char*)[m[K’
+[1.929s]   295 | get_c_string([01;36m[Kconst char * string_in[m[K);
+[1.929s]       |              [01;36m[K~~~~~~~~~~~~~^~~~~~~~~[m[K
+[2.394s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[2.394s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[2.394s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[2.394s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[2.395s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[2.395s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[2.395s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[2.395s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[2.395s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[2.396s]                  from [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:38[m[K,
+[2.396s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:5[m[K:
+[2.396s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In member function ‘[01m[Kvoid MinimalSubscriber::topic_callback(test_interfaces::msg::Test_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.396s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:95:44:[m[K [01;31m[Kerror: [m[Kinvalid conversion from ‘[01m[Klong long unsigned int[m[K’ to ‘[01m[Kconst char*[m[K’ [[01;31m[K-fpermissive[m[K]
+[2.396s]    95 |    RCLCPP_INFO(this->get_logger(), [01;31m[Kstrtoull(msg->header.frame_id.c_str(),NULL,0)[m[K);              // CHANGE
+[2.396s]       |                                    [01;31m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.396s]       |                                            [01;31m[K|[m[K
+[2.397s]       |                                            [01;31m[Klong long unsigned int[m[K
+[2.397s] [01m[K/opt/ros/foxy/include/rcutils/logging_macros.h:72:64:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KRCUTILS_LOG_COND_NAMED[m[K’
+[2.397s]    72 |       rcutils_log(&__rcutils_logging_location, severity, name, [01;36m[K__VA_ARGS__[m[K); \
+[2.397s]       |                                                                [01;36m[K^~~~~~~~~~~[m[K
+[2.397s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:542:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCUTILS_LOG_INFO_NAMED[m[K’
+[2.397s]   542 |     [01;36m[KRCUTILS_LOG_INFO_NAMED[m[K( \
+[2.397s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.398s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:544:28:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_FIRST_ARG[m[K’
+[2.398s]   544 |       rclcpp::get_c_string([01;36m[KRCLCPP_FIRST_ARG[m[K(__VA_ARGS__, "")), \
+[2.398s]       |                            [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[2.398s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:95:4:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_INFO[m[K’
+[2.398s]    95 |    [01;36m[KRCLCPP_INFO[m[K(this->get_logger(), strtoull(msg->header.frame_id.c_str(),NULL,0));              // CHANGE
+[2.398s]       |    [01;36m[K^~~~~~~~~~~[m[K
+[2.398s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:36[m[K,
+[2.398s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[2.399s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[2.399s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[2.399s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[2.399s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[2.399s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[2.399s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[2.399s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[2.400s]                  from [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:38[m[K,
+[2.400s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:5[m[K:
+[2.400s] [01m[K/opt/ros/foxy/include/rclcpp/utilities.hpp:295:27:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kconst char* rclcpp::get_c_string(const char*)[m[K’
+[2.400s]   295 | get_c_string([01;36m[Kconst char * string_in[m[K);
+[2.400s]       |              [01;36m[K~~~~~~~~~~~~~^~~~~~~~~[m[K
+[2.400s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[2.400s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[2.401s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[2.401s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[2.401s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[2.401s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[2.401s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[2.401s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[2.401s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[2.401s]                  from [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:38[m[K,
+[2.402s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:5[m[K:
+[2.402s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:97:44:[m[K [01;31m[Kerror: [m[Kinvalid conversion from ‘[01m[Klong long unsigned int[m[K’ to ‘[01m[Kconst char*[m[K’ [[01;31m[K-fpermissive[m[K]
+[2.402s]    97 |    RCLCPP_INFO(this->get_logger(), [01;31m[Kstrtoull(msg->header.frame_id.c_str(),NULL,0)[m[K);              // CHANGE
+[2.402s]       |                                    [01;31m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.402s]       |                                            [01;31m[K|[m[K
+[2.402s]       |                                            [01;31m[Klong long unsigned int[m[K
+[2.402s] [01m[K/opt/ros/foxy/include/rcutils/logging_macros.h:72:64:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KRCUTILS_LOG_COND_NAMED[m[K’
+[2.403s]    72 |       rcutils_log(&__rcutils_logging_location, severity, name, [01;36m[K__VA_ARGS__[m[K); \
+[2.403s]       |                                                                [01;36m[K^~~~~~~~~~~[m[K
+[2.403s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:542:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCUTILS_LOG_INFO_NAMED[m[K’
+[2.403s]   542 |     [01;36m[KRCUTILS_LOG_INFO_NAMED[m[K( \
+[2.403s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.403s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:544:28:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_FIRST_ARG[m[K’
+[2.403s]   544 |       rclcpp::get_c_string([01;36m[KRCLCPP_FIRST_ARG[m[K(__VA_ARGS__, "")), \
+[2.403s]       |                            [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[2.404s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:97:4:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_INFO[m[K’
+[2.404s]    97 |    [01;36m[KRCLCPP_INFO[m[K(this->get_logger(), strtoull(msg->header.frame_id.c_str(),NULL,0));              // CHANGE
+[2.404s]       |    [01;36m[K^~~~~~~~~~~[m[K
+[2.404s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:36[m[K,
+[2.404s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[2.404s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[2.404s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[2.405s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[2.405s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[2.405s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[2.405s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[2.405s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[2.405s]                  from [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:38[m[K,
+[2.405s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:5[m[K:
+[2.405s] [01m[K/opt/ros/foxy/include/rclcpp/utilities.hpp:295:27:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kconst char* rclcpp::get_c_string(const char*)[m[K’
+[2.406s]   295 | get_c_string([01;36m[Kconst char * string_in[m[K);
+[2.406s]       |              [01;36m[K~~~~~~~~~~~~~^~~~~~~~~[m[K
+[2.868s] make[2]: *** [CMakeFiles/talker.dir/build.make:63: CMakeFiles/talker.dir/src/talker.cpp.o] Error 1
+[2.868s] make[1]: *** [CMakeFiles/Makefile2:109: CMakeFiles/talker.dir/all] Error 2
+[2.868s] make[1]: *** Waiting for unfinished jobs....
+[4.955s] make[2]: *** [CMakeFiles/listener.dir/build.make:63: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+[4.955s] make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/listener.dir/all] Error 2
+[4.955s] make: *** [Makefile:141: all] Error 2
