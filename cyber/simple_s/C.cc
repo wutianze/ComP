@@ -25,7 +25,7 @@ using apollo::cyber::ComponentBase;
 using apollo::cyber::AD_Middle_Test::cyber::Bytes;
 using apollo::cyber::Time;
 using namespace std;
-class C:public Component<Bytes>{// more channel example: Component<Bytes,Bytes,Bytes> means receive three channels, and you need to change Proc() too
+class C:public Component<Bytes,Bytes,Bytes,Bytes>{// more channel example: Component<Bytes,Bytes,Bytes> means receive three channels, and you need to change Proc() too
 	private:
   	std::ofstream ofs;
   	std::string fn;
@@ -33,7 +33,7 @@ class C:public Component<Bytes>{// more channel example: Component<Bytes,Bytes,B
 	uint64_t rec_max;
 	vector<vector<uint64_t>>latency;
 	~C(){
-		string loss_rate = to_string(double(rec_count-1)/double(rec_max));
+		//string loss_rate = to_string(double(rec_count-1)/double(rec_max));
 		for(unsigned int i =0;i<latency.size();i++){
 		ofs.open("/apollo/data/log/test/tmp/"+fn+'_'+to_string(i)+'_'+loss_rate+"loss",std::ios::trunc);//fn= c_0,c_1...
 		for(unsigned int j=0;j<latency[i].size();j++){

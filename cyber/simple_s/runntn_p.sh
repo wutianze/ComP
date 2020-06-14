@@ -2,7 +2,7 @@
 # ex. ./run.sh 1 1 1t1
 kill -9 `ps -A|grep java |awk '{print $1}'` 
 ps_num=8
-log_dir="/apollo/data/log/test/"$ps_num"t"$ps_num"_cs"
+log_dir="/apollo/data/log/test/"$ps_num"t"$ps_num"_choreo_cr"
 rm -rf $log_dir
 mkdir $log_dir
 for ss in 4194304 #1024 8192 16384 65536 262144 524288 1048576 2097152 4194304 8388608
@@ -29,6 +29,6 @@ for f in $filesname
 do
 	echo $f
 	#cat /apollo/data/log/test/tmp/$f
-	mv /apollo/data/log/test/tmp/$f $log_dir/$f"_"$ps_num"t"$ps_num"_cs.csv"
+	mv /apollo/data/log/test/tmp/$f $log_dir/$f"_"$ps_num"t"$ps_num"_cr.csv"
 done
 done
