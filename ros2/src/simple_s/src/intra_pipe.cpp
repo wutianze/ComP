@@ -56,6 +56,7 @@ struct Producer : public rclcpp::Node
 		//rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data));
 		//Create a publisher on the output topic.
 		//pub_ = this->create_publisher<test_interfaces::msg::Test>(channel_name, qos_);
+		count=0;
 		pub_ = this->create_publisher<test_interfaces::msg::Test>(channel_name, 1);
 		std::weak_ptr<std::remove_pointer<decltype(pub_.get())>::type> captured_pub = pub_;
 		//Create a timer which publishes on the output topic at ~1Hz.
@@ -64,7 +65,6 @@ struct Producer : public rclcpp::Node
 			if (!pub_ptr) {
 				return;
 			}
-			static int32_t count = 0;
 			test_interfaces::msg::Test::UniquePtr msg(new test_interfaces::msg::Test());
 			msg->count = count;
 			count++;
@@ -81,6 +81,7 @@ struct Producer : public rclcpp::Node
 
 	rclcpp::Publisher<test_interfaces::msg::Test>::SharedPtr pub_;
 	rclcpp::TimerBase::SharedPtr timer_;
+	uint64_t count = 0;
 };
 
 //Node that consumes messages.
@@ -92,7 +93,6 @@ struct Consumer : public rclcpp::Node
 		file_name = name;
 		for(int i=0;i<channel_num;i++){
 			vector<uint64_t>tmp;
-			vector<uint64_t>tmp1;
 			latency.push_back(tmp);
 			//countV.push_back(tmp1);
 		}
@@ -110,7 +110,7 @@ struct Consumer : public rclcpp::Node
 				rec_max = msg->count;
 				}	
 				rec_count++;
-				//RCLCPP_INFO(this->get_logger(),"heard one");
+				//RCLCPP_INFO(this->get_logger(),"heard one,count:%d,max:%d",rec_count,rec_max);
 				//RCLCPP_INFO(this->get_logger(), "I heard: '%d',rec_time:'%lu', content size:%lu", msg->id,rec_time,(msg->content).size());              // CHANGE
 				latency[0].push_back((rec_time-msg->header.stamp).nanoseconds());
 				//countV[0].push_back(msg->count);
@@ -118,18 +118,21 @@ struct Consumer : public rclcpp::Node
 				//		" Received message content size: %lu, and address: 0x%" PRIXPTR "\n", (msg->content).size(),
 				//		reinterpret_cast<std::uintptr_t>(msg.get()));
 				});
-		}else if(channel_num == 2){
-			sub1.subscribe(this,channel_name+'0',rmw_qos_profile_sensor_data);
-			sub2.subscribe(this,channel_name+'1',rmw_qos_profile_sensor_data);
+		}else{
+			sub0.subscribe(this,channel_name+'0',rmw_qos_profile_sensor_data);
+			sub1.subscribe(this,channel_name+'1',rmw_qos_profile_sensor_data);
+			sub2.subscribe(this,channel_name+'2',rmw_qos_profile_sensor_data);
+			sub3.subscribe(this,channel_name+'3',rmw_qos_profile_sensor_data);
 			//this->sync_ = new TimeSynchronizer<test_interfaces::msg::Test,test_interfaces::msg::Test>(sub1,sub2,10);
 			//this->sync_->registerCallback(&MinimalSubscriber::topic_callback2,this);
-			this->sync_= std::make_shared<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>>(sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>(10),sub1,sub2);
+			this->sync_= std::make_shared<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test,test_interfaces::msg::Test,test_interfaces::msg::Test>>>(sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test,test_interfaces::msg::Test,test_interfaces::msg::Test>(10),sub0,sub1,sub2,sub3);
 			this->sync_->registerCallback(&Consumer::topic_callback2,this);
 
 		}
 	}
 	~Consumer(){
-		string loss_rate = to_string(double(rec_count-1)/double(rec_max));
+		//string loss_rate = to_string(double(rec_count-1)/double(rec_max));
+		RCLCPP_INFO(this->get_logger(), "latency num:%d",latency.size());              // CHANGE
 		for(unsigned int i =0;i<latency.size();i++){
 			/*vector<double> res = analyze_latency(latency[i]);
 			cout<<"result:"<<i<<endl;
@@ -137,24 +140,28 @@ struct Consumer : public rclcpp::Node
 				cout<<res[j]<<endl;
 			}*/
 			cout<<"release Consumer"<<endl;
-			writer.open("/ros2_test/log/test/tmp/"+file_name+'_'+to_string(i)+'_'+loss_rate+"loss",std::ios::trunc|std::ios::out);
+			writer.open("/ros2_test/log/test/tmp/"+file_name+'_'+to_string(i),std::ios::trunc|std::ios::out);
 			for(unsigned int j=0;j<latency[i].size();j++){
 			writer<<latency[i][j]<<endl;//<<','<<countV[i][j]<<endl;
 			}
 			writer.close();
 		}
 	}
-	void topic_callback2(const test_interfaces::msg::Test::SharedPtr msg0,const test_interfaces::msg::Test::SharedPtr msg1)
+	void topic_callback2(const test_interfaces::msg::Test::SharedPtr msg0,const test_interfaces::msg::Test::SharedPtr msg1,const test_interfaces::msg::Test::SharedPtr msg2,const test_interfaces::msg::Test::SharedPtr msg3)
 	{
 		rclcpp::Time rec_time = this->now();
-		RCLCPP_INFO(this->get_logger(), "I heard two");              // CHANGE
+		//RCLCPP_INFO(this->get_logger(), "I heard two");              // CHANGE
 		latency[0].push_back((rec_time - msg0->header.stamp).nanoseconds());
 		latency[1].push_back((rec_time - msg1->header.stamp).nanoseconds());
+		latency[2].push_back((rec_time - msg2->header.stamp).nanoseconds());
+		latency[3].push_back((rec_time - msg3->header.stamp).nanoseconds());
 	}
 	rclcpp::Subscription<test_interfaces::msg::Test>::SharedPtr sub_;
+	message_filters::Subscriber<test_interfaces::msg::Test>sub0;
 	message_filters::Subscriber<test_interfaces::msg::Test>sub1;
 	message_filters::Subscriber<test_interfaces::msg::Test>sub2;
-	shared_ptr<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>>sync_;
+	message_filters::Subscriber<test_interfaces::msg::Test>sub3;
+	shared_ptr<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test,test_interfaces::msg::Test,test_interfaces::msg::Test>>>sync_;
 	string file_name;
 	vector<vector<uint64_t>>latency;
 	//vector<vector<uint64_t>>countV;
@@ -172,15 +179,32 @@ int main(int argc, char * argv[])
 	cout<<"pub_num"<<pub_num<<" sub_num"<<sub_num<<endl;
 	vector<shared_ptr<Producer>>pvec;
 	vector<shared_ptr<Consumer>>cvec;
-	
+	int sleep_times[4]{};
+	if(atoi(argv[2])==0){
+	sleep_times[0]=10;
+	sleep_times[1]=10;
+	sleep_times[2]=10;
+	sleep_times[3]=10;
+	}else if(atoi(argv[2])==1){
+	sleep_times[0]=10;
+	sleep_times[1]=20;
+	sleep_times[2]=50;
+	sleep_times[3]=100;
+	}else if(atoi(argv[2])==2){
+	sleep_times[0]=100;
+	sleep_times[1]=50;
+	sleep_times[2]=20;
+	sleep_times[3]=10;
+	}
 	for(int i=0;i<sub_num;i++){	
-	auto consumer = std::make_shared<Consumer>("c_"+to_string(i),string(argv[1])+to_string(i),atoi(argv[4]));
+	auto consumer = std::make_shared<Consumer>("c_"+to_string(i),string(argv[1]),atoi(argv[4]));
+	//auto consumer = std::make_shared<Consumer>("c_"+to_string(i),string(argv[1])+to_string(i),atoi(argv[4]));
 	cvec.push_back(consumer);
 	executor.add_node(consumer);
 	}
 	for(int i=0;i<pub_num;i++){
-	auto producer = std::make_shared<Producer>("producer"+to_string(i),atoi(argv[2]),atoll(argv[3]),string(argv[1])+to_string(i));// for 1 to 1 
-	//auto producer = std::make_shared<Producer>("producer"+to_string(i),atoi(argv[2]),atoll(argv[3]),string(argv[1])+to_string(i)); //for N to 1
+	//auto producer = std::make_shared<Producer>("producer"+to_string(i),atoi(argv[2]),atoll(argv[3]),string(argv[1]));// for 1 to 1 
+	auto producer = std::make_shared<Producer>("producer"+to_string(i),sleep_times[i],atoll(argv[3]),string(argv[1])+to_string(i)); //for N to 1
 	pvec.push_back(producer);
 	executor.add_node(producer);
 	}

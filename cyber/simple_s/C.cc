@@ -25,40 +25,18 @@ using apollo::cyber::ComponentBase;
 using apollo::cyber::AD_Middle_Test::cyber::Bytes;
 using apollo::cyber::Time;
 using namespace std;
-class C:public Component<Bytes>{// more channel example: Component<Bytes,Bytes,Bytes> means receive three channels, and you need to change Proc() too
+class C:public Component<Bytes,Bytes,Bytes,Bytes>{// more channel example: Component<Bytes,Bytes,Bytes> means receive three channels, and you need to change Proc() too
 	private:
   	std::ofstream ofs;
   	std::string fn;
+	uint64_t rec_count;
+	uint64_t rec_max;
 	vector<vector<uint64_t>>latency;
-	vector<double>analyze_latency(vector<uint64_t>&p){
-		vector<double>res;
-		sort(p.begin(),p.end());
-		int size = p.size();
-		res.push_back(p[static_cast<int>((size-1)*0.95)]);// 95th
-		res.push_back(p[static_cast<int>((size-1)*0.99)]);// 99th
-		
-		// for box-plot
-		res.push_back(p[0]);// smallest latency
-		res.push_back(p[static_cast<int>((size-1)*0.25)]);// 25th
-		res.push_back(p[static_cast<int>((size-1)*0.5)]);// 50th
-		res.push_back(p[static_cast<int>((size-1)*0.75)]);// 75th
-		res.push_back(p[size-1]);// biggest latency
-
-		double sum = std::accumulate(std::begin(p), std::end(p), 0.0);
-		double mean =  sum / size;
-
-		double accum  = 0.0;
-		std::for_each (std::begin(p), std::end(p), [&](const double d) {
-			accum  += (d-mean)*(d-mean);
-			});
-		double stdev = sqrt(accum/(size-1));
-		res.push_back(mean);
-		res.push_back(stdev);
-		return res;
-		}
 	~C(){
+		//string loss_rate = to_string(double(rec_count-1)/double(rec_max));
 		for(unsigned int i =0;i<latency.size();i++){
-		ofs.open("/apollo/data/log/test/tmp/"+fn+'_'+to_string(i),std::ios::trunc);
+		//ofs.open("/apollo/data/log/test/tmp/"+fn+'_'+to_string(i)+'_'+loss_rate+"loss",std::ios::trunc);//fn= c_0,c_1...
+		ofs.open("/apollo/data/log/test/tmp/"+fn+'_'+to_string(i),std::ios::trunc);//fn= c_0,c_1...
 		for(unsigned int j=0;j<latency[i].size();j++){
 		ofs<<latency[i][j]<<endl;
 		}
@@ -78,8 +56,10 @@ class C:public Component<Bytes>{// more channel example: Component<Bytes,Bytes,B
 	bool Init() {
   	AINFO << "C init";
   	fn = node_->Name();
+	rec_count = 0;
+	rec_max = 0;
 	// how many channels C listens
-	for(int i=0;i<1;i++){
+	for(int i=0;i<4;i++){
 		vector<uint64_t>tmp;
 		latency.push_back(tmp);
 	}
@@ -88,6 +68,10 @@ class C:public Component<Bytes>{// more channel example: Component<Bytes,Bytes,B
 bool Proc(const std::shared_ptr<Bytes>& msg0) {
 	uint64_t receive_time = Time::Now().ToNanosecond();
 	uint64_t lan0 = receive_time-msg0->timestamp();
+	if(msg0->id() > rec_max){
+	rec_max = msg0->id();
+	}
+	rec_count++;
 	latency[0].push_back(lan0);
 	return true;
 }

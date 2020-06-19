@@ -3,7 +3,7 @@ for sleep_ms in 20 #1000 100 20 10 2
 do
 let rate_hz=1000/$sleep_ms
 echo $rate_hz
-log_dir='/ros2_test/log/test/1t8_2r'
+log_dir='/ros2_test/log/test/1t8_2_2i'
 mkdir $log_dir
 for ss in 4194304 #1024 8192 16384 65536 262144 524288 1048576 2097152 4194304 8388608
 do
@@ -34,7 +34,7 @@ filesname=$(ls "/ros2_test/log/test/tmp")
 for f in $filesname
 do
 echo $f
-mv /ros2_test/log/test/tmp/$f $log_dir/$f"_1t8_2r.csv"
+mv /ros2_test/log/test/tmp/$f $log_dir/$f"_1t8_2_2r.csv"
 done
 done
 done
