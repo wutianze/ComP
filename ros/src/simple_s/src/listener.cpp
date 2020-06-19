@@ -47,9 +47,9 @@ vector<double>analyze_latency(vector<uint64_t>&p){
 void mySigIntHandler(int sig){
 	ROS_INFO("sig handler");
 	
-	string loss_rate = to_string(double(count_num-1.0)/double(rec_num));
+	//string loss_rate = to_string(double(count_num-1.0)/double(rec_num));
 	for(unsigned int i =0;i<latency.size();i++){
-	writer.open("/ros_test/log/test/tmp/"+node_name+"_"+to_string(i)+'_'+loss_rate+"loss",std::ios::trunc|std::ios::out);
+	writer.open("/ros_test/log/test/tmp/"+node_name+"_"+to_string(i),std::ios::trunc|std::ios::out);
 		/*vector<double> res = analyze_latency(latency[i]);
 		cout<<"result:"<<i<<endl;
 		for(unsigned int j=0;j<res.size();j++){
@@ -73,12 +73,13 @@ void chatterCallback1(const simple_s::Test::ConstPtr& msg)
 	//ROS_INFO("seq:%u,count:%u",msg->header.seq,count_num);
 	//ROS_INFO("msg.stamp:%d",msg->header.stamp.nsec);
 }
-void chatterCallback2(const simple_s::Test::ConstPtr& msg0,const simple_s::Test::ConstPtr& msg1)
+void chatterCallback2(const simple_s::Test::ConstPtr& msg0,const simple_s::Test::ConstPtr& msg1,const simple_s::Test::ConstPtr& msg2,const simple_s::Test::ConstPtr& msg3)
 {
 	ros::Time rec_time = ros::Time::now();
 	latency[0].push_back((rec_time - msg0->header.stamp).toNSec());
 	latency[1].push_back((rec_time - msg1->header.stamp).toNSec());
-	count_num++;
+	latency[2].push_back((rec_time - msg2->header.stamp).toNSec());
+	latency[3].push_back((rec_time - msg3->header.stamp).toNSec());
 	//ROS_INFO("receive two");
 }
 int main(int argc, char **argv)
@@ -97,14 +98,16 @@ int main(int argc, char **argv)
 		latency.push_back(tmp);
 	}
 	if(num_sub == 1){
-		ros::Subscriber sub = n.subscribe(channel_name, 1, chatterCallback1,ros::TransportHints().tcpNoDelay());//.udp());
+		ros::Subscriber sub = n.subscribe(channel_name, 1, chatterCallback1);//,ros::TransportHints().tcpNoDelay());//.udp());
 		ros::spin();
 	}else{//change the code as you need
-		message_filters::Subscriber<simple_s::Test> sub1(n, channel_name+'0', 1);
-		message_filters::Subscriber<simple_s::Test> sub2(n, channel_name+'1', 1);
-		typedef sync_policies::ApproximateTime<simple_s::Test,simple_s::Test> MySyncPolicy;
-		Synchronizer<MySyncPolicy> sync(MySyncPolicy(10),sub1,sub2);
-		sync.registerCallback(boost::bind(&chatterCallback2, _1,_2));
+		message_filters::Subscriber<simple_s::Test> sub0(n, channel_name+'0', 1,ros::TransportHints().tcpNoDelay());
+		message_filters::Subscriber<simple_s::Test> sub1(n, channel_name+'1', 1,ros::TransportHints().tcpNoDelay());
+		message_filters::Subscriber<simple_s::Test> sub2(n, channel_name+'2', 1,ros::TransportHints().tcpNoDelay());
+		message_filters::Subscriber<simple_s::Test> sub3(n, channel_name+'3', 1,ros::TransportHints().tcpNoDelay());
+		typedef sync_policies::ApproximateTime<simple_s::Test,simple_s::Test,simple_s::Test,simple_s::Test> MySyncPolicy;
+		Synchronizer<MySyncPolicy> sync(MySyncPolicy(10),sub0,sub1,sub2,sub3);
+		sync.registerCallback(boost::bind(&chatterCallback2, _1,_2,_3,_4));
 		
 		ros::spin();
 	}
