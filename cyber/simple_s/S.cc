@@ -1,5 +1,5 @@
 #include <memory>
-
+#include <unistd.h>
 #include "cyber/class_loader/class_loader.h"
 #include "cyber/component/component.h"
 #include "cyber/component/timer_component.h"
@@ -46,7 +46,8 @@ class S : public TimerComponent {
 	 
 	       	writer = node_->CreateWriter<Bytes>("/"+channel);
 		to_send = std::string(size,'a');
-	  	return true;
+	  	sleep(5);
+		return true;
 
 		}
 	bool Proc(){
