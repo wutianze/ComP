@@ -35,7 +35,8 @@ class C:public Component<Bytes,Bytes,Bytes,Bytes>{// more channel example: Compo
 	~C(){
 		//string loss_rate = to_string(double(rec_count-1)/double(rec_max));
 		for(unsigned int i =0;i<latency.size();i++){
-		ofs.open("/apollo/data/log/test/tmp/"+fn+'_'+to_string(i)+'_'+loss_rate+"loss",std::ios::trunc);//fn= c_0,c_1...
+		//ofs.open("/apollo/data/log/test/tmp/"+fn+'_'+to_string(i)+'_'+loss_rate+"loss",std::ios::trunc);//fn= c_0,c_1...
+		ofs.open("/apollo/data/log/test/tmp/"+fn+'_'+to_string(i),std::ios::trunc);//fn= c_0,c_1...
 		for(unsigned int j=0;j<latency[i].size();j++){
 		ofs<<latency[i][j]<<endl;
 		}
@@ -58,7 +59,7 @@ class C:public Component<Bytes,Bytes,Bytes,Bytes>{// more channel example: Compo
 	rec_count = 0;
 	rec_max = 0;
 	// how many channels C listens
-	for(int i=0;i<1;i++){
+	for(int i=0;i<4;i++){
 		vector<uint64_t>tmp;
 		latency.push_back(tmp);
 	}
