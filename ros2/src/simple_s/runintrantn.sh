@@ -1,5 +1,5 @@
 # param: 1: channel_name; 2: publisher sleep ms(1000/rate); 3: msg content size; 4: how many topics in one subscriber; 5: how many publishers; 6: how many subscribers
-ps_num=4
+ps_num=8
 for sleep_ms in 20 #1000 100 20 10 2
 do
 let rate_hz=1000/$sleep_ms
