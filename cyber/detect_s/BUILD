@@ -74,7 +74,7 @@ cc_library(
 cc_library(
 		name ="YoloDetect_lib",
 	srcs = ["YoloDetect.cc","libdark.so","libopencv_util.so"],
-	hdrs = ["yolo_v2_class.hpp","opencv_util.h"],	
+	hdrs = ["opencv_util.h"],	
 	deps = ["//cyber",
 	  ":detect_msg_cc_proto",
 				],
