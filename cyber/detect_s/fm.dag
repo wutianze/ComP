@@ -1,0 +1,19 @@
+# Define all coms in DAG streaming.
+    module_config {
+    module_library : "/apollo/bazel-bin/cyber/AD_Middle_Test/cyber/detect_s/libdetect_s.so"
+    components {
+        class_name : "FusionMiddle"
+        config {
+            name : "fm0"
+            readers {
+                channel: "/l0"
+            }
+	    readers {
+                channel: "/y0"
+            }
+	    readers {
+                channel: "/t0"
+            }
+        }
+      }
+}

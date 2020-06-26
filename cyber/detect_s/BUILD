@@ -98,7 +98,7 @@ cc_library(
 		)
 cc_library(
 		name ="FusionMiddle_lib",
-	srcs = ["FusionFinal.cc","libline_detect.so","libopencv_util.so","libtracker_opencv.so"],
+	srcs = ["FusionMiddle.cc","libline_detect.so","libopencv_util.so","libtracker_opencv.so"],
 	hdrs = ["line_detect.h","opencv_util.h","tracker_opencv.h"],	
 	deps = ["//cyber",
 	  ":detect_msg_cc_proto",
