@@ -17,21 +17,32 @@
 #include "cyber/component/component.h"
 #include "cyber/AD_Middle_Test/cyber/detect_s/detect_msg.pb.h"
 #include "cyber/time/time.h"
+#include "line_detect.h"
+#include "tracker_opencv.h"
+#include "opencv_util.h"
 #include <fstream>
 
 using apollo::cyber::Component;
 using apollo::cyber::ComponentBase;
+using apollo::cyber::Writer;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::Frame;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::OcvMat;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::LineResult;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::PointBase;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::TrackResult;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::Rect2dBase;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::YoloResult;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::FusionResult;
-using namespace std;
+
 using apollo::cyber::Time;
-class FusionFinal:public Component<FusionResult,FusionResult>{
+class FusionMiddle:public Component<LineResult,YoloResult,TrackResult>{
 	private:
 	std::ofstream ofs;
 	std::string fn;
 	vector<vector<uint64_t>>tra_latency;
 	vector<vector<uint64_t>>cal_latency;
-	//std::shared_ptr<Writer<FusionResult>> writer1 = nullptr;
-~FusionFinal(){
+	std::shared_ptr<Writer<FusionResult>> writer1 = nullptr;
+~FusionMiddle(){
 	for(unsigned int i = 0;i<tra_latency.size();i++){
 	ofs.open("/apollo/data/log/test/tmp/tra_"+fn+'_'+to_string(i),std::ios::trunc);
 	for(unsigned int j=0;j<tra_latency[i].size();j++){
@@ -50,7 +61,7 @@ class FusionFinal:public Component<FusionResult,FusionResult>{
 	}
 	public:
 	bool Init() {
-  AINFO << "Fusion Final init";
+  AINFO << "Fusion init";
  	fn = node_->Name();
 	for(int i=0;i<3;i++){
 		vector<uint64_t>tmp;
@@ -60,14 +71,22 @@ class FusionFinal:public Component<FusionResult,FusionResult>{
 		vector<uint64_t>tmp;
 		cal_latency.push_back(tmp);
 	} 
+	writer1 = node_->CreateWriter<FusionResult>("/"+fn);
        	return true;
 }
-bool Proc(const std::shared_ptr<FusionResult>& msg0,const std::shared_ptr<FusionResult>& msg1) {
+bool Proc(const std::shared_ptr<LineResult>& msg0,const std::shared_ptr<YoloResult>& msg1,const std::shared_ptr<TrackResult>& msg2) {
 	uint64_t receive_time = Time::Now().ToNanosecond();
 	//AINFO<<"line transfer time:"<<receive_time - msg0->timestamp();
 	tra_latency[0].push_back(receive_time - msg0->timestamp());
 	tra_latency[1].push_back(receive_time - msg1->timestamp());
+	tra_latency[2].push_back(receive_time - msg2->timestamp());
+	auto to_send = std::make_shared<FusionResult>();
+	to_send->set_fusionresult("aa");
+	to_send->set_timestamp(Time::Now().ToNanosecond());
+	writer1->Write(to_send);
 	return true;
 }
 };
-CYBER_REGISTER_COMPONENT(FusionFinal);
+CYBER_REGISTER_COMPONENT(FusionMiddle);
+
+
