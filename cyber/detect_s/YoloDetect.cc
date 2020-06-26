@@ -279,6 +279,28 @@ class YoloDetect:public Component<Frame>{
     std::cout << "object names loaded \n";
     return file_lines;
 }
+	std::ofstream ofs;
+	std::string fn;
+	vector<vector<uint64_t>>tra_latency;
+	vector<vector<uint64_t>>cal_latency;
+~YoloDetect(){
+	for(unsigned int i = 0;i<tra_latency.size();i++){
+	ofs.open("/apollo/data/log/test/tmp/tra_"+fn+'_'+to_string(i),std::ios::trunc);
+	for(unsigned int j=0;j<tra_latency[i].size();j++){
+	ofs<<tra_latency[i][j]<<endl;
+	}
+	ofs.close();
+	}
+	for(unsigned int i = 0;i<cal_latency.size();i++){
+	ofs.open("/apollo/data/log/test/tmp/cal_"+fn+'_'+to_string(i),std::ios::trunc);
+	for(unsigned int j=0;j<cal_latency[i].size();j++){
+	ofs<<cal_latency[i][j]<<endl;
+	}
+	ofs.close();
+	}
+	AINFO<<"Y release";
+	}
+
 	public:
 		Detector* detector;
 		bool Init(){
@@ -293,31 +315,37 @@ class YoloDetect:public Component<Frame>{
     //float const thresh = 0.2;
     detector = new Detector(cfg_file, weights_file);
     obj_names = objects_names_from_file(names_file);
-    //cv::Mat mat_img = cv::imread("/apollo/yoloDetect/data/example.jpg");
-    //std::vector<bbox_t> result_vec = detectorr.detect(mat_img);
-    //AINFO<<"result_vec size:"<<result_vec.size();
-    //cv::Rect rect = draw_boxes(mat_img,result_vec);
-    //cv::imshow("window name", mat_img);
-    //cv::waitKey(1000);
-    writer1 = node_->CreateWriter<YoloResult>(node_->Name());
-
+    fn = node_->Name();
+	for(int i=0;i<1;i++){
+		vector<uint64_t>tmp;
+		tra_latency.push_back(tmp);
+	}
+	for(int i=0;i<1;i++){
+		vector<uint64_t>tmp;
+		cal_latency.push_back(tmp);
+	}
+	writer1 = node_->CreateWriter<YoloResult>("/"+fn);
     return true;
 }
 bool Proc(const std::shared_ptr<Frame>& msg0){
 	uint64_t receive_time = Time::Now().ToNanosecond();
-	AINFO<<"yolo transfer time:"<<receive_time - msg0->timestamp();
+	//AINFO<<"yolo transfer time:"<<receive_time - msg0->timestamp();
+	tra_latency[0].push_back(receive_time - msg0->timestamp());
+
 	cv::Mat m;
         OcvMat content = msg0->mat();
 	m.create(content.rows(),content.cols(),content.elt_type());
 	size_t datasize = content.rows() *  content.cols() * content.elt_size();
 	std::copy(reinterpret_cast<unsigned char *>(const_cast<char *>(content.mat_data().data())),reinterpret_cast<unsigned char *>(const_cast<char *>(content.mat_data().data()) + datasize),m.data);
 	uint64_t receive_time2 = Time::Now().ToNanosecond();
-	AINFO<<"yolo read time:"<<receive_time2 - receive_time;
+	//AINFO<<"yolo read time:"<<receive_time2 - receive_time;
 
 	std::vector<bbox_t> result_vec = detector->detect(m);
 	uint64_t finish_time = Time::Now().ToNanosecond();
-	AINFO<<"yolo run time:"<<finish_time - receive_time2<<" result box:"<<result_vec.size();
+	//AINFO<<"yolo run time:"<<finish_time - receive_time2<<" result box:"<<result_vec.size();
 
+	cal_latency[0].push_back(finish_time - receive_time2);
+	
 	auto to_send = std::make_shared<YoloResult>();
 	
 	for(unsigned int i =0;i<result_vec.size();i++){
@@ -332,6 +360,7 @@ bool Proc(const std::shared_ptr<Frame>& msg0){
 	tmpbox->set_track_id(result_vec[i].track_id);
 	tmpbox->set_frames_counter(result_vec[i].frames_counter);
 	}
+	to_send->set_timestamp(Time::Now().ToNanosecond());
 	writer1->Write(to_send);
 	return true;
 }

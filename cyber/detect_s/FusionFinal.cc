@@ -24,104 +24,66 @@
 
 using apollo::cyber::Component;
 using apollo::cyber::ComponentBase;
+using apollo::cyber::Writer;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::Frame;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::OcvMat;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::LineResult;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::PointBase;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::TrackResult;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::Rect2dBase;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::YoloResult;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::FusionResult;
 
 using apollo::cyber::Time;
-class FusionFinal:public Component<LineResult,TrackResult>{
+class FusionFinal:public Component<LineResult,YoloResult,TrackResult>{
 	private:
-/*		uint64_t count;
-  std::ofstream ofs;
-  std::string fn;
-  double last_loss;
-  double init_time;
-  bool flag=true;
-	~C(){
-	ofs.open("/apollo/data/log/test/multi/"+fn+"lanloss",std::ios::trunc);
-	ofs<<last_loss;
+	std::ofstream ofs;
+	std::string fn;
+	vector<vector<uint64_t>>tra_latency;
+	vector<vector<uint64_t>>cal_latency;
+	std::shared_ptr<Writer<FusionResult>> writer1 = nullptr;
+~FusionFinal(){
+	for(unsigned int i = 0;i<tra_latency.size();i++){
+	ofs.open("/apollo/data/log/test/tmp/tra_"+fn+'_'+to_string(i),std::ios::trunc);
+	for(unsigned int j=0;j<tra_latency[i].size();j++){
+	ofs<<tra_latency[i][j]<<endl;
+	}
 	ofs.close();
-	AINFO<<"C release";
-	}*/
-
+	}
+	for(unsigned int i = 0;i<cal_latency.size();i++){
+	ofs.open("/apollo/data/log/test/tmp/cal_"+fn+'_'+to_string(i),std::ios::trunc);
+	for(unsigned int j=0;j<cal_latency[i].size();j++){
+	ofs<<cal_latency[i][j]<<endl;
+	}
+	ofs.close();
+	}
+	AINFO<<"F release";
+	}
 	public:
 	bool Init() {
   AINFO << "Fusion init";
-  //count = 0;
-  //AINFO<<readers_.size();
-  //fn = node_->Name();
-  //fn = Time::Now().ToString();
-  //ofs.open("/apollo/data/log/test/multi/"+fn,std::ios::trunc);
-  //ofs.close();
-  return true;
+ 	fn = node_->Name();
+	for(int i=0;i<3;i++){
+		vector<uint64_t>tmp;
+		tra_latency.push_back(tmp);
+	}
+	for(int i=0;i<1;i++){
+		vector<uint64_t>tmp;
+		cal_latency.push_back(tmp);
+	} 
+	writer1 = node_->CreateWriter<FusionResult>("/"+fn);
+       	return true;
 }
-bool Proc(const std::shared_ptr<LineResult>& msg0,const std::shared_ptr<TrackResult>& msg1) {
-	//uint64_t receive_time = Time::Now().ToNanosecond();
+bool Proc(const std::shared_ptr<LineResult>& msg0,const std::shared_ptr<YoloResult>& msg1,const std::shared_ptr<TrackResult>& msg2) {
+	uint64_t receive_time = Time::Now().ToNanosecond();
 	//AINFO<<"line transfer time:"<<receive_time - msg0->timestamp();
-	auto testP = msg0->left1();
-	AINFO<<"point 0.x:"<<testP.x();
-	AINFO<<"trackresult x"<<msg1->trackresult().x();
-	/*Mat m;
-	OcvMat content = msg0->mat();
-	m.create(content.rows(),
-		content.cols(),
-		content.elt_type());
-	size_t dataSize = content.rows() *  content.cols() * content.elt_size();
-	std::copy(reinterpret_cast<unsigned char *>(
-				            const_cast<char *>(content.mat_data().data())),
-			        reinterpret_cast<unsigned char *>(
-					            const_cast<char *>(content.mat_data().data()) + dataSize),
-				        m.data);
-	Point*result = new Point[4];
-	uint64_t alog_start_time = Time::Now().ToNanosecond();
-	AINFO<<"before line run";
-	try{
-	lines_process(m,result);
-	}
-	catch(exception e){
-	AINFO<<"sth wrong in line";
-	AINFO<<e.what();
-	}
-	AINFO<<"Point 0.x"<<result[0].x;
-	AINFO<<"line detect cost time"<<Time::Now().ToNanosecond() - alog_start_time;
+	tra_latency[0].push_back(receive_time - msg0->timestamp());
+	tra_latency[1].push_back(receive_time - msg1->timestamp());
+	tra_latency[2].push_back(receive_time - msg2->timestamp());
 	auto to_send = std::make_shared<FusionResult>();
-	auto left1 = mutable_left1();
-	left1->set_x(result[0].x);
-	left1->set_y(result[0].y);
-	auto left2 = mutable_left2();
-	left2->set_x(result[1].x);
-	left2->set_y(result[1].y);
-	auto right1 = mutable_right1();
-	right1->set_x(result[2].x);
-	right1->set_y(result[2].y);
-	auto right2 = mutable_right2();
-	right2->set_x(result[3].x);
-	right2->set_y(result[3].y);
+	to_send->set_fusionresult("aa");
+	to_send->set_timestamp(Time::Now().ToNanosecond());
 	writer1->Write(to_send);
-	//imwrite_cv("/apollo/data/log/a.jpg",m);
-	//uint64_t lan = Time::Now().ToNanosecond()-msg0->timestamp();
- 	static bool once true;
-	if(once){
-       	fn = readers_[0]->GetChannelName();
-	AINFO<<"fn:"<<fn;
-	once = false;
-	}*/
-       	//fn = readers_[0]->GetChannelName();
-	/*ofs.open("/apollo/data/log/test/multi/"+fn+"lan",std::ios::app);
-  ofs<<lan<<std::endl;
-  ofs.close();
-	count++;
-	last_loss=double(msg0->id()-count)/double(msg0->id());
-if(flag){
-init_time = Time::Now().ToSecond();
-flag = false;
-}
-	count++;
-	AINFO<<double(count)/(Time::Now().ToSecond()-init_time);
-	//AINFO<<fn<<" loss rate:"<<last_loss;*/
 	return true;
 }
 };

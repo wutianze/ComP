@@ -17,10 +17,11 @@ required uint32 x = 1;
 required uint32 y = 2;
 }
 message LineResult{
-optional PointBase left1 = 1;
-optional PointBase left2 = 2;
-optional PointBase right1 = 3;
-optional PointBase right2 = 4;
+required uint64 timestamp = 1;
+optional PointBase left1 = 2;
+optional PointBase left2 = 3;
+optional PointBase right1 = 4;
+optional PointBase right2 = 5;
 }
 message Rect2dBase{
 required double x = 1;
@@ -29,7 +30,8 @@ required double height = 3;
 required double width = 4;
 }
 message TrackResult{
-optional Rect2dBase trackresult= 1;
+required uint64 timestamp = 1;
+optional Rect2dBase trackresult= 2;
 }
 message Bbox{
 required uint32 x = 1;
@@ -47,5 +49,11 @@ required uint32 frames_counter = 8;
 //required float prob = 5;
 }
 message YoloResult{
-repeated Bbox bboxresult= 1;
+required uint64 timestamp = 1;
+repeated Bbox bboxresult= 2;
+}
+
+message FusionResult{
+required uint64 timestamp = 1;
+required string fusionresult = 2;
 }
