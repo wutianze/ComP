@@ -2,14 +2,20 @@
     module_config {
     module_library : "/apollo/bazel-bin/cyber/AD_Middle_Test/cyber/detect_s/libdetect_s.so"
     components {
-        class_name : "FusionFinal"
+        class_name : "Line"
         config {
-            name : "ff"
+            name : "l0"
             readers {
-                channel: "/f0"
+                channel: "/c0"
             }
-	    readers {
-                channel: "/f1"
+        }
+      }
+components {
+        class_name : "Line"
+        config {
+            name : "l1"
+            readers {
+                channel: "/c1"
             }
         }
       }
