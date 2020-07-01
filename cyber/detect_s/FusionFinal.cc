@@ -64,7 +64,7 @@ class FusionFinal:public Component<FusionResult,FusionResult>{
 }
 bool Proc(const std::shared_ptr<FusionResult>& msg0,const std::shared_ptr<FusionResult>& msg1) {
 	uint64_t receive_time = Time::Now().ToNanosecond();
-	//AINFO<<"line transfer time:"<<receive_time - msg0->timestamp();
+	AINFO<<"ff receive one:"<<receive_time - msg0->timestamp();
 	tra_latency[0].push_back(receive_time - msg0->timestamp());
 	tra_latency[1].push_back(receive_time - msg1->timestamp());
 	return true;
