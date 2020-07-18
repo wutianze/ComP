@@ -25,7 +25,7 @@ using apollo::cyber::ComponentBase;
 using apollo::cyber::AD_Middle_Test::cyber::Bytes;
 using apollo::cyber::Time;
 using namespace std;
-class C:public Component<Bytes,Bytes,Bytes,Bytes>{// more channel example: Component<Bytes,Bytes,Bytes> means receive three channels, and you need to change Proc() too
+class C:public Component<Bytes>{// more channel example: Component<Bytes,Bytes,Bytes> means receive three channels, and you need to change Proc() too
 	private:
   	std::ofstream ofs;
   	std::string fn;

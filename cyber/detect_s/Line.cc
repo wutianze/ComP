@@ -31,35 +31,50 @@ using apollo::cyber::AD_Middle_Test::cyber::detect_s::PointBase;
 using apollo::cyber::Time;
 class Line:public Component<Frame>{
 	private:
-/*		uint64_t count;
-  std::ofstream ofs;
-  std::string fn;
-  double last_loss;
-  double init_time;
-  bool flag=true;
-	~C(){
-	ofs.open("/apollo/data/log/test/multi/"+fn+"lanloss",std::ios::trunc);
-	ofs<<last_loss;
-	ofs.close();
-	AINFO<<"C release";
-	}*/
-
+	std::ofstream ofs;
+	std::string fn;
+	vector<vector<uint64_t>>tra_latency;
+	vector<vector<uint64_t>>cal_latency;
+	
 	std::shared_ptr<Writer<LineResult>> writer1 = nullptr;
+	~Line(){
+	for(unsigned int i = 0;i<tra_latency.size();i++){
+	ofs.open("/apollo/data/log/test/tmp/tra_"+fn+'_'+to_string(i),std::ios::trunc);
+	for(unsigned int j=0;j<tra_latency[i].size();j++){
+	ofs<<tra_latency[i][j]<<endl;
+	}
+	ofs.close();
+	}
+	for(unsigned int i = 0;i<cal_latency.size();i++){
+	ofs.open("/apollo/data/log/test/tmp/cal_"+fn+'_'+to_string(i),std::ios::trunc);
+	for(unsigned int j=0;j<cal_latency[i].size();j++){
+	ofs<<cal_latency[i][j]<<endl;
+	}
+	ofs.close();
+	}
+	AINFO<<"L release";
+	}
+
 	public:
 	bool Init() {
-  AINFO << "Line init";
-	writer1 = node_->CreateWriter<LineResult>("/l0");
-  //count = 0;
-  //AINFO<<readers_.size();
-  //fn = node_->Name();
-  //fn = Time::Now().ToString();
-  //ofs.open("/apollo/data/log/test/multi/"+fn,std::ios::trunc);
-  //ofs.close();
+  	AINFO << "Line init";
+	fn = node_->Name();
+	for(int i=0;i<1;i++){
+		vector<uint64_t>tmp;
+		tra_latency.push_back(tmp);
+	}
+	for(int i=0;i<1;i++){
+		vector<uint64_t>tmp;
+		cal_latency.push_back(tmp);
+	}
+	writer1 = node_->CreateWriter<LineResult>("/"+fn);
+
   return true;
 }
 bool Proc(const std::shared_ptr<Frame>& msg0) {
 	uint64_t receive_time = Time::Now().ToNanosecond();
-	AINFO<<"line transfer time:"<<receive_time - msg0->timestamp();
+	//AINFO<<"line transfer time:"<<receive_time - msg0->timestamp();
+	tra_latency[0].push_back(receive_time - msg0->timestamp());
 	Mat m;
 	OcvMat content = msg0->mat();
 	m.create(content.rows(),
@@ -81,7 +96,9 @@ bool Proc(const std::shared_ptr<Frame>& msg0) {
 	AINFO<<e.what();
 	}
 	//AINFO<<"Point 0.x"<<result[0].x;
-	AINFO<<"line detect cost time"<<Time::Now().ToNanosecond() - alog_start_time;
+	//AINFO<<"line detect cost time"<<Time::Now().ToNanosecond() - alog_start_time;
+	uint64_t cal_finish = Time::Now().ToNanosecond();
+	cal_latency[0].push_back(cal_finish - alog_start_time);
 	auto to_send = std::make_shared<LineResult>();
 	auto left1 = to_send->mutable_left1();
 	left1->set_x(result[0].x);
@@ -95,28 +112,8 @@ bool Proc(const std::shared_ptr<Frame>& msg0) {
 	auto right2 = to_send->mutable_right2();
 	right2->set_x(result[3].x);
 	right2->set_y(result[3].y);
+	to_send->set_timestamp(Time::Now().ToNanosecond());
 	writer1->Write(to_send);
-	//imwrite_cv("/apollo/data/log/a.jpg",m);
-	//uint64_t lan = Time::Now().ToNanosecond()-msg0->timestamp();
- 	/*static bool once true;
-	if(once){
-       	fn = readers_[0]->GetChannelName();
-	AINFO<<"fn:"<<fn;
-	once = false;
-	}*/
-       	//fn = readers_[0]->GetChannelName();
-	/*ofs.open("/apollo/data/log/test/multi/"+fn+"lan",std::ios::app);
-  ofs<<lan<<std::endl;
-  ofs.close();
-	count++;
-	last_loss=double(msg0->id()-count)/double(msg0->id());
-if(flag){
-init_time = Time::Now().ToSecond();
-flag = false;
-}
-	count++;
-	AINFO<<double(count)/(Time::Now().ToSecond()-init_time);
-	//AINFO<<fn<<" loss rate:"<<last_loss;*/
 	return true;
 }
 };

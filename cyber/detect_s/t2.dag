@@ -1,0 +1,29 @@
+# Define all coms in DAG streaming.
+    module_config {
+    module_library : "/apollo/bazel-bin/cyber/AD_Middle_Test/cyber/detect_s/libdetect_s.so"
+    components {
+        class_name : "TrackerApollo"
+        config {
+            name : "t0"
+            readers {
+                channel: "/c0"
+            }
+            readers {
+                channel: "/y0"
+            }
+        }
+      }
+components {
+        class_name : "TrackerApollo"
+        config {
+            name : "t1"
+            readers {
+                channel: "/c1"
+            }
+            readers {
+                channel: "/y1"
+            }
+        }
+      }
+
+}

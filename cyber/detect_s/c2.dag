@@ -1,0 +1,18 @@
+# Define all coms in DAG streaming.
+    module_config {
+    module_library : "/apollo/bazel-bin/cyber/AD_Middle_Test/cyber/detect_s/libdetect_s.so"
+    timer_components{
+class_name:"CameraTimer"
+config{
+name:"c0"
+interval:1000
+}
+}
+timer_components{
+class_name:"CameraTimer"
+config{
+name:"c1"
+interval:1000
+}
+}
+}

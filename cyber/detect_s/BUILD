@@ -52,7 +52,7 @@ cc_binary(
 		name = "libdetect_s.so",
 		linkopts = ["-shared"],
 		linkstatic = False,
-		deps = [":CameraTimer_lib",":TrackerApollo_lib",":Line_lib",":FusionFinal_lib","YoloDetect_lib"],
+		deps = [":CameraTimer_lib",":TrackerApollo_lib",":Line_lib",":FusionFinal_lib",":FusionMiddle_lib",":YoloDetect_lib"],
 		)
 cc_proto_library(
 		name = "detect_msg_cc_proto",
@@ -74,7 +74,7 @@ cc_library(
 cc_library(
 		name ="YoloDetect_lib",
 	srcs = ["YoloDetect.cc","libdark.so","libopencv_util.so"],
-	hdrs = ["yolo_v2_class.hpp","opencv_util.h"],	
+	hdrs = ["opencv_util.h"],	
 	deps = ["//cyber",
 	  ":detect_msg_cc_proto",
 				],
@@ -97,9 +97,17 @@ cc_library(
 				],
 		)
 cc_library(
-		name ="FusionFinal_lib",
-	srcs = ["FusionFinal.cc","libline_detect.so","libopencv_util.so","libtracker_opencv.so"],
+		name ="FusionMiddle_lib",
+	srcs = ["FusionMiddle.cc","libline_detect.so","libopencv_util.so","libtracker_opencv.so"],
 	hdrs = ["line_detect.h","opencv_util.h","tracker_opencv.h"],	
+	deps = ["//cyber",
+	  ":detect_msg_cc_proto",
+				],
+		)
+cc_library(
+		name ="FusionFinal_lib",
+	srcs = ["FusionFinal.cc"],
+	hdrs = [],	
 	deps = ["//cyber",
 	  ":detect_msg_cc_proto",
 				],

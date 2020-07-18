@@ -26,98 +26,108 @@ using apollo::cyber::ComponentBase;
 using apollo::cyber::Writer;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::Frame;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::OcvMat;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::YoloResult;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::TrackResult;
+using apollo::cyber::AD_Middle_Test::cyber::detect_s::Bbox;
 using apollo::cyber::AD_Middle_Test::cyber::detect_s::Rect2dBase;
 using apollo::cyber::Time;
-class TrackerApollo:public Component<Frame>{
+class TrackerApollo:public Component<Frame,YoloResult>{
 	private:
 		bool t_i = true;
 		Rect2d resultbox;
-		/*		uint64_t count;
-  std::ofstream ofs;
-  std::string fn;
-  double last_loss;
-  double init_time;
-  bool flag=true;
-	~C(){
-	ofs.open("/apollo/data/log/test/multi/"+fn+"lanloss",std::ios::trunc);
-	ofs<<last_loss;
-	ofs.close();
-	AINFO<<"C release";
-	}*/
-	std::shared_ptr<Writer<TrackResult>> writer1 = nullptr;
+		std::ofstream ofs;
+		std::string fn;
+		vector<vector<uint64_t>>tra_latency;
+		vector<vector<uint64_t>>cal_latency;
+
+		std::shared_ptr<Writer<TrackResult>> writer1 = nullptr;
+		~TrackerApollo(){
+			for(unsigned int i = 0;i<tra_latency.size();i++){
+				ofs.open("/apollo/data/log/test/tmp/tra_"+fn+'_'+to_string(i),std::ios::trunc);
+				for(unsigned int j=0;j<tra_latency[i].size();j++){
+					ofs<<tra_latency[i][j]<<endl;
+				}
+				ofs.close();
+			}
+			for(unsigned int i = 0;i<cal_latency.size();i++){
+				ofs.open("/apollo/data/log/test/tmp/cal_"+fn+'_'+to_string(i),std::ios::trunc);
+				for(unsigned int j=0;j<cal_latency[i].size();j++){
+					ofs<<cal_latency[i][j]<<endl;
+				}
+				ofs.close();
+			}
+			AINFO<<"T release";
+		}
+
 	public:
-	bool Init() {
-  AINFO << "Tracker init";
-	writer1 = node_->CreateWriter<TrackResult>("/t0");
-  //count = 0;
-  //AINFO<<readers_.size();
-  //fn = node_->Name();
-  //fn = Time::Now().ToString();
-  //ofs.open("/apollo/data/log/test/multi/"+fn,std::ios::trunc);
-  //ofs.close();
-  tracker_create("KCF");
-  return true;
-}
-bool Proc(const std::shared_ptr<Frame>& msg0) {
-uint64_t receive_time = Time::Now().ToNanosecond();
-	AINFO<<"tracker transfer time:"<<receive_time - msg0->timestamp();
+		bool Init() {
+			AINFO << "Tracker init";
+			fn = node_->Name();
+			for(int i=0;i<2;i++){
+				vector<uint64_t>tmp;
+				tra_latency.push_back(tmp);
+			}
+			for(int i=0;i<1;i++){
+				vector<uint64_t>tmp;
+				cal_latency.push_back(tmp);
+			}
+			writer1 = node_->CreateWriter<TrackResult>("/"+fn);
+			tracker_create("KCF");
+			return true;
+		}
+		bool Proc(const std::shared_ptr<Frame>& msg0,const std::shared_ptr<YoloResult>& msg1) {
+			uint64_t receive_time = Time::Now().ToNanosecond();
+			//AINFO<<"tracker transfer time:"<<receive_time - msg0->timestamp();
+			tra_latency[0].push_back(receive_time - msg0->timestamp());
+			tra_latency[1].push_back(receive_time - msg1->timestamp());
+			Mat m;
+			OcvMat content = msg0->mat();
+			m.create(content.rows(),
+					content.cols(),
+					content.elt_type());
+			size_t dataSize = content.rows() *  content.cols() * content.elt_size();
+			std::copy(reinterpret_cast<unsigned char *>(
+						const_cast<char *>(content.mat_data().data())),
+					reinterpret_cast<unsigned char *>(
+						const_cast<char *>(content.mat_data().data()) + dataSize),
+					m.data);
 
-	Mat m;
-	OcvMat content = msg0->mat();
-	m.create(content.rows(),
-		content.cols(),
-		content.elt_type());
-	size_t dataSize = content.rows() *  content.cols() * content.elt_size();
-	std::copy(reinterpret_cast<unsigned char *>(
-				            const_cast<char *>(content.mat_data().data())),
-			        reinterpret_cast<unsigned char *>(
-					            const_cast<char *>(content.mat_data().data()) + dataSize),
-				        m.data);
-	
-	uint64_t alog_start_time = Time::Now().ToNanosecond();
-	if(t_i){
-t_i = false;
-resultbox = Rect2d(287, 23, 86, 320);
-tracker_init(m,resultbox);
-return true;
-}
+			if(t_i){
+				t_i = false;
+				auto bboxSize = msg1->bboxresult_size();
+				if(bboxSize<=0){
+					//random place
+					AINFO<<"random place";
+					resultbox = Rect2d(287, 23, 86, 320);
+				}else{
+					Bbox tmpBox = msg1->bboxresult(0);
+					resultbox = Rect2d(double(tmpBox.x()),double(tmpBox.y()),double(tmpBox.w()),double(tmpBox.h()));
+				}
+				tracker_init(m,resultbox);
+			}else{
+				uint64_t alog_start_time = Time::Now().ToNanosecond();
+				if(!track_test(m,resultbox)){
+					t_i = true;
+					AINFO<<"lose one";
+					return true;
+				}
+				//AINFO<<"tracker cost time"<<Time::Now().ToNanosecond() - alog_start_time;
+				uint64_t cal_finish = Time::Now().ToNanosecond();
+				cal_latency[0].push_back(cal_finish - alog_start_time);
+			}
 
-	if(!track_test(m,resultbox)){
-	t_i = true;
-	AINFO<<"lose one";
-	}
-	AINFO<<"tracker cost time"<<Time::Now().ToNanosecond() - alog_start_time;
-	auto to_send = std::make_shared<TrackResult>();
-	auto trackbox = to_send->mutable_trackresult();
-	trackbox->set_x(resultbox.x);
-	trackbox->set_y(resultbox.y);
-	trackbox->set_width(resultbox.width);
-	trackbox->set_height(resultbox.height);
-	writer1->Write(to_send);
-	AINFO<<"resultbox x"<<resultbox.x;
-	//imwrite_cv("/apollo/data/log/a.jpg",m);
-	//uint64_t lan = Time::Now().ToNanosecond()-msg0->timestamp();
- 	/*static bool once true;
-	if(once){
-       	fn = readers_[0]->GetChannelName();
-	AINFO<<"fn:"<<fn;
-	once = false;
-	}*/
-       	//fn = readers_[0]->GetChannelName();
-	/*ofs.open("/apollo/data/log/test/multi/"+fn+"lan",std::ios::app);
-  ofs<<lan<<std::endl;
-  ofs.close();
-	count++;
-	last_loss=double(msg0->id()-count)/double(msg0->id());
-if(flag){
-init_time = Time::Now().ToSecond();
-flag = false;
-}
-	count++;
-	AINFO<<double(count)/(Time::Now().ToSecond()-init_time);
-	//AINFO<<fn<<" loss rate:"<<last_loss;*/
-	return true;
-}
+
+
+			auto to_send = std::make_shared<TrackResult>();
+			auto trackbox = to_send->mutable_trackresult();
+			trackbox->set_x(resultbox.x);
+			trackbox->set_y(resultbox.y);
+			trackbox->set_width(resultbox.width);
+			trackbox->set_height(resultbox.height);
+			to_send->set_timestamp(Time::Now().ToNanosecond());
+			writer1->Write(to_send);
+			//AINFO<<"resultbox x"<<resultbox.x;
+			return true;
+		}
 };
 CYBER_REGISTER_COMPONENT(TrackerApollo);
