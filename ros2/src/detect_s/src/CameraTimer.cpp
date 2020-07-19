@@ -27,8 +27,13 @@ class CameraTimer : public rclcpp::Node
 			message.cols = image.cols;
 			message.elt_type = image.type();
 			message.elt_size = (int)image.elemSize();
-			string tmpData = string((char*)image.data,(char*)image.data+image.rows*image.cols*image.elemSize());
+			string tmpData = string((char*)image.data,image.rows*image.cols*image.elemSize());
+			string testS(2764800,'a');
+			size_t dataSize = image.rows*image.cols*image.elemSize();
+			//message.mat_data.resize(dataSize);
+			//memcpy((char*)(&message.mat_data[0]),testS.c_str(),dataSize);
 			message.mat_data = tmpData;
+			RCLCPP_INFO(this->get_logger(), "mat_data size::%d",(message.mat_data).size());    // CHANGE
 		}
 
 	private:

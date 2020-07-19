@@ -84,7 +84,8 @@ class YoloDetect : public rclcpp::Node
 			RCLCPP_INFO(this->get_logger(), "msg rows '%d',cols:'%d'", msg->rows,msg->cols);              // CHANGE
 			cv::Mat tmp(msg->rows,msg->cols,msg->elt_type);
 			int datasize = msg->rows*msg->cols*msg->elt_size;
-			RCLCPP_INFO(this->get_logger(), "datasize: '%d'", datasize);              // CHANGE
+			string tmpS = msg->mat_data;
+			RCLCPP_INFO(this->get_logger(), "datasize: '%d', mat_data size:%d",datasize, tmpS.size());              // CHANGE
 			std::copy(reinterpret_cast<unsigned char *>(const_cast<char *>((msg->mat_data).c_str())),reinterpret_cast<unsigned char *>(const_cast<char *>((msg->mat_data).c_str()) + datasize),tmp.data);
 			cv::imwrite("b.jpg",tmp);
 			RCLCPP_INFO(this->get_logger(), "finish write");              // CHANGE
