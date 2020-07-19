@@ -43,6 +43,7 @@ struct Test_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->content = "";
+      this->count = 0ull;
     }
   }
 
@@ -54,6 +55,7 @@ struct Test_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->content = "";
+      this->count = 0ull;
     }
   }
 
@@ -64,6 +66,9 @@ struct Test_
   using _content_type =
     std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other>;
   _content_type content;
+  using _count_type =
+    uint64_t;
+  _count_type count;
 
   // setters for named parameter idiom
   Type & set__header(
@@ -76,6 +81,12 @@ struct Test_
     const std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other> & _arg)
   {
     this->content = _arg;
+    return *this;
+  }
+  Type & set__count(
+    const uint64_t & _arg)
+  {
+    this->count = _arg;
     return *this;
   }
 
@@ -125,6 +136,9 @@ struct Test_
       return false;
     }
     if (this->content != other.content) {
+      return false;
+    }
+    if (this->count != other.count) {
       return false;
     }
     return true;

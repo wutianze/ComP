@@ -1,0 +1,12 @@
+[0.045s] Invoking command in '/ros2_test/AD_Middle_Test/ros2/src/build/detect_s': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/src/build/detect_s -- -j5 -l5
+[0.104s] [35m[1mScanning dependencies of target yoloDetect[0m
+[0.140s] [ 50%] Built target cameraTimer
+[0.159s] [ 75%] [32mBuilding CXX object CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o[0m
+[2.581s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:[m[K In member function ‘[01m[Kvoid YoloDetect::topic_callback(test_interfaces::msg::TestImage_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.582s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:91:13:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kresize[m[K’ in ‘[01m[Ktmp.cv::Mat::data[m[K’, which is of non-class type ‘[01m[Kuchar*[m[K’ {aka ‘[01m[Kunsigned char*[m[K’}
+[2.582s]    91 |    tmp.data.[01;31m[Kresize[m[K(datasize);
+[2.582s]       |             [01;31m[K^~~~~~[m[K
+[4.271s] make[2]: *** [CMakeFiles/yoloDetect.dir/build.make:63: CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o] Error 1
+[4.271s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/yoloDetect.dir/all] Error 2
+[4.272s] make: *** [Makefile:141: all] Error 2
+[4.274s] Invoked command in '/ros2_test/AD_Middle_Test/ros2/src/build/detect_s' returned '2': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/src/build/detect_s -- -j5 -l5

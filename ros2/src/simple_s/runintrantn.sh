@@ -4,7 +4,7 @@ for sleep_ms in 20 #1000 100 20 10 2
 do
 let rate_hz=1000/$sleep_ms
 echo $rate_hz
-log_dir='/ros2_test/log/test/'$ps_num't'$ps_num'_2i'
+log_dir='/ros2_test/log/test/ttest'$ps_num't'$ps_num'_2i'
 rm -rf $log_dir
 mkdir $log_dir
 for ss in 4194304 #1024 8192 16384 65536 262144 524288 1048576 2097152 4194304 8388608

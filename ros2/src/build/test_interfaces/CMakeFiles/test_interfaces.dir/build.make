@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces
 include CMakeFiles/test_interfaces.dir/progress.make
 
 CMakeFiles/test_interfaces: /ros2_test/AD_Middle_Test/ros2/src/test_interfaces/msg/Test.msg
+CMakeFiles/test_interfaces: /ros2_test/AD_Middle_Test/ros2/src/test_interfaces/msg/TestImage.msg
 CMakeFiles/test_interfaces: /opt/ros/foxy/share/builtin_interfaces/msg/Duration.idl
 CMakeFiles/test_interfaces: /opt/ros/foxy/share/builtin_interfaces/msg/Time.idl
 CMakeFiles/test_interfaces: /opt/ros/foxy/share/std_msgs/msg/Bool.idl

@@ -1,0 +1,27 @@
+[2.560s] In file included from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/c++allocator.h:33[m[K,
+[2.561s]                  from [01m[K/usr/include/c++/9/bits/allocator.h:46[m[K,
+[2.561s]                  from [01m[K/usr/include/c++/9/memory:63[m[K,
+[2.561s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:3[m[K:
+[2.561s] /usr/include/c++/9/ext/new_allocator.h: In instantiation of ‘[01m[Kvoid __gnu_cxx::new_allocator<_Tp>::construct(_Up*, _Args&& ...) [with _Up = Camera; _Args = {std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >}; _Tp = Camera][m[K’:
+[2.561s] [01m[K/usr/include/c++/9/bits/alloc_traits.h:482:2:[m[K   required from ‘[01m[Kstatic void std::allocator_traits<std::allocator<_Tp1> >::construct(std::allocator_traits<std::allocator<_Tp1> >::allocator_type&, _Up*, _Args&& ...) [with _Up = Camera; _Args = {std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >}; _Tp = Camera; std::allocator_traits<std::allocator<_Tp1> >::allocator_type = std::allocator<Camera>][m[K’
+[2.561s] [01m[K/usr/include/c++/9/bits/shared_ptr_base.h:548:39:[m[K   required from ‘[01m[Kstd::_Sp_counted_ptr_inplace<_Tp, _Alloc, _Lp>::_Sp_counted_ptr_inplace(_Alloc, _Args&& ...) [with _Args = {std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >}; _Tp = Camera; _Alloc = std::allocator<Camera>; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.561s] [01m[K/usr/include/c++/9/bits/shared_ptr_base.h:679:16:[m[K   required from ‘[01m[Kstd::__shared_count<_Lp>::__shared_count(_Tp*&, std::_Sp_alloc_shared_tag<_Alloc>, _Args&& ...) [with _Tp = Camera; _Alloc = std::allocator<Camera>; _Args = {std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >}; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.562s] [01m[K/usr/include/c++/9/bits/shared_ptr_base.h:1344:71:[m[K   required from ‘[01m[Kstd::__shared_ptr<_Tp, _Lp>::__shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<Camera>; _Args = {std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >}; _Tp = Camera; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[2.562s] [01m[K/usr/include/c++/9/bits/shared_ptr.h:359:59:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp>::shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<Camera>; _Args = {std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >}; _Tp = Camera][m[K’
+[2.562s] [01m[K/usr/include/c++/9/bits/shared_ptr.h:701:14:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp> std::allocate_shared(const _Alloc&, _Args&& ...) [with _Tp = Camera; _Alloc = std::allocator<Camera>; _Args = {std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >}][m[K’
+[2.562s] [01m[K/usr/include/c++/9/bits/shared_ptr.h:717:39:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp> std::make_shared(_Args&& ...) [with _Tp = Camera; _Args = {std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >}][m[K’
+[2.562s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:45:85:[m[K   required from here
+[2.562s] [01m[K/usr/include/c++/9/ext/new_allocator.h:145:20:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KCamera::Camera(std::__cxx11::basic_string<char>, int, std::__cxx11::basic_string<char>)[m[K’
+[2.562s]   145 |  noexcept(noexcept([01;31m[K::new((void *)__p)[m[K
+[2.563s]       |                    [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[2.563s]   146 | [01;31m[K       _Up(std::forward<_Args>(__args)...)[m[K))
+[2.563s]       |        [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.563s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:12:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KCamera::Camera(int, int64_t, std::string)[m[K’
+[2.563s]    12 |   [01;36m[KCamera[m[K(int sleep_ms, int64_t str_size, string channel_name)
+[2.563s]       |   [01;36m[K^~~~~~[m[K
+[2.563s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:12:14:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::__cxx11::basic_string<char>[m[K’ to ‘[01m[Kint[m[K’
+[2.563s]    12 |   Camera([01;36m[Kint sleep_ms[m[K, int64_t str_size, string channel_name)
+[2.564s]       |          [01;36m[K~~~~^~~~~~~~[m[K
+[2.866s] make[2]: *** [CMakeFiles/camera.dir/build.make:63: CMakeFiles/camera.dir/src/camera.cpp.o] Error 1
+[2.866s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/camera.dir/all] Error 2
+[2.866s] make: *** [Makefile:141: all] Error 2

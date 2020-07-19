@@ -1,0 +1,18 @@
+[0.104s] [35m[1mScanning dependencies of target cameraTimer[0m
+[0.104s] [35m[1mScanning dependencies of target yoloDetect[0m
+[0.170s] [ 25%] [32mBuilding CXX object CMakeFiles/cameraTimer.dir/src/CameraTimer.cpp.o[0m
+[0.192s] [ 50%] [32mBuilding CXX object CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o[0m
+[2.574s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:[m[K In member function ‘[01m[Kvoid CameraTimer::timer_callback()[m[K’:
+[2.574s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:46:62:[m[K [01;31m[Kerror: [m[K‘[01m[Kdatasize[m[K’ was not declared in this scope; did you mean ‘[01m[KdataSize[m[K’?
+[2.574s]    46 |    memcpy((char*)(&(message->mat_data[0])),(char*)image.data,[01;31m[Kdatasize[m[K);
+[2.574s]       |                                                              [01;31m[K^~~~~~~~[m[K
+[2.575s]       |                                                              [32m[KdataSize[m[K
+[2.575s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:41:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KdataSize[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[2.576s]    41 |    size_t [01;35m[KdataSize[m[K = image.rows*image.cols*image.elemSize();
+[2.576s]       |           [01;35m[K^~~~~~~~[m[K
+[3.905s] make[2]: *** [CMakeFiles/cameraTimer.dir/build.make:63: CMakeFiles/cameraTimer.dir/src/CameraTimer.cpp.o] Error 1
+[3.906s] make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/cameraTimer.dir/all] Error 2
+[3.906s] make[1]: *** Waiting for unfinished jobs....
+[6.411s] [ 75%] [32m[1mLinking CXX executable yoloDetect[0m
+[6.987s] [ 75%] Built target yoloDetect
+[6.988s] make: *** [Makefile:141: all] Error 2

@@ -1,0 +1,115 @@
+[3.448s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:93:4:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ after class definition
+[3.448s]    93 |   }
+[3.449s]       |    [01;31m[K^[m[K
+[3.449s]       |    [32m[K;[m[K
+[3.449s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:[m[K In constructor ‘[01m[KYoloDetect::YoloDetect(std::string, int, std::string)[m[K’:
+[3.449s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:54:19:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KYoloDetect[m[K’ does not have any field named ‘[01m[Kcount_[m[K’
+[3.449s]    54 |    :Node("yolo"), [01;31m[Kcount_[m[K(0),file_name(fname)
+[3.449s]       |                   [01;31m[K^~~~~~[m[K
+[3.449s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:54:29:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KYoloDetect[m[K’ does not have any field named ‘[01m[Kfile_name[m[K’
+[3.450s]    54 |    :Node("yolo"), count_(0),[01;31m[Kfile_name[m[K(fname)
+[3.450s]       |                             [01;31m[K^~~~~~~~~[m[K
+[3.452s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:60:4:[m[K [01;31m[Kerror: [m[K‘[01m[Krec_max[m[K’ was not declared in this scope
+[3.452s]    60 |    [01;31m[Krec_max[m[K = 0;
+[3.453s]       |    [01;31m[K^~~~~~~[m[K
+[3.457s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:64:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ksubscription_[m[K’ was not declared in this scope; did you mean ‘[01m[Krcl_subscription_t[m[K’?
+[3.457s]    64 |    [01;31m[Ksubscription_[m[K = this->create_subscription<test_interfaces::msg::TestImage>(          // CHANGE
+[3.457s]       |    [01;31m[K^~~~~~~~~~~~~[m[K
+[3.457s]       |    [32m[Krcl_subscription_t[m[K
+[3.458s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:65:49:[m[K [01;31m[Kerror: [m[K‘[01m[Ktopic_callback[m[K’ is not a member of ‘[01m[KYoloDetect[m[K’
+[3.458s]    65 |      channel_name, qos_, std::bind(&YoloDetect::[01;31m[Ktopic_callback[m[K, this, std::placeholders::_1));
+[3.458s]       |                                                 [01;31m[K^~~~~~~~~~~~~~[m[K
+[3.458s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:67:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ksub1[m[K’ was not declared in this scope
+[3.458s]    67 |    [01;31m[Ksub1[m[K.subscribe(this,channel_name+'0',rmw_qos_profile_default);
+[3.459s]       |    [01;31m[K^~~~[m[K
+[3.460s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:68:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ksub2[m[K’ was not declared in this scope
+[3.460s]    68 |    [01;31m[Ksub2[m[K.subscribe(this,channel_name+'1',rmw_qos_profile_default);
+[3.460s]       |    [01;31m[K^~~~[m[K
+[3.460s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass YoloDetect[m[K’ has no member named ‘[01m[Ksync_[m[K’
+[3.460s]    71 |    this->[01;31m[Ksync_[m[K= std::make_shared<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>>(sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>(10),sub1,sub2);
+[3.461s]       |          [01;31m[K^~~~~[m[K
+[3.461s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:100:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.461s]    71 |    this->sync_= std::make_shared<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::[01;31m[KTest[m[K,test_interfaces::msg::Test>>>(sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>(10),sub1,sub2);
+[3.461s]       |                                                                                                    [01;31m[K^~~~[m[K
+[3.461s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:100:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.461s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:127:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.462s]    71 |    this->sync_= std::make_shared<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::[01;31m[KTest[m[K>>>(sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>(10),sub1,sub2);
+[3.462s]       |                                                                                                                               [01;31m[K^~~~[m[K
+[3.462s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:127:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.462s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:127:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.462s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:127:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+[3.462s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:131:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.463s]    71 |    this->sync_= std::make_shared<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test[01;31m[K>>[m[K>(sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>(10),sub1,sub2);
+[3.463s]       |                                                                                                                                   [01;31m[K^~[m[K
+[3.463s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:188:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.463s]    71 | hared<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>>(sync_policies::ApproximateTime<test_interfaces::msg::[01;31m[KTest[m[K,test_interfaces::msg::Test>(10),sub1,sub2);
+[3.463s]       |                                                                                                                                                                 [01;31m[K^~~~[m[K
+[3.463s] 
+[3.463s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:188:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.464s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:215:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.464s]    71 | icies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>>(sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::[01;31m[KTest[m[K>(10),sub1,sub2);
+[3.464s]       |                                                                                                                                                                 [01;31m[K^~~~[m[K
+[3.464s] 
+[3.464s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:215:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.464s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:219:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.464s]    71 | es::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>>(sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test[01;31m[K>[m[K(10),sub1,sub2);
+[3.464s]       |                                                                                                                                                                  [01;31m[K^[m[K
+[3.465s] 
+[3.465s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:219:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+[3.465s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:72:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass YoloDetect[m[K’ has no member named ‘[01m[Ksync_[m[K’
+[3.465s]    72 |    this->[01;31m[Ksync_[m[K->registerCallback(&YoloDetect::topic_callback2,this);
+[3.465s]       |          [01;31m[K^~~~~[m[K
+[3.465s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:72:47:[m[K [01;31m[Kerror: [m[K‘[01m[Ktopic_callback2[m[K’ is not a member of ‘[01m[KYoloDetect[m[K’
+[3.465s]    72 |    this->sync_->registerCallback(&YoloDetect::[01;31m[Ktopic_callback2[m[K,this);
+[3.466s]       |                                               [01;31m[K^~~~~~~~~~~~~~~[m[K
+[3.469s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:[m[K In function ‘[01m[Kvoid topic_callback(test_interfaces::msg::TestImage_<std::allocator<void> >::SharedPtr)[m[K’:
+[3.469s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:101:93:[m[K [01;31m[Kerror: [m[K‘[01m[Kreinterpre[m[K’ was not declared in this scope
+[3.469s]   101 |    std::copy(reinterpret_cast<unsigned char *>(const_cast<char *>((msg->mat_data).c_str())),[01;31m[Kreinterpre[m[K
+[3.470s]       |                                                                                             [01;31m[K^~~~~~~~~~[m[K
+[3.470s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:100:8:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kdatasize[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[3.470s]   100 |    int [01;35m[Kdatasize[m[K = msg->rows*msg->cols*msg->elt_size;
+[3.470s]       |        [01;35m[K^~~~~~~~[m[K
+[3.470s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:[m[K At global scope:
+[3.470s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:105:52:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ in namespace ‘[01m[Ktest_interfaces::msg[m[K’ does not name a type
+[3.470s]   105 |   void topic_callback2(const test_interfaces::msg::[01;31m[KTest[m[K::SharedPtr& msg0,const test_interfaces::msg::Test::SharedPtr& msg1)
+[3.471s]       |                                                    [01;31m[K^~~~[m[K
+[3.471s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:105:67:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K&[m[K’ token
+[3.471s]   105 |   void topic_callback2(const test_interfaces::msg::Test::SharedPtr[01;31m[K&[m[K msg0,const test_interfaces::msg::Test::SharedPtr& msg1)
+[3.471s]       |                                                                   [01;31m[K^[m[K
+[3.471s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:105:67:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K&[m[K’ token
+[3.471s]   105 |   void topic_callback2[34m[K([m[Kconst test_interfaces::msg::Test::SharedPtr[01;31m[K&[m[K msg0,const test_interfaces::msg::Test::SharedPtr& msg1)
+[3.471s]       |                       [34m[K~[m[K                                           [01;31m[K^[m[K
+[3.471s]       |                                                                   [32m[K)[m[K
+[3.472s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:105:69:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[Kmsg0[m[K’
+[3.472s]   105 |   void topic_callback2(const test_interfaces::msg::Test::SharedPtr& [01;31m[Kmsg0[m[K,const test_interfaces::msg::Test::SharedPtr& msg1)
+[3.472s]       |                                                                     [01;31m[K^~~~[m[K
+[3.493s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:117:53:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.493s]   117 |   message_filters::Subscriber<test_interfaces::msg::[01;31m[KTest[m[K>sub2;
+[3.493s]       |                                                     [01;31m[K^~~~[m[K
+[3.493s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:117:53:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.493s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:117:57:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.494s]   117 |   message_filters::Subscriber<test_interfaces::msg::Test[01;31m[K>[m[Ksub2;
+[3.494s]       |                                                         [01;31m[K^[m[K
+[3.494s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:119:80:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.494s]   119 |   shared_ptr<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::[01;31m[KTest[m[K,test_interfaces::msg::Test>>>sync_;
+[3.494s]       |                                                                                [01;31m[K^~~~[m[K
+[3.494s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:119:80:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.495s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:119:107:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.495s]   119 |   shared_ptr<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::[01;31m[KTest[m[K>>>sync_;
+[3.495s]       |                                                                                                           [01;31m[K^~~~[m[K
+[3.495s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:119:107:[m[K [01;31m[Kerror: [m[K‘[01m[KTest[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[3.495s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:119:107:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.495s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:119:107:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+[3.495s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:119:111:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.495s]   119 |   shared_ptr<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test[01;31m[K>>[m[K>sync_;
+[3.496s]       |                                                                                                               [01;31m[K^~[m[K
+[3.496s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:119:113:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.496s]   119 |   shared_ptr<Synchronizer<sync_policies::ApproximateTime<test_interfaces::msg::Test,test_interfaces::msg::Test>>[01;31m[K>[m[Ksync_;
+[3.496s]       |                                                                                                                 [01;31m[K^[m[K
+[3.496s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:124:1:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+[3.496s]   124 | [01;31m[K}[m[K;
+[3.496s]       | [01;31m[K^[m[K
+[5.209s] make[2]: *** [CMakeFiles/yoloDetect.dir/build.make:63: CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o] Error 1
+[5.209s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/yoloDetect.dir/all] Error 2
+[5.210s] make[1]: *** Waiting for unfinished jobs....
+[6.514s] make: *** [Makefile:141: all] Error 2

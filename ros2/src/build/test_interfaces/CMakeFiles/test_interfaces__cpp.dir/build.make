@@ -57,6 +57,10 @@ CMakeFiles/test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/test.h
 CMakeFiles/test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test__builder.hpp
 CMakeFiles/test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test__struct.hpp
 CMakeFiles/test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test__traits.hpp
+CMakeFiles/test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/test_image.hpp
+CMakeFiles/test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test_image__builder.hpp
+CMakeFiles/test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test_image__struct.hpp
+CMakeFiles/test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test_image__traits.hpp
 
 
 rosidl_generator_cpp/test_interfaces/msg/test.hpp: /opt/ros/foxy/lib/rosidl_generator_cpp/rosidl_generator_cpp
@@ -75,6 +79,7 @@ rosidl_generator_cpp/test_interfaces/msg/test.hpp: /opt/ros/foxy/share/rosidl_ge
 rosidl_generator_cpp/test_interfaces/msg/test.hpp: /opt/ros/foxy/share/rosidl_generator_cpp/resource/srv__struct.hpp.em
 rosidl_generator_cpp/test_interfaces/msg/test.hpp: /opt/ros/foxy/share/rosidl_generator_cpp/resource/srv__traits.hpp.em
 rosidl_generator_cpp/test_interfaces/msg/test.hpp: rosidl_adapter/test_interfaces/msg/Test.idl
+rosidl_generator_cpp/test_interfaces/msg/test.hpp: rosidl_adapter/test_interfaces/msg/TestImage.idl
 rosidl_generator_cpp/test_interfaces/msg/test.hpp: /opt/ros/foxy/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_cpp/test_interfaces/msg/test.hpp: /opt/ros/foxy/share/builtin_interfaces/msg/Time.idl
 rosidl_generator_cpp/test_interfaces/msg/test.hpp: /opt/ros/foxy/share/std_msgs/msg/Bool.idl
@@ -119,11 +124,27 @@ rosidl_generator_cpp/test_interfaces/msg/detail/test__struct.hpp: rosidl_generat
 rosidl_generator_cpp/test_interfaces/msg/detail/test__traits.hpp: rosidl_generator_cpp/test_interfaces/msg/test.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/test_interfaces/msg/detail/test__traits.hpp
 
+rosidl_generator_cpp/test_interfaces/msg/test_image.hpp: rosidl_generator_cpp/test_interfaces/msg/test.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/test_interfaces/msg/test_image.hpp
+
+rosidl_generator_cpp/test_interfaces/msg/detail/test_image__builder.hpp: rosidl_generator_cpp/test_interfaces/msg/test.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/test_interfaces/msg/detail/test_image__builder.hpp
+
+rosidl_generator_cpp/test_interfaces/msg/detail/test_image__struct.hpp: rosidl_generator_cpp/test_interfaces/msg/test.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/test_interfaces/msg/detail/test_image__struct.hpp
+
+rosidl_generator_cpp/test_interfaces/msg/detail/test_image__traits.hpp: rosidl_generator_cpp/test_interfaces/msg/test.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/test_interfaces/msg/detail/test_image__traits.hpp
+
 test_interfaces__cpp: CMakeFiles/test_interfaces__cpp
 test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/test.hpp
 test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test__builder.hpp
 test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test__struct.hpp
 test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test__traits.hpp
+test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/test_image.hpp
+test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test_image__builder.hpp
+test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test_image__struct.hpp
+test_interfaces__cpp: rosidl_generator_cpp/test_interfaces/msg/detail/test_image__traits.hpp
 test_interfaces__cpp: CMakeFiles/test_interfaces__cpp.dir/build.make
 
 .PHONY : test_interfaces__cpp

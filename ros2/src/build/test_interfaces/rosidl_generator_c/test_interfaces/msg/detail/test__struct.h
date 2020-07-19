@@ -28,6 +28,7 @@ typedef struct test_interfaces__msg__Test
 {
   std_msgs__msg__Header header;
   rosidl_runtime_c__String content;
+  uint64_t count;
 } test_interfaces__msg__Test;
 
 // Struct for a sequence of test_interfaces__msg__Test.

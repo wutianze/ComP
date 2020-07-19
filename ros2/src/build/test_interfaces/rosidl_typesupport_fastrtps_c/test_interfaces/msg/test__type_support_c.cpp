@@ -93,6 +93,11 @@ static bool _Test__cdr_serialize(
     cdr << str->data;
   }
 
+  // Field name: count
+  {
+    cdr << ros_message->count;
+  }
+
   return true;
 }
 
@@ -135,6 +140,11 @@ static bool _Test__cdr_deserialize(
     }
   }
 
+  // Field name: count
+  {
+    cdr >> ros_message->count;
+  }
+
   return true;
 }
 
@@ -160,6 +170,12 @@ size_t get_serialized_size_test_interfaces__msg__Test(
   current_alignment += padding +
     eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
     (ros_message->content.size + 1);
+  // field.name count
+  {
+    size_t item_size = sizeof(ros_message->count);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
 
   return current_alignment - initial_alignment;
 }
@@ -205,6 +221,13 @@ size_t max_serialized_size_test_interfaces__msg__Test(
         eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
         1;
     }
+  }
+  // member: count
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
   return current_alignment - initial_alignment;

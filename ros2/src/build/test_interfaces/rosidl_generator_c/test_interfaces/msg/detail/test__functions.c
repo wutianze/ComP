@@ -31,6 +31,7 @@ test_interfaces__msg__Test__init(test_interfaces__msg__Test * msg)
     test_interfaces__msg__Test__fini(msg);
     return false;
   }
+  // count
   return true;
 }
 
@@ -44,6 +45,7 @@ test_interfaces__msg__Test__fini(test_interfaces__msg__Test * msg)
   std_msgs__msg__Header__fini(&msg->header);
   // content
   rosidl_runtime_c__String__fini(&msg->content);
+  // count
 }
 
 test_interfaces__msg__Test *

@@ -58,8 +58,10 @@ test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_int
 test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_introspection_c.c
 test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_c.c
 test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test.py
+test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_image.py
 test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/msg/__init__.py
 test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_s.c
+test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_image_s.c
 
 
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/lib/rosidl_generator_py/rosidl_generator_py
@@ -76,6 +78,7 @@ rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_con
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/rosidl_generator_py/resource/_srv_pkg_typesupport_entry_point.c.em
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/rosidl_generator_py/resource/_srv.py.em
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: rosidl_adapter/test_interfaces/msg/Test.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: rosidl_adapter/test_interfaces/msg/TestImage.idl
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/builtin_interfaces/msg/Time.idl
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/std_msgs/msg/Bool.idl
@@ -123,11 +126,17 @@ rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_c.c
 rosidl_generator_py/test_interfaces/msg/_test.py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/test_interfaces/msg/_test.py
 
+rosidl_generator_py/test_interfaces/msg/_test_image.py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/test_interfaces/msg/_test_image.py
+
 rosidl_generator_py/test_interfaces/msg/__init__.py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/test_interfaces/msg/__init__.py
 
 rosidl_generator_py/test_interfaces/msg/_test_s.c: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/test_interfaces/msg/_test_s.c
+
+rosidl_generator_py/test_interfaces/msg/_test_image_s.c: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/test_interfaces/msg/_test_image_s.c
 
 test_interfaces__py: test_interfaces__py/CMakeFiles/test_interfaces__py
 test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
@@ -135,8 +144,10 @@ test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.r
 test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_introspection_c.c
 test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_c.c
 test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test.py
+test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_image.py
 test_interfaces__py: rosidl_generator_py/test_interfaces/msg/__init__.py
 test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_s.c
+test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_image_s.c
 test_interfaces__py: test_interfaces__py/CMakeFiles/test_interfaces__py.dir/build.make
 
 .PHONY : test_interfaces__py

@@ -10,6 +10,8 @@ set(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_introspection_c.c" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c"
   "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/msg/__init__.py" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c"
   "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/msg/_test.py" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c"
+  "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/msg/_test_image.py" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c"
+  "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/msg/_test_image_s.c" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c"
   "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/msg/_test_s.c" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c"
   )
 

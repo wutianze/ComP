@@ -1,0 +1,20 @@
+[0.104s] [35m[1mScanning dependencies of target cameraTimer[0m
+[0.137s] [ 50%] Built target yoloDetect
+[0.163s] [ 75%] [32mBuilding CXX object CMakeFiles/cameraTimer.dir/src/CameraTimer.cpp.o[0m
+[2.454s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:[m[K In member function ‘[01m[Kvoid CameraTimer::timer_callback()[m[K’:
+[2.454s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:33:83:[m[K [01;31m[Kerror: [m[K‘[01m[KIMREAD_GRAYSCALE[m[K’ was not declared in this scope; did you mean ‘[01m[Kcv::IMREAD_GRAYSCALE[m[K’?
+[2.454s]    33 |    cv::Mat image = cv::imread("/ros2_test/AD_Middle_Test/ros2/src/detect_s/a.jpg",[01;31m[KIMREAD_GRAYSCALE[m[K);
+[2.454s]       |                                                                                   [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[2.454s]       |                                                                                   [32m[Kcv::IMREAD_GRAYSCALE[m[K
+[2.455s] In file included from [01m[K/usr/include/opencv4/opencv2/highgui.hpp:48[m[K,
+[2.455s]                  from [01m[K/usr/include/opencv4/opencv2/highgui/highgui.hpp:48[m[K,
+[2.455s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:7[m[K:
+[2.455s] [01m[K/usr/include/opencv4/opencv2/imgcodecs.hpp:66:8:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::IMREAD_GRAYSCALE[m[K’ declared here
+[2.455s]    66 |        [01;36m[KIMREAD_GRAYSCALE[m[K            = 0,  //!< If set, always convert image to the single channel grayscale image (codec internal conversion).
+[2.455s]       |        [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[2.455s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:50:20:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[2.456s]    50 |      for(int k =0;[01;35m[Kk<image.elemSize()[m[K;k++){
+[2.456s]       |                   [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[3.764s] make[2]: *** [CMakeFiles/cameraTimer.dir/build.make:63: CMakeFiles/cameraTimer.dir/src/CameraTimer.cpp.o] Error 1
+[3.765s] make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/cameraTimer.dir/all] Error 2
+[3.765s] make: *** [Makefile:141: all] Error 2
