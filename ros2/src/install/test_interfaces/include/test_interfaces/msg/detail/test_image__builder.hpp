@@ -36,16 +36,32 @@ private:
   ::test_interfaces::msg::TestImage msg_;
 };
 
+class Init_TestImage_test_a
+{
+public:
+  explicit Init_TestImage_test_a(::test_interfaces::msg::TestImage & msg)
+  : msg_(msg)
+  {}
+  Init_TestImage_mat_data test_a(::test_interfaces::msg::TestImage::_test_a_type arg)
+  {
+    msg_.test_a = std::move(arg);
+    return Init_TestImage_mat_data(msg_);
+  }
+
+private:
+  ::test_interfaces::msg::TestImage msg_;
+};
+
 class Init_TestImage_elt_size
 {
 public:
   explicit Init_TestImage_elt_size(::test_interfaces::msg::TestImage & msg)
   : msg_(msg)
   {}
-  Init_TestImage_mat_data elt_size(::test_interfaces::msg::TestImage::_elt_size_type arg)
+  Init_TestImage_test_a elt_size(::test_interfaces::msg::TestImage::_elt_size_type arg)
   {
     msg_.elt_size = std::move(arg);
-    return Init_TestImage_mat_data(msg_);
+    return Init_TestImage_test_a(msg_);
   }
 
 private:
@@ -87,29 +103,13 @@ private:
 class Init_TestImage_rows
 {
 public:
-  explicit Init_TestImage_rows(::test_interfaces::msg::TestImage & msg)
-  : msg_(msg)
+  Init_TestImage_rows()
+  : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
   Init_TestImage_cols rows(::test_interfaces::msg::TestImage::_rows_type arg)
   {
     msg_.rows = std::move(arg);
     return Init_TestImage_cols(msg_);
-  }
-
-private:
-  ::test_interfaces::msg::TestImage msg_;
-};
-
-class Init_TestImage_header
-{
-public:
-  Init_TestImage_header()
-  : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
-  {}
-  Init_TestImage_rows header(::test_interfaces::msg::TestImage::_header_type arg)
-  {
-    msg_.header = std::move(arg);
-    return Init_TestImage_rows(msg_);
   }
 
 private:
@@ -127,7 +127,7 @@ template<>
 inline
 auto build<::test_interfaces::msg::TestImage>()
 {
-  return test_interfaces::msg::builder::Init_TestImage_header();
+  return test_interfaces::msg::builder::Init_TestImage_rows();
 }
 
 }  // namespace test_interfaces

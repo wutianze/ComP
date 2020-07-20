@@ -16,28 +16,28 @@
 
 
 // forward declaration of message dependencies and their conversion functions
-namespace std_msgs
+namespace sensor_msgs
 {
 namespace msg
 {
 namespace typesupport_fastrtps_cpp
 {
 bool cdr_serialize(
-  const std_msgs::msg::Header &,
+  const sensor_msgs::msg::Image &,
   eprosima::fastcdr::Cdr &);
 bool cdr_deserialize(
   eprosima::fastcdr::Cdr &,
-  std_msgs::msg::Header &);
+  sensor_msgs::msg::Image &);
 size_t get_serialized_size(
-  const std_msgs::msg::Header &,
+  const sensor_msgs::msg::Image &,
   size_t current_alignment);
 size_t
-max_serialized_size_Header(
+max_serialized_size_Image(
   bool & full_bounded,
   size_t current_alignment);
 }  // namespace typesupport_fastrtps_cpp
 }  // namespace msg
-}  // namespace std_msgs
+}  // namespace sensor_msgs
 
 
 namespace test_interfaces
@@ -55,10 +55,6 @@ cdr_serialize(
   const test_interfaces::msg::TestImage & ros_message,
   eprosima::fastcdr::Cdr & cdr)
 {
-  // Member: header
-  std_msgs::msg::typesupport_fastrtps_cpp::cdr_serialize(
-    ros_message.header,
-    cdr);
   // Member: rows
   cdr << ros_message.rows;
   // Member: cols
@@ -67,10 +63,12 @@ cdr_serialize(
   cdr << ros_message.elt_type;
   // Member: elt_size
   cdr << ros_message.elt_size;
+  // Member: test_a
+  sensor_msgs::msg::typesupport_fastrtps_cpp::cdr_serialize(
+    ros_message.test_a,
+    cdr);
   // Member: mat_data
-  {
-    cdr << ros_message.mat_data;
-  }
+  cdr << ros_message.mat_data;
   return true;
 }
 
@@ -80,10 +78,6 @@ cdr_deserialize(
   eprosima::fastcdr::Cdr & cdr,
   test_interfaces::msg::TestImage & ros_message)
 {
-  // Member: header
-  std_msgs::msg::typesupport_fastrtps_cpp::cdr_deserialize(
-    cdr, ros_message.header);
-
   // Member: rows
   cdr >> ros_message.rows;
 
@@ -96,10 +90,12 @@ cdr_deserialize(
   // Member: elt_size
   cdr >> ros_message.elt_size;
 
+  // Member: test_a
+  sensor_msgs::msg::typesupport_fastrtps_cpp::cdr_deserialize(
+    cdr, ros_message.test_a);
+
   // Member: mat_data
-  {
-    cdr >> ros_message.mat_data;
-  }
+  cdr >> ros_message.mat_data;
 
   return true;
 }
@@ -117,11 +113,6 @@ get_serialized_size(
   (void)padding;
   (void)wchar_size;
 
-  // Member: header
-
-  current_alignment +=
-    std_msgs::msg::typesupport_fastrtps_cpp::get_serialized_size(
-    ros_message.header, current_alignment);
   // Member: rows
   {
     size_t item_size = sizeof(ros_message.rows);
@@ -146,16 +137,15 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: mat_data
-  {
-    size_t array_size = ros_message.mat_data.size();
+  // Member: test_a
 
-    current_alignment += padding +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
-    size_t item_size = sizeof(ros_message.mat_data[0]);
-    current_alignment += array_size * item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
+  current_alignment +=
+    sensor_msgs::msg::typesupport_fastrtps_cpp::get_serialized_size(
+    ros_message.test_a, current_alignment);
+  // Member: mat_data
+  current_alignment += padding +
+    eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+    (ros_message.mat_data.size() + 1);
 
   return current_alignment - initial_alignment;
 }
@@ -174,18 +164,6 @@ max_serialized_size_TestImage(
   (void)wchar_size;
   (void)full_bounded;
 
-
-  // Member: header
-  {
-    size_t array_size = 1;
-
-
-    for (size_t index = 0; index < array_size; ++index) {
-      current_alignment +=
-        std_msgs::msg::typesupport_fastrtps_cpp::max_serialized_size_Header(
-        full_bounded, current_alignment);
-    }
-  }
 
   // Member: rows
   {
@@ -219,14 +197,28 @@ max_serialized_size_TestImage(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
+  // Member: test_a
+  {
+    size_t array_size = 1;
+
+
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment +=
+        sensor_msgs::msg::typesupport_fastrtps_cpp::max_serialized_size_Image(
+        full_bounded, current_alignment);
+    }
+  }
+
   // Member: mat_data
   {
-    size_t array_size = 0;
-    full_bounded = false;
-    current_alignment += padding +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+    size_t array_size = 1;
 
-    current_alignment += array_size * sizeof(uint8_t);
+    full_bounded = false;
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        1;
+    }
   }
 
   return current_alignment - initial_alignment;

@@ -6,5 +6,5 @@ CXX_FLAGS =   -Wall -Wextra -Wpedantic -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/ros2_test/AD_Middle_Test/ros2/src/detect_s/include -I/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/include -I/opt/ros/foxy/include -isystem /usr/include/opencv4 
+CXX_INCLUDES = -I/ros2_test/AD_Middle_Test/ros2/src/detect_s/include -I/ros2_test/AD_Middle_Test/ros2/src/install/test_interfaces/include -I/opt/ros/foxy/include -isystem /usr/include/opencv4 
 

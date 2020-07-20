@@ -15,8 +15,8 @@
 
 
 // Include directives for member types
-// Member 'header'
-#include "std_msgs/msg/detail/header__struct.hpp"
+// Member 'test_a'
+#include "sensor_msgs/msg/detail/image__struct.hpp"
 
 #ifndef _WIN32
 # define DEPRECATED__test_interfaces__msg__TestImage __attribute__((deprecated))
@@ -37,7 +37,7 @@ struct TestImage_
   using Type = TestImage_<ContainerAllocator>;
 
   explicit TestImage_(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
-  : header(_init)
+  : test_a(_init)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
@@ -46,11 +46,13 @@ struct TestImage_
       this->cols = 0l;
       this->elt_type = 0l;
       this->elt_size = 0l;
+      this->mat_data = "";
     }
   }
 
   explicit TestImage_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
-  : header(_alloc, _init)
+  : test_a(_alloc, _init),
+    mat_data(_alloc)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
@@ -59,13 +61,11 @@ struct TestImage_
       this->cols = 0l;
       this->elt_type = 0l;
       this->elt_size = 0l;
+      this->mat_data = "";
     }
   }
 
   // field types and members
-  using _header_type =
-    std_msgs::msg::Header_<ContainerAllocator>;
-  _header_type header;
   using _rows_type =
     int32_t;
   _rows_type rows;
@@ -78,17 +78,14 @@ struct TestImage_
   using _elt_size_type =
     int32_t;
   _elt_size_type elt_size;
+  using _test_a_type =
+    sensor_msgs::msg::Image_<ContainerAllocator>;
+  _test_a_type test_a;
   using _mat_data_type =
-    std::vector<uint8_t, typename ContainerAllocator::template rebind<uint8_t>::other>;
+    std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other>;
   _mat_data_type mat_data;
 
   // setters for named parameter idiom
-  Type & set__header(
-    const std_msgs::msg::Header_<ContainerAllocator> & _arg)
-  {
-    this->header = _arg;
-    return *this;
-  }
   Type & set__rows(
     const int32_t & _arg)
   {
@@ -113,8 +110,14 @@ struct TestImage_
     this->elt_size = _arg;
     return *this;
   }
+  Type & set__test_a(
+    const sensor_msgs::msg::Image_<ContainerAllocator> & _arg)
+  {
+    this->test_a = _arg;
+    return *this;
+  }
   Type & set__mat_data(
-    const std::vector<uint8_t, typename ContainerAllocator::template rebind<uint8_t>::other> & _arg)
+    const std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other> & _arg)
   {
     this->mat_data = _arg;
     return *this;
@@ -162,9 +165,6 @@ struct TestImage_
   // comparison operators
   bool operator==(const TestImage_ & other) const
   {
-    if (this->header != other.header) {
-      return false;
-    }
     if (this->rows != other.rows) {
       return false;
     }
@@ -175,6 +175,9 @@ struct TestImage_
       return false;
     }
     if (this->elt_size != other.elt_size) {
+      return false;
+    }
+    if (this->test_a != other.test_a) {
       return false;
     }
     if (this->mat_data != other.mat_data) {

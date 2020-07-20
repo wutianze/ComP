@@ -10,10 +10,10 @@
 
 
 // Include directives for member types
-// Member `header`
-#include "std_msgs/msg/detail/header__functions.h"
+// Member `test_a`
+#include "sensor_msgs/msg/detail/image__functions.h"
 // Member `mat_data`
-#include "rosidl_runtime_c/primitives_sequence_functions.h"
+#include "rosidl_runtime_c/string_functions.h"
 
 bool
 test_interfaces__msg__TestImage__init(test_interfaces__msg__TestImage * msg)
@@ -21,17 +21,17 @@ test_interfaces__msg__TestImage__init(test_interfaces__msg__TestImage * msg)
   if (!msg) {
     return false;
   }
-  // header
-  if (!std_msgs__msg__Header__init(&msg->header)) {
-    test_interfaces__msg__TestImage__fini(msg);
-    return false;
-  }
   // rows
   // cols
   // elt_type
   // elt_size
+  // test_a
+  if (!sensor_msgs__msg__Image__init(&msg->test_a)) {
+    test_interfaces__msg__TestImage__fini(msg);
+    return false;
+  }
   // mat_data
-  if (!rosidl_runtime_c__uint8__Sequence__init(&msg->mat_data, 0)) {
+  if (!rosidl_runtime_c__String__init(&msg->mat_data)) {
     test_interfaces__msg__TestImage__fini(msg);
     return false;
   }
@@ -44,14 +44,14 @@ test_interfaces__msg__TestImage__fini(test_interfaces__msg__TestImage * msg)
   if (!msg) {
     return;
   }
-  // header
-  std_msgs__msg__Header__fini(&msg->header);
   // rows
   // cols
   // elt_type
   // elt_size
+  // test_a
+  sensor_msgs__msg__Image__fini(&msg->test_a);
   // mat_data
-  rosidl_runtime_c__uint8__Sequence__fini(&msg->mat_data);
+  rosidl_runtime_c__String__fini(&msg->mat_data);
 }
 
 test_interfaces__msg__TestImage *

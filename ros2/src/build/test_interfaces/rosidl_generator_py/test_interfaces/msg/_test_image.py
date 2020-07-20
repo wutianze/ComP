@@ -5,9 +5,6 @@
 
 # Import statements for member types
 
-# Member 'mat_data'
-import array  # noqa: E402, I100
-
 import rosidl_parser.definition  # noqa: E402, I100
 
 
@@ -43,9 +40,9 @@ class Metaclass_TestImage(type):
             cls._TYPE_SUPPORT = module.type_support_msg__msg__test_image
             cls._DESTROY_ROS_MESSAGE = module.destroy_ros_message_msg__msg__test_image
 
-            from std_msgs.msg import Header
-            if Header.__class__._TYPE_SUPPORT is None:
-                Header.__class__.__import_type_support__()
+            from sensor_msgs.msg import Image
+            if Image.__class__._TYPE_SUPPORT is None:
+                Image.__class__.__import_type_support__()
 
     @classmethod
     def __prepare__(cls, name, bases, **kwargs):
@@ -60,43 +57,43 @@ class TestImage(metaclass=Metaclass_TestImage):
     """Message class 'TestImage'."""
 
     __slots__ = [
-        '_header',
         '_rows',
         '_cols',
         '_elt_type',
         '_elt_size',
+        '_test_a',
         '_mat_data',
     ]
 
     _fields_and_field_types = {
-        'header': 'std_msgs/Header',
         'rows': 'int32',
         'cols': 'int32',
         'elt_type': 'int32',
         'elt_size': 'int32',
-        'mat_data': 'sequence<uint8>',
+        'test_a': 'sensor_msgs/Image',
+        'mat_data': 'string',
     }
 
     SLOT_TYPES = (
-        rosidl_parser.definition.NamespacedType(['std_msgs', 'msg'], 'Header'),  # noqa: E501
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
-        rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.BasicType('uint8')),  # noqa: E501
+        rosidl_parser.definition.NamespacedType(['sensor_msgs', 'msg'], 'Image'),  # noqa: E501
+        rosidl_parser.definition.UnboundedString(),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
         assert all('_' + key in self.__slots__ for key in kwargs.keys()), \
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
-        from std_msgs.msg import Header
-        self.header = kwargs.get('header', Header())
         self.rows = kwargs.get('rows', int())
         self.cols = kwargs.get('cols', int())
         self.elt_type = kwargs.get('elt_type', int())
         self.elt_size = kwargs.get('elt_size', int())
-        self.mat_data = array.array('B', kwargs.get('mat_data', []))
+        from sensor_msgs.msg import Image
+        self.test_a = kwargs.get('test_a', Image())
+        self.mat_data = kwargs.get('mat_data', str())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -127,8 +124,6 @@ class TestImage(metaclass=Metaclass_TestImage):
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
-        if self.header != other.header:
-            return False
         if self.rows != other.rows:
             return False
         if self.cols != other.cols:
@@ -136,6 +131,8 @@ class TestImage(metaclass=Metaclass_TestImage):
         if self.elt_type != other.elt_type:
             return False
         if self.elt_size != other.elt_size:
+            return False
+        if self.test_a != other.test_a:
             return False
         if self.mat_data != other.mat_data:
             return False
@@ -145,20 +142,6 @@ class TestImage(metaclass=Metaclass_TestImage):
     def get_fields_and_field_types(cls):
         from copy import copy
         return copy(cls._fields_and_field_types)
-
-    @property
-    def header(self):
-        """Message field 'header'."""
-        return self._header
-
-    @header.setter
-    def header(self, value):
-        if __debug__:
-            from std_msgs.msg import Header
-            assert \
-                isinstance(value, Header), \
-                "The 'header' field must be a sub message of type 'Header'"
-        self._header = value
 
     @property
     def rows(self):
@@ -221,29 +204,28 @@ class TestImage(metaclass=Metaclass_TestImage):
         self._elt_size = value
 
     @property
+    def test_a(self):
+        """Message field 'test_a'."""
+        return self._test_a
+
+    @test_a.setter
+    def test_a(self, value):
+        if __debug__:
+            from sensor_msgs.msg import Image
+            assert \
+                isinstance(value, Image), \
+                "The 'test_a' field must be a sub message of type 'Image'"
+        self._test_a = value
+
+    @property
     def mat_data(self):
         """Message field 'mat_data'."""
         return self._mat_data
 
     @mat_data.setter
     def mat_data(self, value):
-        if isinstance(value, array.array):
-            assert value.typecode == 'B', \
-                "The 'mat_data' array.array() must have the type code of 'B'"
-            self._mat_data = value
-            return
         if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
             assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 all(isinstance(v, int) for v in value) and
-                 all(val >= 0 and val < 256 for val in value)), \
-                "The 'mat_data' field must be a set or sequence and each value of type 'int' and each unsigned integer in [0, 255]"
-        self._mat_data = array.array('B', value)
+                isinstance(value, str), \
+                "The 'mat_data' field must be of type 'str'"
+        self._mat_data = value

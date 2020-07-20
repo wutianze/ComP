@@ -5,6 +5,7 @@
 #include "test_interfaces/msg/test_image.hpp"     // CHANGE
 #include "rclcpp/qos.hpp"
 #include <opencv2/highgui/highgui.hpp>
+#include "sensor_msgs/fill_image.hpp"
 //using namespace std::chrono_literals;
 using namespace std;
 class CameraTimer : public rclcpp::Node
@@ -46,12 +47,15 @@ class CameraTimer : public rclcpp::Node
 			//memcpy((char*)(&(message->mat_data[0])),(char*)image.data,dataSize);
 			int imgS = 0;
 			bool show = true;
+			string for_mat;
+			//for_mat.resize(dataSize);
 			for(int i=0;i<image.rows;i++){
 				for(int j=0;j<image.cols;j++){
 					for(size_t k =0;k<image.elemSize();k++){
 				//cout<<"value"<<image.data[i]<<"i:"<<i<<endl;
 			message->mat_data[imgS] = image.at<cv::Vec3b>(i,j)[k];
-			if(message->mat_data[imgS] == '\n' && show){
+			//for_mat[imgS]=image.at<cv::Vec3b>(i,j)[k];
+						if(message->mat_data[imgS] == '\0' && show){
 				cout<<"one null in:"<<imgS<<endl;
 				show = false;
 			}
@@ -59,6 +63,13 @@ class CameraTimer : public rclcpp::Node
 					}
 				}
 			}
+			sensor_msgs::msg::Image tmpI;
+			sensor_msgs::fillImage(tmpI,sensor_msgs::image_encodings::BGR8,image.rows,image.cols,image.step,image.data);
+			message->test_a = tmpI;
+			//message->mat_data=for_mat;
+			
+			//vector<unsigned char>test_a;
+			//test_a.push_back('a');
 			cout<<"cp finish, imgS:"<<imgS<<" data size:"<<(message->mat_data).size()<<endl;
 			//cout<<"mat total size:"<<sizeof(image.data)<<"mat array size:"<<sizeof(image.data)/sizeof(image.data[0])<<endl;
 			//cout<<"array total size:"<<sizeof(message->mat_data)<<"array size:"<<sizeof(message->mat_data)/sizeof(message->mat_data[0])<<endl;
@@ -68,7 +79,7 @@ class CameraTimer : public rclcpp::Node
 			//RCLCPP_INFO(this->get_logger(), "mat_data size::%d",(message->mat_data).size());    // CHANGE
 			//message->mat_data[0] = 'a';
 			//message->mat_data[1] = 'b';
-			message->header.stamp = this->now();
+			//message->header.stamp = this->now();
 			//RCLCPP_INFO(this->get_logger(), "Publishing: '%lu'", message->header.stamp);    // CHANGE
 			publisher_->publish(std::move(message));
 		}

@@ -34,24 +34,24 @@ extern "C"
 {
 #endif
 
-#include "rosidl_runtime_c/primitives_sequence.h"  // mat_data
-#include "rosidl_runtime_c/primitives_sequence_functions.h"  // mat_data
-#include "std_msgs/msg/detail/header__functions.h"  // header
+#include "rosidl_runtime_c/string.h"  // mat_data
+#include "rosidl_runtime_c/string_functions.h"  // mat_data
+#include "sensor_msgs/msg/detail/image__functions.h"  // test_a
 
 // forward declare type support functions
 ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_test_interfaces
-size_t get_serialized_size_std_msgs__msg__Header(
+size_t get_serialized_size_sensor_msgs__msg__Image(
   const void * untyped_ros_message,
   size_t current_alignment);
 
 ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_test_interfaces
-size_t max_serialized_size_std_msgs__msg__Header(
+size_t max_serialized_size_sensor_msgs__msg__Image(
   bool & full_bounded,
   size_t current_alignment);
 
 ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_test_interfaces
 const rosidl_message_type_support_t *
-  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_fastrtps_c, std_msgs, msg, Header)();
+  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_fastrtps_c, sensor_msgs, msg, Image)();
 
 
 using _TestImage__ros_msg_type = test_interfaces__msg__TestImage;
@@ -65,20 +65,6 @@ static bool _TestImage__cdr_serialize(
     return false;
   }
   const _TestImage__ros_msg_type * ros_message = static_cast<const _TestImage__ros_msg_type *>(untyped_ros_message);
-  // Field name: header
-  {
-    const message_type_support_callbacks_t * callbacks =
-      static_cast<const message_type_support_callbacks_t *>(
-      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
-        rosidl_typesupport_fastrtps_c, std_msgs, msg, Header
-      )()->data);
-    if (!callbacks->cdr_serialize(
-        &ros_message->header, cdr))
-    {
-      return false;
-    }
-  }
-
   // Field name: rows
   {
     cdr << ros_message->rows;
@@ -99,12 +85,32 @@ static bool _TestImage__cdr_serialize(
     cdr << ros_message->elt_size;
   }
 
+  // Field name: test_a
+  {
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, sensor_msgs, msg, Image
+      )()->data);
+    if (!callbacks->cdr_serialize(
+        &ros_message->test_a, cdr))
+    {
+      return false;
+    }
+  }
+
   // Field name: mat_data
   {
-    size_t size = ros_message->mat_data.size;
-    auto array_ptr = ros_message->mat_data.data;
-    cdr << static_cast<uint32_t>(size);
-    cdr.serializeArray(array_ptr, size);
+    const rosidl_runtime_c__String * str = &ros_message->mat_data;
+    if (str->capacity == 0 || str->capacity <= str->size) {
+      fprintf(stderr, "string capacity not greater than size\n");
+      return false;
+    }
+    if (str->data[str->size] != '\0') {
+      fprintf(stderr, "string not null-terminated\n");
+      return false;
+    }
+    cdr << str->data;
   }
 
   return true;
@@ -119,20 +125,6 @@ static bool _TestImage__cdr_deserialize(
     return false;
   }
   _TestImage__ros_msg_type * ros_message = static_cast<_TestImage__ros_msg_type *>(untyped_ros_message);
-  // Field name: header
-  {
-    const message_type_support_callbacks_t * callbacks =
-      static_cast<const message_type_support_callbacks_t *>(
-      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
-        rosidl_typesupport_fastrtps_c, std_msgs, msg, Header
-      )()->data);
-    if (!callbacks->cdr_deserialize(
-        cdr, &ros_message->header))
-    {
-      return false;
-    }
-  }
-
   // Field name: rows
   {
     cdr >> ros_message->rows;
@@ -153,19 +145,34 @@ static bool _TestImage__cdr_deserialize(
     cdr >> ros_message->elt_size;
   }
 
+  // Field name: test_a
+  {
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, sensor_msgs, msg, Image
+      )()->data);
+    if (!callbacks->cdr_deserialize(
+        cdr, &ros_message->test_a))
+    {
+      return false;
+    }
+  }
+
   // Field name: mat_data
   {
-    uint32_t cdrSize;
-    cdr >> cdrSize;
-    size_t size = static_cast<size_t>(cdrSize);
-    if (ros_message->mat_data.data) {
-      rosidl_runtime_c__uint8__Sequence__fini(&ros_message->mat_data);
+    std::string tmp;
+    cdr >> tmp;
+    if (!ros_message->mat_data.data) {
+      rosidl_runtime_c__String__init(&ros_message->mat_data);
     }
-    if (!rosidl_runtime_c__uint8__Sequence__init(&ros_message->mat_data, size)) {
-      return "failed to create array for field 'mat_data'";
+    bool succeeded = rosidl_runtime_c__String__assign(
+      &ros_message->mat_data,
+      tmp.c_str());
+    if (!succeeded) {
+      fprintf(stderr, "failed to assign string into field 'mat_data'\n");
+      return false;
     }
-    auto array_ptr = ros_message->mat_data.data;
-    cdr.deserializeArray(array_ptr, size);
   }
 
   return true;
@@ -185,10 +192,6 @@ size_t get_serialized_size_test_interfaces__msg__TestImage(
   (void)padding;
   (void)wchar_size;
 
-  // field.name header
-
-  current_alignment += get_serialized_size_std_msgs__msg__Header(
-    &(ros_message->header), current_alignment);
   // field.name rows
   {
     size_t item_size = sizeof(ros_message->rows);
@@ -213,17 +216,14 @@ size_t get_serialized_size_test_interfaces__msg__TestImage(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name test_a
+
+  current_alignment += get_serialized_size_sensor_msgs__msg__Image(
+    &(ros_message->test_a), current_alignment);
   // field.name mat_data
-  {
-    size_t array_size = ros_message->mat_data.size;
-    auto array_ptr = ros_message->mat_data.data;
-    current_alignment += padding +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
-    (void)array_ptr;
-    size_t item_size = sizeof(array_ptr[0]);
-    current_alignment += array_size * item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
+  current_alignment += padding +
+    eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+    (ros_message->mat_data.size + 1);
 
   return current_alignment - initial_alignment;
 }
@@ -248,17 +248,6 @@ size_t max_serialized_size_test_interfaces__msg__TestImage(
   (void)wchar_size;
   (void)full_bounded;
 
-  // member: header
-  {
-    size_t array_size = 1;
-
-
-    for (size_t index = 0; index < array_size; ++index) {
-      current_alignment +=
-        max_serialized_size_std_msgs__msg__Header(
-        full_bounded, current_alignment);
-    }
-  }
   // member: rows
   {
     size_t array_size = 1;
@@ -287,14 +276,27 @@ size_t max_serialized_size_test_interfaces__msg__TestImage(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
+  // member: test_a
+  {
+    size_t array_size = 1;
+
+
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment +=
+        max_serialized_size_sensor_msgs__msg__Image(
+        full_bounded, current_alignment);
+    }
+  }
   // member: mat_data
   {
-    size_t array_size = 0;
-    full_bounded = false;
-    current_alignment += padding +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+    size_t array_size = 1;
 
-    current_alignment += array_size * sizeof(uint8_t);
+    full_bounded = false;
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        1;
+    }
   }
 
   return current_alignment - initial_alignment;

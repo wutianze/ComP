@@ -16,13 +16,13 @@
 #include "test_interfaces/msg/detail/test_image__struct.h"
 #include "test_interfaces/msg/detail/test_image__functions.h"
 
-#include "rosidl_runtime_c/primitives_sequence.h"
-#include "rosidl_runtime_c/primitives_sequence_functions.h"
+#include "rosidl_runtime_c/string.h"
+#include "rosidl_runtime_c/string_functions.h"
 
 ROSIDL_GENERATOR_C_IMPORT
-bool std_msgs__msg__header__convert_from_py(PyObject * _pymsg, void * _ros_message);
+bool sensor_msgs__msg__image__convert_from_py(PyObject * _pymsg, void * _ros_message);
 ROSIDL_GENERATOR_C_IMPORT
-PyObject * std_msgs__msg__header__convert_to_py(void * raw_ros_message);
+PyObject * sensor_msgs__msg__image__convert_to_py(void * raw_ros_message);
 
 ROSIDL_GENERATOR_C_EXPORT
 bool test_interfaces__msg__test_image__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -57,17 +57,6 @@ bool test_interfaces__msg__test_image__convert_from_py(PyObject * _pymsg, void *
     assert(strncmp("test_interfaces.msg._test_image.TestImage", full_classname_dest, 41) == 0);
   }
   test_interfaces__msg__TestImage * ros_message = _ros_message;
-  {  // header
-    PyObject * field = PyObject_GetAttrString(_pymsg, "header");
-    if (!field) {
-      return false;
-    }
-    if (!std_msgs__msg__header__convert_from_py(field, &ros_message->header)) {
-      Py_DECREF(field);
-      return false;
-    }
-    Py_DECREF(field);
-  }
   {  // rows
     PyObject * field = PyObject_GetAttrString(_pymsg, "rows");
     if (!field) {
@@ -104,42 +93,30 @@ bool test_interfaces__msg__test_image__convert_from_py(PyObject * _pymsg, void *
     ros_message->elt_size = (int32_t)PyLong_AsLong(field);
     Py_DECREF(field);
   }
+  {  // test_a
+    PyObject * field = PyObject_GetAttrString(_pymsg, "test_a");
+    if (!field) {
+      return false;
+    }
+    if (!sensor_msgs__msg__image__convert_from_py(field, &ros_message->test_a)) {
+      Py_DECREF(field);
+      return false;
+    }
+    Py_DECREF(field);
+  }
   {  // mat_data
     PyObject * field = PyObject_GetAttrString(_pymsg, "mat_data");
     if (!field) {
       return false;
     }
-    PyObject * seq_field = PySequence_Fast(field, "expected a sequence in 'mat_data'");
-    if (!seq_field) {
+    assert(PyUnicode_Check(field));
+    PyObject * encoded_field = PyUnicode_AsUTF8String(field);
+    if (!encoded_field) {
       Py_DECREF(field);
       return false;
     }
-    Py_ssize_t size = PySequence_Size(field);
-    if (-1 == size) {
-      Py_DECREF(seq_field);
-      Py_DECREF(field);
-      return false;
-    }
-    if (!rosidl_runtime_c__uint8__Sequence__init(&(ros_message->mat_data), size)) {
-      PyErr_SetString(PyExc_RuntimeError, "unable to create uint8__Sequence ros_message");
-      Py_DECREF(seq_field);
-      Py_DECREF(field);
-      return false;
-    }
-    uint8_t * dest = ros_message->mat_data.data;
-    for (Py_ssize_t i = 0; i < size; ++i) {
-      PyObject * item = PySequence_Fast_GET_ITEM(seq_field, i);
-      if (!item) {
-        Py_DECREF(seq_field);
-        Py_DECREF(field);
-        return false;
-      }
-      assert(PyLong_Check(item));
-      uint8_t tmp = (uint8_t)PyLong_AsUnsignedLong(item);
-
-      memcpy(&dest[i], &tmp, sizeof(uint8_t));
-    }
-    Py_DECREF(seq_field);
+    rosidl_runtime_c__String__assign(&ros_message->mat_data, PyBytes_AS_STRING(encoded_field));
+    Py_DECREF(encoded_field);
     Py_DECREF(field);
   }
 
@@ -164,20 +141,6 @@ PyObject * test_interfaces__msg__test_image__convert_to_py(void * raw_ros_messag
     }
   }
   test_interfaces__msg__TestImage * ros_message = (test_interfaces__msg__TestImage *)raw_ros_message;
-  {  // header
-    PyObject * field = NULL;
-    field = std_msgs__msg__header__convert_to_py(&ros_message->header);
-    if (!field) {
-      return NULL;
-    }
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "header", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
   {  // rows
     PyObject * field = NULL;
     field = PyLong_FromLong(ros_message->rows);
@@ -222,62 +185,36 @@ PyObject * test_interfaces__msg__test_image__convert_to_py(void * raw_ros_messag
       }
     }
   }
-  {  // mat_data
+  {  // test_a
     PyObject * field = NULL;
-    field = PyObject_GetAttrString(_pymessage, "mat_data");
+    field = sensor_msgs__msg__image__convert_to_py(&ros_message->test_a);
     if (!field) {
       return NULL;
     }
-    assert(field->ob_type != NULL);
-    assert(field->ob_type->tp_name != NULL);
-    assert(strcmp(field->ob_type->tp_name, "array.array") == 0);
-    // ensure that itemsize matches the sizeof of the ROS message field
-    PyObject * itemsize_attr = PyObject_GetAttrString(field, "itemsize");
-    assert(itemsize_attr != NULL);
-    size_t itemsize = PyLong_AsSize_t(itemsize_attr);
-    Py_DECREF(itemsize_attr);
-    if (itemsize != sizeof(uint8_t)) {
-      PyErr_SetString(PyExc_RuntimeError, "itemsize doesn't match expectation");
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "test_a", field);
       Py_DECREF(field);
-      return NULL;
-    }
-    // clear the array, poor approach to remove potential default values
-    Py_ssize_t length = PyObject_Length(field);
-    if (-1 == length) {
-      Py_DECREF(field);
-      return NULL;
-    }
-    if (length > 0) {
-      PyObject * pop = PyObject_GetAttrString(field, "pop");
-      assert(pop != NULL);
-      for (Py_ssize_t i = 0; i < length; ++i) {
-        PyObject * ret = PyObject_CallFunctionObjArgs(pop, NULL);
-        if (!ret) {
-          Py_DECREF(pop);
-          Py_DECREF(field);
-          return NULL;
-        }
-        Py_DECREF(ret);
-      }
-      Py_DECREF(pop);
-    }
-    if (ros_message->mat_data.size > 0) {
-      // populating the array.array using the frombytes method
-      PyObject * frombytes = PyObject_GetAttrString(field, "frombytes");
-      assert(frombytes != NULL);
-      uint8_t * src = &(ros_message->mat_data.data[0]);
-      PyObject * data = PyBytes_FromStringAndSize((const char *)src, ros_message->mat_data.size * sizeof(uint8_t));
-      assert(data != NULL);
-      PyObject * ret = PyObject_CallFunctionObjArgs(frombytes, data, NULL);
-      Py_DECREF(data);
-      Py_DECREF(frombytes);
-      if (!ret) {
-        Py_DECREF(field);
+      if (rc) {
         return NULL;
       }
-      Py_DECREF(ret);
     }
-    Py_DECREF(field);
+  }
+  {  // mat_data
+    PyObject * field = NULL;
+    field = PyUnicode_DecodeUTF8(
+      ros_message->mat_data.data,
+      strlen(ros_message->mat_data.data),
+      "strict");
+    if (!field) {
+      return NULL;
+    }
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "mat_data", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
   }
 
   // ownership of _pymessage is transferred to the caller

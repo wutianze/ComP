@@ -49,7 +49,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/detect_s/cameraTimer")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/detect_s/cameraTimer"
-         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/detect_s/lib:/opt/ros/foxy/lib:/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/lib:"
+         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/detect_s/lib:/opt/ros/foxy/lib:/ros2_test/AD_Middle_Test/ros2/src/install/test_interfaces/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/detect_s/cameraTimer")
@@ -69,7 +69,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/detect_s/yoloDetect")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/detect_s/yoloDetect"
-         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/detect_s/lib:/opt/ros/foxy/lib:/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/lib:"
+         OLD_RPATH "/ros2_test/AD_Middle_Test/ros2/src/detect_s/lib:/opt/ros/foxy/lib:/ros2_test/AD_Middle_Test/ros2/src/install/test_interfaces/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/detect_s/yoloDetect")

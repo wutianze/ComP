@@ -37,49 +37,7 @@ void TestImage_fini_function(void * message_memory)
   typed_message->~TestImage();
 }
 
-size_t size_function__TestImage__mat_data(const void * untyped_member)
-{
-  const auto * member = reinterpret_cast<const std::vector<uint8_t> *>(untyped_member);
-  return member->size();
-}
-
-const void * get_const_function__TestImage__mat_data(const void * untyped_member, size_t index)
-{
-  const auto & member =
-    *reinterpret_cast<const std::vector<uint8_t> *>(untyped_member);
-  return &member[index];
-}
-
-void * get_function__TestImage__mat_data(void * untyped_member, size_t index)
-{
-  auto & member =
-    *reinterpret_cast<std::vector<uint8_t> *>(untyped_member);
-  return &member[index];
-}
-
-void resize_function__TestImage__mat_data(void * untyped_member, size_t size)
-{
-  auto * member =
-    reinterpret_cast<std::vector<uint8_t> *>(untyped_member);
-  member->resize(size);
-}
-
 static const ::rosidl_typesupport_introspection_cpp::MessageMember TestImage_message_member_array[6] = {
-  {
-    "header",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
-    0,  // upper bound of string
-    ::rosidl_typesupport_introspection_cpp::get_message_type_support_handle<std_msgs::msg::Header>(),  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(test_interfaces::msg::TestImage, header),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
   {
     "rows",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT32,  // type
@@ -141,19 +99,34 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember TestImage_mes
     nullptr  // resize(index) function pointer
   },
   {
+    "test_a",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
+    0,  // upper bound of string
+    ::rosidl_typesupport_introspection_cpp::get_message_type_support_handle<sensor_msgs::msg::Image>(),  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(test_interfaces::msg::TestImage, test_a),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
     "mat_data",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_STRING,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
-    true,  // is array
+    false,  // is array
     0,  // array size
     false,  // is upper bound
     offsetof(test_interfaces::msg::TestImage, mat_data),  // bytes offset in struct
     nullptr,  // default value
-    size_function__TestImage__mat_data,  // size() function pointer
-    get_const_function__TestImage__mat_data,  // get_const(index) function pointer
-    get_function__TestImage__mat_data,  // get(index) function pointer
-    resize_function__TestImage__mat_data  // resize(index) function pointer
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
   }
 };
 

@@ -21,6 +21,7 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(test_interfaces REQUIRED)
 find_package(message_filters REQUIRED)
 find_package(OpenCV REQUIRED)
@@ -32,9 +33,9 @@ link_directories(${OpenCV_LIB_DIR} lib)
 #  $<INSTALL_INTERFACE:include>)
 
 add_executable(cameraTimer src/CameraTimer.cpp)
-ament_target_dependencies(cameraTimer rclcpp test_interfaces message_filters OpenCV)
+ament_target_dependencies(cameraTimer rclcpp test_interfaces message_filters OpenCV sensor_msgs)
 add_executable(yoloDetect src/YoloDetect.cpp)
-ament_target_dependencies(yoloDetect rclcpp test_interfaces message_filters OpenCV)
+ament_target_dependencies(yoloDetect rclcpp test_interfaces message_filters OpenCV sensor_msgs)
 
 install(TARGETS cameraTimer yoloDetect
   EXPORT export_${PROJECT_NAME}

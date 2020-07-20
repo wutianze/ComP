@@ -1,6 +1,6 @@
 # generated from ament_cmake_export_dependencies/cmake/ament_cmake_export_dependencies-extras.cmake.in
 
-set(_exported_dependencies "builtin_interfaces;std_msgs")
+set(_exported_dependencies "builtin_interfaces;std_msgs;sensor_msgs")
 
 find_package(ament_cmake_libraries QUIET REQUIRED)
 

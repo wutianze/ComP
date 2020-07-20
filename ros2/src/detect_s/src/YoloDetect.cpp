@@ -12,6 +12,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "test_interfaces/msg/test_image.hpp"     // CHANGE
 #include <opencv2/highgui/highgui.hpp>
+#include "sensor_msgs/fill_image.hpp"
 //using std::placeholders::_1;
 //using std::placeholders::_2;
 using namespace std;
@@ -84,6 +85,7 @@ class YoloDetect : public rclcpp::Node
 			RCLCPP_INFO(this->get_logger(), "msg rows '%d',cols:'%d'", msg->rows,msg->cols);              // CHANGE
 			cv::Mat tmp(msg->rows,msg->cols,msg->elt_type);
 			int datasize = msg->rows*msg->cols*msg->elt_size;
+			memcpy((unsigned char*)tmp.data,(unsigned char*)&(msg->test_a.data[0]),datasize);
 			//string tmpS(msg->mat_data,datasize);
 			//cout<<tmpS[93485]<<tmpS[100000]<<endl;
 			//RCLCPP_INFO(this->get_logger(), "datasize: '%d', mat_data size:%d",datasize, tmpS.size());              // CHANGE
@@ -99,7 +101,7 @@ class YoloDetect : public rclcpp::Node
 			//for(int i=0;i<datasize;i++){
 			//cout<<msg->mat_data[i];
 			//}
-			try{
+			/*try{
 			for(int i=0;i<msg->rows;i++){
 				for(int j=0;j<msg->cols;j++){
 					for(int k =0;k<msg->elt_size;k++){
@@ -113,7 +115,7 @@ class YoloDetect : public rclcpp::Node
 			}}
 			catch(...){
 			cout<<"sth wrong"<<endl;
-			}
+			}*/
 			//for(int i=0;i<datasize;i++){
 			//tmp.data[i]= (unsigned char)(msg->mat_data[i]);
 			//cout<<i<<endl;

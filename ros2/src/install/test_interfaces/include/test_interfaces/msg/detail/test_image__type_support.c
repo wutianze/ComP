@@ -13,12 +13,12 @@
 
 
 // Include directives for member types
-// Member `header`
-#include "std_msgs/msg/header.h"
-// Member `header`
-#include "std_msgs/msg/detail/header__rosidl_typesupport_introspection_c.h"
+// Member `test_a`
+#include "sensor_msgs/msg/image.h"
+// Member `test_a`
+#include "sensor_msgs/msg/detail/image__rosidl_typesupport_introspection_c.h"
 // Member `mat_data`
-#include "rosidl_runtime_c/primitives_sequence_functions.h"
+#include "rosidl_runtime_c/string_functions.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -40,21 +40,6 @@ void TestImage__rosidl_typesupport_introspection_c__TestImage_fini_function(void
 }
 
 static rosidl_typesupport_introspection_c__MessageMember TestImage__rosidl_typesupport_introspection_c__TestImage_message_member_array[6] = {
-  {
-    "header",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_MESSAGE,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message (initialized later)
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(test_interfaces__msg__TestImage, header),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
   {
     "rows",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_INT32,  // type
@@ -116,11 +101,26 @@ static rosidl_typesupport_introspection_c__MessageMember TestImage__rosidl_types
     NULL  // resize(index) function pointer
   },
   {
+    "test_a",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_MESSAGE,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message (initialized later)
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(test_interfaces__msg__TestImage, test_a),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
     "mat_data",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
+    rosidl_typesupport_introspection_c__ROS_TYPE_STRING,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
-    true,  // is array
+    false,  // is array
     0,  // array size
     false,  // is upper bound
     offsetof(test_interfaces__msg__TestImage, mat_data),  // bytes offset in struct
@@ -153,8 +153,8 @@ static rosidl_message_type_support_t TestImage__rosidl_typesupport_introspection
 ROSIDL_TYPESUPPORT_INTROSPECTION_C_EXPORT_test_interfaces
 const rosidl_message_type_support_t *
 ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, test_interfaces, msg, TestImage)() {
-  TestImage__rosidl_typesupport_introspection_c__TestImage_message_member_array[0].members_ =
-    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, std_msgs, msg, Header)();
+  TestImage__rosidl_typesupport_introspection_c__TestImage_message_member_array[4].members_ =
+    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, sensor_msgs, msg, Image)();
   if (!TestImage__rosidl_typesupport_introspection_c__TestImage_message_type_support_handle.typesupport_identifier) {
     TestImage__rosidl_typesupport_introspection_c__TestImage_message_type_support_handle.typesupport_identifier =
       rosidl_typesupport_introspection_c__identifier;

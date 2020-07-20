@@ -11,7 +11,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/ros2_test/AD_Middle_Test/ros2/src/detect_s/include"
-  "/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/include"
+  "/ros2_test/AD_Middle_Test/ros2/src/install/test_interfaces/include"
   "/opt/ros/foxy/include"
   "/usr/include/opencv4"
   )
