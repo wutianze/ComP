@@ -20,16 +20,32 @@ namespace msg
 namespace builder
 {
 
+class Init_Test_count
+{
+public:
+  explicit Init_Test_count(::test_interfaces::msg::Test & msg)
+  : msg_(msg)
+  {}
+  ::test_interfaces::msg::Test count(::test_interfaces::msg::Test::_count_type arg)
+  {
+    msg_.count = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::test_interfaces::msg::Test msg_;
+};
+
 class Init_Test_content
 {
 public:
   explicit Init_Test_content(::test_interfaces::msg::Test & msg)
   : msg_(msg)
   {}
-  ::test_interfaces::msg::Test content(::test_interfaces::msg::Test::_content_type arg)
+  Init_Test_count content(::test_interfaces::msg::Test::_content_type arg)
   {
     msg_.content = std::move(arg);
-    return std::move(msg_);
+    return Init_Test_count(msg_);
   }
 
 private:

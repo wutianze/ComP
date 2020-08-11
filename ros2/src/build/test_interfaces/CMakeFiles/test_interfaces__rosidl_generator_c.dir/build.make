@@ -71,6 +71,7 @@ rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/rosidl_genera
 rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/rosidl_generator_c/resource/msg__type_support.h.em
 rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/rosidl_generator_c/resource/srv__type_support.h.em
 rosidl_generator_c/test_interfaces/msg/test.h: rosidl_adapter/test_interfaces/msg/Test.idl
+rosidl_generator_c/test_interfaces/msg/test.h: rosidl_adapter/test_interfaces/msg/TestImage.idl
 rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/builtin_interfaces/msg/Time.idl
 rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/std_msgs/msg/Bool.idl
@@ -103,6 +104,63 @@ rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/std_msgs/msg/
 rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/std_msgs/msg/UInt64MultiArray.idl
 rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/std_msgs/msg/UInt8.idl
 rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/std_msgs/msg/UInt8MultiArray.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/BatteryState.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/CameraInfo.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/ChannelFloat32.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/CompressedImage.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/FluidPressure.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/Illuminance.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/Image.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/Imu.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/JointState.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/Joy.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/JoyFeedback.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/JoyFeedbackArray.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/LaserEcho.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/LaserScan.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/MagneticField.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/MultiDOFJointState.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/MultiEchoLaserScan.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/NavSatFix.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/NavSatStatus.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/PointCloud.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/PointCloud2.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/PointField.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/Range.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/RegionOfInterest.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/RelativeHumidity.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/Temperature.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/msg/TimeReference.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/sensor_msgs/srv/SetCameraInfo.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Accel.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/AccelStamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/AccelWithCovariance.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/AccelWithCovarianceStamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Inertia.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/InertiaStamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Point.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Point32.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/PointStamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Polygon.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/PolygonStamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Pose.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Pose2D.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/PoseArray.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/PoseStamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/PoseWithCovariance.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/PoseWithCovarianceStamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Quaternion.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/QuaternionStamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Transform.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/TransformStamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Twist.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/TwistStamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/TwistWithCovariance.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/TwistWithCovarianceStamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Vector3.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Vector3Stamped.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/Wrench.idl
+rosidl_generator_c/test_interfaces/msg/test.h: /opt/ros/foxy/share/geometry_msgs/msg/WrenchStamped.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C code for ROS interfaces"
 	/usr/bin/python3 /opt/ros/foxy/share/rosidl_generator_c/cmake/../../../lib/rosidl_generator_c/rosidl_generator_c --generator-arguments-file /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_c__arguments.json
 
@@ -115,8 +173,23 @@ rosidl_generator_c/test_interfaces/msg/detail/test__struct.h: rosidl_generator_c
 rosidl_generator_c/test_interfaces/msg/detail/test__type_support.h: rosidl_generator_c/test_interfaces/msg/test.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/test_interfaces/msg/detail/test__type_support.h
 
+rosidl_generator_c/test_interfaces/msg/test_image.h: rosidl_generator_c/test_interfaces/msg/test.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/test_interfaces/msg/test_image.h
+
+rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.h: rosidl_generator_c/test_interfaces/msg/test.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.h
+
+rosidl_generator_c/test_interfaces/msg/detail/test_image__struct.h: rosidl_generator_c/test_interfaces/msg/test.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/test_interfaces/msg/detail/test_image__struct.h
+
+rosidl_generator_c/test_interfaces/msg/detail/test_image__type_support.h: rosidl_generator_c/test_interfaces/msg/test.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/test_interfaces/msg/detail/test_image__type_support.h
+
 rosidl_generator_c/test_interfaces/msg/detail/test__functions.c: rosidl_generator_c/test_interfaces/msg/test.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/test_interfaces/msg/detail/test__functions.c
+
+rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c: rosidl_generator_c/test_interfaces/msg/test.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c
 
 CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test__functions.c.o: CMakeFiles/test_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test__functions.c.o: rosidl_generator_c/test_interfaces/msg/detail/test__functions.c
@@ -131,14 +204,29 @@ CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_inter
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test__functions.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_c/test_interfaces/msg/detail/test__functions.c -o CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test__functions.c.s
 
+CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.o: CMakeFiles/test_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.o: rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.o   -c /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c
+
+CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c > CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.i
+
+CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c -o CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.s
+
 # Object files for target test_interfaces__rosidl_generator_c
 test_interfaces__rosidl_generator_c_OBJECTS = \
-"CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test__functions.c.o"
+"CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test__functions.c.o" \
+"CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.o"
 
 # External object files for target test_interfaces__rosidl_generator_c
 test_interfaces__rosidl_generator_c_EXTERNAL_OBJECTS =
 
 libtest_interfaces__rosidl_generator_c.so: CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test__functions.c.o
+libtest_interfaces__rosidl_generator_c.so: CMakeFiles/test_interfaces__rosidl_generator_c.dir/rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c.o
 libtest_interfaces__rosidl_generator_c.so: CMakeFiles/test_interfaces__rosidl_generator_c.dir/build.make
 libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
 libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
@@ -159,19 +247,43 @@ libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesuppo
 libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_c.so
 libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_cpp.so
 libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_generator_c.so
-libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_runtime_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_generator_c.so
 libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
 libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
 libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_generator_c.so
-libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_c.so
-libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_cpp.so
-libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_introspection_c.so
-libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_introspection_cpp.so
 libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_c.so
 libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_cpp.so
 libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_generator_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_cpp.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_runtime_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_introspection_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_introspection_cpp.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libsensor_msgs__rosidl_typesupport_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libsensor_msgs__rosidl_typesupport_cpp.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libsensor_msgs__rosidl_generator_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libbuiltin_interfaces__rosidl_generator_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_cpp.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_generator_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_cpp.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_runtime_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_introspection_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_typesupport_introspection_cpp.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_generator_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/librosidl_runtime_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libsensor_msgs__rosidl_typesupport_c.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libsensor_msgs__rosidl_typesupport_cpp.so
+libtest_interfaces__rosidl_generator_c.so: /opt/ros/foxy/lib/libsensor_msgs__rosidl_generator_c.so
 libtest_interfaces__rosidl_generator_c.so: CMakeFiles/test_interfaces__rosidl_generator_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libtest_interfaces__rosidl_generator_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared library libtest_interfaces__rosidl_generator_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_interfaces__rosidl_generator_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -187,7 +299,12 @@ CMakeFiles/test_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/te
 CMakeFiles/test_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/test_interfaces/msg/detail/test__functions.h
 CMakeFiles/test_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/test_interfaces/msg/detail/test__struct.h
 CMakeFiles/test_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/test_interfaces/msg/detail/test__type_support.h
+CMakeFiles/test_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/test_interfaces/msg/test_image.h
+CMakeFiles/test_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.h
+CMakeFiles/test_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/test_interfaces/msg/detail/test_image__struct.h
+CMakeFiles/test_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/test_interfaces/msg/detail/test_image__type_support.h
 CMakeFiles/test_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/test_interfaces/msg/detail/test__functions.c
+CMakeFiles/test_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/test_interfaces/msg/detail/test_image__functions.c
 	cd /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /ros2_test/AD_Middle_Test/ros2/src/test_interfaces /ros2_test/AD_Middle_Test/ros2/src/test_interfaces /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/CMakeFiles/test_interfaces__rosidl_generator_c.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test_interfaces__rosidl_generator_c.dir/depend
 

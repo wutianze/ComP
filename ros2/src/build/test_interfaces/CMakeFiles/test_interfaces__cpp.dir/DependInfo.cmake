@@ -8,6 +8,10 @@ set(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/detail/test__builder.hpp" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/test.hpp"
   "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/detail/test__struct.hpp" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/test.hpp"
   "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/detail/test__traits.hpp" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/test.hpp"
+  "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/detail/test_image__builder.hpp" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/test.hpp"
+  "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/detail/test_image__struct.hpp" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/test.hpp"
+  "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/detail/test_image__traits.hpp" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/test.hpp"
+  "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/test_image.hpp" "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_cpp/test_interfaces/msg/test.hpp"
   )
 
 

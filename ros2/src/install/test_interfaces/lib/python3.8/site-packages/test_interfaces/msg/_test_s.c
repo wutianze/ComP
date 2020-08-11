@@ -83,6 +83,15 @@ bool test_interfaces__msg__test__convert_from_py(PyObject * _pymsg, void * _ros_
     Py_DECREF(encoded_field);
     Py_DECREF(field);
   }
+  {  // count
+    PyObject * field = PyObject_GetAttrString(_pymsg, "count");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->count = PyLong_AsUnsignedLongLong(field);
+    Py_DECREF(field);
+  }
 
   return true;
 }
@@ -130,6 +139,17 @@ PyObject * test_interfaces__msg__test__convert_to_py(void * raw_ros_message)
     }
     {
       int rc = PyObject_SetAttrString(_pymessage, "content", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // count
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLongLong(ros_message->count);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "count", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

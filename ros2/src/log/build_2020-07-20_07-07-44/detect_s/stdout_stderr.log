@@ -1,0 +1,13 @@
+[0.135s] [ 25%] [32mBuilding CXX object CMakeFiles/cameraTimer.dir/src/CameraTimer.cpp.o[0m
+[0.135s] [ 75%] Built target yoloDetect
+[2.431s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:[m[K In member function ‘[01m[Kvoid CameraTimer::timer_callback()[m[K’:
+[2.431s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:66:36:[m[K [01;31m[Kerror: [m[Kinvalid initialization of reference of type ‘[01m[Ksensor_msgs::msg::Image&[m[K’ {aka ‘[01m[Ksensor_msgs::msg::Image_<std::allocator<void> >&[m[K’} from expression of type ‘[01m[Ktest_interfaces::msg::TestImage_<std::allocator<void> >::_test_a_type[m[K’ {aka ‘[01m[Kint[m[K’}
+[2.431s]    66 |    sensor_msgs::fillImage([01;31m[Kmessage->test_a[m[K,sensor_msgs::image_encodings::BGR8,image.rows,image.cols,image.step,image.data);
+[2.432s]       |                           [01;31m[K~~~~~~~~~^~~~~~[m[K
+[2.432s] In file included from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:8[m[K:
+[2.432s] [01m[K/opt/ros/foxy/include/sensor_msgs/fill_image.hpp:57:16:[m[K [01;36m[Knote: [m[Kin passing argument 1 of ‘[01m[Kbool sensor_msgs::fillImage(sensor_msgs::msg::Image&, const string&, uint32_t, uint32_t, uint32_t, const void*)[m[K’
+[2.432s]    57 |   [01;36m[Kmsg::Image & image[m[K,
+[2.432s]       |   [01;36m[K~~~~~~~~~~~~~^~~~~[m[K
+[3.836s] make[2]: *** [CMakeFiles/cameraTimer.dir/build.make:63: CMakeFiles/cameraTimer.dir/src/CameraTimer.cpp.o] Error 1
+[3.836s] make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/cameraTimer.dir/all] Error 2
+[3.836s] make: *** [Makefile:141: all] Error 2

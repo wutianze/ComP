@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces
 include CMakeFiles/test_interfaces.dir/progress.make
 
 CMakeFiles/test_interfaces: /ros2_test/AD_Middle_Test/ros2/src/test_interfaces/msg/Test.msg
+CMakeFiles/test_interfaces: /ros2_test/AD_Middle_Test/ros2/src/test_interfaces/msg/TestImage.msg
 CMakeFiles/test_interfaces: /opt/ros/foxy/share/builtin_interfaces/msg/Duration.idl
 CMakeFiles/test_interfaces: /opt/ros/foxy/share/builtin_interfaces/msg/Time.idl
 CMakeFiles/test_interfaces: /opt/ros/foxy/share/std_msgs/msg/Bool.idl
@@ -86,6 +87,34 @@ CMakeFiles/test_interfaces: /opt/ros/foxy/share/std_msgs/msg/UInt64.idl
 CMakeFiles/test_interfaces: /opt/ros/foxy/share/std_msgs/msg/UInt64MultiArray.idl
 CMakeFiles/test_interfaces: /opt/ros/foxy/share/std_msgs/msg/UInt8.idl
 CMakeFiles/test_interfaces: /opt/ros/foxy/share/std_msgs/msg/UInt8MultiArray.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/BatteryState.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/CameraInfo.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/ChannelFloat32.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/CompressedImage.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/FluidPressure.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/Illuminance.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/Image.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/Imu.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/JointState.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/Joy.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/JoyFeedback.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/JoyFeedbackArray.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/LaserEcho.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/LaserScan.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/MagneticField.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/MultiDOFJointState.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/MultiEchoLaserScan.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/NavSatFix.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/NavSatStatus.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/PointCloud.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/PointCloud2.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/PointField.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/Range.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/RegionOfInterest.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/RelativeHumidity.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/Temperature.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/msg/TimeReference.idl
+CMakeFiles/test_interfaces: /opt/ros/foxy/share/sensor_msgs/srv/SetCameraInfo.idl
 
 
 test_interfaces: CMakeFiles/test_interfaces

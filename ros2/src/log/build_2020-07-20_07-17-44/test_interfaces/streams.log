@@ -1,0 +1,56 @@
+[0.057s] Invoking command in '/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces -- -j5 -l5
+[0.105s] -- Found ament_cmake: 0.8.1 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.142s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.2", minimum required is "3") 
+[0.143s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.452s] -- Found rosidl_default_generators: 0.8.0 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[0.524s] -- Could not find RTI Connext - skipping rosidl_typesupport_connext_c
+[0.548s] -- Found rosidl_adapter: 0.8.2 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.558s] -- Could not find RTI Connext - skipping rosidl_typesupport_connext_cpp
+[0.778s] -- Found std_msgs: 0.8.1 (/opt/ros/foxy/share/std_msgs/cmake)
+[0.798s] -- Found sensor_msgs: 0.8.1 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[0.859s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.2") 
+[0.946s] CMake Error at /opt/ros/foxy/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:60 (message):
+[0.947s]   execute_process(/usr/bin/python3 -m rosidl_adapter --package-name
+[0.947s]   test_interfaces --arguments-file
+[0.947s]   /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_adapter__arguments__test_interfaces.json
+[0.947s]   --output-dir
+[0.947s]   /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_adapter/test_interfaces
+[0.947s]   --output-file
+[0.947s]   /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_adapter/test_interfaces.idls)
+[0.948s]   returned error code 1:
+[0.948s] 
+[0.948s]   Error processing 'sensor_msgs/msg/Image test_a' of
+[0.948s]   'test_interfaces/TestImage': 'sensor_msgs/msg/Image'
+[0.948s] 
+[0.948s]   Traceback (most recent call last):
+[0.948s] 
+[0.948s]     File "/usr/lib/python3.8/runpy.py", line 193, in _run_module_as_main
+[0.949s]       return _run_code(code, main_globals, None,
+[0.949s]     File "/usr/lib/python3.8/runpy.py", line 86, in _run_code
+[0.949s]       exec(code, run_globals)
+[0.949s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__main__.py", line 19, in <module>
+[0.949s]       sys.exit(main())
+[0.949s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/main.py", line 53, in main
+[0.949s]       abs_idl_file = convert_to_idl(
+[0.950s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__init__.py", line 19, in convert_to_idl
+[0.950s]       return convert_msg_to_idl(
+[0.950s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/msg/__init__.py", line 28, in convert_msg_to_idl
+[0.950s]       msg = parse_message_string(package_name, input_file.stem, content)
+[0.950s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/parser.py", line 507, in parse_message_string
+[0.950s]       Type(type_string, context_package_name=pkg_name),
+[0.950s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/parser.py", line 270, in __init__
+[0.951s]       super(Type, self).__init__(
+[0.951s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/parser.py", line 183, in __init__
+[0.951s]       raise InvalidResourceName(type_string)
+[0.951s] 
+[0.951s]   rosidl_adapter.parser.InvalidResourceName: sensor_msgs/msg/Image
+[0.951s] 
+[0.951s] Call Stack (most recent call first):
+[0.951s]   /opt/ros/foxy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)
+[0.952s]   CMakeLists.txt:26 (rosidl_generate_interfaces)
+[0.952s] 
+[0.952s] 
+[0.952s] -- Configuring incomplete, errors occurred!
+[0.952s] See also "/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/CMakeFiles/CMakeOutput.log".
+[0.956s] make: *** [Makefile:988: cmake_check_build_system] Error 1
+[0.958s] Invoked command in '/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces' returned '2': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces -- -j5 -l5

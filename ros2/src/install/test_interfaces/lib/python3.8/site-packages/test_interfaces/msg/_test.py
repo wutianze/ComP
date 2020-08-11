@@ -59,16 +59,19 @@ class Test(metaclass=Metaclass_Test):
     __slots__ = [
         '_header',
         '_content',
+        '_count',
     ]
 
     _fields_and_field_types = {
         'header': 'std_msgs/Header',
         'content': 'string',
+        'count': 'uint64',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.NamespacedType(['std_msgs', 'msg'], 'Header'),  # noqa: E501
         rosidl_parser.definition.UnboundedString(),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -78,6 +81,7 @@ class Test(metaclass=Metaclass_Test):
         from std_msgs.msg import Header
         self.header = kwargs.get('header', Header())
         self.content = kwargs.get('content', str())
+        self.count = kwargs.get('count', int())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -112,6 +116,8 @@ class Test(metaclass=Metaclass_Test):
             return False
         if self.content != other.content:
             return False
+        if self.count != other.count:
+            return False
         return True
 
     @classmethod
@@ -145,3 +151,18 @@ class Test(metaclass=Metaclass_Test):
                 isinstance(value, str), \
                 "The 'content' field must be of type 'str'"
         self._content = value
+
+    @property
+    def count(self):
+        """Message field 'count'."""
+        return self._count
+
+    @count.setter
+    def count(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'count' field must be of type 'int'"
+            assert value >= 0 and value < 18446744073709551616, \
+                "The 'count' field must be an unsigned integer in [0, 18446744073709551615]"
+        self._count = value

@@ -37,7 +37,7 @@ void Test_fini_function(void * message_memory)
   typed_message->~Test();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember Test_message_member_array[2] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember Test_message_member_array[3] = {
   {
     "header",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
@@ -67,13 +67,28 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember Test_message_
     nullptr,  // get_const(index) function pointer
     nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
+  },
+  {
+    "count",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(test_interfaces::msg::Test, count),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers Test_message_members = {
   "test_interfaces::msg",  // message namespace
   "Test",  // message name
-  2,  // number of fields
+  3,  // number of fields
   sizeof(test_interfaces::msg::Test),
   Test_message_member_array,  // message members
   Test_init_function,  // function to initialize message memory (memory has to be allocated)

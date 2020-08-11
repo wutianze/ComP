@@ -58,8 +58,10 @@ test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_int
 test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_introspection_c.c
 test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_c.c
 test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test.py
+test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_image.py
 test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/msg/__init__.py
 test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_s.c
+test_interfaces__py/CMakeFiles/test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_image_s.c
 
 
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/lib/rosidl_generator_py/rosidl_generator_py
@@ -76,6 +78,7 @@ rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_con
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/rosidl_generator_py/resource/_srv_pkg_typesupport_entry_point.c.em
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/rosidl_generator_py/resource/_srv.py.em
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: rosidl_adapter/test_interfaces/msg/Test.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: rosidl_adapter/test_interfaces/msg/TestImage.idl
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/builtin_interfaces/msg/Time.idl
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/std_msgs/msg/Bool.idl
@@ -108,6 +111,63 @@ rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_con
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/std_msgs/msg/UInt64MultiArray.idl
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/std_msgs/msg/UInt8.idl
 rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/std_msgs/msg/UInt8MultiArray.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/BatteryState.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/CameraInfo.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/ChannelFloat32.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/CompressedImage.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/FluidPressure.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/Illuminance.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/Image.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/Imu.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/JointState.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/Joy.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/JoyFeedback.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/JoyFeedbackArray.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/LaserEcho.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/LaserScan.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/MagneticField.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/MultiDOFJointState.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/MultiEchoLaserScan.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/NavSatFix.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/NavSatStatus.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/PointCloud.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/PointCloud2.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/PointField.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/Range.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/RegionOfInterest.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/RelativeHumidity.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/Temperature.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/msg/TimeReference.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/sensor_msgs/srv/SetCameraInfo.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Accel.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/AccelStamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/AccelWithCovariance.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/AccelWithCovarianceStamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Inertia.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/InertiaStamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Point.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Point32.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/PointStamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Polygon.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/PolygonStamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Pose.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Pose2D.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/PoseArray.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/PoseStamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/PoseWithCovariance.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/PoseWithCovarianceStamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Quaternion.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/QuaternionStamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Transform.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/TransformStamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Twist.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/TwistStamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/TwistWithCovariance.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/TwistWithCovarianceStamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Vector3.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Vector3Stamped.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/Wrench.idl
+rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c: /opt/ros/foxy/share/geometry_msgs/msg/WrenchStamped.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
 	cd /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/test_interfaces__py && /usr/bin/python3 /opt/ros/foxy/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /ros2_test/AD_Middle_Test/ros2/src/build/test_interfaces/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_connext_c;rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
 
@@ -123,11 +183,17 @@ rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_c.c
 rosidl_generator_py/test_interfaces/msg/_test.py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/test_interfaces/msg/_test.py
 
+rosidl_generator_py/test_interfaces/msg/_test_image.py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/test_interfaces/msg/_test_image.py
+
 rosidl_generator_py/test_interfaces/msg/__init__.py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/test_interfaces/msg/__init__.py
 
 rosidl_generator_py/test_interfaces/msg/_test_s.c: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/test_interfaces/msg/_test_s.c
+
+rosidl_generator_py/test_interfaces/msg/_test_image_s.c: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/test_interfaces/msg/_test_image_s.c
 
 test_interfaces__py: test_interfaces__py/CMakeFiles/test_interfaces__py
 test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_connext_c.c
@@ -135,8 +201,10 @@ test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.r
 test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_introspection_c.c
 test_interfaces__py: rosidl_generator_py/test_interfaces/_test_interfaces_s.ep.rosidl_typesupport_c.c
 test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test.py
+test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_image.py
 test_interfaces__py: rosidl_generator_py/test_interfaces/msg/__init__.py
 test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_s.c
+test_interfaces__py: rosidl_generator_py/test_interfaces/msg/_test_image_s.c
 test_interfaces__py: test_interfaces__py/CMakeFiles/test_interfaces__py.dir/build.make
 
 .PHONY : test_interfaces__py

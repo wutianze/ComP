@@ -3,7 +3,11 @@ file(REMOVE_RECURSE
   "rosidl_generator_cpp/test_interfaces/msg/detail/test__builder.hpp"
   "rosidl_generator_cpp/test_interfaces/msg/detail/test__struct.hpp"
   "rosidl_generator_cpp/test_interfaces/msg/detail/test__traits.hpp"
+  "rosidl_generator_cpp/test_interfaces/msg/detail/test_image__builder.hpp"
+  "rosidl_generator_cpp/test_interfaces/msg/detail/test_image__struct.hpp"
+  "rosidl_generator_cpp/test_interfaces/msg/detail/test_image__traits.hpp"
   "rosidl_generator_cpp/test_interfaces/msg/test.hpp"
+  "rosidl_generator_cpp/test_interfaces/msg/test_image.hpp"
 )
 
 # Per-language clean rules from dependency scanning.
