@@ -11,7 +11,6 @@
 using namespace std;
 using namespace message_filters;
 string node_name = ros::this_node::getName();
-std::fstream writer;
 uint64_t count_num = 0;
 uint64_t rec_num = 0;
 int num_sub = 0;
@@ -47,6 +46,7 @@ vector<double>analyze_latency(vector<uint64_t>&p){
 void mySigIntHandler(int sig){
 	ROS_INFO("sig handler");
 	
+std::fstream writer;
 	//string loss_rate = to_string(double(count_num-1.0)/double(rec_num));
 	for(unsigned int i =0;i<latency.size();i++){
 	writer.open("/ros_test/log/test/tmp/"+node_name+"_"+to_string(i),std::ios::trunc|std::ios::out);

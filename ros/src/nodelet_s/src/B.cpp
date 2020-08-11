@@ -12,10 +12,8 @@
 #include "nodelet_s/Test.h"
 using namespace std;
 using namespace message_filters;
-vector<vector<uint64_t>>latency;
-//uint64_t count_num = 0;	
-std::fstream writer;
-std::string node_name;
+
+/*
 vector<double>analyze_latency(vector<uint64_t>&p){
 				vector<double>res;
 				sort(p.begin(),p.end());
@@ -42,30 +40,29 @@ vector<double>analyze_latency(vector<uint64_t>&p){
 				return res;
 			}
 
-void callback2(const nodelet_s::Test::ConstPtr& msg0,const nodelet_s::Test::ConstPtr& msg1)
-			{
-				ros::Time rec_time = ros::Time::now();
-				latency[0].push_back((rec_time - msg0->header.stamp).toNSec());
-				latency[1].push_back((rec_time - msg1->header.stamp).toNSec());
-				//count_num++;
-				//ROS_INFO("receive two");
-			}
 void mySigIntHandler(int sig){
 	ROS_INFO("sig handler");
-	
+ROS_INFO("latency size:%d",latency.size());	
 	for(unsigned int i =0;i<latency.size();i++){
-					/*vector<double> res = analyze_latency(latency[i]);
-					cout<<"result:"<<i<<endl;
-					for(unsigned int j=0;j<res.size();j++){
-						cout<<res[j]<<endl;
-					}*/
-					writer.open("/ros_test/log/test/tmp/"+node_name,std::ios::trunc|std::ios::out);
+										writer.open("/ros_test/log/test/tmp/"+node_name,std::ios::trunc|std::ios::out);
 					for(unsigned int j=0;j<latency[i].size();j++){
 					writer<<latency[i][j]<<endl;
 					}
 					writer.close();
 				}
+}*/
+void mySigIntHandler(int sig){
+	ROS_INFO("sig handler");
+/*ROS_INFO("latency size:%d",latency.size());	
+	for(unsigned int i =0;i<latency.size();i++){
+										writer.open("/ros_test/log/test/tmp/"+node_name,std::ios::trunc|std::ios::out);
+					for(unsigned int j=0;j<latency[i].size();j++){
+					writer<<latency[i][j]<<endl;
+					}
+					writer.close();
+				}*/
 }
+
 namespace nodelet_s
 {
 
@@ -79,14 +76,27 @@ namespace nodelet_s
 			message_filters::Subscriber<nodelet_s::Test> *sub1;
 			message_filters::Subscriber<nodelet_s::Test> *sub2;
 			Synchronizer<sync_policies::ApproximateTime<nodelet_s::Test,nodelet_s::Test>> *sync;
-
+			uint64_t count_num = 0;	
+			uint64_t max_num = 0;	
+			std::fstream writer;
+			std::string node_name;
+			vector<vector<uint64_t>>latency;
 
 			//vector<vector<uint64_t>>latency;
 			
 			~B(){
 				//std::cout<<"release B"<<latency.size()<<endl;
-				
-				NODELET_DEBUG("release B:%s",node_name.c_str());
+				double lossR= double(count_num)/double(max_num);
+				//ROS_INFO("count:%d,max:%d,loss rate:%lf",count_num,max_num,double(count_num)/double(max_num));
+				ROS_INFO("release B:%s",node_name.c_str());
+				for(unsigned int i =0;i<latency.size();i++){
+					writer.open("/ros_test/log/test/tmp/"+node_name+"_"+to_string(i)+"_"+to_string(lossR),std::ios::trunc|std::ios::out);
+					for(unsigned int j=0;j<latency[i].size();j++){
+					writer<<latency[i][j]<<endl;
+					}
+					writer.close();
+				}	
+
 				/*for(unsigned int i =0;i<latency.size();i++){
 					writer.open("/ros_test/log/test/tmp/"+node_name,std::ios::trunc|std::ios::out);
 					for(unsigned int j=0;j<latency[i].size();j++){
@@ -95,8 +105,9 @@ namespace nodelet_s
 					writer.close();
 				}*/
 			}
-			//void callback(const Test::ConstPtr& input)
-			void callback(const TestPtr& input)
+		public:
+						//void callback(const Test::ConstPtr& input)
+void callback(const TestPtr& input)
 			{
 				//ROS_INFO("receive one");
 				//count_num++;
@@ -107,7 +118,13 @@ namespace nodelet_s
 				  */
 				//ROS_INFO("%lf",double(count_num)/(ros::Time::now().toSec()-init_time));
 				//ROS_INFO("time:%ld",ros::Time::now().toNSec() - input->header.stamp.toNSec());
-				latency[0].push_back(ros::Time::now().toNSec() - input->header.stamp.toNSec());
+				uint64_t nowT = ros::Time::now().toNSec();
+				latency[0].push_back( nowT- input->header.stamp.toNSec());
+				count_num++;
+				uint64_t fI = input->id;//atoll((input->header.frame_id).c_str());
+				if(max_num < fI){
+				max_num = fI;
+				}
 				/*uint64_t lan = ros::Time::now().toNSec()-input->timestamp;
 				  writer.open("/ros_test/log/multi/"+record,std::ios::app|std::ios::out);
 				  writer<<lan<<std::endl;
@@ -115,7 +132,16 @@ namespace nodelet_s
 				  count_num++;
 				  ROS_INFO("%s:loss rate:%f",record.c_str(),double(input->id-count_num)/double(input->id));*/
 			}
-			
+		void callback2(const nodelet_s::Test::ConstPtr& msg0,const nodelet_s::Test::ConstPtr& msg1)
+			{
+				ros::Time rec_time = ros::Time::now();
+				latency[0].push_back((rec_time - msg0->header.stamp).toNSec());
+				latency[1].push_back((rec_time - msg1->header.stamp).toNSec());
+				//count_num++;
+				//ROS_INFO("receive two");
+			}
+
+	
 			
 			void onInit()
 			{
@@ -126,10 +152,11 @@ namespace nodelet_s
 				private_nh.getParam("channel_name",channel_name);
 				private_nh.getParam("channel_num",channel_num);
 				private_nh.getParam("node_name",node_name);
-				ROS_INFO("channel num %d,node_name:%s",channel_num,node_name.c_str());
+				ROS_INFO("channel num %d,node_name:%s,channel_name:%s",channel_num,node_name.c_str(),channel_name.c_str());
 				if(channel_num == 1){
-				sub = private_nh.subscribe("/A0/"+channel_name, 1, &B::callback, this);    
-				}else{
+				sub = private_nh.subscribe(channel_name, 1, &B::callback, this);    
+				}
+				/*else{
 				//message_filters::Subscriber<nodelet_s::Test> sub1(private_nh, "/A0/"+channel_name, 1);
 				//message_filters::Subscriber<nodelet_s::Test> sub2(private_nh, "/A1/"+channel_name, 1);
 				//Synchronizer<sync_policies::ApproximateTime<nodelet_s::Test,nodelet_s::Test>>sync(sync_policies::ApproximateTime<nodelet_s::Test,nodelet_s::Test>(10),sub1,sub2);
@@ -137,7 +164,7 @@ namespace nodelet_s
 				sub2 = new message_filters::Subscriber<nodelet_s::Test>(private_nh, "/A1/"+channel_name, 1);
 				sync = new Synchronizer<sync_policies::ApproximateTime<nodelet_s::Test,nodelet_s::Test>>(sync_policies::ApproximateTime<nodelet_s::Test,nodelet_s::Test>(10),*sub1,*sub2);
 				sync->registerCallback(boost::bind(&callback2, _1,_2));
-				}
+				}*/
 				for(int i=0;i<channel_num;i++){
 				vector<uint64_t>tmp;
 				latency.push_back(tmp);

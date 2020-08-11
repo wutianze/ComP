@@ -6,10 +6,7 @@
 #include "nodelet_s/Test.h"
 #include <std_msgs/String.h>
 #include <fstream>
-int hz;
-int ssize;
-std::string channel_name;
-int count_num;
+
 namespace nodelet_s
 {
 	class A:public nodelet::Nodelet{
@@ -40,11 +37,16 @@ namespace nodelet_s
 			TestPtr output(new Test());
 			output->content = std::string(ssize,'a');
 			output->header.stamp = ros::Time::now();
-			output->header.frame_id = count_num;
+			//output->header.frame_id = count_num;
 			count_num++;
+			output->id = count_num;
 			pub.publish(output);
 			}
 		private:
+			int hz;
+int ssize;
+std::string channel_name;
+int count_num;
 			void onInit()
 			{
 				ros::NodeHandle& private_nh = getPrivateNodeHandle();

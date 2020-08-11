@@ -10,6 +10,7 @@ project(detect_s)
 find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   image_transport
+  genmsg
   roscpp
   sensor_msgs
   std_msgs
@@ -58,7 +59,9 @@ add_message_files(
   LinesResult.msg
   TestImage.msg
   TrackerResult.msg
+  YoloPiece.msg
   YoloResult.msg
+  FusionResult.msg
   #   Message1.msg
 #   Message2.msg
 )
@@ -147,13 +150,15 @@ include_directories(
 add_executable(Line src/Line.cpp)
 add_executable(CameraTimer src/CameraTimer.cpp)
 add_executable(Tracker src/TrackerRos.cpp)
-add_executable(Fusion src/Fusion.cpp)
+add_executable(FusionMiddle src/FusionMiddle.cpp)
+add_executable(FusionFinal src/FusionFinal.cpp)
 add_executable(YoloDetect src/YoloDetect.cpp)
 target_link_libraries(Line ${catkin_LIBRARIES} ${OpenCV_LIBS} line_detect)
 target_link_libraries(Tracker ${catkin_LIBRARIES} ${OpenCV_LIBS} tracker_opencv)
 target_link_libraries(CameraTimer ${catkin_LIBRARIES} ${OpenCV_LIBS})
 target_link_libraries(YoloDetect ${catkin_LIBRARIES} ${OpenCV_LIBS} dark)
-target_link_libraries(Fusion ${catkin_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(FusionMiddle ${catkin_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(FusionFinal ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
