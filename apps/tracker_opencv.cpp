@@ -6,8 +6,9 @@ using namespace std;
 #define SSTR( x ) static_cast< std::ostringstream & >( \
 ( std::ostringstream() << std::dec << x ) ).str()
 
-Ptr<Tracker> tracker;
-void tracker_create(string trackerType){
+//Ptr<Tracker> tracker;
+//Tracker* tracker;
+void CvTracker::tracker_create(string trackerType){
 # if (CV_MINOR_VERSION < 3)
     {
         tracker = Tracker::create(trackerType);
@@ -34,10 +35,10 @@ void tracker_create(string trackerType){
 #endif
 }
 // bbox x, y , width, height
-void tracker_init(Mat& frame, Rect2d& bbox){
+void CvTracker::tracker_init(Mat& frame, Rect2d& bbox){
     tracker->init(frame, bbox);
 }
-bool track_test(Mat& frame, Rect2d& bbox){
+bool CvTracker::track_test(Mat& frame, Rect2d& bbox){
        //double timer = (double)getTickCount();
         
         // Update the tracking result

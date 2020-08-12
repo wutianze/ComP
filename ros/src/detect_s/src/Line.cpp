@@ -15,7 +15,7 @@ vector<vector<uint64_t>>cal_la;
 */
 StoreBundle sb;
 void mySigIntHandler(int sig){
-	ROS_INFO("sig handler");
+	ROS_INFO("Line sig handler");
 sb.write_file();	
 	/*std::fstream writer;
 	for(unsigned int i =0;i<tra_la.size();i++){
@@ -37,7 +37,7 @@ for(unsigned int i =0;i<cal_la.size();i++){
 void imageCallback(const detect_s::TestImage::ConstPtr& msg)
 {
 	ros::Time rec_time = ros::Time::now();
-	//ROS_INFO("transfer time:%d",(rec_time.toNSec()-msg->deliver_time.toNSec()));
+	//ROS_INFO("in Line");
 
 	sb.tra_la[0].push_back((rec_time-msg->header.stamp).toNSec());
 try{
@@ -47,6 +47,7 @@ Point*result = new Point[4];
 
 	ros::Time start_time = ros::Time::now();
 lines_process(rec,result);
+	//ROS_INFO("Line cal finished");
 	ros::Time end_time = ros::Time::now();
 	sb.cal_la[0].push_back((end_time-start_time).toNSec());
 detect_s::LinesResult to_send;

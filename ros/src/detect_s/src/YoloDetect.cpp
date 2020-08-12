@@ -14,7 +14,7 @@ StoreBundle sb;
 vector<vector<uint64_t>>tra_la;
 vector<vector<uint64_t>>cal_la;*/
 void mySigIntHandler(int sig){
-	ROS_INFO("sig handler");
+	ROS_INFO("Yolo sig handler");
 	/*
 	std::fstream writer;
 	//string loss_rate = to_string(double(count_num-1.0)/double(rec_num));
@@ -50,7 +50,7 @@ std::vector<std::string> objects_names_from_file(std::string const filename) {
 void imageCallback(const detect_s::TestImage::ConstPtr& msg)
 {
 	ros::Time rec_time = ros::Time::now();
-	ROS_INFO("transfer tracker time:%d",((rec_time-msg->header.stamp).toNSec()));
+	ROS_INFO("transfer yolo time:%d",((rec_time-msg->header.stamp).toNSec()));
 
 	sb.tra_la[0].push_back((rec_time-msg->header.stamp).toNSec());
 
@@ -62,6 +62,7 @@ ROS_INFO("image cols:%d",rec.cols);
 	ros::Time start_time = ros::Time::now();
 std::vector<bbox_t> result_vec = detector->detect(rec);
 	ros::Time end_time = ros::Time::now();
+	ROS_INFO("YoloDetect finished");
 	sb.cal_la[0].push_back((end_time-start_time).toNSec());
 ROS_INFO("box find:%d",result_vec.size());
 //cv::imshow("view", cv_bridge::toCvShare(msg, "bgr8")->image);

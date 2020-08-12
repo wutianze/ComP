@@ -24,6 +24,7 @@ void fusionCallback(const detect_s::LinesResult::ConstPtr& msg0,const detect_s::
 {
 	ros::Time rec_time = ros::Time::now();
 	//ROS_INFO("transfer tracker time:%d",(rec_time.toNSec()-msg->deliver_time.toNSec()));
+	ROS_INFO("in FusionMiddle");
 
 	sb.tra_la[0].push_back((rec_time-msg0->header.stamp).toNSec());
 	sb.tra_la[1].push_back((rec_time-msg1->header.stamp).toNSec());

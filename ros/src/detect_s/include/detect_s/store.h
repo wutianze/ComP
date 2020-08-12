@@ -13,11 +13,17 @@ class StoreBundle{
 		cal_la.push_back(tmp);
 		}
 		}
-		void write_file(){
-		fstream writer;
+		void write_file(){// node name: /xx, pay attention!!!
+			cout<<"node name:"<<node_name<<endl;
+		cout<<"tra size:"<<tra_la.size()<<endl;
+		cout<<"cal size:"<<cal_la.size()<<endl;
+		cout<<"tra0 size:"<<tra_la[0].size()<<endl;
+		cout<<"cal0 size:"<<cal_la[0].size()<<endl;
+			fstream writer;
 	//string loss_rate = to_string(double(count_num-1.0)/double(rec_num));
 	for(unsigned int i =0;i<tra_la.size();i++){
-	writer.open("/ros_test/log/test/tmp/tra_"+node_name+"_"+to_string(i),std::ios::trunc|std::ios::out);
+	writer.open("/ros_test/log/test/tmp"+node_name+"_"+to_string(i)+"_tra",std::ios_base::out);
+	if(writer.is_open())cout<<"open success"<<endl;
 		/*vector<double> res = analyze_latency(latency[i]);
 		cout<<"result:"<<i<<endl;
 		for(unsigned int j=0;j<res.size();j++){
@@ -30,7 +36,7 @@ class StoreBundle{
 	writer.close();
 	}
 for(unsigned int i =0;i<cal_la.size();i++){
-	writer.open("/ros_test/log/test/tmp/cal_"+node_name+"_"+to_string(i),std::ios::trunc|std::ios::out);
+	writer.open("/ros_test/log/test/tmp"+node_name+"_"+to_string(i)+"_cal",std::ios_base::out);
 		/*vector<double> res = analyze_latency(latency[i]);
 		cout<<"result:"<<i<<endl;
 		for(unsigned int j=0;j<res.size();j++){
