@@ -1,6 +1,6 @@
 # 环境配置
 - source /opt/ros/xx/setup.bash
-- cd xxx/ws/src, . install/setup.bash
+- cd /ros2_test/AD_Middle_Test/ros2, . install/setup.bash
 
 # Test
 - 位于`ros2/src/simple_s`中，运行run.sh [subscriber num] [publisher num] [publish sleep ms] [msg content size]，如果需要一个subscriber接收多个topic的消息（目前不改代码支持2个），可以修改run.sh中listener启动参数来指定。最终结果会打印在屏幕上
