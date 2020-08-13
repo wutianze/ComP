@@ -31,3 +31,10 @@ source /apollo/cyber/setup.bash（import, or you cannot use cyber_* commands）
 
 # 数据处理：
 使用drawTmp.py
+
+# darknet：
+- rm -rf build-release
+- mkdir build-release
+- cd build-release && cmake .. 
+- make
+- cp libdark.so to your path
