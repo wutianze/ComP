@@ -22,6 +22,7 @@ class StoreBundle{
 			fstream writer;
 	//string loss_rate = to_string(double(count_num-1.0)/double(rec_num));
 	for(unsigned int i =0;i<tra_la.size();i++){
+	if(tra_la[i].size()==0)continue;
 	writer.open("/ros2_test/log/test/tmp"+node_name+"_"+to_string(i)+"_tra",std::ios_base::out);
 	if(writer.is_open())cout<<"open success"<<endl;
 		/*vector<double> res = analyze_latency(latency[i]);
@@ -36,6 +37,7 @@ class StoreBundle{
 	writer.close();
 	}
 for(unsigned int i =0;i<cal_la.size();i++){
+	if(cal_la[i].size()==0)continue;
 	writer.open("/ros2_test/log/test/tmp"+node_name+"_"+to_string(i)+"_cal",std::ios_base::out);
 		/*vector<double> res = analyze_latency(latency[i]);
 		cout<<"result:"<<i<<endl;

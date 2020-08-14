@@ -71,6 +71,7 @@ to_send.frames_counter = result_vec[i].frames_counter;
 to_send_result->result_array.push_back(to_send);
 }
 to_send_result->result_num = result_vec.size();
+cout<<"yolo result_num:"<<to_send_result->result_num<<endl;
 		to_send_result->header.stamp = this->now();
 	publisher_->publish(move(to_send_result));
 		}

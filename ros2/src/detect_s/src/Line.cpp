@@ -32,7 +32,7 @@ class Line : public rclcpp::Node
 		void topic_callback(const test_interfaces::msg::TestImage::SharedPtr msg)       // CHANGE
 		{
 			uint64_t rec_la = (this->now()-msg->header.stamp).nanoseconds();
-			cout<<"line tra:"<<rec_la<<endl;
+			//cout<<"line tra:"<<rec_la<<endl;
 			sb.tra_la[0].push_back(rec_la);
 			cv::Mat tmp(msg->image_data.height,msg->image_data.width,msg->elt_type);
 			int datasize = msg->image_data.height * msg->image_data.width * msg->elt_size;
@@ -41,7 +41,7 @@ class Line : public rclcpp::Node
 Point*result = new Point[4];
 lines_process(tmp,result);
 			rclcpp::Time end_t = this->now();
-			cout<<"line cal:"<<(end_t-start_t).nanoseconds()<<endl;
+			//cout<<"line cal:"<<(end_t-start_t).nanoseconds()<<endl;
 			sb.cal_la[0].push_back((end_t-start_t).nanoseconds());
 			test_interfaces::msg::LinesResult::UniquePtr to_send(new test_interfaces::msg::LinesResult());
 to_send->left1.x = result[0].x;

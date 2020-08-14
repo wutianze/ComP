@@ -40,9 +40,15 @@ target_link_libraries(yoloDetect dark)
 add_executable(line src/Line.cpp)
 ament_target_dependencies(line rclcpp test_interfaces message_filters OpenCV sensor_msgs)
 target_link_libraries(line line_detect)
+add_executable(trackerRos2 src/TrackerRos2.cpp)
+ament_target_dependencies(trackerRos2 rclcpp test_interfaces message_filters OpenCV sensor_msgs)
+target_link_libraries(trackerRos2 tracker_opencv)
+add_executable(fusionMiddle src/FusionMiddle.cpp)
+ament_target_dependencies(fusionMiddle rclcpp test_interfaces message_filters OpenCV sensor_msgs)
 
 
-install(TARGETS cameraTimer yoloDetect
+
+install(TARGETS cameraTimer yoloDetect line trackerRos2 fusionMiddle
   EXPORT export_${PROJECT_NAME}
   DESTINATION lib/${PROJECT_NAME})
 
