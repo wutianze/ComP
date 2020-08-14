@@ -37,4 +37,4 @@ source /apollo/cyber/setup.bash（import, or you cannot use cyber_* commands）
 - mkdir build-release
 - cd build-release && cmake .. 
 - make
-- cp libdark.so to your path
+- cp libdark.so to usr/lib or /lib
