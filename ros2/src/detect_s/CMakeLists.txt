@@ -36,6 +36,11 @@ add_executable(cameraTimer src/CameraTimer.cpp)
 ament_target_dependencies(cameraTimer rclcpp test_interfaces message_filters OpenCV sensor_msgs)
 add_executable(yoloDetect src/YoloDetect.cpp)
 ament_target_dependencies(yoloDetect rclcpp test_interfaces message_filters OpenCV sensor_msgs)
+target_link_libraries(yoloDetect dark)
+add_executable(line src/Line.cpp)
+ament_target_dependencies(line rclcpp test_interfaces message_filters OpenCV sensor_msgs)
+target_link_libraries(line line_detect)
+
 
 install(TARGETS cameraTimer yoloDetect
   EXPORT export_${PROJECT_NAME}

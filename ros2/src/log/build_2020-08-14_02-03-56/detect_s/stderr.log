@@ -1,0 +1,16 @@
+[6.473s] In file included from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:18[m[K:
+[6.473s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/include/detect_s/store.h:[m[K In member function ‘[01m[Kvoid StoreBundle::init(std::string, int)[m[K’:
+[6.473s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/include/detect_s/store.h:10:26:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kunsigned int[m[K’ and ‘[01m[Kint[m[K’ [[01;35m[K-Wsign-compare[m[K]
+[6.473s]    10 |   for(unsigned int i =0;[01;35m[Ki<num[m[K;i++){
+[6.473s]       |                         [01;35m[K~^~~~[m[K
+[6.541s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:[m[K In constructor ‘[01m[KYoloDetect::YoloDetect(std::string, int, std::string)[m[K’:
+[6.542s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:28:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kros[m[K’ has not been declared
+[6.542s]    28 |    sb.init([01;31m[Kros[m[K::this_node::getName(),1);
+[6.542s]       |            [01;31m[K^~~[m[K
+[6.580s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:[m[K In member function ‘[01m[Kvoid YoloDetect::topic_callback(test_interfaces::msg::TestImage_<std::allocator<void> >::SharedPtr)[m[K’:
+[6.580s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:49:13:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Krec_la[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[6.580s]    49 |    uint64_t [01;35m[Krec_la[m[K = (this->now()-msg->header.stamp).nanoseconds();
+[6.580s]       |             [01;35m[K^~~~~~[m[K
+[11.880s] make[2]: *** [CMakeFiles/yoloDetect.dir/build.make:63: CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o] Error 1
+[11.880s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/yoloDetect.dir/all] Error 2
+[11.880s] make: *** [Makefile:141: all] Error 2
