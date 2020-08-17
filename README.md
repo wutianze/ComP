@@ -17,7 +17,7 @@ cyber and ros should run by root.
 3. sudo groupadd docker, sudo usermod -aG docker $USER # this can make docker run without sudo, however when running the cyber script you may still need sudo
 4. echo "export APOLLO_HOME=$(pwd)" >> ~/.bashrc && source ~/.bashrc
 5. follow the doc of cyber to run docker/script/cyber_start.sh & cyber_into.sh
-6. the build in cyber is ./apollo.sh build_cyber(must as root), remember not to use build since it will build other modules and will fail
+6. the build in cyber is ./apollo.sh build_cyber(must as root), remember not to use build since it will build other modules and will fail. And please pay attention to allocate enough memory for cyber container(32G is recommended), or the build process may fail.
 
 - 进入cyber容器并初始化环境：
 run in root: docker exec -u root -it [container num] /bin/bash
