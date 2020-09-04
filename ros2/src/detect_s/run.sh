@@ -8,7 +8,7 @@ RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 run detect_s yoloDetect c1 y1 y1 --ros-
 RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 run detect_s line c1 l1 l1 --ros-args --remap __name:=l1 &
 RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 run detect_s trackerRos2 c1 y1 t1 t1 --ros-args --remap __name:=t1 &
 RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 run detect_s fusionMiddle l1 y1 t1 fm1 fm1 --ros-args --remap __name:=fm1 &
-sleep 30
+sleep 300
 kill -s SIGINT `ps x | grep c1 | grep -v grep | awk '{print $1}'`
 kill -s SIGINT `ps x | grep y1 | grep -v grep | awk '{print $1}'`
 kill -s SIGINT `ps x | grep l1 | grep -v grep | awk '{print $1}'`
