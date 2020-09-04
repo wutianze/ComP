@@ -16,7 +16,7 @@ rosrun detect_s CameraTimer c1 example.jpg __name:=c_1 &
 
 # 2 topics example: rosrun simple_s listener c 2 __name:=s$i &
 done
-sleep 70
+sleep 100
 # publishers must be closed before kill subscribers
 #rosnode kill c_1
 #rosnode kill l_1
