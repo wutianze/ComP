@@ -148,11 +148,17 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(Line src/Line.cpp)
+add_dependencies(Line ${PROJECT_NAME}_generate_messages_cpp)
 add_executable(CameraTimer src/CameraTimer.cpp)
+add_dependencies(CameraTimer ${PROJECT_NAME}_generate_messages_cpp)
 add_executable(TrackerRos src/TrackerRos.cpp)
+add_dependencies(TrackerRos ${PROJECT_NAME}_generate_messages_cpp)
 add_executable(FusionMiddle src/FusionMiddle.cpp)
+add_dependencies(FusionMiddle ${PROJECT_NAME}_generate_messages_cpp)
 add_executable(FusionFinal src/FusionFinal.cpp)
+add_dependencies(FusionFinal ${PROJECT_NAME}_generate_messages_cpp)
 add_executable(YoloDetect src/YoloDetect.cpp)
+add_dependencies(YoloDetect ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(Line ${catkin_LIBRARIES} ${OpenCV_LIBS} line_detect)
 #target_link_libraries(TrackerRos ${catkin_LIBRARIES} ${OpenCV_LIBS} tracker_opencv)
 target_link_libraries(TrackerRos ${catkin_LIBRARIES} ${OpenCV_LIBS} tracker_opencv)
