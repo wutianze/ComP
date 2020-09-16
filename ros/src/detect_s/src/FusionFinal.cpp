@@ -18,7 +18,9 @@ sb.write_file();
 }
 void fusionCallback(const detect_s::FusionResult::ConstPtr& msg0,const detect_s::FusionResult::ConstPtr& msg1)
 {
+	ROS_INFO("in FusionFinal");
 	ros::Time rec_time = ros::Time::now();
+
 	//ROS_INFO("transfer tracker time:%d",(rec_time.toNSec()-msg->deliver_time.toNSec()));
 
 	sb.tra_la[0].push_back((rec_time-msg0->header.stamp).toNSec());

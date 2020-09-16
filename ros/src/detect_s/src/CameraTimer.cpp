@@ -12,8 +12,8 @@ int main(int argc, char** argv)
 	ros::NodeHandle nh;
 	image_transport::ImageTransport it(nh);
 	ros::Publisher pub = nh.advertise<detect_s::TestImage>(std::string(argv[1]), 1);
-	//cv::Mat image = cv::imread(argv[2], CV_LOAD_IMAGE_COLOR);
-	vector<string>f_names;
+	cv::Mat image = cv::imread(argv[2], CV_LOAD_IMAGE_COLOR);
+	/*vector<string>f_names;
 	int send_place = 0;
 	string dirName = "/home/baofu/xxx/FL/";
 	DIR *dir;
@@ -26,10 +26,10 @@ int main(int argc, char** argv)
 		f_names.push_back(imgPath);
 	}
 	closedir (dir);
-
+*/
 	ros::Rate loop_rate(5);
 	while (nh.ok()) {
-		cv::Mat image = cv::imread(f_names[send_place],CV_LOAD_IMAGE_COLOR);
+		//cv::Mat image = cv::imread(f_names[send_place],CV_LOAD_IMAGE_COLOR);
 		//if(!video.read(image))return -1;
 		//ROS_INFO("send one");
 		detect_s::TestImage msg;
@@ -37,7 +37,7 @@ int main(int argc, char** argv)
 		//msg.deliver_time = ros::Time::now();
 	msg.header.stamp = ros::Time::now();
 		pub.publish(msg);
-		send_place = (send_place+1)%(f_names.size());
+		//send_place = (send_place+1)%(f_names.size());
 		//ros::spinOnce();
 		loop_rate.sleep();
 	}

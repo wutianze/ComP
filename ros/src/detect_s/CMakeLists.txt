@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(detect_s)
-
+add_compile_options(-std=c++11)
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
@@ -163,7 +163,8 @@ target_link_libraries(Line ${catkin_LIBRARIES} ${OpenCV_LIBS} line_detect)
 #target_link_libraries(TrackerRos ${catkin_LIBRARIES} ${OpenCV_LIBS} tracker_opencv)
 target_link_libraries(TrackerRos ${catkin_LIBRARIES} ${OpenCV_LIBS} tracker_opencv)
 target_link_libraries(CameraTimer ${catkin_LIBRARIES} ${OpenCV_LIBS})
-target_link_libraries(YoloDetect ${catkin_LIBRARIES} ${OpenCV_LIBS} dark)
+#target_link_libraries(YoloDetect ${catkin_LIBRARIES} ${OpenCV_LIBS} dark)
+target_link_libraries(YoloDetect ${catkin_LIBRARIES} ${OpenCV_LIBS} darknet)
 target_link_libraries(FusionMiddle ${catkin_LIBRARIES} ${OpenCV_LIBS})
 target_link_libraries(FusionFinal ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
