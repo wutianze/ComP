@@ -49,7 +49,10 @@ cvtra.tracker_init(rec,resultbox);
 tracker_flag = true;
 }else{
 	ROS_INFO("Tracker test");
+	ros::Time start_time = ros::Time::now();
 if(cvtra.track_test(rec,resultbox)){
+	ros::Time end_time = ros::Time::now();
+	sb.cal_la[0].push_back((end_time-start_time).toNSec());
 	ROS_INFO("Tracker test finished");
 	detect_s::TrackerResult to_send;
 	to_send.x = resultbox.x;
@@ -60,6 +63,8 @@ if(cvtra.track_test(rec,resultbox)){
 	ROS_INFO("Tracker finished");
 pub.publish(to_send);
 }else{
+	ros::Time end_time = ros::Time::now();
+	sb.cal_la[0].push_back((end_time-start_time).toNSec());
 	ROS_INFO("Tracker test fail");
 tracker_flag = false;
 }
