@@ -41,6 +41,7 @@ if(!tracker_flag){
 	ROS_INFO("Tracker init");
 	if(msg1->result_num>0){
 resultbox = Rect2d(msg1->result_array[0].x, msg1->result_array[0].y, msg1->result_array[0].w, msg1->result_array[0].h);
+	//ROS_INFO("yolo result:%d,%d,%d,%d\n",msg1->result_array[0].x,msg1->result_array[0].y,msg1->result_array[0].w,msg1->result_array[0].h);
 	}else{
 resultbox = Rect2d(287, 23, 86, 320);
 	}

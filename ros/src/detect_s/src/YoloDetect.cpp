@@ -64,6 +64,8 @@ ROS_INFO("image cols:%d",rec.cols);
 //std::vector<bbox_t> result_vec = detector->detect(rec);
 int nbox = 0;
 IplImage tmpIpl = cvIplImage(rec);
+double image_width = tmpIpl.width;
+double image_height = tmpIpl.height;
 	detection* dets = detect_result(&tmpIpl,&nbox);
 	ros::Time end_time = ros::Time::now();
 	ROS_INFO("YoloDetect finished");
@@ -72,16 +74,31 @@ ROS_INFO("box find:%d",nbox);
 detect_s::YoloResult to_send_result;
 for(unsigned int i=0;i<nbox;i++){
 detect_s::YoloPiece to_send;
-to_send.x = dets[i].bbox.x;
-to_send.y = dets[i].bbox.y;
-to_send.w = dets[i].bbox.w;
-to_send.h = dets[i].bbox.h;
+	double x = dets[i].bbox.x;
+	double y = dets[i].bbox.y;
+	double w = dets[i].bbox.w;
+	double h = dets[i].bbox.h;
+//ROS_INFO("dets:%lf,%lf,%lf,%lf,image size:%lf,%lf\n",x,y,w,h,image_width,image_height);
+if(x>w/2.0){
+	to_send.x = (x-w/2.0)*image_width;}
+else{to_send.x = 0;}
+if(y>h/2.0){
+	to_send.y = (y-h/2.0)*image_height;
+}else{
+to_send.y = 0;
+}
+to_send.w = w*image_width;
+to_send.h = h*image_width;
+//ROS_INFO("after cal:%d,%d,%d,%d\n",to_send.x,to_send.y,to_send.w,to_send.h);
 to_send.prob = *(dets[i].prob);
 to_send.obj_id = dets[i].classes;
 to_send.track_id = dets[i].sort_class;
 to_send.frames_counter = 0;
 to_send_result.result_array.push_back(to_send);
 }
+/*for(unsigned int i =0;i<to_send_result.result_array.size();i++){
+ROS_INFO("to_send:%d,%d,%d,%d\n",to_send_result.result_array[i].x,to_send_result.result_array[i].y,to_send_result.result_array[i].w,to_send_result.result_array[i].h);
+}*/
 to_send_result.result_num = nbox;
 		to_send_result.header.stamp = ros::Time::now();
 	pub.publish(to_send_result);
