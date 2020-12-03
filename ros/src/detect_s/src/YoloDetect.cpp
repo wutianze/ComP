@@ -5,10 +5,11 @@
 #include "detect_s/TestImage.h"
 #include "detect_s/YoloResult.h"
 #include <signal.h>
-#include "yolo_v2_class.hpp"
+//#include "yolo_v2_class.hpp"
 #include "detect_s/store.h"
+#include "darknet.h"
 ros::Publisher pub;
-Detector* detector;
+//Detector* detector;
 StoreBundle sb;
 /*string node_name = ros::this_node::getName();
 vector<vector<uint64_t>>tra_la;
@@ -60,26 +61,45 @@ cv::Mat rec = cv_ptr->image;
 ROS_INFO("image cols:%d",rec.cols);
 
 	ros::Time start_time = ros::Time::now();
-std::vector<bbox_t> result_vec = detector->detect(rec);
+//std::vector<bbox_t> result_vec = detector->detect(rec);
+int nbox = 0;
+IplImage tmpIpl = cvIplImage(rec);
+double image_width = tmpIpl.width;
+double image_height = tmpIpl.height;
+	detection* dets = detect_result(&tmpIpl,&nbox);
 	ros::Time end_time = ros::Time::now();
 	ROS_INFO("YoloDetect finished");
 	sb.cal_la[0].push_back((end_time-start_time).toNSec());
-ROS_INFO("box find:%d",result_vec.size());
-//cv::imshow("view", cv_bridge::toCvShare(msg, "bgr8")->image);
+ROS_INFO("box find:%d",nbox);
 detect_s::YoloResult to_send_result;
-for(unsigned int i=0;i<result_vec.size();i++){
+for(unsigned int i=0;i<nbox;i++){
 detect_s::YoloPiece to_send;
-to_send.x = result_vec[0].x;
-to_send.y = result_vec[0].y;
-to_send.w = result_vec[0].w;
-to_send.h = result_vec[0].h;
-to_send.prob = result_vec[0].prob;
-to_send.obj_id = result_vec[0].obj_id;
-to_send.track_id = result_vec[0].track_id;
-to_send.frames_counter = result_vec[0].frames_counter;
+	double x = dets[i].bbox.x;
+	double y = dets[i].bbox.y;
+	double w = dets[i].bbox.w;
+	double h = dets[i].bbox.h;
+//ROS_INFO("dets:%lf,%lf,%lf,%lf,image size:%lf,%lf\n",x,y,w,h,image_width,image_height);
+if(x>w/2.0){
+	to_send.x = (x-w/2.0)*image_width;}
+else{to_send.x = 0;}
+if(y>h/2.0){
+	to_send.y = (y-h/2.0)*image_height;
+}else{
+to_send.y = 0;
+}
+to_send.w = w*image_width;
+to_send.h = h*image_width;
+//ROS_INFO("after cal:%d,%d,%d,%d\n",to_send.x,to_send.y,to_send.w,to_send.h);
+to_send.prob = *(dets[i].prob);
+to_send.obj_id = dets[i].classes;
+to_send.track_id = dets[i].sort_class;
+to_send.frames_counter = 0;
 to_send_result.result_array.push_back(to_send);
 }
-to_send_result.result_num = result_vec.size();
+/*for(unsigned int i =0;i<to_send_result.result_array.size();i++){
+ROS_INFO("to_send:%d,%d,%d,%d\n",to_send_result.result_array[i].x,to_send_result.result_array[i].y,to_send_result.result_array[i].w,to_send_result.result_array[i].h);
+}*/
+to_send_result.result_num = nbox;
 		to_send_result.header.stamp = ros::Time::now();
 	pub.publish(to_send_result);
 	}
@@ -97,10 +117,11 @@ ros::init(argc, argv, "yolo",ros::init_options::NoSigintHandler);
 	signal(SIGINT,mySigIntHandler);
 ros::NodeHandle nh;
 sb.init(ros::this_node::getName(),1);
-std::string  names_file = "/ros_test/darknet/data/bdd.names";
-std::string  cfg_file = "/ros_test/darknet/cfg/tiny.cfg";
-std::string  weights_file = "/ros_test/darknet/yolov3-tiny-prn.weights";
-detector = new Detector(cfg_file, weights_file);
+std::string  names_file = "/ros_test/darknet_init/darknet/data/coco.names";
+std::string  cfg_file = "/ros_test/darknet_init/darknet/cfg/yolov3-tiny.cfg";
+std::string  weights_file = "/ros_test/darknet_init/darknet/yolov3-tiny.weights";
+//detector = new Detector(cfg_file, weights_file);
+init_result(names_file.c_str(),cfg_file.c_str(),weights_file.c_str());
 obj_names = objects_names_from_file(names_file);
 ros::Subscriber sub = nh.subscribe(string(argv[1]), 1, imageCallback);
 pub = nh.advertise<detect_s::YoloResult>(string(argv[2]),1);

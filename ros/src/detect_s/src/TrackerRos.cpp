@@ -41,6 +41,7 @@ if(!tracker_flag){
 	ROS_INFO("Tracker init");
 	if(msg1->result_num>0){
 resultbox = Rect2d(msg1->result_array[0].x, msg1->result_array[0].y, msg1->result_array[0].w, msg1->result_array[0].h);
+	//ROS_INFO("yolo result:%d,%d,%d,%d\n",msg1->result_array[0].x,msg1->result_array[0].y,msg1->result_array[0].w,msg1->result_array[0].h);
 	}else{
 resultbox = Rect2d(287, 23, 86, 320);
 	}
@@ -49,7 +50,10 @@ cvtra.tracker_init(rec,resultbox);
 tracker_flag = true;
 }else{
 	ROS_INFO("Tracker test");
+	ros::Time start_time = ros::Time::now();
 if(cvtra.track_test(rec,resultbox)){
+	ros::Time end_time = ros::Time::now();
+	sb.cal_la[0].push_back((end_time-start_time).toNSec());
 	ROS_INFO("Tracker test finished");
 	detect_s::TrackerResult to_send;
 	to_send.x = resultbox.x;
@@ -60,6 +64,8 @@ if(cvtra.track_test(rec,resultbox)){
 	ROS_INFO("Tracker finished");
 pub.publish(to_send);
 }else{
+	ros::Time end_time = ros::Time::now();
+	sb.cal_la[0].push_back((end_time-start_time).toNSec());
 	ROS_INFO("Tracker test fail");
 tracker_flag = false;
 }
