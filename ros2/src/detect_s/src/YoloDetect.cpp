@@ -81,7 +81,7 @@ class YoloDetect : public rclcpp::Node
 					to_send.y = 0;
 				}
 				to_send.w = w*image_width;
-				to_send.h = h*image_width;
+				to_send.h = h*image_height;
 				to_send.prob = *(dets[i].prob);
 				to_send.obj_id = dets[i].classes;
 				to_send.track_id = dets[i].sort_class;
