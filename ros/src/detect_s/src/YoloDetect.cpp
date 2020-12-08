@@ -88,7 +88,7 @@ if(y>h/2.0){
 to_send.y = 0;
 }
 to_send.w = w*image_width;
-to_send.h = h*image_width;
+to_send.h = h*image_height;
 //ROS_INFO("after cal:%d,%d,%d,%d\n",to_send.x,to_send.y,to_send.w,to_send.h);
 to_send.prob = *(dets[i].prob);
 to_send.obj_id = dets[i].classes;
