@@ -73,8 +73,8 @@ cc_library(
 		)
 cc_library(
 		name ="YoloDetect_lib",
-	srcs = ["YoloDetect.cc","libdark.so","libopencv_util.so"],
-	hdrs = ["opencv_util.h"],	
+	srcs = ["YoloDetect.cc","libdarknet.so","libopencv_util.so"],
+	hdrs = ["opencv_util.h","darknet.h"],	
 	deps = ["//cyber",
 	  ":detect_msg_cc_proto",
 				],
