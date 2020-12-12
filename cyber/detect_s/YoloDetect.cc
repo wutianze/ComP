@@ -105,14 +105,17 @@ class YoloDetect:public Component<Frame>{
 		//std::vector<bbox_t> result_vec = detector->detect(m);
 		detection* dets = detect_result(&tmpIpl,&nbox);
 		uint64_t finish_time = Time::Now().ToNanosecond();
-		//AINFO<<"yolo run time:"<<finish_time - receive_time2<<" result box:"<<result_vec.size();
+		//AINFO<<"yolo run time:"<<finish_time - receive_time2<<" result box:"<<nbox<<" cal_latency size:"<<cal_latency.size();
 
 		cal_latency[0].push_back(finish_time - receive_time2);
 
+		//AINFO<<"cal_latency added";
 		auto to_send = std::make_shared<YoloResult>();
+		//AINFO<<"obj_names size"<<obj_names.size();
 
 		for(int i =0;i<nbox;i++){
-			AINFO<<"detect obj:"<<obj_names[dets[i].classes];
+			//AINFO<<"class id:"<<dets[i].classes;
+			AINFO<<"detect obj:"<<obj_names[dets[i].classes-1];
 			auto tmpbox = to_send->add_bboxresult();
 			double x = dets[i].bbox.x;
 			double y = dets[i].bbox.y;

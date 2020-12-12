@@ -1,18 +1,18 @@
 # Define all coms in DAG streaming.
     module_config {
     module_library : "/apollo/bazel-bin/cyber/AD_Middle_Test/cyber/detect_s/libdetect_s.so"
-    components {
-        class_name : "TrackerApollo"
-        config {
-            name : "t0"
-            readers {
-                channel: "/c0"
-            }
-            readers {
-                channel: "/y0"
-            }
-        }
-      }
+    #components {
+    #    class_name : "TrackerApollo"
+    #    config {
+    #        name : "t0"
+    #        readers {
+    #            channel: "/c0"
+    #        }
+    #        readers {
+    #            channel: "/y0"
+    #        }
+    #    }
+    #  }
 components {
         class_name : "Line"
         config {
@@ -31,21 +31,21 @@ components {
             }
         }
       }
-components {
-        class_name : "FusionMiddle"
-        config {
-            name : "fm0"
-            readers {
-                channel: "/l0"
-            }
-	    readers {
-                channel: "/y0"
-            }
-	    readers {
-                channel: "/t0"
-            }
-        }
-      }
+#components {
+#        class_name : "FusionMiddle"
+#        config {
+#            name : "fm0"
+#            readers {
+#                channel: "/l0"
+#            }
+#	    readers {
+#                channel: "/y0"
+#            }
+#	    readers {
+#                channel: "/t0"
+#            }
+#        }
+#      }
 timer_components{
 class_name:"CameraTimer"
 config{
