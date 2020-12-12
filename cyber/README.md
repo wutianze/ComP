@@ -6,6 +6,8 @@
 - 新简单测试文件：simple_s/
 - 实际场景测试文件：detect_s/
 - 传送数据定义文件：test.proto
+## 环境配置
+- 见apollo[官方文档](https://github.com/ApolloAuto/apollo/blob/master/docs/cyber/CyberRT_Quick_Start.md#launch-the-component)来初始化cyber环境。
 ## 简单测试：
 ### 主要测试1to1,1toN,Nto1等非真实负载的纯通信场景
 ### 用法：
