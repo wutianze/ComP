@@ -52,8 +52,8 @@ cc_binary(
 		name = "libdetect_s.so",
 		linkopts = ["-shared"],
 		linkstatic = False,
-		deps = [":CameraTimer_lib",":TrackerApollo_lib",":Line_lib",":FusionFinal_lib",":FusionMiddle_lib",":YoloDetect_lib"],
-#		deps = [":CameraTimer_lib",":TrackerApollo_lib",":Line_lib",":FusionFinal_lib",":FusionMiddle_lib"],
+#		deps = [":CameraTimer_lib",":TrackerApollo_lib",":Line_lib",":FusionFinal_lib",":FusionMiddle_lib",":YoloDetect_lib"],
+		deps = [":CameraTimer_lib",":TrackerApollo_lib",":Line_lib",":FusionFinal_lib",":FusionMiddle_lib"],
  
 	)
 cc_proto_library(
@@ -73,15 +73,14 @@ cc_library(
 	  ":detect_msg_cc_proto",
 	  ],
 		)
-cc_library(
-		name ="YoloDetect_lib",
-	srcs = ["YoloDetect.cc","libdarknet.so","libopencv_util.so"],
-        hdrs = ["opencv_util.h"],
+#cc_library(
+#		name ="YoloDetect_lib",
+#	srcs = ["YoloDetect.cc","libdarknet.so","libopencv_util.so"],
 #	hdrs = ["opencv_util.h","darknet.h"],	
-	deps = ["//cyber",
-	  ":detect_msg_cc_proto",
-				],
-		)
+#	deps = ["//cyber",
+#	  ":detect_msg_cc_proto",
+#				],
+#		)
 
 cc_library(
 		name ="TrackerApollo_lib",

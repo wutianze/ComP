@@ -20,10 +20,10 @@ class CameraTimer : public TimerComponent{
 		     //vector<vector<uint64_t>>latency;
 		     std::shared_ptr<Writer<Frame>> writer1 = nullptr;
 		     VideoCapture video;
-	             int send_place;
+//	             int send_place;
 		     //std::ofstream ofs;
 		     //std::string fn;
-		     std::vector<cv::Mat> figures;
+//		     std::vector<cv::Mat> figures;
 	bool flag = true;
 
 	/*~CameraTimer(){
@@ -41,7 +41,7 @@ class CameraTimer : public TimerComponent{
 		AINFO<<"camera node name:"<<node_->Name();
 		//fn = node_->Name();
 		writer1 = node_->CreateWriter<Frame>("/"+node_->Name());
-		
+/*		
 		send_place = 0;
 		string dirName = "/apollo/data/FL/";
 		DIR *dir;
@@ -59,16 +59,16 @@ class CameraTimer : public TimerComponent{
 		}
 		closedir (dir);
 
-
+*/
 		return true;
 }
 
 bool Proc() {
-//        Mat m=imread_cv("/apollo/yoloDetect/data/example.jpg");
+        Mat m=imread_cv("/apollo/yoloDetect/data/example.jpg");
 	//Mat m;
 	//if(!video.read(m))return false;
-	Mat m = figures[send_place];
-	send_place = (send_place +1)%(figures.size());
+//	Mat m = figures[send_place];
+//	send_place = (send_place +1)%(figures.size());
 
 	auto serializableMat = new OcvMat;
 	serializableMat->set_rows(m.rows);
