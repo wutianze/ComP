@@ -630,8 +630,8 @@ void softmax(float *input, int n, float temp, int stride, float *output);
 
 int best_3d_shift_r(image a, image b, int min, int max);
 //-------for our test
-//void init_result(const char*, const char*,const char*);
-//	detection* detect_result(IplImage*,int*);
+void init_result(const char*, const char*,const char*);
+	detection* detect_result(IplImage*,int*);
 //--------
 
 #ifdef GPU
