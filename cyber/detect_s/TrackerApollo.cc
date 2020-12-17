@@ -77,7 +77,7 @@ class TrackerApollo:public Component<Frame,YoloResult>{
 		}
 		bool Proc(const std::shared_ptr<Frame>& msg0,const std::shared_ptr<YoloResult>& msg1) {
 			uint64_t receive_time = Time::Now().ToNanosecond();
-			//AINFO<<"tracker transfer time:"<<receive_time - msg0->timestamp();
+			AINFO<<"tracker transfer time:"<<receive_time - msg0->timestamp();
 			tra_latency[0].push_back(receive_time - msg0->timestamp());
 			tra_latency[1].push_back(receive_time - msg1->timestamp());
 			Mat m;
@@ -111,7 +111,7 @@ class TrackerApollo:public Component<Frame,YoloResult>{
 					AINFO<<"lose one";
 					return true;
 				}
-				//AINFO<<"tracker cost time"<<Time::Now().ToNanosecond() - alog_start_time;
+				AINFO<<"tracker cost time"<<Time::Now().ToNanosecond() - alog_start_time;
 				uint64_t cal_finish = Time::Now().ToNanosecond();
 				cal_latency[0].push_back(cal_finish - alog_start_time);
 			}

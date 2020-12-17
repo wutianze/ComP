@@ -305,8 +305,8 @@ class YoloDetect:public Component<Frame>{
 		Detector* detector;
 		bool Init(){
     AINFO<<"yolo node name :"<<node_->Name();
-			std::string  names_file = "/apollo/darknet/data/bdd.names";
-    std::string  cfg_file = "/apollo/darknet/cfg/tiny.cfg";
+    std::string  names_file ="/apollo/darknet/data/coco.names";
+    std::string  cfg_file = "/apollo/darknet/cfg/yolov3-tiny.cfg";
     std::string  weights_file = "/apollo/darknet/yolov3-tiny.weights";
     //std::string  cfg_file = "/apollo/yoloDetect/cfg/Gaussian_yolov3_BDD.cfg";
     //std::string  weights_file = "/apollo/yoloDetect/Gaussian_yolov3_BDD.weights";
@@ -329,7 +329,7 @@ class YoloDetect:public Component<Frame>{
 }
 bool Proc(const std::shared_ptr<Frame>& msg0){
 	uint64_t receive_time = Time::Now().ToNanosecond();
-	//AINFO<<"yolo transfer time:"<<receive_time - msg0->timestamp();
+	AINFO<<"yolo transfer time:"<<receive_time - msg0->timestamp();
 	tra_latency[0].push_back(receive_time - msg0->timestamp());
 
 	cv::Mat m;
@@ -338,11 +338,11 @@ bool Proc(const std::shared_ptr<Frame>& msg0){
 	size_t datasize = content.rows() *  content.cols() * content.elt_size();
 	std::copy(reinterpret_cast<unsigned char *>(const_cast<char *>(content.mat_data().data())),reinterpret_cast<unsigned char *>(const_cast<char *>(content.mat_data().data()) + datasize),m.data);
 	uint64_t receive_time2 = Time::Now().ToNanosecond();
-	//AINFO<<"yolo read time:"<<receive_time2 - receive_time;
+	AINFO<<"yolo read time:"<<receive_time2 - receive_time;
 
 	std::vector<bbox_t> result_vec = detector->detect(m);
 	uint64_t finish_time = Time::Now().ToNanosecond();
-	//AINFO<<"yolo run time:"<<finish_time - receive_time2<<" result box:"<<result_vec.size();
+	AINFO<<"yolo run time:"<<finish_time - receive_time2<<" result box:"<<result_vec.size();
 
 	cal_latency[0].push_back(finish_time - receive_time2);
 	
