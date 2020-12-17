@@ -305,9 +305,9 @@ class YoloDetect:public Component<Frame>{
 		Detector* detector;
 		bool Init(){
     AINFO<<"yolo node name :"<<node_->Name();
-			std::string  names_file = "/apollo/yoloDetect/data/bdd.names";
-    std::string  cfg_file = "/apollo/yoloDetect/cfg/tiny.cfg";
-    std::string  weights_file = "/apollo/yoloDetect/yolov3-tiny-prn.weights";
+			std::string  names_file = "/apollo/darknet/data/bdd.names";
+    std::string  cfg_file = "/apollo/darknet/cfg/tiny.cfg";
+    std::string  weights_file = "/apollo/darknet/yolov3-tiny.weights";
     //std::string  cfg_file = "/apollo/yoloDetect/cfg/Gaussian_yolov3_BDD.cfg";
     //std::string  weights_file = "/apollo/yoloDetect/Gaussian_yolov3_BDD.weights";
     //std::string filename;
