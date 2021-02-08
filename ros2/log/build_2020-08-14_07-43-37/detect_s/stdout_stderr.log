@@ -1,0 +1,73 @@
+[0.085s] -- Found ament_cmake: 0.8.1 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.122s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.457s] -- Found rclcpp: 0.8.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.515s] -- Found rosidl_adapter: 0.8.2 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.545s] -- Found rmw_implementation_cmake: 0.8.1 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.548s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.665s] -- Found std_msgs: 0.8.1 (/opt/ros/foxy/share/std_msgs/cmake)
+[0.674s] -- Found sensor_msgs: 0.8.1 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[0.697s] -- Found test_interfaces: 0.0.0 (/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/share/test_interfaces/cmake)
+[0.710s] -- Found message_filters: 3.2.3 (/opt/ros/foxy/share/message_filters/cmake)
+[0.919s] -- Found ament_lint_auto: 0.9.1 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[1.031s] -- Added test 'copyright' to check for copyright in CMake / C / C++ / Python code
+[1.033s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.034s] -- Configured cppcheck include dirs: /ros2_test/AD_Middle_Test/ros2/src/detect_s/include
+[1.036s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.037s] -- Added test 'lint_cmake' to check CMake code style
+[1.040s] -- Added test 'uncrustify' to check C / C++ code style
+[1.040s] -- Added test 'xmllint' to check XML markup files
+[1.044s] -- Configuring done
+[1.129s] -- Generating done
+[1.131s] -- Build files have been written to: /ros2_test/AD_Middle_Test/ros2/build/detect_s
+[1.164s] [35m[1mScanning dependencies of target line[0m
+[1.195s] [ 33%] Built target cameraTimer
+[1.195s] [ 66%] Built target yoloDetect
+[1.224s] [ 83%] [32mBuilding CXX object CMakeFiles/line.dir/src/Line.cpp.o[0m
+[3.688s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:[m[K In constructor ‘[01m[KLine::Line(std::string, std::string, std::string)[m[K’:
+[3.688s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:23:62:[m[K [01;31m[Kerror: [m[K‘[01m[KLineResult[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’; did you mean ‘[01m[KLinesResult[m[K’?
+[3.689s]    23 |    publisher_ = this->create_publisher<test_interfaces::msg::[01;31m[KLineResult[m[K>(pub_channel_name, qos_);    // CHANGE
+[3.689s]       |                                                              [01;31m[K^~~~~~~~~~[m[K
+[3.689s]       |                                                              [32m[KLinesResult[m[K
+[3.689s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:23:62:[m[K [01;31m[Kerror: [m[K‘[01m[KLineResult[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’; did you mean ‘[01m[KLinesResult[m[K’?
+[3.689s]    23 |    publisher_ = this->create_publisher<test_interfaces::msg::[01;31m[KLineResult[m[K>(pub_channel_name, qos_);    // CHANGE
+[3.689s]       |                                                              [01;31m[K^~~~~~~~~~[m[K
+[3.689s]       |                                                              [32m[KLinesResult[m[K
+[3.690s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:23:96:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KLine::create_publisher<<expression error> >(std::string&, rclcpp::QoS&)[m[K’
+[3.690s]    23 |    publisher_ = this->create_publisher<test_interfaces::msg::LineResult>(pub_channel_name, qos_[01;31m[K)[m[K;    // CHANGE
+[3.690s]       |                                                                                                [01;31m[K^[m[K
+[3.690s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[3.690s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[3.690s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[3.690s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:7[m[K:
+[3.691s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:179:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)[m[K’
+[3.691s]   179 |   [01;36m[Kcreate_publisher[m[K(
+[3.691s]       |   [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[3.691s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:179:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[3.691s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:23:96:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[3.691s]    23 |    publisher_ = this->create_publisher<test_interfaces::msg::LineResult>(pub_channel_name, qos_[01;31m[K)[m[K;    // CHANGE
+[3.691s]       |                                                                                                [01;31m[K^[m[K
+[3.712s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:[m[K In member function ‘[01m[Kvoid Line::topic_callback(test_interfaces::msg::TestImage_<std::allocator<void> >::SharedPtr)[m[K’:
+[3.712s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:41:1:[m[K [01;31m[Kerror: [m[K‘[01m[KPoint[m[K’ was not declared in this scope; did you mean ‘[01m[Kcv::Point[m[K’?
+[3.713s]    41 | [01;31m[KPoint[m[K*result = new Point[4];
+[3.713s]       | [01;31m[K^~~~~[m[K
+[3.713s]       | [32m[Kcv::Point[m[K
+[3.713s] In file included from [01m[K/usr/local/include/opencv2/core.hpp:58[m[K,
+[3.713s]                  from [01m[K/usr/local/include/opencv2/highgui.hpp:46[m[K,
+[3.713s]                  from [01m[K/usr/local/include/opencv2/highgui/highgui.hpp:48[m[K,
+[3.713s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:9[m[K:
+[3.714s] [01m[K/usr/local/include/opencv2/core/types.hpp:192:17:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::Point[m[K’ declared here
+[3.714s]   192 | typedef Point2i [01;36m[KPoint[m[K;
+[3.714s]       |                 [01;36m[K^~~~~[m[K
+[3.715s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:41:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kresult[m[K’ was not declared in this scope
+[3.716s]    41 | Point*[01;31m[Kresult[m[K = new Point[4];
+[3.716s]       |       [01;31m[K^~~~~~[m[K
+[3.717s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:41:20:[m[K [01;31m[Kerror: [m[K‘[01m[KPoint[m[K’ does not name a type; did you mean ‘[01m[KcvPoint[m[K’?
+[3.717s]    41 | Point*result = new [01;31m[KPoint[m[K[4];
+[3.717s]       |                    [01;31m[K^~~~~[m[K
+[3.717s]       |                    [32m[KcvPoint[m[K
+[3.725s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/Line.cpp:42:1:[m[K [01;31m[Kerror: [m[K‘[01m[Klines_process[m[K’ was not declared in this scope
+[3.726s]    42 | [01;31m[Klines_process[m[K(tmp,result);
+[3.726s]       | [01;31m[K^~~~~~~~~~~~~[m[K
+[5.797s] make[2]: *** [CMakeFiles/line.dir/build.make:63: CMakeFiles/line.dir/src/Line.cpp.o] Error 1
+[5.797s] make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/line.dir/all] Error 2
+[5.797s] make: *** [Makefile:141: all] Error 2

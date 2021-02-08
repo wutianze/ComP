@@ -196,9 +196,12 @@ int main(int argc, char * argv[])
 	sleep_times[2]=20;
 	sleep_times[3]=10;
 	}
+	if(pub_num == 1){
+	sleep_times[0] = atoi(argv[2]);
+	}
 	for(int i=0;i<sub_num;i++){	
-	auto consumer = std::make_shared<Consumer>("c_"+to_string(i),string(argv[1]),atoi(argv[4]));
-	//auto consumer = std::make_shared<Consumer>("c_"+to_string(i),string(argv[1])+to_string(i),atoi(argv[4]));
+	//auto consumer = std::make_shared<Consumer>("c_"+to_string(i),string(argv[1]),atoi(argv[4]));
+	auto consumer = std::make_shared<Consumer>("c_"+to_string(i),string(argv[1])+to_string(i),atoi(argv[4]));
 	cvec.push_back(consumer);
 	executor.add_node(consumer);
 	}

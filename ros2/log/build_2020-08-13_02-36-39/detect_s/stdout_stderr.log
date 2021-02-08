@@ -1,0 +1,42 @@
+[0.083s] -- Found ament_cmake: 0.8.1 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.119s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.445s] -- Found rclcpp: 0.8.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.502s] -- Found rosidl_adapter: 0.8.2 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.532s] -- Found rmw_implementation_cmake: 0.8.1 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.535s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.649s] -- Found std_msgs: 0.8.1 (/opt/ros/foxy/share/std_msgs/cmake)
+[0.660s] -- Found sensor_msgs: 0.8.1 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[0.688s] -- Found test_interfaces: 0.0.0 (/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/share/test_interfaces/cmake)
+[0.695s] -- Found message_filters: 3.2.3 (/opt/ros/foxy/share/message_filters/cmake)
+[0.832s] -- Found ament_lint_auto: 0.9.1 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[0.944s] -- Added test 'copyright' to check for copyright in CMake / C / C++ / Python code
+[0.946s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.946s] -- Configured cppcheck include dirs: /ros2_test/AD_Middle_Test/ros2/src/detect_s/include
+[0.948s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[0.949s] -- Added test 'lint_cmake' to check CMake code style
+[0.950s] -- Added test 'uncrustify' to check C / C++ code style
+[0.951s] -- Added test 'xmllint' to check XML markup files
+[0.954s] -- Configuring done
+[1.020s] -- Generating done
+[1.022s] -- Build files have been written to: /ros2_test/AD_Middle_Test/ros2/build/detect_s
+[1.054s] [35m[1mScanning dependencies of target yoloDetect[0m
+[1.055s] [35m[1mScanning dependencies of target cameraTimer[0m
+[1.155s] [ 50%] [32mBuilding CXX object CMakeFiles/cameraTimer.dir/src/CameraTimer.cpp.o[0m
+[1.155s] [ 50%] [32mBuilding CXX object CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o[0m
+[3.447s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:[m[K In member function ‘[01m[Kvoid CameraTimer::timer_callback()[m[K’:
+[3.447s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:66:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’ has no member named ‘[01m[Ktest_a[m[K’
+[3.447s]    66 |    message->[01;31m[Ktest_a[m[K = tmpI;
+[3.447s]       |             [01;31m[K^~~~~~[m[K
+[3.449s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:71:30:[m[K [01;31m[Kerror: [m[K‘[01m[KimgS[m[K’ was not declared in this scope
+[3.449s]    71 |    cout<<"cp finish, imgS:"<<[01;31m[KimgS[m[K<<" data size:"<<(message->mat_data).size()<<endl;
+[3.449s]       |                              [01;31m[K^~~~[m[K
+[3.595s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:[m[K In member function ‘[01m[Kvoid YoloDetect::topic_callback(test_interfaces::msg::TestImage_<std::allocator<void> >::SharedPtr)[m[K’:
+[3.595s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:88:59:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktest_a[m[K’
+[3.595s]    88 |    memcpy((unsigned char*)tmp.data,(unsigned char*)&(msg->[01;31m[Ktest_a[m[K.data[0]),datasize);
+[3.595s]       |                                                           [01;31m[K^~~~~~[m[K
+[5.362s] make[2]: *** [CMakeFiles/cameraTimer.dir/build.make:63: CMakeFiles/cameraTimer.dir/src/CameraTimer.cpp.o] Error 1
+[5.362s] make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/cameraTimer.dir/all] Error 2
+[5.363s] make[1]: *** Waiting for unfinished jobs....
+[6.116s] make[2]: *** [CMakeFiles/yoloDetect.dir/build.make:63: CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o] Error 1
+[6.117s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/yoloDetect.dir/all] Error 2
+[6.117s] make: *** [Makefile:141: all] Error 2

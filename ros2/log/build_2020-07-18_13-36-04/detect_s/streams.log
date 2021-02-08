@@ -1,0 +1,26 @@
+[0.044s] Invoking command in '/ros2_test/AD_Middle_Test/ros2/build/detect_s': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/build/detect_s -- -j5 -l5
+[0.105s] [35m[1mScanning dependencies of target camera[0m
+[0.164s] [ 50%] [32mBuilding CXX object CMakeFiles/camera.dir/src/camera.cpp.o[0m
+[2.597s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:[m[K In constructor ‘[01m[KCamera::Camera(int, int64_t, std::string)[m[K’:
+[2.597s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:23:83:[m[K [01;31m[Kerror: [m[K‘[01m[KCV_LOAD_IMAGE_COLOR[m[K’ was not declared in this scope
+[2.598s]    23 |    cv::Mat image = cv::imread("/ros2_test/AD_Middle_Test/ros2/src/detect_s/a.jpg",[01;31m[KCV_LOAD_IMAGE_COLOR[m[K);
+[2.598s]       |                                                                                   [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[2.598s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:24:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kcv_bridge[m[K’ has not been declared
+[2.598s]    24 |    message.image = *([01;31m[Kcv_bridge[m[K::CvImage(std_msgs::Header(),"bgr8",image).toImageMsg());
+[2.598s]       |                      [01;31m[K^~~~~~~~~[m[K
+[2.598s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:24:51:[m[K [01;31m[Kerror: [m[K‘[01m[KHeader[m[K’ is not a member of ‘[01m[Kstd_msgs[m[K’; did you mean ‘[01m[Kstd_msgs::msg::Header[m[K’?
+[2.598s]    24 |    message.image = *(cv_bridge::CvImage(std_msgs::[01;31m[KHeader[m[K(),"bgr8",image).toImageMsg());
+[2.599s]       |                                                   [01;31m[K^~~~~~[m[K
+[2.599s] In file included from [01m[K/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/include/test_interfaces/msg/detail/test_image__struct.hpp:19[m[K,
+[2.599s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/include/test_interfaces/msg/test_image.hpp:7[m[K,
+[2.599s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:5[m[K:
+[2.599s] [01m[K/opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp:139:7:[m[K [01;36m[Knote: [m[K‘[01m[Kstd_msgs::msg::Header[m[K’ declared here
+[2.599s]   139 | using [01;36m[KHeader[m[K =
+[2.599s]       |       [01;36m[K^~~~~~[m[K
+[2.600s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:13:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstr_size[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.600s]    13 |   Camera(int sleep_ms, [01;35m[Kint64_t str_size[m[K, string channel_name)
+[2.600s]       |                        [01;35m[K~~~~~~~~^~~~~~~~[m[K
+[4.107s] make[2]: *** [CMakeFiles/camera.dir/build.make:63: CMakeFiles/camera.dir/src/camera.cpp.o] Error 1
+[4.107s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/camera.dir/all] Error 2
+[4.107s] make: *** [Makefile:141: all] Error 2
+[4.110s] Invoked command in '/ros2_test/AD_Middle_Test/ros2/build/detect_s' returned '2': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/build/detect_s -- -j5 -l5

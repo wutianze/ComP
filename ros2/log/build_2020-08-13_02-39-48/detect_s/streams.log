@@ -1,0 +1,19 @@
+[0.045s] Invoking command in '/ros2_test/AD_Middle_Test/ros2/build/detect_s': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/build/detect_s -- -j5 -l5
+[0.105s] [35m[1mScanning dependencies of target cameraTimer[0m
+[0.136s] [ 25%] [32mBuilding CXX object CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o[0m
+[0.182s] [ 50%] [32mBuilding CXX object CMakeFiles/cameraTimer.dir/src/CameraTimer.cpp.o[0m
+[2.736s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:[m[K In member function ‘[01m[Kvoid CameraTimer::timer_callback()[m[K’:
+[2.736s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/CameraTimer.cpp:66:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’ has no member named ‘[01m[Ktest_a[m[K’
+[2.736s]    66 |    message->[01;31m[Ktest_a[m[K = tmpI;
+[2.736s]       |             [01;31m[K^~~~~~[m[K
+[2.882s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:[m[K In member function ‘[01m[Kvoid YoloDetect::topic_callback(test_interfaces::msg::TestImage_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.882s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:88:59:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktest_a[m[K’
+[2.882s]    88 |    memcpy((unsigned char*)tmp.data,(unsigned char*)&(msg->[01;31m[Ktest_a[m[K.data[0]),datasize);
+[2.882s]       |                                                           [01;31m[K^~~~~~[m[K
+[4.435s] make[2]: *** [CMakeFiles/cameraTimer.dir/build.make:63: CMakeFiles/cameraTimer.dir/src/CameraTimer.cpp.o] Error 1
+[4.435s] make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/cameraTimer.dir/all] Error 2
+[4.435s] make[1]: *** Waiting for unfinished jobs....
+[4.997s] make[2]: *** [CMakeFiles/yoloDetect.dir/build.make:63: CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o] Error 1
+[4.997s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/yoloDetect.dir/all] Error 2
+[4.997s] make: *** [Makefile:141: all] Error 2
+[5.000s] Invoked command in '/ros2_test/AD_Middle_Test/ros2/build/detect_s' returned '2': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/build/detect_s -- -j5 -l5

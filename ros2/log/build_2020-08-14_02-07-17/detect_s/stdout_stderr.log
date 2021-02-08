@@ -1,0 +1,47 @@
+[0.083s] -- Found ament_cmake: 0.8.1 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.121s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.473s] -- Found rclcpp: 0.8.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.539s] -- Found rosidl_adapter: 0.8.2 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.569s] -- Found rmw_implementation_cmake: 0.8.1 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.572s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.686s] -- Found std_msgs: 0.8.1 (/opt/ros/foxy/share/std_msgs/cmake)
+[0.695s] -- Found sensor_msgs: 0.8.1 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[0.719s] -- Found test_interfaces: 0.0.0 (/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/share/test_interfaces/cmake)
+[0.732s] -- Found message_filters: 3.2.3 (/opt/ros/foxy/share/message_filters/cmake)
+[0.879s] -- Found ament_lint_auto: 0.9.1 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[0.992s] -- Added test 'copyright' to check for copyright in CMake / C / C++ / Python code
+[0.994s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.995s] -- Configured cppcheck include dirs: /ros2_test/AD_Middle_Test/ros2/src/detect_s/include
+[0.997s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[0.998s] -- Added test 'lint_cmake' to check CMake code style
+[1.000s] -- Added test 'uncrustify' to check C / C++ code style
+[1.001s] -- Added test 'xmllint' to check XML markup files
+[1.005s] -- Configuring done
+[1.063s] -- Generating done
+[1.065s] -- Build files have been written to: /ros2_test/AD_Middle_Test/ros2/build/detect_s
+[1.100s] [35m[1mScanning dependencies of target yoloDetect[0m
+[1.128s] [ 50%] Built target cameraTimer
+[1.143s] [ 75%] [32mBuilding CXX object CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o[0m
+[4.462s] In file included from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:18[m[K:
+[4.462s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/include/detect_s/store.h:[m[K In member function ‘[01m[Kvoid StoreBundle::init(std::string, int)[m[K’:
+[4.462s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/include/detect_s/store.h:10:26:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kunsigned int[m[K’ and ‘[01m[Kint[m[K’ [[01;35m[K-Wsign-compare[m[K]
+[4.462s]    10 |   for(unsigned int i =0;[01;35m[Ki<num[m[K;i++){
+[4.462s]       |                         [01;35m[K~^~~~[m[K
+[4.503s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:[m[K In member function ‘[01m[Kvoid YoloDetect::topic_callback(test_interfaces::msg::TestImage_<std::allocator<void> >::SharedPtr)[m[K’:
+[4.503s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:49:13:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Krec_la[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[4.503s]    49 |    uint64_t [01;35m[Krec_la[m[K = (this->now()-msg->header.stamp).nanoseconds();
+[4.503s]       |             [01;35m[K^~~~~~[m[K
+[8.480s] [100%] [32m[1mLinking CXX executable yoloDetect[0m
+[8.802s] /usr/bin/ld: CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o: in function `Detector::detect_resized(image_t, int, int, float, bool)':
+[8.802s] YoloDetect.cpp:(.text._ZN8Detector14detect_resizedE7image_tiifb[_ZN8Detector14detect_resizedE7image_tiifb]+0x9c): undefined reference to `Detector::detect(image_t, float, bool)'
+[8.802s] /usr/bin/ld: CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o: in function `Detector::mat_to_image_resize(cv::Mat) const':
+[8.803s] YoloDetect.cpp:(.text._ZNK8Detector19mat_to_image_resizeEN2cv3MatE[_ZNK8Detector19mat_to_image_resizeEN2cv3MatE]+0x68): undefined reference to `Detector::get_net_height() const'
+[8.803s] /usr/bin/ld: YoloDetect.cpp:(.text._ZNK8Detector19mat_to_image_resizeEN2cv3MatE[_ZNK8Detector19mat_to_image_resizeEN2cv3MatE]+0x79): undefined reference to `Detector::get_net_width() const'
+[8.803s] /usr/bin/ld: CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o: in function `Detector::mat_to_image(cv::Mat)::{lambda(image_t*)#1}::operator()(image_t*) const':
+[8.803s] YoloDetect.cpp:(.text._ZZN8Detector12mat_to_imageEN2cv3MatEENKUlP7image_tE_clES3_[_ZZN8Detector12mat_to_imageEN2cv3MatEENKUlP7image_tE_clES3_]+0x25): undefined reference to `Detector::free_image(image_t)'
+[8.803s] /usr/bin/ld: CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o: in function `YoloDetect::YoloDetect(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+[8.803s] YoloDetect.cpp:(.text._ZN10YoloDetectC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiS5_[_ZN10YoloDetectC5ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiS5_]+0x2c1): undefined reference to `Detector::Detector(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int)'
+[8.803s] collect2: error: ld returned 1 exit status
+[8.804s] make[2]: *** [CMakeFiles/yoloDetect.dir/build.make:167: yoloDetect] Error 1
+[8.804s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/yoloDetect.dir/all] Error 2
+[8.804s] make: *** [Makefile:141: all] Error 2

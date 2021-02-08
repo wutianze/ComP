@@ -1,0 +1,27 @@
+[2.569s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:[m[K In constructor ‘[01m[KCamera::Camera(int, int64_t, std::string)[m[K’:
+[2.569s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:24:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing _image_type = struct sensor_msgs::msg::Image_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct sensor_msgs::msg::Image_<std::allocator<void> >[m[K’} has no member named ‘[01m[Krows[m[K’
+[2.569s]    24 |    message.image.[01;31m[Krows[m[K = image.rows;
+[2.569s]       |                  [01;31m[K^~~~[m[K
+[2.569s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:25:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing _image_type = struct sensor_msgs::msg::Image_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct sensor_msgs::msg::Image_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kcols[m[K’
+[2.570s]    25 |    message.image.[01;31m[Kcols[m[K = image.cols;
+[2.570s]       |                  [01;31m[K^~~~[m[K
+[2.570s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:26:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing _image_type = struct sensor_msgs::msg::Image_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct sensor_msgs::msg::Image_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kelt_type[m[K’; did you mean ‘[01m[K_step_type[m[K’?
+[2.570s]    26 |    message.image.[01;31m[Kelt_type[m[K = image.type();
+[2.570s]       |                  [01;31m[K^~~~~~~~[m[K
+[2.570s]       |                  [32m[K_step_type[m[K
+[2.570s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:27:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing _image_type = struct sensor_msgs::msg::Image_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct sensor_msgs::msg::Image_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kcols[m[K’
+[2.571s]    27 |    message.image.[01;31m[Kcols[m[K = image.((int)image.elemSize());
+[2.571s]       |                  [01;31m[K^~~~[m[K
+[2.571s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:27:31:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K([m[K’ token
+[2.571s]    27 |    message.image.cols = image.[01;31m[K([m[K(int)image.elemSize());
+[2.571s]       |                               [01;31m[K^[m[K
+[2.571s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:28:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing _image_type = struct sensor_msgs::msg::Image_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct sensor_msgs::msg::Image_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kmat_data[m[K’; did you mean ‘[01m[Kset__data[m[K’?
+[2.571s]    28 |    message.image.[01;31m[Kmat_data[m[K = string((char*)image.data,(char*)image.data+image.rows*image.cols*image.elemSize());
+[2.572s]       |                  [01;31m[K^~~~~~~~[m[K
+[2.572s]       |                  [32m[Kset__data[m[K
+[2.572s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:13:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstr_size[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.572s]    13 |   Camera(int sleep_ms, [01;35m[Kint64_t str_size[m[K, string channel_name)
+[2.572s]       |                        [01;35m[K~~~~~~~~^~~~~~~~[m[K
+[4.558s] make[2]: *** [CMakeFiles/camera.dir/build.make:63: CMakeFiles/camera.dir/src/camera.cpp.o] Error 1
+[4.559s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/camera.dir/all] Error 2
+[4.559s] make: *** [Makefile:141: all] Error 2

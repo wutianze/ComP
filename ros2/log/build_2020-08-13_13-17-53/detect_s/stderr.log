@@ -1,0 +1,58 @@
+[2.741s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[2.741s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[2.741s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[2.741s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[2.742s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[2.742s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[2.742s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[2.742s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[2.742s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[2.742s]                  from [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:38[m[K,
+[2.742s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:5[m[K:
+[2.742s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:[m[K In member function ‘[01m[Kvoid YoloDetect::topic_callback(test_interfaces::msg::TestImage_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.743s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:85:96:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’} has no member named ‘[01m[Krows[m[K’
+[2.743s]    85 |    RCLCPP_INFO(this->get_logger(), "msg rows '%d',image rows:%d,cols:'%d',image cols:%d", msg->[01;31m[Krows[m[K,msg->cols,msg->image_data.height,msg->image_data.width);              // CHANGE
+[2.743s]       |                                                                                                [01;31m[K^~~~[m[K
+[2.743s] [01m[K/opt/ros/foxy/include/rcutils/logging_macros.h:72:64:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KRCUTILS_LOG_COND_NAMED[m[K’
+[2.743s]    72 |       rcutils_log(&__rcutils_logging_location, severity, name, [01;36m[K__VA_ARGS__[m[K); \
+[2.743s]       |                                                                [01;36m[K^~~~~~~~~~~[m[K
+[2.743s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:542:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCUTILS_LOG_INFO_NAMED[m[K’
+[2.744s]   542 |     [01;36m[KRCUTILS_LOG_INFO_NAMED[m[K( \
+[2.744s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.744s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:545:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_ALL_BUT_FIRST_ARGS[m[K’
+[2.744s]   545 |         [01;36m[KRCLCPP_ALL_BUT_FIRST_ARGS[m[K(__VA_ARGS__,"")); \
+[2.744s]       |         [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.744s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:85:4:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_INFO[m[K’
+[2.744s]    85 |    [01;36m[KRCLCPP_INFO[m[K(this->get_logger(), "msg rows '%d',image rows:%d,cols:'%d',image cols:%d", msg->rows,msg->cols,msg->image_data.height,msg->image_data.width);              // CHANGE
+[2.745s]       |    [01;36m[K^~~~~~~~~~~[m[K
+[2.745s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:85:106:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kcols[m[K’
+[2.745s]    85 |    RCLCPP_INFO(this->get_logger(), "msg rows '%d',image rows:%d,cols:'%d',image cols:%d", msg->rows,msg->[01;31m[Kcols[m[K,msg->image_data.height,msg->image_data.width);              // CHANGE
+[2.745s]       |                                                                                                          [01;31m[K^~~~[m[K
+[2.745s] [01m[K/opt/ros/foxy/include/rcutils/logging_macros.h:72:64:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KRCUTILS_LOG_COND_NAMED[m[K’
+[2.745s]    72 |       rcutils_log(&__rcutils_logging_location, severity, name, [01;36m[K__VA_ARGS__[m[K); \
+[2.745s]       |                                                                [01;36m[K^~~~~~~~~~~[m[K
+[2.746s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:542:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCUTILS_LOG_INFO_NAMED[m[K’
+[2.746s]   542 |     [01;36m[KRCUTILS_LOG_INFO_NAMED[m[K( \
+[2.746s]       |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.746s] [01m[K/opt/ros/foxy/include/rclcpp/logging.hpp:545:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_ALL_BUT_FIRST_ARGS[m[K’
+[2.746s]   545 |         [01;36m[KRCLCPP_ALL_BUT_FIRST_ARGS[m[K(__VA_ARGS__,"")); \
+[2.746s]       |         [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.746s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:85:4:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KRCLCPP_INFO[m[K’
+[2.746s]    85 |    [01;36m[KRCLCPP_INFO[m[K(this->get_logger(), "msg rows '%d',image rows:%d,cols:'%d',image cols:%d", msg->rows,msg->cols,msg->image_data.height,msg->image_data.width);              // CHANGE
+[2.747s]       |    [01;36m[K^~~~~~~~~~~[m[K
+[2.747s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:86:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’} has no member named ‘[01m[Krows[m[K’
+[2.747s]    86 |    cv::Mat tmp(msg->[01;31m[Krows[m[K,msg->cols,msg->elt_type);
+[2.747s]       |                     [01;31m[K^~~~[m[K
+[2.747s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:86:31:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kcols[m[K’
+[2.747s]    86 |    cv::Mat tmp(msg->rows,msg->[01;31m[Kcols[m[K,msg->elt_type);
+[2.747s]       |                               [01;31m[K^~~~[m[K
+[2.748s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:87:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’} has no member named ‘[01m[Krows[m[K’
+[2.748s]    87 |    int datasize = msg->[01;31m[Krows[m[K*msg->cols*msg->elt_size;
+[2.748s]       |                        [01;31m[K^~~~[m[K
+[2.748s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:87:34:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct test_interfaces::msg::TestImage_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kcols[m[K’
+[2.748s]    87 |    int datasize = msg->rows*msg->[01;31m[Kcols[m[K*msg->elt_size;
+[2.748s]       |                                  [01;31m[K^~~~[m[K
+[4.455s] make[2]: *** [CMakeFiles/yoloDetect.dir/build.make:63: CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o] Error 1
+[4.455s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/yoloDetect.dir/all] Error 2
+[4.455s] make[1]: *** Waiting for unfinished jobs....
+[5.588s] make: *** [Makefile:141: all] Error 2
