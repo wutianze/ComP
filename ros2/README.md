@@ -2,6 +2,7 @@
 - source /opt/ros/xx/setup.bash
 - cd /ros2_test/AD_Middle_Test/ros2
 - . install/setup.bash
+- how to compile: in ros2/ run `colcon build`
 - if error says couldn't find xx.so：change /etc/ld.so.conf.d/opencv.conf，add the address of xxx.so, for ex：/usr/local/lib/（can use `find / -name "xxx.so"`）, then ldconfig -v
 - libxx.so generates in app dir should be put in /lib or /usr/lib
 
