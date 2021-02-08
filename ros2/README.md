@@ -1,12 +1,17 @@
-# 环境配置
+# environment init
 - source /opt/ros/xx/setup.bash
-- cd /ros2_test/AD_Middle_Test/ros2, . install/setup.bash
-- 可能遇到.so找不到的问题：修改/etc/ld.so.conf.d/opencv.conf，加入.so所在路径比如：/usr/local/lib/（可以用find / -name "xxx.so"找）然后ldconfig -v
-- ros2中的apps里生成的libxx.so需要放到/lib或/usr/lib中
+- cd /ros2_test/AD_Middle_Test/ros2
+- . install/setup.bash
+- if error says couldn't find xx.so：change /etc/ld.so.conf.d/opencv.conf，add the address of xxx.so, for ex：/usr/local/lib/（can use `find / -name "xxx.so"`）, then ldconfig -v
+- libxx.so generates in app dir should be put in /lib or /usr/lib
 
-# Test
-- 位于`ros2/src/simple_s`中，运行run.sh [subscriber num] [publisher num] [publish sleep ms] [msg content size]，如果需要一个subscriber接收多个topic的消息（目前不改代码支持2个），可以修改run.sh中listener启动参数来指定。最终结果会打印在屏幕上
-- 默认的通信方式是rtps，可以在源码中修改qos配置来调整策略，具体qos选择见[链接](https://github.com/ros2/rmw/blob/master/rmw/include/rmw/qos_profiles.h)
+# intra
+- Producer(the node's name, sleep ms, msg size, topic name); Consumer(node name & record file name prefix, topic name, topic number). If the topic number of Consumer > 1, it means the consumer will have to do data fusion, then the topic will be topic_name+'0', +'1'...
+- intra_pipe parameters: 1: topic name prefix; 2: sleep time in ms, if pub_num==1, the sleep time=the param, if pub_num>1, this param is a index, you should change every Producer's sleep time in intra_pipe.cpp; 3: msg size; 4: topic number of Consumer(> 1 only when you want to test data fusion); 5: number of Producer; 6: number of Consumer
+- run_intra.sh parameters: the first is index number, the other is same as intra_pipe's, for ex: run_intra.sh 1 20(sleep ms) 1024(msg size)...
 
-# 注意事项：
-- 一旦修改了msg里的消息格式，需要删除ros2目录下的build文件夹再重新colcon build，不然msg里定义无效
+# DDS
+- the default communication method is rtps，you can change the qos config in the code，detail in [link](https://github.com/ros2/rmw/blob/master/rmw/include/rmw/qos_profiles.h)
+
+# Notice：
+- once change the data format in msg，please delete the ros2/build and then colcon build，or the format change would make no difference
