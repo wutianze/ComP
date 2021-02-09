@@ -1,42 +1,35 @@
-# param 1: hz; 2: ssize, msg size/byte 3: run_time/s; 4: sub num; 5: pub num; 6: one sub subscribes how many topics
-# the channel name must be modified manually
+# 1: index; 2. sleep in ms; 3. msg size; 4. topic number each subscriber listens to; 5. number of subscriber; 6. number of publisher
 rosnode kill -a
 sleep 5
 
-for sleep_ms in 20 #1000 100 20 10 2
-do
-let rate_hz=1000/$sleep_ms
-echo $rate_hz
-log_dir='/ros_test/log/ttest'
+log_dir="/ros_test/log/2021/$1"
 rm -rf $log_dir
 mkdir $log_dir
 
-for ss in 4194304 #1024 8192 16384 65536 262144 524288 1048576 2097152 4194304 8388608
-do
 rm /ros_test/log/test/tmp/*
 rosrun nodelet nodelet manager __name:=nodelet_manager &
 #sleep 5
-for((i=0;i<8;i++));
+for((i=0;i<$5;i++));
 do
-rosrun nodelet nodelet load nodelet_s/B nodelet_manager __name:=B$i _node_name:=c$i _channel_name:=/A$i/out _channel_num:=1 &
+rosrun nodelet nodelet load nodelet_s/B nodelet_manager __name:=B$i _node_name:=c$i _channel_name:=/A0/out _channel_num:=$4 &
 done
 
-for((i=0;i<8;i++));
+for((i=0;i<$6;i++));
 do
-rosrun nodelet nodelet load nodelet_s/A nodelet_manager __name:=A$i _hz:=$rate_hz _ssize:=$ss _channel_name:=out & # channel topic is /__name/channel_name
+rosrun nodelet nodelet load nodelet_s/A nodelet_manager __name:=A$i _sleep_ms:=$2 _ssize:=$3 _channel_name:=out & # channel topic is /__name/channel_name
 done
 
 # run time
-sleep 30
+sleep 200
 kill -s SIGINT `ps x | grep nodelet | grep -v grep | awk '{print $1}'`
 #rosnode kill -a
-sleep 5
+sleep 10
 filesname=$(ls "/ros_test/log/test/tmp")
 for f in $filesname
 do
 	echo $f
-	mv /ros_test/log/test/tmp/$f $log_dir/$f"_8t8_rn.csv"
+	mv /ros_test/log/test/tmp/$f $log_dir/$1.csv # for 1t1
+	#mv /ros_test/log/test/tmp/$f $log_dir/$f"_8t8_rn.csv"
 done
 
-done
-done
+kill -9 `ps x | grep nodelet | grep -v grep | awk '{print $1}'` # kill nodelet manager

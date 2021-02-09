@@ -15,6 +15,8 @@
 #include <ros/builtin_message_traits.h>
 #include <ros/message_operations.h>
 
+#include <std_msgs/Header.h>
+#include <detect_s/YoloPiece.h>
 
 namespace detect_s
 {
@@ -24,52 +26,27 @@ struct YoloResult_
   typedef YoloResult_<ContainerAllocator> Type;
 
   YoloResult_()
-    : x(0)
-    , y(0)
-    , w(0)
-    , h(0)
-    , prob(0.0)
-    , obj_id(0.0)
-    , track_id(0.0)
-    , frames_counter(0.0)  {
+    : header()
+    , result_num(0)
+    , result_array()  {
     }
   YoloResult_(const ContainerAllocator& _alloc)
-    : x(0)
-    , y(0)
-    , w(0)
-    , h(0)
-    , prob(0.0)
-    , obj_id(0.0)
-    , track_id(0.0)
-    , frames_counter(0.0)  {
+    : header(_alloc)
+    , result_num(0)
+    , result_array(_alloc)  {
   (void)_alloc;
     }
 
 
 
-   typedef uint32_t _x_type;
-  _x_type x;
+   typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
+  _header_type header;
 
-   typedef uint32_t _y_type;
-  _y_type y;
+   typedef uint32_t _result_num_type;
+  _result_num_type result_num;
 
-   typedef uint32_t _w_type;
-  _w_type w;
-
-   typedef uint32_t _h_type;
-  _h_type h;
-
-   typedef float _prob_type;
-  _prob_type prob;
-
-   typedef float _obj_id_type;
-  _obj_id_type obj_id;
-
-   typedef float _track_id_type;
-  _track_id_type track_id;
-
-   typedef float _frames_counter_type;
-  _frames_counter_type frames_counter;
+   typedef std::vector< ::detect_s::YoloPiece_<ContainerAllocator> , typename ContainerAllocator::template rebind< ::detect_s::YoloPiece_<ContainerAllocator> >::other >  _result_array_type;
+  _result_array_type result_array;
 
 
 
@@ -105,7 +82,7 @@ namespace message_traits
 
 
 
-// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': True}
 // {'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg'], 'detect_s': ['/ros_test/AD_Middle_Test/ros/src/detect_s/msg'], 'sensor_msgs': ['/opt/ros/melodic/share/sensor_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/melodic/share/geometry_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
@@ -115,12 +92,12 @@ namespace message_traits
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::detect_s::YoloResult_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::detect_s::YoloResult_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -135,12 +112,12 @@ struct IsMessage< ::detect_s::YoloResult_<ContainerAllocator> const>
 
 template <class ContainerAllocator>
 struct HasHeader< ::detect_s::YoloResult_<ContainerAllocator> >
-  : FalseType
+  : TrueType
   { };
 
 template <class ContainerAllocator>
 struct HasHeader< ::detect_s::YoloResult_<ContainerAllocator> const>
-  : FalseType
+  : TrueType
   { };
 
 
@@ -149,12 +126,12 @@ struct MD5Sum< ::detect_s::YoloResult_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "402da640748cfc0204aa81cf174b42d0";
+    return "025cd73ca927f284ee50b77a0569f132";
   }
 
   static const char* value(const ::detect_s::YoloResult_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x402da640748cfc02ULL;
-  static const uint64_t static_value2 = 0x04aa81cf174b42d0ULL;
+  static const uint64_t static_value1 = 0x025cd73ca927f284ULL;
+  static const uint64_t static_value2 = 0xee50b77a0569f132ULL;
 };
 
 template<class ContainerAllocator>
@@ -173,7 +150,29 @@ struct Definition< ::detect_s::YoloResult_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "uint32 x\n"
+    return "std_msgs/Header header\n"
+"uint32 result_num\n"
+"YoloPiece[] result_array\n"
+"\n"
+"================================================================================\n"
+"MSG: std_msgs/Header\n"
+"# Standard metadata for higher-level stamped data types.\n"
+"# This is generally used to communicate timestamped data \n"
+"# in a particular coordinate frame.\n"
+"# \n"
+"# sequence ID: consecutively increasing ID \n"
+"uint32 seq\n"
+"#Two-integer timestamp that is expressed as:\n"
+"# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n"
+"# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n"
+"# time-handling sugar is provided by the client library\n"
+"time stamp\n"
+"#Frame this data is associated with\n"
+"string frame_id\n"
+"\n"
+"================================================================================\n"
+"MSG: detect_s/YoloPiece\n"
+"uint32 x\n"
 "uint32 y\n"
 "uint32 w\n"
 "uint32 h\n"
@@ -199,14 +198,9 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.x);
-      stream.next(m.y);
-      stream.next(m.w);
-      stream.next(m.h);
-      stream.next(m.prob);
-      stream.next(m.obj_id);
-      stream.next(m.track_id);
-      stream.next(m.frames_counter);
+      stream.next(m.header);
+      stream.next(m.result_num);
+      stream.next(m.result_array);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -225,22 +219,19 @@ struct Printer< ::detect_s::YoloResult_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::detect_s::YoloResult_<ContainerAllocator>& v)
   {
-    s << indent << "x: ";
-    Printer<uint32_t>::stream(s, indent + "  ", v.x);
-    s << indent << "y: ";
-    Printer<uint32_t>::stream(s, indent + "  ", v.y);
-    s << indent << "w: ";
-    Printer<uint32_t>::stream(s, indent + "  ", v.w);
-    s << indent << "h: ";
-    Printer<uint32_t>::stream(s, indent + "  ", v.h);
-    s << indent << "prob: ";
-    Printer<float>::stream(s, indent + "  ", v.prob);
-    s << indent << "obj_id: ";
-    Printer<float>::stream(s, indent + "  ", v.obj_id);
-    s << indent << "track_id: ";
-    Printer<float>::stream(s, indent + "  ", v.track_id);
-    s << indent << "frames_counter: ";
-    Printer<float>::stream(s, indent + "  ", v.frames_counter);
+    s << indent << "header: ";
+    s << std::endl;
+    Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
+    s << indent << "result_num: ";
+    Printer<uint32_t>::stream(s, indent + "  ", v.result_num);
+    s << indent << "result_array[]" << std::endl;
+    for (size_t i = 0; i < v.result_array.size(); ++i)
+    {
+      s << indent << "  result_array[" << i << "]: ";
+      s << std::endl;
+      s << indent;
+      Printer< ::detect_s::YoloPiece_<ContainerAllocator> >::stream(s, indent + "    ", v.result_array[i]);
+    }
   }
 };
 

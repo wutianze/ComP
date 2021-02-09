@@ -1,6 +1,6 @@
 (cl:in-package detect_s-msg)
-(cl:export '(DELIVER_TIME-VAL
-          DELIVER_TIME
+(cl:export '(HEADER-VAL
+          HEADER
           IMAGE-VAL
           IMAGE
 ))

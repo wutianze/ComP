@@ -17,37 +17,12 @@ int num_sub = 0;
 vector<vector<uint64_t>>latency;
 
 
-vector<double>analyze_latency(vector<uint64_t>&p){
-	vector<double>res;
-	sort(p.begin(),p.end());
-	int size = p.size();
-	res.push_back(p[static_cast<int>((size-1)*0.95)]);// 95th
-	res.push_back(p[static_cast<int>((size-1)*0.99)]);// 99th
-
-	// for box-plot
-	res.push_back(p[0]);// smallest latency
-	res.push_back(p[static_cast<int>((size-1)*0.25)]);// 25th
-	res.push_back(p[static_cast<int>((size-1)*0.5)]);// 50th
-	res.push_back(p[static_cast<int>((size-1)*0.75)]);// 75th
-	res.push_back(p[size-1]);// biggest latency
-
-	double sum = std::accumulate(std::begin(p), std::end(p), 0.0);
-	double mean =  sum / size;
-
-	double accum  = 0.0;
-	std::for_each (std::begin(p), std::end(p), [&](const double d) {
-			accum  += (d-mean)*(d-mean);
-			});
-	double stdev = sqrt(accum/(size-1));
-	res.push_back(mean);
-	res.push_back(stdev);
-	return res;
-}
 void mySigIntHandler(int sig){
 	ROS_INFO("sig handler");
 	
 std::fstream writer;
-	//string loss_rate = to_string(double(count_num-1.0)/double(rec_num));
+	ROS_INFO("loss rate:%lf",double(count_num)/double(rec_num+1.0));
+	
 	for(unsigned int i =0;i<latency.size();i++){
 	writer.open("/ros_test/log/test/tmp/"+node_name+"_"+to_string(i),std::ios::trunc|std::ios::out);
 		/*vector<double> res = analyze_latency(latency[i]);
@@ -66,8 +41,8 @@ std::fstream writer;
 void chatterCallback1(const simple_s::Test::ConstPtr& msg)
 {
 	latency[0].push_back((ros::Time::now() - msg->header.stamp).toNSec());
-	if(msg->header.seq > rec_num){
-	rec_num = msg->header.seq;
+	if(msg->id > rec_num){
+	rec_num = msg->id;
 	}
 	count_num++;
 	//ROS_INFO("seq:%u,count:%u",msg->header.seq,count_num);
@@ -98,7 +73,8 @@ int main(int argc, char **argv)
 		latency.push_back(tmp);
 	}
 	if(num_sub == 1){
-		ros::Subscriber sub = n.subscribe(channel_name, 1, chatterCallback1);//,ros::TransportHints().tcpNoDelay());//.udp());
+		//ros::Subscriber sub = n.subscribe(channel_name, 1, chatterCallback1,ros::TransportHints().tcp().tcpNoDelay());
+		ros::Subscriber sub = n.subscribe(channel_name, 1, chatterCallback1,ros::TransportHints().udp());
 		ros::spin();
 	}else{//change the code as you need
 		message_filters::Subscriber<simple_s::Test> sub0(n, channel_name+'0', 1,ros::TransportHints().tcpNoDelay());

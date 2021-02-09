@@ -12,6 +12,7 @@ const _arrayDeserializer = _deserializer.Array;
 const _finder = _ros_msg_utils.Find;
 const _getByteLength = _ros_msg_utils.getByteLength;
 let sensor_msgs = _finder('sensor_msgs');
+let std_msgs = _finder('std_msgs');
 
 //-----------------------------------------------------------
 
@@ -19,15 +20,15 @@ class TestImage {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.deliver_time = null;
+      this.header = null;
       this.image = null;
     }
     else {
-      if (initObj.hasOwnProperty('deliver_time')) {
-        this.deliver_time = initObj.deliver_time
+      if (initObj.hasOwnProperty('header')) {
+        this.header = initObj.header
       }
       else {
-        this.deliver_time = {secs: 0, nsecs: 0};
+        this.header = new std_msgs.msg.Header();
       }
       if (initObj.hasOwnProperty('image')) {
         this.image = initObj.image
@@ -40,8 +41,8 @@ class TestImage {
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type TestImage
-    // Serialize message field [deliver_time]
-    bufferOffset = _serializer.time(obj.deliver_time, buffer, bufferOffset);
+    // Serialize message field [header]
+    bufferOffset = std_msgs.msg.Header.serialize(obj.header, buffer, bufferOffset);
     // Serialize message field [image]
     bufferOffset = sensor_msgs.msg.Image.serialize(obj.image, buffer, bufferOffset);
     return bufferOffset;
@@ -51,8 +52,8 @@ class TestImage {
     //deserializes a message object of type TestImage
     let len;
     let data = new TestImage(null);
-    // Deserialize message field [deliver_time]
-    data.deliver_time = _deserializer.time(buffer, bufferOffset);
+    // Deserialize message field [header]
+    data.header = std_msgs.msg.Header.deserialize(buffer, bufferOffset);
     // Deserialize message field [image]
     data.image = sensor_msgs.msg.Image.deserialize(buffer, bufferOffset);
     return data;
@@ -60,8 +61,9 @@ class TestImage {
 
   static getMessageSize(object) {
     let length = 0;
+    length += std_msgs.msg.Header.getMessageSize(object.header);
     length += sensor_msgs.msg.Image.getMessageSize(object.image);
-    return length + 8;
+    return length;
   }
 
   static datatype() {
@@ -71,14 +73,30 @@ class TestImage {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'f3cdf94aed878ccdf3efa835405364a9';
+    return 'a4f08f997368f6320b328191e86b1a13';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    time deliver_time
+    std_msgs/Header header
     sensor_msgs/Image image
+    
+    ================================================================================
+    MSG: std_msgs/Header
+    # Standard metadata for higher-level stamped data types.
+    # This is generally used to communicate timestamped data 
+    # in a particular coordinate frame.
+    # 
+    # sequence ID: consecutively increasing ID 
+    uint32 seq
+    #Two-integer timestamp that is expressed as:
+    # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    # time-handling sugar is provided by the client library
+    time stamp
+    #Frame this data is associated with
+    string frame_id
     
     ================================================================================
     MSG: sensor_msgs/Image
@@ -110,22 +128,6 @@ class TestImage {
     uint32 step           # Full row length in bytes
     uint8[] data          # actual matrix data, size is (step * rows)
     
-    ================================================================================
-    MSG: std_msgs/Header
-    # Standard metadata for higher-level stamped data types.
-    # This is generally used to communicate timestamped data 
-    # in a particular coordinate frame.
-    # 
-    # sequence ID: consecutively increasing ID 
-    uint32 seq
-    #Two-integer timestamp that is expressed as:
-    # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
-    # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
-    # time-handling sugar is provided by the client library
-    time stamp
-    #Frame this data is associated with
-    string frame_id
-    
     `;
   }
 
@@ -135,11 +137,11 @@ class TestImage {
       msg = {};
     }
     const resolved = new TestImage(null);
-    if (msg.deliver_time !== undefined) {
-      resolved.deliver_time = msg.deliver_time;
+    if (msg.header !== undefined) {
+      resolved.header = std_msgs.msg.Header.Resolve(msg.header)
     }
     else {
-      resolved.deliver_time = {secs: 0, nsecs: 0}
+      resolved.header = new std_msgs.msg.Header()
     }
 
     if (msg.image !== undefined) {

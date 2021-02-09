@@ -11,6 +11,8 @@ const _deserializer = _ros_msg_utils.Deserialize;
 const _arrayDeserializer = _deserializer.Array;
 const _finder = _ros_msg_utils.Find;
 const _getByteLength = _ros_msg_utils.getByteLength;
+let YoloPiece = require('./YoloPiece.js');
+let std_msgs = _finder('std_msgs');
 
 //-----------------------------------------------------------
 
@@ -18,85 +20,44 @@ class YoloResult {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.x = null;
-      this.y = null;
-      this.w = null;
-      this.h = null;
-      this.prob = null;
-      this.obj_id = null;
-      this.track_id = null;
-      this.frames_counter = null;
+      this.header = null;
+      this.result_num = null;
+      this.result_array = null;
     }
     else {
-      if (initObj.hasOwnProperty('x')) {
-        this.x = initObj.x
+      if (initObj.hasOwnProperty('header')) {
+        this.header = initObj.header
       }
       else {
-        this.x = 0;
+        this.header = new std_msgs.msg.Header();
       }
-      if (initObj.hasOwnProperty('y')) {
-        this.y = initObj.y
-      }
-      else {
-        this.y = 0;
-      }
-      if (initObj.hasOwnProperty('w')) {
-        this.w = initObj.w
+      if (initObj.hasOwnProperty('result_num')) {
+        this.result_num = initObj.result_num
       }
       else {
-        this.w = 0;
+        this.result_num = 0;
       }
-      if (initObj.hasOwnProperty('h')) {
-        this.h = initObj.h
-      }
-      else {
-        this.h = 0;
-      }
-      if (initObj.hasOwnProperty('prob')) {
-        this.prob = initObj.prob
+      if (initObj.hasOwnProperty('result_array')) {
+        this.result_array = initObj.result_array
       }
       else {
-        this.prob = 0.0;
-      }
-      if (initObj.hasOwnProperty('obj_id')) {
-        this.obj_id = initObj.obj_id
-      }
-      else {
-        this.obj_id = 0.0;
-      }
-      if (initObj.hasOwnProperty('track_id')) {
-        this.track_id = initObj.track_id
-      }
-      else {
-        this.track_id = 0.0;
-      }
-      if (initObj.hasOwnProperty('frames_counter')) {
-        this.frames_counter = initObj.frames_counter
-      }
-      else {
-        this.frames_counter = 0.0;
+        this.result_array = [];
       }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type YoloResult
-    // Serialize message field [x]
-    bufferOffset = _serializer.uint32(obj.x, buffer, bufferOffset);
-    // Serialize message field [y]
-    bufferOffset = _serializer.uint32(obj.y, buffer, bufferOffset);
-    // Serialize message field [w]
-    bufferOffset = _serializer.uint32(obj.w, buffer, bufferOffset);
-    // Serialize message field [h]
-    bufferOffset = _serializer.uint32(obj.h, buffer, bufferOffset);
-    // Serialize message field [prob]
-    bufferOffset = _serializer.float32(obj.prob, buffer, bufferOffset);
-    // Serialize message field [obj_id]
-    bufferOffset = _serializer.float32(obj.obj_id, buffer, bufferOffset);
-    // Serialize message field [track_id]
-    bufferOffset = _serializer.float32(obj.track_id, buffer, bufferOffset);
-    // Serialize message field [frames_counter]
-    bufferOffset = _serializer.float32(obj.frames_counter, buffer, bufferOffset);
+    // Serialize message field [header]
+    bufferOffset = std_msgs.msg.Header.serialize(obj.header, buffer, bufferOffset);
+    // Serialize message field [result_num]
+    bufferOffset = _serializer.uint32(obj.result_num, buffer, bufferOffset);
+    // Serialize message field [result_array]
+    // Serialize the length for message field [result_array]
+    bufferOffset = _serializer.uint32(obj.result_array.length, buffer, bufferOffset);
+    obj.result_array.forEach((val) => {
+      bufferOffset = YoloPiece.serialize(val, buffer, bufferOffset);
+    });
     return bufferOffset;
   }
 
@@ -104,27 +65,25 @@ class YoloResult {
     //deserializes a message object of type YoloResult
     let len;
     let data = new YoloResult(null);
-    // Deserialize message field [x]
-    data.x = _deserializer.uint32(buffer, bufferOffset);
-    // Deserialize message field [y]
-    data.y = _deserializer.uint32(buffer, bufferOffset);
-    // Deserialize message field [w]
-    data.w = _deserializer.uint32(buffer, bufferOffset);
-    // Deserialize message field [h]
-    data.h = _deserializer.uint32(buffer, bufferOffset);
-    // Deserialize message field [prob]
-    data.prob = _deserializer.float32(buffer, bufferOffset);
-    // Deserialize message field [obj_id]
-    data.obj_id = _deserializer.float32(buffer, bufferOffset);
-    // Deserialize message field [track_id]
-    data.track_id = _deserializer.float32(buffer, bufferOffset);
-    // Deserialize message field [frames_counter]
-    data.frames_counter = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [header]
+    data.header = std_msgs.msg.Header.deserialize(buffer, bufferOffset);
+    // Deserialize message field [result_num]
+    data.result_num = _deserializer.uint32(buffer, bufferOffset);
+    // Deserialize message field [result_array]
+    // Deserialize array length for message field [result_array]
+    len = _deserializer.uint32(buffer, bufferOffset);
+    data.result_array = new Array(len);
+    for (let i = 0; i < len; ++i) {
+      data.result_array[i] = YoloPiece.deserialize(buffer, bufferOffset)
+    }
     return data;
   }
 
   static getMessageSize(object) {
-    return 32;
+    let length = 0;
+    length += std_msgs.msg.Header.getMessageSize(object.header);
+    length += 32 * object.result_array.length;
+    return length + 8;
   }
 
   static datatype() {
@@ -134,12 +93,34 @@ class YoloResult {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '402da640748cfc0204aa81cf174b42d0';
+    return '025cd73ca927f284ee50b77a0569f132';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
+    std_msgs/Header header
+    uint32 result_num
+    YoloPiece[] result_array
+    
+    ================================================================================
+    MSG: std_msgs/Header
+    # Standard metadata for higher-level stamped data types.
+    # This is generally used to communicate timestamped data 
+    # in a particular coordinate frame.
+    # 
+    # sequence ID: consecutively increasing ID 
+    uint32 seq
+    #Two-integer timestamp that is expressed as:
+    # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    # time-handling sugar is provided by the client library
+    time stamp
+    #Frame this data is associated with
+    string frame_id
+    
+    ================================================================================
+    MSG: detect_s/YoloPiece
     uint32 x
     uint32 y
     uint32 w
@@ -158,60 +139,28 @@ class YoloResult {
       msg = {};
     }
     const resolved = new YoloResult(null);
-    if (msg.x !== undefined) {
-      resolved.x = msg.x;
+    if (msg.header !== undefined) {
+      resolved.header = std_msgs.msg.Header.Resolve(msg.header)
     }
     else {
-      resolved.x = 0
+      resolved.header = new std_msgs.msg.Header()
     }
 
-    if (msg.y !== undefined) {
-      resolved.y = msg.y;
+    if (msg.result_num !== undefined) {
+      resolved.result_num = msg.result_num;
     }
     else {
-      resolved.y = 0
+      resolved.result_num = 0
     }
 
-    if (msg.w !== undefined) {
-      resolved.w = msg.w;
+    if (msg.result_array !== undefined) {
+      resolved.result_array = new Array(msg.result_array.length);
+      for (let i = 0; i < resolved.result_array.length; ++i) {
+        resolved.result_array[i] = YoloPiece.Resolve(msg.result_array[i]);
+      }
     }
     else {
-      resolved.w = 0
-    }
-
-    if (msg.h !== undefined) {
-      resolved.h = msg.h;
-    }
-    else {
-      resolved.h = 0
-    }
-
-    if (msg.prob !== undefined) {
-      resolved.prob = msg.prob;
-    }
-    else {
-      resolved.prob = 0.0
-    }
-
-    if (msg.obj_id !== undefined) {
-      resolved.obj_id = msg.obj_id;
-    }
-    else {
-      resolved.obj_id = 0.0
-    }
-
-    if (msg.track_id !== undefined) {
-      resolved.track_id = msg.track_id;
-    }
-    else {
-      resolved.track_id = 0.0
-    }
-
-    if (msg.frames_counter !== undefined) {
-      resolved.frames_counter = msg.frames_counter;
-    }
-    else {
-      resolved.frames_counter = 0.0
+      resolved.result_array = []
     }
 
     return resolved;

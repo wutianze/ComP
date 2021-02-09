@@ -1,5 +1,7 @@
 (cl:in-package detect_s-msg)
-(cl:export '(X-VAL
+(cl:export '(HEADER-VAL
+          HEADER
+          X-VAL
           X
           Y-VAL
           Y
