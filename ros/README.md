@@ -11,3 +11,9 @@
 - Note that we didn't use nodelet to test N-1 scenario, but you can uncommend some lines in B.cpp to enable the function. So the channel_num is useless now.
 - run.sh params: 1: index; 2: sleep in ms; 3: msg size; 4: number of topic each B subscribes, should be 1; 5: number of B; 6: number of A. Change the topic name for each A or B manually for 1t1/1tn/ntn...
 - If meet the err:Skipped loading plugin with error: XML Document..., cp nodelet/plugin to the location shown in err msg.
+
+## TCPROS & UDPROS
+- talker's params: 1: sleep time in ms; 2: msg size; 3: topic name;
+- listener's params: 1: topic name; 2: number of topic one listener subscribes, usually be 1;
+- In 1-n or n-1 or n-n scenarios, should change the run.sh to modify topic name etc.
+- run.sh's params: 1: index; 2: sleep time in ms; 3: msg size; 4: number of topic on listener subscribes; 5: number of listeners; 6: number of talkers
