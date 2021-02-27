@@ -15,6 +15,7 @@
 #include <ros/builtin_message_traits.h>
 #include <ros/message_operations.h>
 
+#include <std_msgs/Header.h>
 
 namespace detect_s
 {
@@ -24,13 +25,15 @@ struct TrackerResult_
   typedef TrackerResult_<ContainerAllocator> Type;
 
   TrackerResult_()
-    : x(0.0)
+    : header()
+    , x(0.0)
     , y(0.0)
     , width(0.0)
     , height(0.0)  {
     }
   TrackerResult_(const ContainerAllocator& _alloc)
-    : x(0.0)
+    : header(_alloc)
+    , x(0.0)
     , y(0.0)
     , width(0.0)
     , height(0.0)  {
@@ -38,6 +41,9 @@ struct TrackerResult_
     }
 
 
+
+   typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
+  _header_type header;
 
    typedef double _x_type;
   _x_type x;
@@ -85,7 +91,7 @@ namespace message_traits
 
 
 
-// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': True}
 // {'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg'], 'detect_s': ['/ros_test/AD_Middle_Test/ros/src/detect_s/msg'], 'sensor_msgs': ['/opt/ros/melodic/share/sensor_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/melodic/share/geometry_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
@@ -95,12 +101,12 @@ namespace message_traits
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::detect_s::TrackerResult_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::detect_s::TrackerResult_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -115,12 +121,12 @@ struct IsMessage< ::detect_s::TrackerResult_<ContainerAllocator> const>
 
 template <class ContainerAllocator>
 struct HasHeader< ::detect_s::TrackerResult_<ContainerAllocator> >
-  : FalseType
+  : TrueType
   { };
 
 template <class ContainerAllocator>
 struct HasHeader< ::detect_s::TrackerResult_<ContainerAllocator> const>
-  : FalseType
+  : TrueType
   { };
 
 
@@ -129,12 +135,12 @@ struct MD5Sum< ::detect_s::TrackerResult_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "7048f28f1f0ef51e102638c86d9a7728";
+    return "f229b11a934c96a9aad2ee9f0935fbdb";
   }
 
   static const char* value(const ::detect_s::TrackerResult_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x7048f28f1f0ef51eULL;
-  static const uint64_t static_value2 = 0x102638c86d9a7728ULL;
+  static const uint64_t static_value1 = 0xf229b11a934c96a9ULL;
+  static const uint64_t static_value2 = 0xaad2ee9f0935fbdbULL;
 };
 
 template<class ContainerAllocator>
@@ -153,10 +159,27 @@ struct Definition< ::detect_s::TrackerResult_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float64 x\n"
+    return "std_msgs/Header header\n"
+"float64 x\n"
 "float64 y\n"
 "float64 width\n"
 "float64 height\n"
+"\n"
+"================================================================================\n"
+"MSG: std_msgs/Header\n"
+"# Standard metadata for higher-level stamped data types.\n"
+"# This is generally used to communicate timestamped data \n"
+"# in a particular coordinate frame.\n"
+"# \n"
+"# sequence ID: consecutively increasing ID \n"
+"uint32 seq\n"
+"#Two-integer timestamp that is expressed as:\n"
+"# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n"
+"# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n"
+"# time-handling sugar is provided by the client library\n"
+"time stamp\n"
+"#Frame this data is associated with\n"
+"string frame_id\n"
 ;
   }
 
@@ -175,6 +198,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
+      stream.next(m.header);
       stream.next(m.x);
       stream.next(m.y);
       stream.next(m.width);
@@ -197,6 +221,9 @@ struct Printer< ::detect_s::TrackerResult_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::detect_s::TrackerResult_<ContainerAllocator>& v)
   {
+    s << indent << "header: ";
+    s << std::endl;
+    Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
     s << indent << "x: ";
     Printer<double>::stream(s, indent + "  ", v.x);
     s << indent << "y: ";

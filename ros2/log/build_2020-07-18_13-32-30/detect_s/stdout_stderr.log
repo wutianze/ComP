@@ -1,0 +1,78 @@
+[0.104s] [35m[1mScanning dependencies of target camera[0m
+[0.171s] [ 50%] [32mBuilding CXX object CMakeFiles/camera.dir/src/camera.cpp.o[0m
+[2.624s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:37:43:[m[K [01;31m[Kerror: [m[K‘[01m[KTestImage[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[2.625s]    37 |   rclcpp::Publisher<test_interfaces::msg::[01;31m[KTestImage[m[K>::SharedPtr publisher_;         // CHANGE
+[2.625s]       |                                           [01;31m[K^~~~~~~~~[m[K
+[2.625s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:37:43:[m[K [01;31m[Kerror: [m[K‘[01m[KTestImage[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[2.625s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:37:52:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[2.625s]    37 |   rclcpp::Publisher<test_interfaces::msg::TestImage[01;31m[K>[m[K::SharedPtr publisher_;         // CHANGE
+[2.625s]       |                                                    [01;31m[K^[m[K
+[2.625s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:37:55:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+[2.626s]    37 |   rclcpp::Publisher<test_interfaces::msg::TestImage>::[01;31m[KSharedPtr[m[K publisher_;         // CHANGE
+[2.626s]       |                                                       [01;31m[K^~~~~~~~~[m[K
+[2.626s]       |                                                                [32m[K;[m[K
+[2.629s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:37:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ does not name a type; did you mean ‘[01m[Krcl_publisher_t[m[K’?
+[2.629s]    37 |   rclcpp::Publisher<test_interfaces::msg::TestImage>::SharedPtr [01;31m[Kpublisher_[m[K;         // CHANGE
+[2.630s]       |                                                                 [01;31m[K^~~~~~~~~~[m[K
+[2.630s]       |                                                                 [32m[Krcl_publisher_t[m[K
+[2.630s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:39:25:[m[K [01;31m[Kerror: [m[K‘[01m[KTestImage[m[K’ in namespace ‘[01m[Ktest_interfaces::msg[m[K’ does not name a type
+[2.630s]    39 |   test_interfaces::msg::[01;31m[KTestImage[m[K message;
+[2.630s]       |                         [01;31m[K^~~~~~~~~[m[K
+[2.636s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:[m[K In constructor ‘[01m[KCamera::Camera(int, int64_t, std::string)[m[K’:
+[2.636s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:19:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Krcl_publisher_t[m[K’?
+[2.636s]    19 |    [01;31m[Kpublisher_[m[K = this->create_publisher<test_interfaces::msg::TestImage>(channel_name, qos_);    // CHANGE
+[2.636s]       |    [01;31m[K^~~~~~~~~~[m[K
+[2.637s]       |    [32m[Krcl_publisher_t[m[K
+[2.637s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:19:62:[m[K [01;31m[Kerror: [m[K‘[01m[KTestImage[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[2.637s]    19 |    publisher_ = this->create_publisher<test_interfaces::msg::[01;31m[KTestImage[m[K>(channel_name, qos_);    // CHANGE
+[2.637s]       |                                                              [01;31m[K^~~~~~~~~[m[K
+[2.637s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:19:62:[m[K [01;31m[Kerror: [m[K‘[01m[KTestImage[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[2.637s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:19:91:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KCamera::create_publisher<<expression error> >(std::string&, rclcpp::QoS&)[m[K’
+[2.637s]    19 |    publisher_ = this->create_publisher<test_interfaces::msg::TestImage>(channel_name, qos_[01;31m[K)[m[K;    // CHANGE
+[2.638s]       |                                                                                           [01;31m[K^[m[K
+[2.638s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[2.638s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[2.638s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[2.638s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:4[m[K:
+[2.638s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:179:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)[m[K’
+[2.638s]   179 |   [01;36m[Kcreate_publisher[m[K(
+[2.638s]       |   [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[2.639s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:179:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[2.639s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:19:91:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[2.639s]    19 |    publisher_ = this->create_publisher<test_interfaces::msg::TestImage>(channel_name, qos_[01;31m[K)[m[K;    // CHANGE
+[2.639s]       |                                                                                           [01;31m[K^[m[K
+[2.663s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:22:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmessage[m[K’ was not declared in this scope
+[2.663s]    22 |    [01;31m[Kmessage[m[K = test_interfaces::msg::TestImage();                               // CHANGE
+[2.664s]       |    [01;31m[K^~~~~~~[m[K
+[2.664s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:22:36:[m[K [01;31m[Kerror: [m[K‘[01m[KTestImage[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[2.664s]    22 |    message = test_interfaces::msg::[01;31m[KTestImage[m[K();                               // CHANGE
+[2.664s]       |                                    [01;31m[K^~~~~~~~~[m[K
+[2.672s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:23:83:[m[K [01;31m[Kerror: [m[K‘[01m[KCV_LOAD_IMAGE_COLOR[m[K’ was not declared in this scope
+[2.672s]    23 |    cv::Mat image = cv::imread("/ros2_test/AD_Middle_Test/ros2/src/detect_s/a.jpg",[01;31m[KCV_LOAD_IMAGE_COLOR[m[K);
+[2.672s]       |                                                                                   [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[2.672s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:24:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kcv_bridge[m[K’ has not been declared
+[2.672s]    24 |    message.image = *([01;31m[Kcv_bridge[m[K::CvImage(std_msgs::Header(),"bgr8",image).toImageMsg());
+[2.673s]       |                      [01;31m[K^~~~~~~~~[m[K
+[2.673s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:24:51:[m[K [01;31m[Kerror: [m[K‘[01m[KHeader[m[K’ is not a member of ‘[01m[Kstd_msgs[m[K’; did you mean ‘[01m[Kstd_msgs::msg::Header[m[K’?
+[2.673s]    24 |    message.image = *(cv_bridge::CvImage(std_msgs::[01;31m[KHeader[m[K(),"bgr8",image).toImageMsg());
+[2.673s]       |                                                   [01;31m[K^~~~~~[m[K
+[2.673s] In file included from [01m[K/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/include/test_interfaces/msg/detail/test__struct.hpp:19[m[K,
+[2.673s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/install/test_interfaces/include/test_interfaces/msg/test.hpp:7[m[K,
+[2.673s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:5[m[K:
+[2.673s] [01m[K/opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp:139:7:[m[K [01;36m[Knote: [m[K‘[01m[Kstd_msgs::msg::Header[m[K’ declared here
+[2.674s]   139 | using [01;36m[KHeader[m[K =
+[2.674s]       |       [01;36m[K^~~~~~[m[K
+[2.674s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:13:32:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstr_size[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.674s]    13 |   Camera(int sleep_ms, [01;35m[Kint64_t str_size[m[K, string channel_name)
+[2.674s]       |                        [01;35m[K~~~~~~~~^~~~~~~~[m[K
+[2.675s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:[m[K In member function ‘[01m[Kvoid Camera::timer_callback()[m[K’:
+[2.675s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:32:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmessage[m[K’ was not declared in this scope
+[2.675s]    32 |    [01;31m[Kmessage[m[K.header.stamp = this->now();
+[2.676s]       |    [01;31m[K^~~~~~~[m[K
+[2.679s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/camera.cpp:34:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Krcl_publisher_t[m[K’?
+[2.680s]    34 |    [01;31m[Kpublisher_[m[K->publish(message);
+[2.680s]       |    [01;31m[K^~~~~~~~~~[m[K
+[2.680s]       |    [32m[Krcl_publisher_t[m[K
+[3.413s] make[2]: *** [CMakeFiles/camera.dir/build.make:63: CMakeFiles/camera.dir/src/camera.cpp.o] Error 1
+[3.413s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/camera.dir/all] Error 2
+[3.415s] make: *** [Makefile:141: all] Error 2

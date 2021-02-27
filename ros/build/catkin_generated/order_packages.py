@@ -2,4 +2,4 @@
 source_root_dir = "/ros_test/AD_Middle_Test/ros/src"
 whitelisted_packages = "".split(';') if "" != "" else []
 blacklisted_packages = "".split(';') if "" != "" else []
-underlay_workspaces = "/ros_test/AD_Middle_Test/ros/devel;/opt/ros/melodic".split(';') if "/ros_test/AD_Middle_Test/ros/devel;/opt/ros/melodic" != "" else []
+underlay_workspaces = "/opt/ros/melodic".split(';') if "/opt/ros/melodic" != "" else []

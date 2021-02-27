@@ -15,6 +15,7 @@
 #include <ros/builtin_message_traits.h>
 #include <ros/message_operations.h>
 
+#include <std_msgs/Header.h>
 #include <sensor_msgs/Image.h>
 
 namespace detect_s
@@ -25,19 +26,19 @@ struct TestImage_
   typedef TestImage_<ContainerAllocator> Type;
 
   TestImage_()
-    : deliver_time()
+    : header()
     , image()  {
     }
   TestImage_(const ContainerAllocator& _alloc)
-    : deliver_time()
+    : header(_alloc)
     , image(_alloc)  {
   (void)_alloc;
     }
 
 
 
-   typedef ros::Time _deliver_time_type;
-  _deliver_time_type deliver_time;
+   typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
+  _header_type header;
 
    typedef  ::sensor_msgs::Image_<ContainerAllocator>  _image_type;
   _image_type image;
@@ -76,7 +77,7 @@ namespace message_traits
 
 
 
-// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': False}
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': True}
 // {'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg'], 'detect_s': ['/ros_test/AD_Middle_Test/ros/src/detect_s/msg'], 'sensor_msgs': ['/opt/ros/melodic/share/sensor_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/melodic/share/geometry_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
@@ -106,12 +107,12 @@ struct IsMessage< ::detect_s::TestImage_<ContainerAllocator> const>
 
 template <class ContainerAllocator>
 struct HasHeader< ::detect_s::TestImage_<ContainerAllocator> >
-  : FalseType
+  : TrueType
   { };
 
 template <class ContainerAllocator>
 struct HasHeader< ::detect_s::TestImage_<ContainerAllocator> const>
-  : FalseType
+  : TrueType
   { };
 
 
@@ -120,12 +121,12 @@ struct MD5Sum< ::detect_s::TestImage_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "f3cdf94aed878ccdf3efa835405364a9";
+    return "a4f08f997368f6320b328191e86b1a13";
   }
 
   static const char* value(const ::detect_s::TestImage_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xf3cdf94aed878ccdULL;
-  static const uint64_t static_value2 = 0xf3efa835405364a9ULL;
+  static const uint64_t static_value1 = 0xa4f08f997368f632ULL;
+  static const uint64_t static_value2 = 0x0b328191e86b1a13ULL;
 };
 
 template<class ContainerAllocator>
@@ -144,8 +145,24 @@ struct Definition< ::detect_s::TestImage_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "time deliver_time\n"
+    return "std_msgs/Header header\n"
 "sensor_msgs/Image image\n"
+"\n"
+"================================================================================\n"
+"MSG: std_msgs/Header\n"
+"# Standard metadata for higher-level stamped data types.\n"
+"# This is generally used to communicate timestamped data \n"
+"# in a particular coordinate frame.\n"
+"# \n"
+"# sequence ID: consecutively increasing ID \n"
+"uint32 seq\n"
+"#Two-integer timestamp that is expressed as:\n"
+"# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n"
+"# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n"
+"# time-handling sugar is provided by the client library\n"
+"time stamp\n"
+"#Frame this data is associated with\n"
+"string frame_id\n"
 "\n"
 "================================================================================\n"
 "MSG: sensor_msgs/Image\n"
@@ -176,22 +193,6 @@ struct Definition< ::detect_s::TestImage_<ContainerAllocator> >
 "uint8 is_bigendian    # is this data bigendian?\n"
 "uint32 step           # Full row length in bytes\n"
 "uint8[] data          # actual matrix data, size is (step * rows)\n"
-"\n"
-"================================================================================\n"
-"MSG: std_msgs/Header\n"
-"# Standard metadata for higher-level stamped data types.\n"
-"# This is generally used to communicate timestamped data \n"
-"# in a particular coordinate frame.\n"
-"# \n"
-"# sequence ID: consecutively increasing ID \n"
-"uint32 seq\n"
-"#Two-integer timestamp that is expressed as:\n"
-"# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n"
-"# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n"
-"# time-handling sugar is provided by the client library\n"
-"time stamp\n"
-"#Frame this data is associated with\n"
-"string frame_id\n"
 ;
   }
 
@@ -210,7 +211,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.deliver_time);
+      stream.next(m.header);
       stream.next(m.image);
     }
 
@@ -230,8 +231,9 @@ struct Printer< ::detect_s::TestImage_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::detect_s::TestImage_<ContainerAllocator>& v)
   {
-    s << indent << "deliver_time: ";
-    Printer<ros::Time>::stream(s, indent + "  ", v.deliver_time);
+    s << indent << "header: ";
+    s << std::endl;
+    Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
     s << indent << "image: ";
     s << std::endl;
     Printer< ::sensor_msgs::Image_<ContainerAllocator> >::stream(s, indent + "  ", v.image);

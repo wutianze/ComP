@@ -7,12 +7,14 @@ using namespace std;
 ros::Publisher publisher;
 simple_s::Test msg;
 string to_send;
+int count_num = 0;
 void timerCallback(const ros::TimerEvent& e){
-	//msg.id = count_num;
+	msg.id = count_num;
 	//msg.timestamp = ros::Time::now().toNSec();
 	msg.header.stamp = ros::Time::now();
 	//ROS_INFO("time send:%d",msg.header.stamp.nsec);
 	publisher.publish(msg);
+	count_num++;
 	//ROS_INFO("publisher one");
 }
 int main(int argc, char **argv)

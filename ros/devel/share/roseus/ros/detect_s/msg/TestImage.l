@@ -12,25 +12,31 @@
 ;;//! \htmlinclude TestImage.msg.html
 (if (not (find-package "SENSOR_MSGS"))
   (ros::roseus-add-msgs "sensor_msgs"))
+(if (not (find-package "STD_MSGS"))
+  (ros::roseus-add-msgs "std_msgs"))
 
 
 (defclass detect_s::TestImage
   :super ros::object
-  :slots (_deliver_time _image ))
+  :slots (_header _image ))
 
 (defmethod detect_s::TestImage
   (:init
    (&key
-    ((:deliver_time __deliver_time) (instance ros::time :init))
+    ((:header __header) (instance std_msgs::Header :init))
     ((:image __image) (instance sensor_msgs::Image :init))
     )
    (send-super :init)
-   (setq _deliver_time __deliver_time)
+   (setq _header __header)
    (setq _image __image)
    self)
-  (:deliver_time
-   (&optional __deliver_time)
-   (if __deliver_time (setq _deliver_time __deliver_time)) _deliver_time)
+  (:header
+   (&rest __header)
+   (if (keywordp (car __header))
+       (send* _header __header)
+     (progn
+       (if __header (setq _header (car __header)))
+       _header)))
   (:image
    (&rest __image)
    (if (keywordp (car __image))
@@ -41,8 +47,8 @@
   (:serialization-length
    ()
    (+
-    ;; time _deliver_time
-    8
+    ;; std_msgs/Header _header
+    (send _header :serialization-length)
     ;; sensor_msgs/Image _image
     (send _image :serialization-length)
     ))
@@ -50,27 +56,43 @@
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; time _deliver_time
-       (write-long (send _deliver_time :sec) s) (write-long (send _deliver_time :nsec) s)
+     ;; std_msgs/Header _header
+       (send _header :serialize s)
      ;; sensor_msgs/Image _image
        (send _image :serialize s)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; time _deliver_time
-     (send _deliver_time :sec (sys::peek buf ptr- :integer)) (incf ptr- 4)  (send _deliver_time :nsec (sys::peek buf ptr- :integer)) (incf ptr- 4)
+   ;; std_msgs/Header _header
+     (send _header :deserialize buf ptr-) (incf ptr- (send _header :serialization-length))
    ;; sensor_msgs/Image _image
      (send _image :deserialize buf ptr-) (incf ptr- (send _image :serialization-length))
    ;;
    self)
   )
 
-(setf (get detect_s::TestImage :md5sum-) "f3cdf94aed878ccdf3efa835405364a9")
+(setf (get detect_s::TestImage :md5sum-) "a4f08f997368f6320b328191e86b1a13")
 (setf (get detect_s::TestImage :datatype-) "detect_s/TestImage")
 (setf (get detect_s::TestImage :definition-)
-      "time deliver_time
+      "std_msgs/Header header
 sensor_msgs/Image image
+
+================================================================================
+MSG: std_msgs/Header
+# Standard metadata for higher-level stamped data types.
+# This is generally used to communicate timestamped data 
+# in a particular coordinate frame.
+# 
+# sequence ID: consecutively increasing ID 
+uint32 seq
+#Two-integer timestamp that is expressed as:
+# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+# time-handling sugar is provided by the client library
+time stamp
+#Frame this data is associated with
+string frame_id
 
 ================================================================================
 MSG: sensor_msgs/Image
@@ -102,26 +124,10 @@ uint8 is_bigendian    # is this data bigendian?
 uint32 step           # Full row length in bytes
 uint8[] data          # actual matrix data, size is (step * rows)
 
-================================================================================
-MSG: std_msgs/Header
-# Standard metadata for higher-level stamped data types.
-# This is generally used to communicate timestamped data 
-# in a particular coordinate frame.
-# 
-# sequence ID: consecutively increasing ID 
-uint32 seq
-#Two-integer timestamp that is expressed as:
-# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
-# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
-# time-handling sugar is provided by the client library
-time stamp
-#Frame this data is associated with
-string frame_id
-
 ")
 
 
 
-(provide :detect_s/TestImage "f3cdf94aed878ccdf3efa835405364a9")
+(provide :detect_s/TestImage "a4f08f997368f6320b328191e86b1a13")
 
 

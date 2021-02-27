@@ -15,6 +15,7 @@
 #include <ros/builtin_message_traits.h>
 #include <ros/message_operations.h>
 
+#include <std_msgs/Header.h>
 #include <detect_s/PointDetect.h>
 #include <detect_s/PointDetect.h>
 #include <detect_s/PointDetect.h>
@@ -28,13 +29,15 @@ struct LinesResult_
   typedef LinesResult_<ContainerAllocator> Type;
 
   LinesResult_()
-    : left1()
+    : header()
+    , left1()
     , right1()
     , left2()
     , right2()  {
     }
   LinesResult_(const ContainerAllocator& _alloc)
-    : left1(_alloc)
+    : header(_alloc)
+    , left1(_alloc)
     , right1(_alloc)
     , left2(_alloc)
     , right2(_alloc)  {
@@ -42,6 +45,9 @@ struct LinesResult_
     }
 
 
+
+   typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
+  _header_type header;
 
    typedef  ::detect_s::PointDetect_<ContainerAllocator>  _left1_type;
   _left1_type left1;
@@ -89,7 +95,7 @@ namespace message_traits
 
 
 
-// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': True}
 // {'std_msgs': ['/opt/ros/melodic/share/std_msgs/cmake/../msg'], 'detect_s': ['/ros_test/AD_Middle_Test/ros/src/detect_s/msg'], 'sensor_msgs': ['/opt/ros/melodic/share/sensor_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/melodic/share/geometry_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
@@ -99,12 +105,12 @@ namespace message_traits
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::detect_s::LinesResult_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::detect_s::LinesResult_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -119,12 +125,12 @@ struct IsMessage< ::detect_s::LinesResult_<ContainerAllocator> const>
 
 template <class ContainerAllocator>
 struct HasHeader< ::detect_s::LinesResult_<ContainerAllocator> >
-  : FalseType
+  : TrueType
   { };
 
 template <class ContainerAllocator>
 struct HasHeader< ::detect_s::LinesResult_<ContainerAllocator> const>
-  : FalseType
+  : TrueType
   { };
 
 
@@ -133,12 +139,12 @@ struct MD5Sum< ::detect_s::LinesResult_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "31748639f016450bce732dc22ce90507";
+    return "450c7b7554f64d28c44fff48a609a687";
   }
 
   static const char* value(const ::detect_s::LinesResult_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x31748639f016450bULL;
-  static const uint64_t static_value2 = 0xce732dc22ce90507ULL;
+  static const uint64_t static_value1 = 0x450c7b7554f64d28ULL;
+  static const uint64_t static_value2 = 0xc44fff48a609a687ULL;
 };
 
 template<class ContainerAllocator>
@@ -157,10 +163,27 @@ struct Definition< ::detect_s::LinesResult_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "PointDetect left1\n"
+    return "std_msgs/Header header\n"
+"PointDetect left1\n"
 "PointDetect right1\n"
 "PointDetect left2\n"
 "PointDetect right2\n"
+"\n"
+"================================================================================\n"
+"MSG: std_msgs/Header\n"
+"# Standard metadata for higher-level stamped data types.\n"
+"# This is generally used to communicate timestamped data \n"
+"# in a particular coordinate frame.\n"
+"# \n"
+"# sequence ID: consecutively increasing ID \n"
+"uint32 seq\n"
+"#Two-integer timestamp that is expressed as:\n"
+"# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n"
+"# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n"
+"# time-handling sugar is provided by the client library\n"
+"time stamp\n"
+"#Frame this data is associated with\n"
+"string frame_id\n"
 "\n"
 "================================================================================\n"
 "MSG: detect_s/PointDetect\n"
@@ -184,6 +207,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
+      stream.next(m.header);
       stream.next(m.left1);
       stream.next(m.right1);
       stream.next(m.left2);
@@ -206,6 +230,9 @@ struct Printer< ::detect_s::LinesResult_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::detect_s::LinesResult_<ContainerAllocator>& v)
   {
+    s << indent << "header: ";
+    s << std::endl;
+    Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
     s << indent << "left1: ";
     s << std::endl;
     Printer< ::detect_s::PointDetect_<ContainerAllocator> >::stream(s, indent + "  ", v.left1);

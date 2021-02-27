@@ -7,4 +7,10 @@
 # new environment variables
 
 # modified environment variables
+export CMAKE_PREFIX_PATH="/ros_test/AD_Middle_Test/ros/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/ros_test/AD_Middle_Test/ros/devel/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/ros_test/AD_Middle_Test/ros/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/ros_test/AD_Middle_Test/ros/build"
+export PYTHONPATH="/ros_test/AD_Middle_Test/ros/devel/lib/python2.7/dist-packages:$PYTHONPATH"
+export ROSLISP_PACKAGE_DIRECTORIES="/ros_test/AD_Middle_Test/ros/devel/share/common-lisp"
+export ROS_PACKAGE_PATH="/ros_test/AD_Middle_Test/ros/src:$ROS_PACKAGE_PATH"

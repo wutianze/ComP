@@ -1,0 +1,63 @@
+[3.900s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:[m[K In constructor ‘[01m[KTrackerRos2::TrackerRos2(std::string, std::string, std::string, std::string)[m[K’:
+[3.900s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:35:47:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmessage_filters::Subscriber<test_interfaces::msg::TestImage_<std::allocator<void> > >::subscribe(TrackerRos2*, std::string&, rclcpp::QoS&)[m[K’
+[3.900s]    35 |    sub1.subscribe(this,image_channel_name,qos_[01;31m[K)[m[K;
+[3.900s]       |                                               [01;31m[K^[m[K
+[3.901s] In file included from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:5[m[K:
+[3.901s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:145:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe(rclcpp::Node::SharedPtr, const string&, rmw_qos_profile_t) [with M = test_interfaces::msg::TestImage_<std::allocator<void> >; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_t][m[K’
+[3.901s]   145 |   void [01;36m[Ksubscribe[m[K(rclcpp::Node::SharedPtr node, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[3.901s]       |        [01;36m[K^~~~~~~~~[m[K
+[3.901s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:145:42:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KTrackerRos2*[m[K’ to ‘[01m[Krclcpp::Node::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Node>[m[K’}
+[3.901s]   145 |   void subscribe([01;36m[Krclcpp::Node::SharedPtr node[m[K, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[3.901s]       |                  [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[3.901s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:162:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe(rclcpp::Node*, const string&, rmw_qos_profile_t) [with M = test_interfaces::msg::TestImage_<std::allocator<void> >; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_t][m[K’
+[3.902s]   162 |   void [01;36m[Ksubscribe[m[K(rclcpp::Node * node, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[3.902s]       |        [01;36m[K^~~~~~~~~[m[K
+[3.902s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:162:89:[m[K [01;36m[Knote: [m[K  no known conversion for argument 3 from ‘[01m[Krclcpp::QoS[m[K’ to ‘[01m[Krmw_qos_profile_t[m[K’
+[3.902s]   162 |   void subscribe(rclcpp::Node * node, const std::string& topic, [01;36m[Kconst rmw_qos_profile_t qos = rmw_qos_profile_default[m[K)
+[3.902s]       |                                                                 [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.902s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:184:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe() [with M = test_interfaces::msg::TestImage_<std::allocator<void> >][m[K’
+[3.902s]   184 |   void [01;36m[Ksubscribe[m[K()
+[3.903s]       |        [01;36m[K^~~~~~~~~[m[K
+[3.903s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:184:8:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 3 provided
+[3.903s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:36:46:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmessage_filters::Subscriber<test_interfaces::msg::YoloResult_<std::allocator<void> > >::subscribe(TrackerRos2*, std::string&, rclcpp::QoS&)[m[K’
+[3.903s]    36 |    sub2.subscribe(this,yolo_channel_name,qos_[01;31m[K)[m[K;
+[3.903s]       |                                              [01;31m[K^[m[K
+[3.903s] In file included from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:5[m[K:
+[3.904s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:145:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe(rclcpp::Node::SharedPtr, const string&, rmw_qos_profile_t) [with M = test_interfaces::msg::YoloResult_<std::allocator<void> >; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_t][m[K’
+[3.904s]   145 |   void [01;36m[Ksubscribe[m[K(rclcpp::Node::SharedPtr node, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[3.904s]       |        [01;36m[K^~~~~~~~~[m[K
+[3.904s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:145:42:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KTrackerRos2*[m[K’ to ‘[01m[Krclcpp::Node::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Node>[m[K’}
+[3.904s]   145 |   void subscribe([01;36m[Krclcpp::Node::SharedPtr node[m[K, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[3.904s]       |                  [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[3.904s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:162:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe(rclcpp::Node*, const string&, rmw_qos_profile_t) [with M = test_interfaces::msg::YoloResult_<std::allocator<void> >; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_t][m[K’
+[3.905s]   162 |   void [01;36m[Ksubscribe[m[K(rclcpp::Node * node, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[3.905s]       |        [01;36m[K^~~~~~~~~[m[K
+[3.905s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:162:89:[m[K [01;36m[Knote: [m[K  no known conversion for argument 3 from ‘[01m[Krclcpp::QoS[m[K’ to ‘[01m[Krmw_qos_profile_t[m[K’
+[3.905s]   162 |   void subscribe(rclcpp::Node * node, const std::string& topic, [01;36m[Kconst rmw_qos_profile_t qos = rmw_qos_profile_default[m[K)
+[3.905s]       |                                                                 [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.905s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:184:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe() [with M = test_interfaces::msg::YoloResult_<std::allocator<void> >][m[K’
+[3.905s]   184 |   void [01;36m[Ksubscribe[m[K()
+[3.906s]       |        [01;36m[K^~~~~~~~~[m[K
+[3.906s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:184:8:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 3 provided
+[4.020s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:[m[K In member function ‘[01m[Kvoid TrackerRos2::topic_callback(test_interfaces::msg::TestImage_<std::allocator<void> >::SharedPtr, test_interfaces::msg::YoloResult)[m[K’:
+[4.020s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:50:41:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst YoloResult[m[K’ {aka ‘[01m[Kconst test_interfaces::msg::YoloResult_<std::allocator<void> >[m[K’}
+[4.020s]    50 |    sb.tra_la[1].push_back((rec_time-msg1[01;31m[K->[m[Kheader.stamp).nanoseconds());
+[4.020s]       |                                         [01;31m[K^~[m[K
+[4.021s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:56:9:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst YoloResult[m[K’ {aka ‘[01m[Kconst test_interfaces::msg::YoloResult_<std::allocator<void> >[m[K’}
+[4.021s]    56 |  if(msg1[01;31m[K->[m[Kresult_num>0){
+[4.021s]       |         [01;31m[K^~[m[K
+[4.021s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:57:24:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst YoloResult[m[K’ {aka ‘[01m[Kconst test_interfaces::msg::YoloResult_<std::allocator<void> >[m[K’}
+[4.021s]    57 | resultbox = Rect2d(msg1[01;31m[K->[m[Kresult_array[0].x, msg1->result_array[0].y, msg1->result_array[0].w, msg1->result_array[0].h);
+[4.021s]       |                        [01;31m[K^~[m[K
+[4.022s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:57:49:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst YoloResult[m[K’ {aka ‘[01m[Kconst test_interfaces::msg::YoloResult_<std::allocator<void> >[m[K’}
+[4.022s]    57 | resultbox = Rect2d(msg1->result_array[0].x, msg1[01;31m[K->[m[Kresult_array[0].y, msg1->result_array[0].w, msg1->result_array[0].h);
+[4.022s]       |                                                 [01;31m[K^~[m[K
+[4.022s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:57:74:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst YoloResult[m[K’ {aka ‘[01m[Kconst test_interfaces::msg::YoloResult_<std::allocator<void> >[m[K’}
+[4.022s]    57 | resultbox = Rect2d(msg1->result_array[0].x, msg1->result_array[0].y, msg1[01;31m[K->[m[Kresult_array[0].w, msg1->result_array[0].h);
+[4.022s]       |                                                                          [01;31m[K^~[m[K
+[4.022s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/TrackerRos2.cpp:57:99:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst YoloResult[m[K’ {aka ‘[01m[Kconst test_interfaces::msg::YoloResult_<std::allocator<void> >[m[K’}
+[4.023s]    57 | resultbox = Rect2d(msg1->result_array[0].x, msg1->result_array[0].y, msg1->result_array[0].w, msg1[01;31m[K->[m[Kresult_array[0].h);
+[4.023s]       |                                                                                                   [01;31m[K^~[m[K
+[8.516s] make[2]: *** [CMakeFiles/trackerRos2.dir/build.make:63: CMakeFiles/trackerRos2.dir/src/TrackerRos2.cpp.o] Error 1
+[8.516s] make[1]: *** [CMakeFiles/Makefile2:84: CMakeFiles/trackerRos2.dir/all] Error 2
+[8.516s] make: *** [Makefile:141: all] Error 2

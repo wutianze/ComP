@@ -1,0 +1,59 @@
+[0.119s] [35m[1mScanning dependencies of target fusionMiddle[0m
+[0.160s] [ 20%] Built target cameraTimer
+[0.190s] [ 30%] [32mBuilding CXX object CMakeFiles/fusionMiddle.dir/src/FusionMiddle.cpp.o[0m
+[0.192s] [ 50%] Built target yoloDetect
+[0.201s] [ 70%] Built target line
+[0.205s] [ 90%] Built target trackerRos2
+[2.743s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:55:43:[m[K [01;31m[Kerror: [m[K‘[01m[KFusionResult[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[2.743s]    55 |   rclcpp::Publisher<test_interfaces::msg::[01;31m[KFusionResult[m[K>::SharedPtr publisher_;         // CHANGE
+[2.743s]       |                                           [01;31m[K^~~~~~~~~~~~[m[K
+[2.744s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:55:43:[m[K [01;31m[Kerror: [m[K‘[01m[KFusionResult[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[2.744s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:55:55:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[2.744s]    55 |   rclcpp::Publisher<test_interfaces::msg::FusionResult[01;31m[K>[m[K::SharedPtr publisher_;         // CHANGE
+[2.744s]       |                                                       [01;31m[K^[m[K
+[2.744s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:55:58:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+[2.744s]    55 |   rclcpp::Publisher<test_interfaces::msg::FusionResult>::[01;31m[KSharedPtr[m[K publisher_;         // CHANGE
+[2.744s]       |                                                          [01;31m[K^~~~~~~~~[m[K
+[2.745s]       |                                                                   [32m[K;[m[K
+[2.749s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:55:68:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ does not name a type; did you mean ‘[01m[Krcl_publisher_t[m[K’?
+[2.749s]    55 |   rclcpp::Publisher<test_interfaces::msg::FusionResult>::SharedPtr [01;31m[Kpublisher_[m[K;         // CHANGE
+[2.749s]       |                                                                    [01;31m[K^~~~~~~~~~[m[K
+[2.749s]       |                                                                    [32m[Krcl_publisher_t[m[K
+[2.835s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:[m[K In constructor ‘[01m[KFusionMiddle::FusionMiddle(std::string, std::string, std::string, std::string, std::string)[m[K’:
+[2.835s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:30:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Krcl_publisher_t[m[K’?
+[2.836s]    30 |    [01;31m[Kpublisher_[m[K = this->create_publisher<test_interfaces::msg::FusionResult>(pub_channel_name, qos_);    // CHANGE
+[2.836s]       |    [01;31m[K^~~~~~~~~~[m[K
+[2.836s]       |    [32m[Krcl_publisher_t[m[K
+[2.836s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:30:62:[m[K [01;31m[Kerror: [m[K‘[01m[KFusionResult[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[2.836s]    30 |    publisher_ = this->create_publisher<test_interfaces::msg::[01;31m[KFusionResult[m[K>(pub_channel_name, qos_);    // CHANGE
+[2.837s]       |                                                              [01;31m[K^~~~~~~~~~~~[m[K
+[2.837s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:30:62:[m[K [01;31m[Kerror: [m[K‘[01m[KFusionResult[m[K’ is not a member of ‘[01m[Ktest_interfaces::msg[m[K’
+[2.837s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:30:98:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KFusionMiddle::create_publisher<<expression error> >(std::string&, rclcpp::QoS&)[m[K’
+[2.837s]    30 |    publisher_ = this->create_publisher<test_interfaces::msg::FusionResult>(pub_channel_name, qos_[01;31m[K)[m[K;    // CHANGE
+[2.837s]       |                                                                                                  [01;31m[K^[m[K
+[2.837s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[2.837s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[2.837s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:145[m[K,
+[2.838s]                  from [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:38[m[K,
+[2.838s]                  from [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:5[m[K:
+[2.838s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:179:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)[m[K’
+[2.838s]   179 |   [01;36m[Kcreate_publisher[m[K(
+[2.838s]       |   [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[2.838s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:179:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[2.838s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:30:98:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[2.839s]    30 |    publisher_ = this->create_publisher<test_interfaces::msg::FusionResult>(pub_channel_name, qos_[01;31m[K)[m[K;    // CHANGE
+[2.839s]       |                                                                                                  [01;31m[K^[m[K
+[3.346s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:[m[K In member function ‘[01m[Kvoid FusionMiddle::topic_callback(test_interfaces::msg::LinesResult_<std::allocator<void> >::SharedPtr, test_interfaces::msg::YoloResult_<std::allocator<void> >::SharedPtr, test_interfaces::msg::TrackerResult_<std::allocator<void> >::SharedPtr)[m[K’:
+[3.346s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:49:24:[m[K [01;31m[Kerror: [m[K‘[01m[Ktest_interfaces::msg::FusionResult[m[K’ has not been declared
+[3.346s]    49 |  test_interfaces::msg::[01;31m[KFusionResult[m[K::UniquePtr to_send(new test_interfaces::msg::FusionResult());
+[3.346s]       |                        [01;31m[K^~~~~~~~~~~~[m[K
+[3.350s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:50:2:[m[K [01;31m[Kerror: [m[K‘[01m[Kto_send[m[K’ was not declared in this scope
+[3.350s]    50 |  [01;31m[Kto_send[m[K->fusion_result = "fusionMiddle";
+[3.350s]       |  [01;31m[K^~~~~~~[m[K
+[3.356s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/FusionMiddle.cpp:52:1:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Krcl_publisher_t[m[K’?
+[3.356s]    52 | [01;31m[Kpublisher_[m[K->publish(move(to_send));
+[3.356s]       | [01;31m[K^~~~~~~~~~[m[K
+[3.356s]       | [32m[Krcl_publisher_t[m[K
+[7.673s] make[2]: *** [CMakeFiles/fusionMiddle.dir/build.make:63: CMakeFiles/fusionMiddle.dir/src/FusionMiddle.cpp.o] Error 1
+[7.673s] make[1]: *** [CMakeFiles/Makefile2:221: CMakeFiles/fusionMiddle.dir/all] Error 2
+[7.673s] make: *** [Makefile:141: all] Error 2

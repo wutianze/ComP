@@ -11,8 +11,10 @@ class MinimalPublisher : public rclcpp::Node
 		MinimalPublisher(int sleep_ms, int64_t str_size, string channel_name)
 			: Node("minimal_publisher"),  count_(0)
 		{
-			rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data));
-			//rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_default));
+			//rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data));
+			rclcpp::QoS qos_(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_default));
+			//qos_.durability_volatile();
+			qos_.keep_last(1);
 			
 			publisher_ = this->create_publisher<test_interfaces::msg::Test>(channel_name, qos_);    // CHANGE
 			timer_ = this->create_wall_timer(

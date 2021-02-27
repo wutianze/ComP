@@ -1,0 +1,52 @@
+[0.096s] [35m[1mScanning dependencies of target talker[0m
+[0.096s] [35m[1mScanning dependencies of target listener[0m
+[0.121s] [ 33%] Built target intra_pipe
+[0.135s] [ 50%] [32mBuilding CXX object CMakeFiles/listener.dir/src/listener.cpp.o[0m
+[0.161s] [ 66%] [32mBuilding CXX object CMakeFiles/talker.dir/src/talker.cpp.o[0m
+[2.130s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:[m[K In constructor ‘[01m[KMinimalSubscriber::MinimalSubscriber(std::string, int, std::string)[m[K’:
+[2.130s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:67:46:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmessage_filters::Subscriber<test_interfaces::msg::Test_<std::allocator<void> > >::subscribe(MinimalSubscriber*, std::__cxx11::basic_string<char>, rclcpp::QoS&)[m[K’
+[2.130s]    67 |     sub1.subscribe(this,channel_name+'0',qos_[01;31m[K)[m[K;
+[2.130s]       |                                              [01;31m[K^[m[K
+[2.131s] In file included from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:5[m[K:
+[2.131s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:145:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe(rclcpp::Node::SharedPtr, const string&, rmw_qos_profile_t) [with M = test_interfaces::msg::Test_<std::allocator<void> >; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_t][m[K’
+[2.131s]   145 |   void [01;36m[Ksubscribe[m[K(rclcpp::Node::SharedPtr node, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[2.131s]       |        [01;36m[K^~~~~~~~~[m[K
+[2.131s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:145:42:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KMinimalSubscriber*[m[K’ to ‘[01m[Krclcpp::Node::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Node>[m[K’}
+[2.131s]   145 |   void subscribe([01;36m[Krclcpp::Node::SharedPtr node[m[K, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[2.131s]       |                  [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[2.132s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:162:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe(rclcpp::Node*, const string&, rmw_qos_profile_t) [with M = test_interfaces::msg::Test_<std::allocator<void> >; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_t][m[K’
+[2.132s]   162 |   void [01;36m[Ksubscribe[m[K(rclcpp::Node * node, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[2.132s]       |        [01;36m[K^~~~~~~~~[m[K
+[2.132s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:162:89:[m[K [01;36m[Knote: [m[K  no known conversion for argument 3 from ‘[01m[Krclcpp::QoS[m[K’ to ‘[01m[Krmw_qos_profile_t[m[K’
+[2.132s]   162 |   void subscribe(rclcpp::Node * node, const std::string& topic, [01;36m[Kconst rmw_qos_profile_t qos = rmw_qos_profile_default[m[K)
+[2.132s]       |                                                                 [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.132s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:184:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe() [with M = test_interfaces::msg::Test_<std::allocator<void> >][m[K’
+[2.133s]   184 |   void [01;36m[Ksubscribe[m[K()
+[2.133s]       |        [01;36m[K^~~~~~~~~[m[K
+[2.133s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:184:8:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 3 provided
+[2.133s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:68:46:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmessage_filters::Subscriber<test_interfaces::msg::Test_<std::allocator<void> > >::subscribe(MinimalSubscriber*, std::__cxx11::basic_string<char>, rclcpp::QoS&)[m[K’
+[2.133s]    68 |     sub2.subscribe(this,channel_name+'1',qos_[01;31m[K)[m[K;
+[2.133s]       |                                              [01;31m[K^[m[K
+[2.133s] In file included from [01m[K/ros2_test/AD_Middle_Test/ros2/src/simple_s/src/listener.cpp:5[m[K:
+[2.133s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:145:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe(rclcpp::Node::SharedPtr, const string&, rmw_qos_profile_t) [with M = test_interfaces::msg::Test_<std::allocator<void> >; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_t][m[K’
+[2.134s]   145 |   void [01;36m[Ksubscribe[m[K(rclcpp::Node::SharedPtr node, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[2.134s]       |        [01;36m[K^~~~~~~~~[m[K
+[2.134s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:145:42:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KMinimalSubscriber*[m[K’ to ‘[01m[Krclcpp::Node::SharedPtr[m[K’ {aka ‘[01m[Kstd::shared_ptr<rclcpp::Node>[m[K’}
+[2.134s]   145 |   void subscribe([01;36m[Krclcpp::Node::SharedPtr node[m[K, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[2.134s]       |                  [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[2.134s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:162:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe(rclcpp::Node*, const string&, rmw_qos_profile_t) [with M = test_interfaces::msg::Test_<std::allocator<void> >; std::string = std::__cxx11::basic_string<char>; rmw_qos_profile_t = rmw_qos_profile_t][m[K’
+[2.134s]   162 |   void [01;36m[Ksubscribe[m[K(rclcpp::Node * node, const std::string& topic, const rmw_qos_profile_t qos = rmw_qos_profile_default)
+[2.135s]       |        [01;36m[K^~~~~~~~~[m[K
+[2.135s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:162:89:[m[K [01;36m[Knote: [m[K  no known conversion for argument 3 from ‘[01m[Krclcpp::QoS[m[K’ to ‘[01m[Krmw_qos_profile_t[m[K’
+[2.135s]   162 |   void subscribe(rclcpp::Node * node, const std::string& topic, [01;36m[Kconst rmw_qos_profile_t qos = rmw_qos_profile_default[m[K)
+[2.135s]       |                                                                 [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.135s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:184:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid message_filters::Subscriber<M>::subscribe() [with M = test_interfaces::msg::Test_<std::allocator<void> >][m[K’
+[2.135s]   184 |   void [01;36m[Ksubscribe[m[K()
+[2.135s]       |        [01;36m[K^~~~~~~~~[m[K
+[2.136s] [01m[K/opt/ros/foxy/include/message_filters/subscriber.h:184:8:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 3 provided
+[4.472s] [ 83%] [32m[1mLinking CXX executable talker[0m
+[4.615s] make[2]: *** [CMakeFiles/listener.dir/build.make:63: CMakeFiles/listener.dir/src/listener.cpp.o] Error 1
+[4.615s] make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/listener.dir/all] Error 2
+[4.615s] make[1]: *** Waiting for unfinished jobs....
+[4.687s] [ 83%] Built target talker
+[4.688s] make: *** [Makefile:141: all] Error 2

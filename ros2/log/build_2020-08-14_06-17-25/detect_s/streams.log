@@ -1,0 +1,13 @@
+[0.045s] Invoking command in '/ros2_test/AD_Middle_Test/ros2/build/detect_s': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/build/detect_s -- -j5 -l5
+[0.105s] [35m[1mScanning dependencies of target yoloDetect[0m
+[0.133s] [ 50%] Built target cameraTimer
+[0.154s] [ 75%] [32mBuilding CXX object CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o[0m
+[3.913s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:[m[K In member function ‘[01m[Kvoid YoloDetect::topic_callback(test_interfaces::msg::TestImage_<std::allocator<void> >::SharedPtr)[m[K’:
+[3.914s] [01m[K/ros2_test/AD_Middle_Test/ros2/src/detect_s/src/YoloDetect.cpp:71:1:[m[K [01;31m[Kerror: [m[K‘[01m[Kto_send_result[m[K’ was not declared in this scope; did you mean ‘[01m[Krmw_send_request[m[K’?
+[3.914s]    71 | [01;31m[Kto_send_result[m[K->result_num = result_vec.size();
+[3.914s]       | [01;31m[K^~~~~~~~~~~~~~[m[K
+[3.914s]       | [32m[Krmw_send_request[m[K
+[6.253s] make[2]: *** [CMakeFiles/yoloDetect.dir/build.make:63: CMakeFiles/yoloDetect.dir/src/YoloDetect.cpp.o] Error 1
+[6.253s] make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/yoloDetect.dir/all] Error 2
+[6.253s] make: *** [Makefile:141: all] Error 2
+[6.256s] Invoked command in '/ros2_test/AD_Middle_Test/ros2/build/detect_s' returned '2': /usr/bin/cmake --build /ros2_test/AD_Middle_Test/ros2/build/detect_s -- -j5 -l5

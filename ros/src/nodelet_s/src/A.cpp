@@ -36,31 +36,31 @@ namespace nodelet_s
 			//ROS_INFO("publish one");
 			TestPtr output(new Test());
 			output->content = std::string(ssize,'a');
-			output->header.stamp = ros::Time::now();
 			//output->header.frame_id = count_num;
 			count_num++;
 			output->id = count_num;
+			output->header.stamp = ros::Time::now();
 			pub.publish(output);
 			}
 		private:
-			int hz;
+			double sleep_ms;
 int ssize;
 std::string channel_name;
 int count_num;
 			void onInit()
 			{
 				ros::NodeHandle& private_nh = getPrivateNodeHandle();
-				private_nh.getParam("hz", hz);
+				private_nh.getParam("sleep_ms", sleep_ms);
 				private_nh.getParam("ssize",ssize);
 				private_nh.getParam("channel_name",channel_name);
 				count_num =0;
-				ROS_INFO("A hz:%d,ssize:%d",hz,ssize);
+				ROS_INFO("A sleep_ms:%lf,ssize:%d",sleep_ms,ssize);
 
 				pub = private_nh.advertise<Test>(channel_name, 1);
 				//ros::Duration(5).sleep();
 				
 				//pthread_create(&tid, NULL,PubMainLoop, this);
-				timer_ = private_nh.createTimer(ros::Duration(1.0/double(hz)),boost::bind(&A::CB,this,_1));
+				timer_ = private_nh.createTimer(ros::Duration(sleep_ms/1000.0),boost::bind(&A::CB,this,_1));
 			}
 	};
 }

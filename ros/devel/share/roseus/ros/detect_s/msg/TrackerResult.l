@@ -10,26 +10,37 @@
 
 (in-package "ROS")
 ;;//! \htmlinclude TrackerResult.msg.html
+(if (not (find-package "STD_MSGS"))
+  (ros::roseus-add-msgs "std_msgs"))
 
 
 (defclass detect_s::TrackerResult
   :super ros::object
-  :slots (_x _y _width _height ))
+  :slots (_header _x _y _width _height ))
 
 (defmethod detect_s::TrackerResult
   (:init
    (&key
+    ((:header __header) (instance std_msgs::Header :init))
     ((:x __x) 0.0)
     ((:y __y) 0.0)
     ((:width __width) 0.0)
     ((:height __height) 0.0)
     )
    (send-super :init)
+   (setq _header __header)
    (setq _x (float __x))
    (setq _y (float __y))
    (setq _width (float __width))
    (setq _height (float __height))
    self)
+  (:header
+   (&rest __header)
+   (if (keywordp (car __header))
+       (send* _header __header)
+     (progn
+       (if __header (setq _header (car __header)))
+       _header)))
   (:x
    (&optional __x)
    (if __x (setq _x __x)) _x)
@@ -45,6 +56,8 @@
   (:serialization-length
    ()
    (+
+    ;; std_msgs/Header _header
+    (send _header :serialization-length)
     ;; float64 _x
     8
     ;; float64 _y
@@ -58,6 +71,8 @@
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
+     ;; std_msgs/Header _header
+       (send _header :serialize s)
      ;; float64 _x
        (sys::poke _x (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;; float64 _y
@@ -70,6 +85,8 @@
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
+   ;; std_msgs/Header _header
+     (send _header :deserialize buf ptr-) (incf ptr- (send _header :serialization-length))
    ;; float64 _x
      (setq _x (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;; float64 _y
@@ -82,18 +99,35 @@
    self)
   )
 
-(setf (get detect_s::TrackerResult :md5sum-) "7048f28f1f0ef51e102638c86d9a7728")
+(setf (get detect_s::TrackerResult :md5sum-) "f229b11a934c96a9aad2ee9f0935fbdb")
 (setf (get detect_s::TrackerResult :datatype-) "detect_s/TrackerResult")
 (setf (get detect_s::TrackerResult :definition-)
-      "float64 x
+      "std_msgs/Header header
+float64 x
 float64 y
 float64 width
 float64 height
+
+================================================================================
+MSG: std_msgs/Header
+# Standard metadata for higher-level stamped data types.
+# This is generally used to communicate timestamped data 
+# in a particular coordinate frame.
+# 
+# sequence ID: consecutively increasing ID 
+uint32 seq
+#Two-integer timestamp that is expressed as:
+# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+# time-handling sugar is provided by the client library
+time stamp
+#Frame this data is associated with
+string frame_id
 
 ")
 
 
 
-(provide :detect_s/TrackerResult "7048f28f1f0ef51e102638c86d9a7728")
+(provide :detect_s/TrackerResult "f229b11a934c96a9aad2ee9f0935fbdb")
 
 
