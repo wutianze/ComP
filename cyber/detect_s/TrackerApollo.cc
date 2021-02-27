@@ -42,6 +42,10 @@ class TrackerApollo:public Component<Frame,YoloResult>{
 		CvTracker cvtra;
 
 		std::shared_ptr<Writer<TrackResult>> writer1 = nullptr;
+
+
+		Mat m;
+		OcvMat content;
 		~TrackerApollo(){
 			for(unsigned int i = 0;i<tra_latency.size();i++){
 				ofs.open("/apollo/data/log/test/tmp/tra_"+fn+'_'+to_string(i),std::ios::trunc);
@@ -81,8 +85,8 @@ class TrackerApollo:public Component<Frame,YoloResult>{
 			AINFO<<"tracker transfer time:"<<receive_time - msg0->timestamp();
 			tra_latency[0].push_back(receive_time - msg0->timestamp());
 			tra_latency[1].push_back(receive_time - msg1->timestamp());
-			Mat m;
-			OcvMat content = msg0->mat();
+			//OcvMat content = msg0->mat();
+			content = msg0->mat();
 			AINFO<<" content rows:"<<content.rows()<<" cols:"<<content.cols();
 			m.create(content.rows(),
 					content.cols(),
@@ -94,7 +98,6 @@ class TrackerApollo:public Component<Frame,YoloResult>{
 						const_cast<char *>(content.mat_data().data()) + dataSize),
 					m.data);
 
-			AINFO<<"get data";
 			if(t_i){
 				t_i = false;
 				auto bboxSize = msg1->bboxresult_size();
@@ -109,7 +112,20 @@ class TrackerApollo:public Component<Frame,YoloResult>{
 					AINFO<<"tmpBox.x:"<<tmpBox.x()<<" y:"<<tmpBox.y()<<" w:"<<tmpBox.w()<<" h:"<<tmpBox.h();
 					resultbox = Rect2d(double(tmpBox.x()),double(tmpBox.y()),double(tmpBox.w()),double(tmpBox.h()));
 				}
-					AINFO<<"init tracker";
+					
+				content = msg1->mat();
+			m.create(content.rows(),
+					content.cols(),
+					content.elt_type());
+			size_t dataSize = content.rows() *  content.cols() * content.elt_size();
+			std::copy(reinterpret_cast<unsigned char *>(
+						const_cast<char *>(content.mat_data().data())),
+					reinterpret_cast<unsigned char *>(
+						const_cast<char *>(content.mat_data().data()) + dataSize),
+					m.data);
+
+
+				AINFO<<"init tracker";
 				cvtra.tracker_init(m,resultbox);
 			}else{
 					AINFO<<"tracker test";
