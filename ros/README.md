@@ -1,5 +1,6 @@
 ## init environment
 - source /opt/ros/melodic/setup.bash
+- Put AD_Middle_Test in /ros_test/AD_Middle_Test
 - in AD_Middle_Test/ros, run `. install/setup.bash`
 - How to compile: in ros/, run `catkin_make`
 - Before running, open another terminal and run `roscore`
