@@ -14,9 +14,9 @@
 
 # distribtion
 - talker(sleep ms, msg size); listen_talker(); listener(). 
-- talker parameters: 1: sleep time in ms, the sleep time=the param, you should set talker's sleep time in when run talker node; 3: msg size; 
-- Start the talker node with the command: ros2 run simple_distrib 1(sleep ms) 1048576(msg size), and start listen_talker with command: ros2 run simple_distrib listener, and listen_talker with command: ros2 run simple_distrib listen_talker
-- To start the distribution exp, you should shart talker and listener nodes on one machine, and start listen_talker on aonther machine,while the two machines must be in one network. If you want to test distribute codes only in one machine, you'd better close your network first, and then start all three nodes in the machine; 
+- talker parameters: 1: sleep time in ms, the sleep time=the param, you should set talker's sleep time in when run talker node; 2: msg size; 
+- Start the talker node with the command: ros2 run simple_distrib 1(sleep ms) 1048576(msg size), and start listen_talker with command: ros2 run simple_distrib listen_talker, and listener with command: ros2 run simple_distrib listener
+- To start the distribution exp, you should shart talker and listener nodes on one machine, and start listen_talker on aonther machine, and the two machines must be in one network. If you want to test distribute codes only in one machine, you'd better close the machine network first, and then start all three nodes in it. 
 
 # DDS
 - the default communication method is rtps，you can change the qos config in the code，detail in [pre-set config](https://github.com/ros2/rmw/blob/master/rmw/include/rmw/qos_profiles.h) and [How to set in ROS2](https://docs.ros2.org/latest/api/rclcpp/classrclcpp_1_1QoS.html#details)
