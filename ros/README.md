@@ -16,8 +16,8 @@
 # distribtion
 - talker(sleep ms, msg size); listen_talker(); listener(). 
 - talker parameters: 1: sleep time in ms, the sleep time=the param, you should set talker's sleep time in when run talker node; 2: msg size; 
-- Start the talker node with the command: rosrun simple_distrib 1(sleep ms) 1048576(msg size), and start listen_talker with command: rosrun simple_distrib listener, and listen_talker with command: rosrun simple_distrib listen_talker
-- To start the distribution exp, you must set the same ROS_MASTER_URI on two machines. Also you should run talker and listener nodes on one machine, and listen_talker on aonther machine, while the two machines must be in one network. If you want to test distribute codes only in one machine, you should remove the ROS_MASTER_URI setting and then start all three nodes in the machine; 
+- Start the talker node with the command: rosrun simple_distrib 1(sleep ms) 1048576(msg size), and start listen_talker with command: rosrun simple_distrib listen_talker, and listener with command: rosrun simple_distrib listener
+- To start the distribution exp, you must set the same ROS_MASTER_URI on two machines,and run talker and listener nodes on one machine, listen_talker on aonther, and the two machines must be in one network. If you want to test distribute codes only in one machine, you should remove the ROS_MASTER_URI setting and then start all three nodes in the machine; 
 
 ## TCPROS & UDPROS
 - talker's params: 1: sleep time in ms; 2: msg size; 3: topic name;
