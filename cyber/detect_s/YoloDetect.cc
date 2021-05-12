@@ -40,6 +40,10 @@ class YoloDetect:public Component<Frame>{
 	std::string fn;
 	vector<vector<uint64_t>>tra_latency;
 	vector<vector<uint64_t>>cal_latency;
+		
+	cv::Mat m;
+	//OcvMat content;
+	
 	~YoloDetect(){
 		for(unsigned int i = 0;i<tra_latency.size();i++){
 			ofs.open("/apollo/data/log/test/tmp/tra_"+fn+'_'+to_string(i),std::ios::trunc);
@@ -90,11 +94,12 @@ class YoloDetect:public Component<Frame>{
 		//AINFO<<"yolo transfer time:"<<receive_time - msg0->timestamp();
 		tra_latency[0].push_back(receive_time - msg0->timestamp());
 
-		cv::Mat m;
-		OcvMat content = msg0->mat();
-		m.create(content.rows(),content.cols(),content.elt_type());
-		size_t datasize = content.rows() *  content.cols() * content.elt_size();
-		std::copy(reinterpret_cast<unsigned char *>(const_cast<char *>(content.mat_data().data())),reinterpret_cast<unsigned char *>(const_cast<char *>(content.mat_data().data()) + datasize),m.data);
+		//cv::Mat m;
+		//OcvMat (msg0->mat()) = msg0->mat();
+		//content = msg0->mat();
+		m.create((msg0->mat()).rows(),(msg0->mat()).cols(),(msg0->mat()).elt_type());
+		size_t datasize = (msg0->mat()).rows() *  (msg0->mat()).cols() * (msg0->mat()).elt_size();
+		std::copy(reinterpret_cast<unsigned char *>(const_cast<char *>((msg0->mat()).mat_data().data())),reinterpret_cast<unsigned char *>(const_cast<char *>((msg0->mat()).mat_data().data()) + datasize),m.data);
 		IplImage tmpIpl = cvIplImage(m);
 		double image_width = tmpIpl.width;
 		double image_height = tmpIpl.height;
@@ -137,6 +142,8 @@ class YoloDetect:public Component<Frame>{
 			tmpbox->set_track_id(dets[i].sort_class);
 			tmpbox->set_frames_counter(0);
 		}
+		auto to_send_mat = new OcvMat(msg0->mat());
+		to_send->set_allocated_mat(to_send_mat);
 		to_send->set_timestamp(Time::Now().ToNanosecond());
 		writer1->Write(to_send);
 		return true;
