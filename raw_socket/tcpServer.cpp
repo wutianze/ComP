@@ -82,11 +82,12 @@ while(oneRecv>0){
 	oneRecv-=end_position;
 }
 	//if(end_position!=bufSize)cout<<"recv not complete\n";
-        //buff[end_position] = '\0'; 
-    unsigned long long* recvTime = new unsigned long long(duration_cast<nanoseconds>(high_resolution_clock::now().time_since_epoch()).count());
-    unsigned long long costTime = *recvTime - *((unsigned long long*)buff);
-cout<<"cost time:"<<costTime<<endl;	
-	}
+     	//buff[end_position] = '\0'; 
+    
+	//unsigned long long* recvTime = new unsigned long long(duration_cast<nanoseconds>(high_resolution_clock::now().time_since_epoch()).count());
+    //unsigned long long costTime = *recvTime - *((unsigned long long*)buff);
+//cout<<"cost time:"<<costTime<<endl;	
+	
     //unsigned long long* trans=(unsigned long long*)buff;
 	//buff[8] = '\0';
 	//unsigned long long numb = *trans;
@@ -94,9 +95,12 @@ cout<<"cost time:"<<costTime<<endl;
 
         // -------------- 向用户返回数据 ---------------
         // 原样返回
-        //send(connfd, buff, strlen(buff), 0);
-
-         // ------------- 关闭用户连接套接字 ---------------
+        send(connfd, buff, bufSize, 0);
+	}
+         
+	// ------------ must wait some time for the client to receive the last message
+	usleep(1000000);
+	// ------------- 关闭用户连接套接字 ---------------
 	 printf("close tcp server");
         close(connfd);
 

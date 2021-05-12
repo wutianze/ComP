@@ -16,12 +16,13 @@ using namespace std;
 using namespace std::chrono;
 int main(int argc, char** argv)  
 {  
-if( argc != 3){
-        printf("usage: ./udpS <msg size> <receive how many msg>\n");
+if( argc != 4){
+        printf("usage: ./udpS <msg size> <receive how many msg> <max datagram content>\n");
         return 0;
     }
     int bufSize = atoi(argv[1])+8;
     int count = atoi(argv[2]);
+    int datagramSize = atoi(argv[3]);
 
   // ------------------- 声明/初始化变量 ---------------------------------
   int sock_fd; 
@@ -53,27 +54,48 @@ if( argc != 3){
     exit(1);  
   }
   
-  while(1)  
+  for(int i=0;i<count;i++)  
   {  
     // ----------------- 接收数据 ---------------------------------
-    printf("server wait:\n");  
-    recv_num = recvfrom(sock_fd, recv_buf, sizeof(recv_buf), 0, (struct sockaddr *)&addr_client, (socklen_t *)&len);  
+    int oneRecv = bufSize;
+    while(oneRecv>0){
+	  recv_num = recvfrom(sock_fd, recv_buf, oneRecv, 0, (struct sockaddr *)&addr_client, (socklen_t *)&len);  
     // UDP套接字不会保持连接状态，每次传输数据都要添加目标地址信息，这相当于在邮寄包裹前填写收件人地址。
-    cout<<"recv_num:"<<recv_num<<endl;
+    //cout<<"recv_num:"<<recv_num<<endl;
     if(recv_num < 0)  
     {  
       perror("recvfrom error:");  
       exit(1);  
     }  
-
-    recv_buf[recv_num] = '\0';  
+    oneRecv-=recv_num;
+    //recv_buf[recv_num] = '\0';  
+    }
+    if(oneRecv!=0){
+    cout<<"one datagram may be lost\n";
+    }
     //printf("server receive %d bytes: %s\n", recv_num, recv_buf);  
-unsigned long long* recvTime = new unsigned long long(duration_cast<nanoseconds>(high_resolution_clock::now().time_since_epoch()).count());
-    unsigned long long costTime = *recvTime - *((unsigned long long*)recv_buf);
-cout<<"cost time:"<<costTime<<endl;	
+//unsigned long long* recvTime = new unsigned long long(duration_cast<nanoseconds>(high_resolution_clock::now().time_since_epoch()).count());
+    //unsigned long long costTime = *recvTime - *((unsigned long long*)recv_buf);
+//cout<<"cost time:"<<costTime<<endl;	
 
     // ----------------- 发送 返回消息 ---------------------------------
     // 发的什么 我返回什么 sizeof(recv_buf) recv_num
+    int to_send = bufSize;
+    for(int to_send = bufSize;to_send>0;to_send=to_send-datagramSize){
+	    if(to_send>datagramSize){
+  send_num = sendto(sock_fd, &recv_buf[bufSize-to_send], datagramSize, 0, (struct sockaddr *)&addr_client, len); 
+	    }else{
+  send_num = sendto(sock_fd, &recv_buf[bufSize-to_send], to_send, 0, (struct sockaddr *)&addr_client, len); 
+	    }
+  if(send_num < 0)  
+  {  
+    perror("sendto error:"); 
+    exit(1);  
+  }
+usleep(1);
+    }
+
+
     //send_num = sendto(sock_fd, recv_buf, recv_num, 0, (struct sockaddr *)&addr_client, len);  
       
     /*if(send_num < 0)  
@@ -84,6 +106,7 @@ cout<<"cost time:"<<costTime<<endl;
   }
   
   // ------------------- 关闭套接字 ---------------------------------
+  cout<<"close udpServer\n";
   close(sock_fd);  
     
   return 0;  

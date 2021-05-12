@@ -12,7 +12,7 @@
 #include<chrono>
 #include<ratio>
 #include<iostream>
-
+#include<fstream>
 //#include "base.h"
 //#define MAXLINE 4096
 using namespace std;
@@ -24,9 +24,11 @@ int main(int argc, char** argv){
 
     // ----------------- 检查命令行参数 -----------------
     if( argc != 5){
-        printf("usage: ./client <ipaddress> <msg size> <send how many msg> <sleep time in us between two sends>\n");
+        printf("usage: ./tcpC <ipaddress> <msg size> <send how many msg> <sleep time in us between two sends>\n");
         return 0;
     }
+    ofstream outfile;
+    outfile.open("tcpLog.txt");
     int bufSize = atoi(argv[2])+8;
     int count = atoi(argv[3]);
     int sleepTime = atoi(argv[4]);
@@ -35,7 +37,7 @@ int main(int argc, char** argv){
     // ------------------ 声明/初始化变量 -----------------------------
     int  sockfd ;
     int  end_index;
-    //char recvline[bufSize+1];
+    char recvline[bufSize];
     struct sockaddr_in  servaddr;
 
     memset(&servaddr, 0, sizeof(servaddr));
@@ -73,15 +75,22 @@ int main(int argc, char** argv){
         return 0;
     }
 
-    usleep(sleepTime);
-    }
     // ------------------ 接收消息 -----------------------------
-    //end_index = recv(sockfd, recvline, bufSize, 0);
+    int oneRecv = bufSize;
+    while(oneRecv>0){
+    end_index = recv(sockfd, &(recvline[bufSize-oneRecv]), oneRecv, 0);
+    oneRecv-=end_index;
+    }
+    unsigned long long* recvTime = new unsigned long long(duration_cast<nanoseconds>(high_resolution_clock::now().time_since_epoch()).count());
     //recvline[end_index] = '\0';
     //printf("recv msg from server \n");
+	outfile<<*recvTime-*sendTime<<endl;
+    usleep(sleepTime);
+    }
 
     // ------------------ 关闭套接字，断开连接 --------------------
     close(sockfd);
+    outfile.close();
     return 0;
 }
 
