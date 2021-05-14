@@ -20,17 +20,14 @@ cyber and ros should run by root.
 6. the build in cyber is ./apollo.sh build_cyber(must as root), remember not to use build since it will build other modules and will fail. And please pay attention to allocate enough memory for cyber container(32G is recommended), or the build process may fail.
 
 - 进入cyber容器并初始化环境：
-run in root: docker exec -u root -it [container num] /bin/bash
-source /apollo/cyber/setup.bash（import, or you cannot use cyber_* commands）
+run in root: docker exec -u root -it [container num] /bin/bash  
+init environment: source /apollo/cyber/setup.bash（import, or you cannot use cyber_* commands）
 
 - 创建component等，[官方文档](https://github.com/ApolloAuto/apollo/blob/master/docs/cyber/CyberRT_Quick_Start.md)
 
 - 具体运行见 Cyber实操.md
 
 - [cyber原理学习](https://blog.csdn.net/qq_25762163/category_9599333.html)
-
-# 数据处理：
-使用drawTmp.py
 
 # darknet：
 - rm -rf build-release
