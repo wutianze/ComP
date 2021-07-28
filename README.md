@@ -1,6 +1,6 @@
 # ComP
 `cyber/`, `ros/` and `ros2/` contain code for different environment(middleware). It is recommended that the benchmark be run with root priviledge inside docker container. Detail guidances are provided in these directories.
-`apps` contains detect algorithms includes yolo, kcf, line detect etc. You need to recompile them in cyber & ros docker container. It is managed by cmake.
+`apps` contains detect algorithms for tracking and line detecting. You need to recompile them in cyber & ros docker container. It is managed by cmake.
 
 # Libraries needed:
 - opencv3.4.10, opencv_contrib 3.4.10, and cv_bridge is needed in ROS
