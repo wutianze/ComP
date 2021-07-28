@@ -10,15 +10,15 @@
 - [cyber container start](https://github.com/ApolloAuto/apollo/blob/master/docs/cyber/CyberRT_Docker.md)
 - [cyber blog in CSDN](https://blog.csdn.net/qq_25762163/category_9599333.html)
 ### Step by Step
-1. clone the git project
-2. checkout to r5.5.0(not sure if necessary)[docs of 2,3,4 steps](https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md#Set-up-the-Docker-environment)
+1. clone the [project](https://github.com/ApolloAuto/apollo.git) from git
+2. checkout to r5.5.0[docs of 2,3,4 steps](https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md#Set-up-the-Docker-environment)
 3. sudo groupadd docker, sudo usermod -aG docker $USER # this can make docker run without sudo, however when running the cyber script you may still need sudo
 4. echo "export APOLLO_HOME=$(pwd)" >> ~/.bashrc && source ~/.bashrc
 5. follow the doc of cyber to run docker/script/cyber_start.sh & cyber_into.sh
-6. the build in cyber is ./apollo.sh build_cyber(must as root), remember not to use build since it will build other modules and will fail. And please pay attention to allocate enough memory for cyber container(32G is recommended), or the build process may fail.
+6. the build in cyber is ./apollo.sh build_cyber(must as root), remember not to use build since it will build other modules and will fail. And keep in mind to allocate enough memory for cyber container(32G is recommended), or the build process may fail.
 ### Enter into cyber container and init the environment：
 - run in root: docker exec -u root -it [container num] /bin/bash  
-- init environment: source /apollo/cyber/setup.bash（import, or you cannot use cyber_* commands）
+- init environment: source /apollo/cyber/setup.bash（important, or you cannot use cyber_* commands）
 
 ## micro test：
 ### 1to1,1toN,Nto1...
