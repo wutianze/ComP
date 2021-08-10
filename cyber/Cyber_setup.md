@@ -19,7 +19,7 @@ cp Sample-Data/FL ~/apollo/data/
 ### 0.3 git AD_Middle_Test
 ```
 cd /apollo/cyber
-git clone https://github.com/wutianze/AD_Middle_Test.git
+git clone https://github.com/wutianze/ComP.git
 ```
 
 ## 1. Initialization of apollo docker
@@ -47,13 +47,13 @@ cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_E
 ```
 ## 3. Complie AD_Middle_Test apps
 ```
-cd AD_Middle_Test/apps
+cd ComP/apps
 mkdir build
 cd build
 cmake ..
 make
 ```
-And you can get three lib*.so files, copy them to the following three paths: /lib, /usr/lib and /apollo/cyber/AD_Middle_Test/cyber/detect_s/lib
+And you can get three lib*.so files, copy them to the following three paths: /lib, /usr/lib and /apollo/cyber/ComP/cyber/detect_s/lib
 
 ## 4.install yolov3
 ```
@@ -68,11 +68,15 @@ revise
 GPU=1
 OPENCV=1
 ```
+and for Jetson XAVIER, you should also comment out the following code 
+```
+ARCH= -gencode arch=compute_72,code=[sm_72,compute_72]
+```
 then
 ```
 make
 ```
-You will get the file libdarknet.so, copy it to the following three paths: /lib, /usr/lib and /apollo/cyber/AD_Middle_Test/cyber/detect_s/lib
+You will get the file libdarknet.so, copy it to the following three paths: /lib, /usr/lib and /apollo/cyber/ComP/cyber/detect_s/lib
 download yolov3.weight and yolov3-tiny.weight
 ```
 wget https://pjreddie.com/media/files/yolov3.weights
@@ -86,13 +90,12 @@ vim ~/.bashrc
 ```
 add
 ```
-export PATH = "$PATH:/apollo/cyber/AD_Middle_Test/cyber/detect_s" 
+export PATH = "$PATH:/apollo/cyber/ComP/cyber/detect_s" 
 ```
 then
 ```
 source ~/.bashrc
 ```
-## 6.change some codes
 
 ## 6.Complie apollo
 if needed,clean make files
@@ -105,15 +108,16 @@ bazel build //cyber/...
 ```
 ## 7.run
 ```
-cyber_launch start /apollo/cyber/AD_Middle_Test/cyber/detect_s/detect_t.launch
+cyber_launch start /apollo/cyber/ComP/cyber/detect_s/detect_t.launch
 ```
 
-## 8. save docker container to image
+## 8. docker container save and restart
+### docker container save
 ```
 sudo docker  ps
 sudo docker commit [container ID] [new docker images name] 
 ```
-# Start from saved docker image
+### Start from saved docker image
 ```
 vim /apollo/docker/script/cyber_start.sh
 ```
