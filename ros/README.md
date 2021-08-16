@@ -26,4 +26,4 @@
 - run.sh's params: 1: index; 2: sleep time in ms; 3: msg size; 4: number of topic on listener subscribes; 5: number of listeners; 6: number of talkers
 
 ## Notice
-- different projects in src/: simple_s(tests in simple scenario without real applications), detect_s(tests in a perception or detection scenario)
+- different projects in src/: simple_s(tests in simple scenario without real applications), simple_distrib(tests in distributed system), detect_s(tests in a perception or detection scenario)
