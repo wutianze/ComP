@@ -24,3 +24,6 @@
 - listener's params: 1: topic name; 2: number of topic one listener subscribes, usually be 1;
 - In 1-n or n-1 or n-n scenarios, should change the run.sh to modify topic name etc.
 - run.sh's params: 1: index; 2: sleep time in ms; 3: msg size; 4: number of topic on listener subscribes; 5: number of listeners; 6: number of talkers
+
+## Notice
+- different projects in src/: simple_s(tests in simple scenario without real applications), detect_s(tests in a perception or detection scenario)
