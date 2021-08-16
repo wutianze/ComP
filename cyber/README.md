@@ -34,4 +34,4 @@
 - the results are stored in /apollo/data/log/test/tmp，each topic subscribed by each subscriber will have a record file，it is recommended to move the recording files to another place once you finised a round since at the beginning of each round the recording file directory will be cleared.
 ## Detect_s：
 - YoloDetect.cc,Line.cc,CameraTimer.cc,TrackerApollo.cc,FusionFinal.cc, CameraTimer generates data，YoloDetect\Line\TrackerApollo handle the data，the results are fused by FusionFinal. The data formats are defined in detect_msg.proto
-- TODO
+- Take detect_p.launch and detect_p2.launch as two examples, they will launch different components(Camera:c.dag, Yolo:y.dag, Tracker:t.dag, Fusion:f.dag...), you can make your own settings by modifying these .dag and .launch.
