@@ -26,4 +26,4 @@
 
 # Notice：
 - once change the data format in msg，please delete the ros2/build and then colcon build，or the format change would make no difference
-- different projects in src/: simple_s(tests in simple scenario without real applications), detect_s(tests in a perception or detection scenario)
+- different projects in src/: simple_s(tests in simple scenario without real applications), simple_distrib(tests in distributed system), detect_s(tests in a perception or detection scenario)
