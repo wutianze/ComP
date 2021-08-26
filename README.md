@@ -17,4 +17,4 @@
 - Please open an issue if you encounter any trouble
 
 ---
-## ComP was our first try to build a usable benchmark pack for autonomous driving vehicles and the test scenario is simple. We are working on a future version of ComP, any advice is welcomed. The paper was published in RA-L in 2021.
+## ComP was our first try to build an usable benchmark pack for autonomous driving vehicles and the test scenario is simple. We are working on a future version of ComP, any advice is welcomed. The paper was published in RA-L in 2021.
