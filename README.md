@@ -17,4 +17,17 @@
 - Please open an issue if you encounter any trouble
 
 ---
-## ComP was our first try to build an usable benchmark pack for autonomous driving vehicles and the test scenario is simple. We are working on a future version of ComP, any advice is welcomed. The paper was published in RA-L in 2021.
+## ComP was our first try to build an usable benchmark pack for autonomous driving vehicles and the test scenario is simple. We are working on a future version of ComP, any advice is welcomed. The paper was published in RA-L in 2021.  
+Bibtex:
+```
+@article{wu2021oops,
+  title={Oops! It's Too Late. Your Autonomous Driving System Needs a Faster Middleware},
+  author={Wu, Tianze and Wu, Baofu and Wang, Sa and Liu, Liangkai and Liu, Shaoshan and Bao, Yungang and Shi, Weisong},
+  journal={IEEE Robotics and Automation Letters},
+  volume={6},
+  number={4},
+  pages={7301--7308},
+  year={2021},
+  publisher={IEEE}
+}
+```
